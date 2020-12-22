@@ -1,0 +1,16 @@
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\Pos.exe.config
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\Pos.exe
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\Pos.pdb
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\CapaPresentacion.dll
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\CapaNegocio.dll
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\CapaDatos.dll
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\CapaPresentacion.pdb
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\CapaNegocio.pdb
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\CapaDatos.pdb
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.csprojAssemblyReference.cache
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.Properties.Resources.resources
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.csproj.GenerateResource.cache
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.csproj.CoreCompileInputs.cache
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.csproj.CopyComplete
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.exe
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.pdb

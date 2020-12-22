@@ -1,0 +1,13 @@
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\CapaPresentacion.dll
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\CapaPresentacion.pdb
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\CapaNegocio.dll
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\CapaDatos.dll
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\CapaNegocio.pdb
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\CapaDatos.pdb
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.csprojAssemblyReference.cache
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmCategoria.resources
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CopyComplete
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.dll
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.pdb
