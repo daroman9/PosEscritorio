@@ -11,3 +11,4 @@ C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.cspr
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CopyComplete
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.dll
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.pdb
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPresentacion.resources

@@ -49,6 +49,12 @@
     <Compile Include="FrmCategoria.Designer.cs">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPresentacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPresentacion.Designer.cs">
+      <DependentUpon>FrmPresentacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +66,9 @@
   <ItemGroup>
     <EmbeddedResource Include="FrmCategoria.resx">
       <DependentUpon>FrmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPresentacion.resx">
+      <DependentUpon>FrmPresentacion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
