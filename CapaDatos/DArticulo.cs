@@ -36,9 +36,10 @@ namespace CapaDatos
 
         }
         //Constructor con parametros
-        public DArticulo(int idarticulo, string nombre, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string textobuscar)
+        public DArticulo(int idarticulo, string codigo, string nombre, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string textobuscar)
         {
             this.IdArticulo = idarticulo;
+            this.Codigo = codigo;
             this.Nombre = nombre;
             this.Descripcion = descripcion;
             this.Imagen = imagen;
@@ -73,7 +74,7 @@ namespace CapaDatos
                 ParCodigo.ParameterName = "@codigo";
                 ParCodigo.SqlDbType = SqlDbType.VarChar;
                 ParCodigo.Size = 50;
-                ParCodigo.Value = Articulo.Nombre;
+                ParCodigo.Value = Articulo.Codigo;
                 SqlCmd.Parameters.Add(ParCodigo);
 
                 SqlParameter ParNombre = new SqlParameter();
@@ -92,8 +93,7 @@ namespace CapaDatos
 
                 SqlParameter ParImagen = new SqlParameter();
                 ParImagen.ParameterName = "@imagen";
-                ParImagen.SqlDbType = SqlDbType.VarChar;
-                ParImagen.Size = 1024;
+                ParImagen.SqlDbType = SqlDbType.Image;
                 ParImagen.Value = Articulo.Imagen;
                 SqlCmd.Parameters.Add(ParImagen);
 
@@ -145,14 +145,14 @@ namespace CapaDatos
                 SqlParameter ParIdArticulo = new SqlParameter();
                 ParIdArticulo.ParameterName = "@idarticulo";
                 ParIdArticulo.SqlDbType = SqlDbType.Int;
-                ParIdArticulo.Value = Articulo.IdPresentacion;
+                ParIdArticulo.Value = Articulo.IdArticulo;
                 SqlCmd.Parameters.Add(ParIdArticulo);
 
                 SqlParameter ParCodigo = new SqlParameter();
                 ParCodigo.ParameterName = "@codigo";
                 ParCodigo.SqlDbType = SqlDbType.VarChar;
                 ParCodigo.Size = 50;
-                ParCodigo.Value = Articulo.Nombre;
+                ParCodigo.Value = Articulo.Codigo;
                 SqlCmd.Parameters.Add(ParCodigo);
 
                 SqlParameter ParNombre = new SqlParameter();
@@ -171,8 +171,7 @@ namespace CapaDatos
 
                 SqlParameter ParImagen = new SqlParameter();
                 ParImagen.ParameterName = "@imagen";
-                ParImagen.SqlDbType = SqlDbType.VarChar;
-                ParImagen.Size = 1024;
+                ParImagen.SqlDbType = SqlDbType.Image;
                 ParImagen.Value = Articulo.Imagen;
                 SqlCmd.Parameters.Add(ParImagen);
 

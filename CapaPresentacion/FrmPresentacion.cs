@@ -99,25 +99,22 @@ namespace CapaPresentacion
             this.Botones();
 
         }
-        private void btnBuscar_Click(object sender, EventArgs e)
-        {
-            this.BuscarNombre();
-        }
+ 
+  
 
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.BuscarNombre();
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            this.IsNuevo = true;
+            this.IsNuevo = false;
             this.IsEditar = false;
             this.Botones();
             this.Limpiar();
-            this.Habilitar(true);
-            this.txtNombre.Focus();
+            this.Habilitar(false);
         }
+
+   
+ 
+
+
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -167,6 +164,16 @@ namespace CapaPresentacion
             }
         }
 
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            this.IsNuevo = true;
+            this.IsEditar = false;
+            this.Botones();
+            this.Limpiar();
+            this.Habilitar(true);
+            this.txtNombre.Focus();
+        }
+
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
             this.txtIdPresentacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idpresentacion"].Value);
@@ -174,50 +181,6 @@ namespace CapaPresentacion
             this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
 
             this.tabControl1.SelectedIndex = 1;
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if (!this.txtIdPresentacion.Text.Equals(""))
-            {
-                this.IsEditar = true;
-                this.Botones();
-                this.Habilitar(true);
-            }
-            else
-            {
-                this.MensajeError("Debe seleccionar el registro a modificar");
-            }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.IsNuevo = false;
-            this.IsEditar = false;
-            this.Botones();
-            this.Limpiar();
-            this.Habilitar(false);
-        }
-
-        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkEliminar.Checked)
-            {
-                this.dataListado.Columns[0].Visible = true;
-            }
-            else
-            {
-                this.dataListado.Columns[0].Visible = false;
-            }
-        }
-
-        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
-            {
-                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
-                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
-            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -257,6 +220,51 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.BuscarNombre();
+        }
+
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            this.BuscarNombre();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (!this.txtIdPresentacion.Text.Equals(""))
+            {
+                this.IsEditar = true;
+                this.Botones();
+                this.Habilitar(true);
+            }
+            else
+            {
+                this.MensajeError("Debe seleccionar el registro a modificar");
+            }
+        }
+
+        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEliminar.Checked)
+            {
+                this.dataListado.Columns[0].Visible = true;
+            }
+            else
+            {
+                this.dataListado.Columns[0].Visible = false;
+            }
+        }
+
+        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
+            {
+                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
+                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
             }
         }
     }

@@ -17,6 +17,7 @@ namespace CapaPresentacion
     {
         private bool IsNuevo = false;
         private bool IsEditar = false;
+
         public FrmArticulo()
         {
             InitializeComponent();
@@ -58,7 +59,6 @@ namespace CapaPresentacion
             this.txtCodigo.ReadOnly = !valor;
             this.txtNombre.ReadOnly = !valor;
             this.txtDescripcion.ReadOnly = !valor;
-            this.btnBuscarCategoria.Enabled = valor;
             this.cbIdPresentacion.Enabled = valor;
             this.btnCargar.Enabled = valor;
             this.btnLimpiar.Enabled = valor;
@@ -91,12 +91,17 @@ namespace CapaPresentacion
             this.dataListado.Columns[1].Visible = false;
             this.dataListado.Columns[6].Visible = false;
             this.dataListado.Columns[8].Visible = false;
+
+            //Ocultar columnas del grid de categorias
+            this.dataListadoCategorias.Columns[0].Visible = false;
+            this.dataListadoCategorias.Columns[1].Visible = false;
         }
 
         //Método mostrar
         private void Mostrar()
         {
             this.dataListado.DataSource = NArticulo.Mostrar();
+            this.dataListadoCategorias.DataSource = NCategoria.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -104,6 +109,12 @@ namespace CapaPresentacion
         private void BuscarNombre()
         {
             this.dataListado.DataSource = NArticulo.BuscarNombre(this.txtBuscar.Text);
+            this.OcultarColumnas();
+            lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
+        }
+        private void BuscarNombreCategorias()
+        {
+            this.dataListadoCategorias.DataSource = NCategoria.BuscarNombre(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -178,7 +189,9 @@ namespace CapaPresentacion
                 {
                     System.IO.MemoryStream ms = new System.IO.MemoryStream();
                     this.pxImagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+
                     byte[] imagen = ms.GetBuffer();
+
                     if (this.IsNuevo)
                     {
                         rpta = NArticulo.Insertar(this.txtCodigo.Text, this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), 
@@ -187,7 +200,7 @@ namespace CapaPresentacion
                     else
                     {
                         rpta = NArticulo.Editar(Convert.ToInt32(this.txtIdArticulo.Text), this.txtCodigo.Text, this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(),
-                                                imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue)););
+                                                imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue));
                     }
                     if (rpta.Equals("OK"))
                     {
@@ -262,7 +275,7 @@ namespace CapaPresentacion
             this.pxImagen.Image = Image.FromStream(ms);
             this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
             this.txtIdCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
-            this.txtCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["categpria"].Value);
+            this.txtCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["categoria"].Value);
             this.cbIdPresentacion.SelectedValue = Convert.ToString(this.dataListado.CurrentRow.Cells["idpresentacion"].Value);
 
 
@@ -321,6 +334,22 @@ namespace CapaPresentacion
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void dataListadoCategorias_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdCategoria.Text = Convert.ToString(this.dataListadoCategorias.CurrentRow.Cells["idcategoria"].Value);
+            this.txtCategoria.Text = Convert.ToString(this.dataListadoCategorias.CurrentRow.Cells["nombre"].Value);
+        }
+
+        private void txtBuscarNombreCategoria_TextChanged(object sender, EventArgs e)
+        {
+            BuscarNombreCategorias();
+        }
+
+        private void btnBuscarNombreCategorias_Click(object sender, EventArgs e)
+        {
+            BuscarNombreCategorias();
         }
     }
 }

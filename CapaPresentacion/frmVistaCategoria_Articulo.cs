@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CapaNegocio;
-
 namespace CapaPresentacion
 {
     public partial class frmVistaCategoria_Articulo : Form
@@ -18,8 +17,6 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
-
-
         //Método para ocultar columnas
         private void OcultarColumnas()
         {
@@ -54,15 +51,17 @@ namespace CapaPresentacion
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
-            FrmArticulo form = FrmArticulo.GetInstancia();
+            //FrmArticulo form = FrmArticulo.GetInstancia();
             string par1, par2;
-
-            par1 =Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
+            par1 = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
             par2 = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-
-            form.setCategoria(par1, par2);
-
+           // form.setCategoria(par1, par2);
             this.Hide();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
