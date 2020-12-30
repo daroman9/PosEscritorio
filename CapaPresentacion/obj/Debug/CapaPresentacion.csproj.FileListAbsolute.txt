@@ -14,3 +14,5 @@ C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.pdb
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPresentacion.resources
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmArticulo.resources
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.frmVistaCategoria_Articulo.resources
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmProveedor.resources
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmCliente.resources

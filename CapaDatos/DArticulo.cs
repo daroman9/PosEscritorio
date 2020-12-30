@@ -222,7 +222,7 @@ namespace CapaDatos
 
                 //Parametros que se van a enviar al procedimiento almacenado
                 SqlParameter ParIdArticulo = new SqlParameter();
-                ParIdArticulo.ParameterName = "@idpresentacion";
+                ParIdArticulo.ParameterName = "@idarticulo";
                 ParIdArticulo.SqlDbType = SqlDbType.Int;
                 ParIdArticulo.Value = Articulo.IdArticulo;
                 SqlCmd.Parameters.Add(ParIdArticulo);

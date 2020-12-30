@@ -1,0 +1,382 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+//Librerias que se deben  importar para poder trabajar con sql server
+using System.Data;
+using System.Data.SqlClient;
+namespace CapaDatos
+{
+   public class DProveedor
+    {
+        //Variables
+        private int _Idproveedor;
+        private string _Razon_Social;
+        private string _Sector_Comercial;
+        private string _Tipo_Documento;
+        private string _Num_Documento;
+        private string _Direccion;
+        private string _Telefono;
+        private string _Email;
+        private string _Url;
+        private string _TextoBuscar;
+
+        public int Idproveedor { get => _Idproveedor; set => _Idproveedor = value; }
+        public string Razon_Social { get => _Razon_Social; set => _Razon_Social = value; }
+        public string Sector_Comercial { get => _Sector_Comercial; set => _Sector_Comercial = value; }
+        public string Tipo_Documento { get => _Tipo_Documento; set => _Tipo_Documento = value; }
+        public string Num_Documento { get => _Num_Documento; set => _Num_Documento = value; }
+        public string Direccion { get => _Direccion; set => _Direccion = value; }
+        public string Telefono { get => _Telefono; set => _Telefono = value; }
+        public string Email { get => _Email; set => _Email = value; }
+        public string Url { get => _Url; set => _Url = value; }
+        public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
+
+        //Constructor sin parametros
+        public DProveedor()
+        {
+
+        }
+
+        //Constructor con parametros
+        public DProveedor(int idproveedor, string razon_social,  string sector_comercial, string tipodocumento, string num_documento, string direccion, string telefono, string email, string url, string textobuscar)
+        {   
+            Idproveedor = idproveedor;
+            Razon_Social = razon_social;
+            Sector_Comercial = sector_comercial;
+            Tipo_Documento = tipodocumento;
+            Num_Documento = num_documento;
+            Direccion = direccion;
+            Telefono = telefono;
+            Email = email;
+            Url = url;
+            TextoBuscar= textobuscar;
+        }
+        //Método Insertar
+        public string Insertar(DProveedor Proveedor)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código para insertar registros
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+                //Establecer comando para ejecutar sentencias sql
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spinsertar_proveedor";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Parametros que se van a enviar al procedimiento almacenado
+                SqlParameter ParIdProveedor = new SqlParameter();
+                ParIdProveedor.ParameterName = "@idproveedor";
+                ParIdProveedor.SqlDbType = SqlDbType.Int;
+                ParIdProveedor.Direction = ParameterDirection.Output;
+                SqlCmd.Parameters.Add(ParIdProveedor);
+
+                SqlParameter ParRazonSocial = new SqlParameter();
+                ParRazonSocial.ParameterName = "@razon_social";
+                ParRazonSocial.SqlDbType = SqlDbType.VarChar;
+                ParRazonSocial.Size = 150;
+                ParRazonSocial.Value = Proveedor.Razon_Social;
+                SqlCmd.Parameters.Add(ParRazonSocial);
+
+                SqlParameter ParSectorComercial = new SqlParameter();
+                ParSectorComercial.ParameterName = "@sector_comercial";
+                ParSectorComercial.SqlDbType = SqlDbType.VarChar;
+                ParSectorComercial.Size = 50;
+                ParSectorComercial.Value = Proveedor.Sector_Comercial;
+                SqlCmd.Parameters.Add(ParSectorComercial);
+
+                SqlParameter ParTipoDocumento = new SqlParameter();
+                ParTipoDocumento.ParameterName = "@tipo_documento";
+                ParTipoDocumento.SqlDbType = SqlDbType.VarChar;
+                ParTipoDocumento.Size = 20;
+                ParTipoDocumento.Value = Proveedor.Tipo_Documento;
+                SqlCmd.Parameters.Add(ParTipoDocumento);
+
+                SqlParameter ParNumDocumento = new SqlParameter();
+                ParNumDocumento.ParameterName = "@num_documento";
+                ParNumDocumento.SqlDbType = SqlDbType.VarChar;
+                ParNumDocumento.Size = 20;
+                ParNumDocumento.Value = Proveedor.Num_Documento;
+                SqlCmd.Parameters.Add(ParNumDocumento);
+
+                SqlParameter ParDireccion = new SqlParameter();
+                ParDireccion.ParameterName = "@direccion";
+                ParDireccion.SqlDbType = SqlDbType.VarChar;
+                ParDireccion.Size = 100;
+                ParDireccion.Value = Proveedor.Direccion;
+                SqlCmd.Parameters.Add(ParDireccion);
+
+                SqlParameter ParTelefono = new SqlParameter();
+                ParTelefono.ParameterName = "@telefono";
+                ParTelefono.SqlDbType = SqlDbType.VarChar;
+                ParTelefono.Size = 50;
+                ParTelefono.Value = Proveedor.Telefono;
+                SqlCmd.Parameters.Add(ParTelefono);
+
+                SqlParameter ParEmail = new SqlParameter();
+                ParEmail.ParameterName = "@email";
+                ParEmail.SqlDbType = SqlDbType.VarChar;
+                ParEmail.Size = 100;
+                ParEmail.Value = Proveedor.Email;
+                SqlCmd.Parameters.Add(ParEmail);
+
+                SqlParameter ParUrl = new SqlParameter();
+                ParUrl.ParameterName = "@url";
+                ParUrl.SqlDbType = SqlDbType.VarChar;
+                ParUrl.Size = 100;
+                ParUrl.Value = Proveedor.Url;
+                SqlCmd.Parameters.Add(ParUrl);
+
+                //Ejecutar el comando
+
+                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se ingreso el registro";
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+        }
+
+        //Método Editar
+        public string Editar(DProveedor Proveedor)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código para insertar registros
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+                //Establecer comando para ejecutar sentencias sql
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "speditar_proveedor";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Parametros que se van a enviar al procedimiento almacenado
+                SqlParameter ParIdProveedor = new SqlParameter();
+                ParIdProveedor.ParameterName = "@idproveedor";
+                ParIdProveedor.SqlDbType = SqlDbType.Int;
+                ParIdProveedor.Value = Proveedor.Idproveedor;
+                SqlCmd.Parameters.Add(ParIdProveedor);
+
+                SqlParameter ParRazonSocial = new SqlParameter();
+                ParRazonSocial.ParameterName = "@razon_social";
+                ParRazonSocial.SqlDbType = SqlDbType.VarChar;
+                ParRazonSocial.Size = 150;
+                ParRazonSocial.Value = Proveedor.Razon_Social;
+                SqlCmd.Parameters.Add(ParRazonSocial);
+
+                SqlParameter ParSectorComercial = new SqlParameter();
+                ParSectorComercial.ParameterName = "@sector_comercial";
+                ParSectorComercial.SqlDbType = SqlDbType.VarChar;
+                ParSectorComercial.Size = 50;
+                ParSectorComercial.Value = Proveedor.Sector_Comercial;
+                SqlCmd.Parameters.Add(ParSectorComercial);
+
+                SqlParameter ParTipoDocumento = new SqlParameter();
+                ParTipoDocumento.ParameterName = "@tipo_documento";
+                ParTipoDocumento.SqlDbType = SqlDbType.VarChar;
+                ParTipoDocumento.Size = 20;
+                ParTipoDocumento.Value = Proveedor.Tipo_Documento;
+                SqlCmd.Parameters.Add(ParTipoDocumento);
+
+                SqlParameter ParNumDocumento = new SqlParameter();
+                ParNumDocumento.ParameterName = "@num_documento";
+                ParNumDocumento.SqlDbType = SqlDbType.VarChar;
+                ParNumDocumento.Size = 20;
+                ParNumDocumento.Value = Proveedor.Num_Documento;
+                SqlCmd.Parameters.Add(ParNumDocumento);
+
+                SqlParameter ParDireccion = new SqlParameter();
+                ParDireccion.ParameterName = "@direccion";
+                ParDireccion.SqlDbType = SqlDbType.VarChar;
+                ParDireccion.Size = 100;
+                ParDireccion.Value = Proveedor.Direccion;
+                SqlCmd.Parameters.Add(ParDireccion);
+
+                SqlParameter ParTelefono = new SqlParameter();
+                ParTelefono.ParameterName = "@telefono";
+                ParTelefono.SqlDbType = SqlDbType.VarChar;
+                ParTelefono.Size = 50;
+                ParTelefono.Value = Proveedor.Telefono;
+                SqlCmd.Parameters.Add(ParTelefono);
+
+                SqlParameter ParEmail = new SqlParameter();
+                ParEmail.ParameterName = "@email";
+                ParEmail.SqlDbType = SqlDbType.VarChar;
+                ParEmail.Size = 100;
+                ParEmail.Value = Proveedor.Email;
+                SqlCmd.Parameters.Add(ParEmail);
+
+                SqlParameter ParUrl = new SqlParameter();
+                ParUrl.ParameterName = "@url";
+                ParUrl.SqlDbType = SqlDbType.VarChar;
+                ParUrl.Size = 100;
+                ParUrl.Value = Proveedor.Url;
+                SqlCmd.Parameters.Add(ParUrl);
+
+
+                //Ejecutar el comando
+
+                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizo el registro";
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+
+        }
+
+        //Método Eliminar
+        public string Eliminar(DProveedor Proveedor)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código para eliminar registros
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+                //Establecer comando para ejecutar sentencias sql
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "speliminar_proveedor";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Parametros que se van a enviar al procedimiento almacenado
+                SqlParameter ParIdProveedor = new SqlParameter();
+                ParIdProveedor.ParameterName = "@idproveedor";
+                ParIdProveedor.SqlDbType = SqlDbType.Int;
+                ParIdProveedor.Value = Proveedor.Idproveedor;
+                SqlCmd.Parameters.Add(ParIdProveedor);
+
+                //Ejecutar el comando
+
+                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se elimino el registro";
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+        }
+
+        //Método Mostrar
+        public DataTable Mostrar()
+        {
+            DataTable DtResultado = new DataTable("proveedor");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spmostrar_proveedor";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
+
+        //Método buscar por razon social
+        public DataTable BuscarRazonSocial(DProveedor Proveedor)
+        {
+            DataTable DtResultado = new DataTable("proveedor");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spbuscar_proveedor_razon_social";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@textobuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 50;
+                ParTextoBuscar.Value = Proveedor.TextoBuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
+
+        //Método buscar por numero de documento
+        public DataTable BuscarNumDocumento(DProveedor Proveedor)
+        {
+            DataTable DtResultado = new DataTable("proveedor");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spbuscar_proveedor_num_documento";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@textobuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 50;
+                ParTextoBuscar.Value = Proveedor.TextoBuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
+    }
+}
