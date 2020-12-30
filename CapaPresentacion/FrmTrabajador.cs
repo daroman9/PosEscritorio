@@ -9,23 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using CapaNegocio;
-
 namespace CapaPresentacion
 {
-    public partial class FrmCliente : Form
+    
+    public partial class FrmTrabajador : Form
     {
         private bool IsNuevo = false;
         private bool IsEditar = false;
-        public FrmCliente()
+        public FrmTrabajador()
         {
             InitializeComponent();
             this.ttMensaje.SetToolTip(this.txtNombre, "Debe ingresar un nombre");
             this.ttMensaje.SetToolTip(this.txtApellidos, "Debe ingresar un apellido");
-            this.ttMensaje.SetToolTip(this.txtNumDocumento, "Debe ingresar un número de documento");
-            this.ttMensaje.SetToolTip(this.txtDireccion, "Debe ingresar una dirección");
-
+            this.ttMensaje.SetToolTip(this.cbAcceso, "Seleccione el nivel de acceso");
+            this.ttMensaje.SetToolTip(this.txtUsuario, "Debe ingresar un usuario");
+            this.ttMensaje.SetToolTip(this.txtPassword, "Debe ingresar un password");
         }
-
         //Mostrar mensaje de confirmación
         private void MensajeOk(string mensaje)
         {
@@ -45,7 +44,10 @@ namespace CapaPresentacion
             this.txtDireccion.Text = string.Empty;
             this.txtTelefono.Text = string.Empty;
             this.txtEmail.Text = string.Empty;
-            this.txtIdCliente.Text = string.Empty;
+            this.txtUsuario.Text = string.Empty;
+            this.txtPassword.Text = string.Empty;
+            this.txtIdTrabajador.Text = string.Empty;
+
         }
 
         //Método para habilitar los controles del formulario
@@ -54,12 +56,16 @@ namespace CapaPresentacion
         {
             this.txtNombre.ReadOnly = !valor;
             this.txtApellidos.ReadOnly = !valor;
+            this.cbSexo.Enabled = valor;
             this.txtNumDocumento.ReadOnly = !valor;
             this.txtDireccion.ReadOnly = !valor;
-            this.cbTipoDocumento.Enabled = valor;
             this.txtTelefono.ReadOnly = !valor;
             this.txtEmail.ReadOnly = !valor;
-            this.txtIdCliente.ReadOnly = !valor;
+            this.cbAcceso.Enabled = valor;
+            this.txtUsuario.ReadOnly = !valor;
+            this.txtPassword.ReadOnly = !valor;
+            this.txtIdTrabajador.ReadOnly = !valor;
+
         }
         //Método para habilitar los botones
         private void Botones()
@@ -91,26 +97,26 @@ namespace CapaPresentacion
         //Método mostrar
         private void Mostrar()
         {
-            this.dataListado.DataSource = NCliente.Mostrar();
+            this.dataListado.DataSource = NTrabajador.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
         //Método para buscar por los apellidos
         private void BuscarApellidos()
         {
-            this.dataListado.DataSource = NCliente.BuscarApellidos(this.txtBuscar.Text);
+            this.dataListado.DataSource = NTrabajador.BuscarApellidos(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
         //Método para buscar por el numero de documento
         private void BuscarNumDocumento()
         {
-            this.dataListado.DataSource = NCliente.BuscarNumDocumento(this.txtBuscar.Text);
+            this.dataListado.DataSource = NTrabajador.BuscarNumDocumento(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
-        private void FrmCliente_Load(object sender, EventArgs e)
+        private void FrmTrabajador_Load(object sender, EventArgs e)
         {
             this.Top = 0;
             this.Left = 0;
@@ -148,7 +154,7 @@ namespace CapaPresentacion
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Codigo = Convert.ToString(row.Cells[1].Value);
-                            Rpta = NCliente.Eliminar(Convert.ToInt32(Codigo));
+                            Rpta = NTrabajador.Eliminar(Convert.ToInt32(Codigo));
 
                             if (Rpta.Equals("OK"))
                             {
@@ -182,6 +188,31 @@ namespace CapaPresentacion
                 this.dataListado.Columns[0].Visible = false;
             }
         }
+        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
+            {
+                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
+                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
+            }
+        }
+        private void dataListado_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdTrabajador.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idtrabajador"].Value);
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombres"].Value);
+            this.txtApellidos.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["apellidos"].Value);
+            this.txtNumDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["num_documento"].Value);
+            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sexo"].Value);
+            this.dtFechaNacimiento.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
+            this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["direccion"].Value);
+            this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["telefono"].Value);
+            this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["email"].Value);
+            this.cbAcceso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["acceso"].Value);
+            this.txtUsuario.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["usuario"].Value);
+            this.txtPassword.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["password"].Value);
+
+            this.tabControl1.SelectedIndex = 1;
+        }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -192,32 +223,41 @@ namespace CapaPresentacion
             this.Habilitar(true);
             this.txtNombre.Focus();
         }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.IsNuevo = false;
+            this.IsEditar = false;
+            this.Botones();
+            this.Limpiar();
+            this.Habilitar(false);
+        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
                 string rpta = "";
-                if (this.txtNombre.Text == string.Empty || this.txtNumDocumento.Text == string.Empty || this.txtDireccion.Text == string.Empty)
+                if (this.txtNombre.Text == string.Empty || this.txtNumDocumento.Text == string.Empty || this.txtUsuario.Text == string.Empty || this.txtPassword.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
                     errorIcono.SetError(txtNombre, "Ingrese un nombre");
                     errorIcono.SetError(txtNumDocumento, "Ingrese un numero de documento");
-                    errorIcono.SetError(txtDireccion, "Ingrese una direccion");
+                    errorIcono.SetError(txtUsuario, "Ingrese un usuario");
+                    errorIcono.SetError(txtPassword, "Ingrese un password");
                 }
                 else
                 {
                     if (this.IsNuevo)
                     {
-                        rpta = NCliente.Insertar(this.txtNombre.Text.Trim().ToUpper(), this.txtApellidos.Text.ToUpper(),
-                                                 this.cbSexo.Text.ToUpper(), this.dtFechaNacimiento.Value, this.cbTipoDocumento.Text.Trim().ToUpper(),
-                                                 this.txtNumDocumento.Text, this.txtDireccion.Text.Trim().ToUpper(), this.txtTelefono.Text, this.txtEmail.Text.Trim().ToUpper());
+                        rpta = NTrabajador.Insertar(this.txtNombre.Text.Trim().ToUpper(), this.txtApellidos.Text.ToUpper(), this.cbSexo.Text.ToUpper(), this.dtFechaNacimiento.Value, this.txtNumDocumento.Text, 
+                                                    this.txtDireccion.Text.Trim().ToUpper(), this.txtTelefono.Text, this.txtEmail.Text.Trim().ToUpper(), this.cbAcceso.Text.ToUpper(), this.txtUsuario.Text.Trim(), 
+                                                    this.txtPassword.Text.Trim());
                     }
                     else
                     {
-                        rpta = NCliente.Editar(Convert.ToInt32(this.txtIdCliente.Text), this.txtNombre.Text.Trim().ToUpper(), this.txtApellidos.Text.ToUpper(),
-                                                 this.cbSexo.Text.ToUpper(), this.dtFechaNacimiento.Value, this.cbTipoDocumento.Text,
-                                                 this.txtNumDocumento.Text, this.txtDireccion.Text.Trim().ToUpper(), this.txtTelefono.Text, this.txtEmail.Text.Trim().ToUpper());
+                        rpta = NTrabajador.Editar(Convert.ToInt32(this.txtIdTrabajador.Text), this.txtNombre.Text.Trim().ToUpper(), this.txtApellidos.Text.ToUpper(), this.cbSexo.Text.ToUpper(), this.dtFechaNacimiento.Value, this.txtNumDocumento.Text,
+                                                  this.txtDireccion.Text.Trim().ToUpper(), this.txtTelefono.Text, this.txtEmail.Text.Trim().ToUpper(), this.cbAcceso.Text.ToUpper(), this.txtUsuario.Text.Trim(),
+                                                  this.txtPassword.Text.Trim());
                     }
                     if (rpta.Equals("OK"))
                     {
@@ -249,7 +289,7 @@ namespace CapaPresentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (!this.txtIdCliente.Text.Equals(""))
+            if (!this.txtIdTrabajador.Text.Equals(""))
             {
                 this.IsEditar = true;
                 this.Botones();
@@ -259,40 +299,6 @@ namespace CapaPresentacion
             {
                 this.MensajeError("Debe seleccionar el registro a modificar");
             }
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.IsNuevo = false;
-            this.IsEditar = false;
-            this.Botones();
-            this.Limpiar();
-            this.Habilitar(false);
-        }
-
-        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
-            {
-                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
-                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
-            }
-        }
-
-        private void dataListado_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtIdCliente.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcliente"].Value);
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            this.txtApellidos.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["apellidos"].Value);
-            this.txtNumDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["num_documento"].Value);
-            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sexo"].Value);
-            this.dtFechaNacimiento.Value =Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
-            this.cbTipoDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_documento"].Value);
-            this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["direccion"].Value);
-            this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["telefono"].Value);
-            this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["email"].Value);
-         
-            this.tabControl1.SelectedIndex = 1;
         }
     }
 }

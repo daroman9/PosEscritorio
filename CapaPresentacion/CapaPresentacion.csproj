@@ -67,11 +67,23 @@
     <Compile Include="FrmPresentacion.Designer.cs">
       <DependentUpon>FrmPresentacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmProveedor.Designer.cs">
       <DependentUpon>FrmProveedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTrabajador.Designer.cs">
+      <DependentUpon>FrmTrabajador.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVistaCategoria_Articulo.cs">
       <SubType>Form</SubType>
@@ -100,8 +112,14 @@
     <EmbeddedResource Include="FrmPresentacion.resx">
       <DependentUpon>FrmPresentacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmProveedor.resx">
       <DependentUpon>FrmProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTrabajador.resx">
+      <DependentUpon>FrmTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVistaCategoria_Articulo.resx">
       <DependentUpon>frmVistaCategoria_Articulo.cs</DependentUpon>
