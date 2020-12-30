@@ -426,5 +426,46 @@ namespace CapaDatos
 
             return DtResultado;
         }
+
+        //Metodo para hacer el login
+        public DataTable Login(DTrabajador Trabajador)
+        {
+            DataTable DtResultado = new DataTable("trabajador");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "splogin";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParUsuario = new SqlParameter();
+                ParUsuario.ParameterName = "@usuario";
+                ParUsuario.SqlDbType = SqlDbType.VarChar;
+                ParUsuario.Size = 20;
+                ParUsuario.Value = Trabajador.Usuario;
+                SqlCmd.Parameters.Add(ParUsuario);
+
+                SqlParameter ParPassword = new SqlParameter();
+                ParPassword.ParameterName = "@password";
+                ParPassword.SqlDbType = SqlDbType.VarChar;
+                ParPassword.Size = 20;
+                ParPassword.Value = Trabajador.Password;
+                SqlCmd.Parameters.Add(ParPassword);
+
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
     }
 }

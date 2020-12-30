@@ -18,3 +18,4 @@ C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmP
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmCliente.resources
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmTrabajador.resources
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmPrincipal.resources
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmLogin.resources
