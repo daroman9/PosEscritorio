@@ -61,6 +61,12 @@
     <Compile Include="FrmCliente.Designer.cs">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIngreso.Designer.cs">
+      <DependentUpon>FrmIngreso.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,12 @@
     <Compile Include="FrmTrabajador.Designer.cs">
       <DependentUpon>FrmTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVistaArticuloIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVistaArticuloIngreso.Designer.cs">
+      <DependentUpon>FrmVistaArticuloIngreso.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVistaCategoria_Articulo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +127,9 @@
     <EmbeddedResource Include="FrmCliente.resx">
       <DependentUpon>FrmCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmIngreso.resx">
+      <DependentUpon>FrmIngreso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTrabajador.resx">
       <DependentUpon>FrmTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVistaArticuloIngreso.resx">
+      <DependentUpon>FrmVistaArticuloIngreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVistaCategoria_Articulo.resx">
       <DependentUpon>frmVistaCategoria_Articulo.cs</DependentUpon>

@@ -62,7 +62,7 @@ namespace CapaNegocio
             return Obj.BuscarFechas(textoBuscar, textobuscar2);
         }
         //Método que llama al método Buscar detalle de la clase DIngreso de la capa de datos
-        public static DataTable BuscarDetalle(string textoBuscar)
+        public static DataTable MostrarDetalle(string textoBuscar)
         {
             DIngreso Obj = new DIngreso();
 

@@ -132,7 +132,12 @@ namespace CapaPresentacion
             frm.MdiParent = this;
             frm.Show();
         }
-
+        private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmIngreso frm = new FrmIngreso();
+            frm.MdiParent = this;
+            frm.Show();
+        }
         private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmProveedor frm = new FrmProveedor();

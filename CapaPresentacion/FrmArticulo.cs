@@ -351,5 +351,10 @@ namespace CapaPresentacion
         {
             BuscarNombreCategorias();
         }
+
+        private void dataListadoCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
