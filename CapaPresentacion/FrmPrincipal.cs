@@ -137,6 +137,7 @@ namespace CapaPresentacion
             FrmIngreso frm = new FrmIngreso();
             frm.MdiParent = this;
             frm.Show();
+            frm.Idtrabajador = Convert.ToInt32(this.Idtrabajador);
         }
         private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -150,6 +151,7 @@ namespace CapaPresentacion
             FrmCliente frm = new FrmCliente();
             frm.MdiParent = this;
             frm.Show();
+
         }
 
         private void trabajadoresToolStripMenuItem_Click(object sender, EventArgs e)

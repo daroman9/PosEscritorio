@@ -116,7 +116,7 @@ namespace CapaDatos
 
                 SqlParameter ParFecha_Vencimiento = new SqlParameter();
                 ParFecha_Vencimiento.ParameterName = "@fecha_vencimiento";
-                ParFecha_Vencimiento.SqlDbType = SqlDbType.Int;
+                ParFecha_Vencimiento.SqlDbType = SqlDbType.Date;
                 ParFecha_Vencimiento.Value = Detalle_Ingreso.Fecha_Vencimiento;
                 SqlCmd.Parameters.Add(ParFecha_Vencimiento);
 
@@ -129,10 +129,7 @@ namespace CapaDatos
             {
                 rpta = ex.Message;
             }
-            finally
-            {
-                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
-            }
+           
             return rpta;
         }
 

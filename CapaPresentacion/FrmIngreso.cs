@@ -118,6 +118,7 @@ namespace CapaPresentacion
             //Ocultar columnas del grid de Articulos
             this.dataListadoArticulos.Columns[0].Visible = false;
             this.dataListadoArticulos.Columns[1].Visible = false;
+            this.dataListadoArticulos.Columns[5].Visible = false;
 
             //Ocultar columnas del grid de Proveedores
             this.dataListadoProveedores.Columns[0].Visible = false;
@@ -215,7 +216,16 @@ namespace CapaPresentacion
         {
             this.dtDetalle = new DataTable("Detalle");
             this.dtDetalle.Columns.Add("idarticulo", System.Type.GetType("System.Int32"));
-
+            this.dtDetalle.Columns.Add("articulo", System.Type.GetType("System.String"));
+            this.dtDetalle.Columns.Add("precio_compra", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("precio_venta", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("stock_inicial", System.Type.GetType("System.Int32"));
+            this.dtDetalle.Columns.Add("fecha_produccion", System.Type.GetType("System.DateTime"));
+            this.dtDetalle.Columns.Add("fecha_vencimiento", System.Type.GetType("System.DateTime"));
+            this.dtDetalle.Columns.Add("subtotal", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Impuesto", System.Type.GetType("System.Decimal"));
+            //Relacionar nuestro DataGRidView con nuestro DataTable
+            this.dataListadoDetalle.DataSource = this.dtDetalle;
 
         }
 
@@ -256,6 +266,7 @@ namespace CapaPresentacion
                    
                     if (this.IsNuevo)
                     {
+             
                         rpta = NIngreso.Insertar(Idtrabajador, Convert.ToInt32(this.txtIdProveedor.Text), dtFecha.Value, this.cbTipo_Comprobante.Text,
                                                  this.txtSerie.Text, this.txtCorrelativo.Text, Convert.ToDecimal(this.txtIgv.Text), "EMITIDO", dtDetalle);
                     }
@@ -304,7 +315,7 @@ namespace CapaPresentacion
 
                     foreach(DataRow row in dtDetalle.Rows)
                     {
-                        if(Convert.ToInt32(row["idarticulo"])== Convert.ToInt32(this.txtArticulo.Text))
+                        if(Convert.ToInt32(row["idarticulo"])== Convert.ToInt32(this.txtIdArticulo.Text))
                         {
                             registrar = false;
                             this.MensajeError("Ya se encuentra el articulo en el detalle");
@@ -318,7 +329,7 @@ namespace CapaPresentacion
                         //Agregar detalle al datalistadoDetalle
                         DataRow row = this.dtDetalle.NewRow();
                         row["idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
-                        row["articulo"] = this.txtIdArticulo.Text;
+                        row["articulo"] = this.txtArticulo.Text;
                         row["precio_compra"] = Convert.ToDecimal(this.txtPrecioCompra.Text);
                         row["precio_venta"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
                         row["stock_inicial"] = Convert.ToInt32(this.txtStockInicial.Text);
@@ -371,6 +382,18 @@ namespace CapaPresentacion
             this.MostrarDetalle();
             this.tabControl1.SelectedIndex = 1;
 
+        }
+
+        private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["idarticulo"].Value);
+            this.txtArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["nombre"].Value);
+        }
+
+        private void dataListadoProveedores_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdProveedor.Text = Convert.ToString(this.dataListadoProveedores.CurrentRow.Cells["idproveedor"].Value);
+            this.txtProveedor.Text = Convert.ToString(this.dataListadoProveedores.CurrentRow.Cells["razon_social"].Value);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace CapaPresentacion
 {
     public partial class FrmLogin : Form
     {
+        public string Idtrabajador;
         public FrmLogin()
         {
             InitializeComponent();
@@ -53,6 +54,11 @@ namespace CapaPresentacion
                 this.Hide();
 
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
