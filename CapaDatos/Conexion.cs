@@ -8,7 +8,7 @@ namespace CapaDatos
 {
     class Conexion
     {
-        public static string Cn = "Data Source =DESKTOP-TLGK5SQ\\SQLEXPRESS; Initial Catalog = dbVentas; Integrated Security = true";
+        public static string Cn = Properties.Settings.Default.Cn;
 
     }
 }

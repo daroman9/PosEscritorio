@@ -23,3 +23,4 @@ C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmI
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVistaArticuloIngreso.resources
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.FrmVenta.resources
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.Consultas.FrmConsulta_Stock_Articulos.resources
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\CapaDatos.dll.config

@@ -4,3 +4,4 @@ C:\Users\Deiby\source\repos\Pos\CapaDatos\obj\Debug\CapaDatos.csprojAssemblyRefe
 C:\Users\Deiby\source\repos\Pos\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
 C:\Users\Deiby\source\repos\Pos\CapaDatos\obj\Debug\CapaDatos.dll
 C:\Users\Deiby\source\repos\Pos\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Users\Deiby\source\repos\Pos\CapaDatos\bin\Debug\CapaDatos.dll.config

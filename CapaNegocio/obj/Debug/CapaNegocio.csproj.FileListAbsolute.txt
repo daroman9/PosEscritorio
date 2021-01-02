@@ -7,3 +7,4 @@ C:\Users\Deiby\source\repos\Pos\CapaNegocio\obj\Debug\CapaNegocio.csproj.CoreCom
 C:\Users\Deiby\source\repos\Pos\CapaNegocio\obj\Debug\CapaNegocio.csproj.CopyComplete
 C:\Users\Deiby\source\repos\Pos\CapaNegocio\obj\Debug\CapaNegocio.dll
 C:\Users\Deiby\source\repos\Pos\CapaNegocio\obj\Debug\CapaNegocio.pdb
+C:\Users\Deiby\source\repos\Pos\CapaNegocio\bin\Debug\CapaDatos.dll.config
