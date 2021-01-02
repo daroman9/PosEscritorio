@@ -40,15 +40,15 @@ namespace CapaDatos
         //Constructor con parametros
         public DIngreso(int idingreso, int idtrabajador, int idproveedor, DateTime fecha, string tipo_comprobante, string serie, string correlativo, decimal igv, string estado)
         {
-            Idingreso = idingreso;
-            Idtrabajador = idtrabajador;
-            Idproveedor = idproveedor;
-            Fecha = fecha;
-            Tipo_Comprobante = tipo_comprobante;
-            Serie = serie;
-            Correlativo = correlativo;
-            Igv = igv;
-            Estado = estado;
+            this.Idingreso = idingreso;
+            this.Idtrabajador = idtrabajador;
+            this.Idproveedor = idproveedor;
+            this.Fecha = fecha;
+            this.Tipo_Comprobante = tipo_comprobante;
+            this.Serie = serie;
+            this.Correlativo = correlativo;
+            this.Igv = igv;
+            this.Estado = estado;
         }
         //Método Insertar
         public string Insertar(DIngreso Ingreso, List<DDetalle_Ingreso> Detalle)

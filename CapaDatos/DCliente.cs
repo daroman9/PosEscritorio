@@ -47,17 +47,17 @@ namespace CapaDatos
 
         public DCliente(int idcliente, string nombre, string apellidos, string sexo, DateTime fecha_nacimiento, string tipo_documento, string num_documento, string direccion, string telefono, string email, string textobuscar)
         {
-            Idcliente = idcliente;
-            Nombre = nombre;
-            Apellidos = apellidos;
-            Sexo = sexo;
-            Fecha_Nacimiento = fecha_nacimiento;
-            Tipo_Documento = tipo_documento;
-            Num_Documento = num_documento;
-            Direccion = direccion;
-            Telefono = telefono;
-            Email = email;
-            TextoBuscar = textobuscar;
+            this.Idcliente = idcliente;
+            this.Nombre = nombre;
+            this.Apellidos = apellidos;
+            this.Sexo = sexo;
+            this.Fecha_Nacimiento = fecha_nacimiento;
+            this.Tipo_Documento = tipo_documento;
+            this.Num_Documento = num_documento;
+            this.Direccion = direccion;
+            this.Telefono = telefono;
+            this.Email = email;
+            this.TextoBuscar = textobuscar;
         }
 
         //Método Insertar

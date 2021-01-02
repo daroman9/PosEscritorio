@@ -214,5 +214,21 @@ namespace CapaPresentacion
                 this.TsVentas.Enabled = false;
             }
         }
+
+        private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmVenta frm =new FrmVenta();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.Idtrabajador = Convert.ToInt32(this.Idtrabajador);
+        }
+
+        private void stockDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consultas.FrmConsulta_Stock_Articulos frm = new Consultas.FrmConsulta_Stock_Articulos();
+            frm.MdiParent = this;
+            frm.Show();
+
+        }
     }
 }

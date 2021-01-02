@@ -41,15 +41,15 @@ namespace CapaDatos
         //Constructor con parametros
         public DDetalle_Ingreso(int iddetalle_ingreso, int idingreso, int idarticulo, decimal precio_compra, decimal precio_venta, int stock_inicial, int stock_actual, DateTime fecha_produccion, DateTime fecha_vencimiento)
         {
-            Iddetalle_Ingreso = iddetalle_ingreso;
-            Idingreso = idingreso;
-            Idarticulo = idarticulo;
-            Precio_Compra = precio_compra;
-            Precio_Venta = precio_venta;
-            Stock_Inicial = stock_inicial;
-            Stock_Actual = stock_actual;
-            Fecha_Produccion = fecha_produccion;
-            Fecha_Vencimiento = fecha_vencimiento;   
+            this.Iddetalle_Ingreso = iddetalle_ingreso;
+            this.Idingreso = idingreso;
+            this.Idarticulo = idarticulo;
+            this.Precio_Compra = precio_compra;
+            this.Precio_Venta = precio_venta;
+            this.Stock_Inicial = stock_inicial;
+            this.Stock_Actual = stock_actual;
+            this.Fecha_Produccion = fecha_produccion;
+            this.Fecha_Vencimiento = fecha_vencimiento;   
         }
         //Método Insertar
         public string Insertar(DDetalle_Ingreso Detalle_Ingreso, ref SqlConnection SqlCon, ref SqlTransaction SqlTra)

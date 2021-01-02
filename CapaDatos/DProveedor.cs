@@ -43,16 +43,16 @@ namespace CapaDatos
         //Constructor con parametros
         public DProveedor(int idproveedor, string razon_social,  string sector_comercial, string tipodocumento, string num_documento, string direccion, string telefono, string email, string url, string textobuscar)
         {   
-            Idproveedor = idproveedor;
-            Razon_Social = razon_social;
-            Sector_Comercial = sector_comercial;
-            Tipo_Documento = tipodocumento;
-            Num_Documento = num_documento;
-            Direccion = direccion;
-            Telefono = telefono;
-            Email = email;
-            Url = url;
-            TextoBuscar= textobuscar;
+            this.Idproveedor = idproveedor;
+            this.Razon_Social = razon_social;
+            this.Sector_Comercial = sector_comercial;
+            this.Tipo_Documento = tipodocumento;
+            this.Num_Documento = num_documento;
+            this.Direccion = direccion;
+            this.Telefono = telefono;
+            this.Email = email;
+            this.Url = url;
+            this.TextoBuscar= textobuscar;
         }
         //Método Insertar
         public string Insertar(DProveedor Proveedor)

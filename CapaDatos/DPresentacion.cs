@@ -30,10 +30,10 @@ namespace CapaDatos
 
         public DPresentacion(int idpresentacion, string nombre, string descripcion, string textobuscar)
         {
-            IdPresentacion = idpresentacion;
-            Nombre = nombre;
-            Descripcion = descripcion;
-            TextoBuscar = textobuscar;
+            this.IdPresentacion = idpresentacion;
+            this.Nombre = nombre;
+            this.Descripcion = descripcion;
+            this.TextoBuscar = textobuscar;
         }
 
         //Método Insertar

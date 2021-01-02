@@ -48,19 +48,19 @@ namespace CapaDatos
         //Constructor con parametros
         public DTrabajador(int idtrabajador, string nombres, string apellidos, string sexo, DateTime fecha_nacimiento, string num_documento, string direccion, string telefono, string email, string acceso, string usuario, string password, string textobuscar)
         {
-            Idtrabajador = idtrabajador;
-            Nombres = nombres;
-            Apellidos = apellidos;
-            Sexo = sexo;
-            Fecha_Nacimiento = fecha_nacimiento;
-            Num_Documento = num_documento;
-            Direccion = direccion;
-            Telefono = telefono;
-            Email = email;
-            Acceso = acceso;
-            Usuario = usuario;
-            Password = password;
-            TextoBuscar = textobuscar;
+            this.Idtrabajador = idtrabajador;
+            this.Nombres = nombres;
+            this.Apellidos = apellidos;
+            this.Sexo = sexo;
+            this.Fecha_Nacimiento = fecha_nacimiento;
+            this.Num_Documento = num_documento;
+            this.Direccion = direccion;
+            this.Telefono = telefono;
+            this.Email = email;
+            this.Acceso = acceso;
+            this.Usuario = usuario;
+            this.Password = password;
+            this.TextoBuscar = textobuscar;
         }
         //Método Insertar
         public string Insertar(DTrabajador Trabajador)

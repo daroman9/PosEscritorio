@@ -12,26 +12,31 @@ using CapaNegocio;
 
 namespace CapaPresentacion
 {
-    public partial class FrmIngreso : Form
+    public partial class FrmVenta : Form
     {
+        private bool IsNuevo = false;
         public int Idtrabajador;
-        private bool IsNuevo;
         private DataTable dtDetalle;
         private decimal totalPagado = 0;
-        public FrmIngreso()
+        public FrmVenta()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(this.txtProveedor,"Seleccione el proveedor");
-            this.ttMensaje.SetToolTip(this.txtSerie, "Ingrese la serie del comprobante");
-            this.ttMensaje.SetToolTip(this.txtStockInicial, "Ingrese la cantidad de compra");
+            this.ttMensaje.SetToolTip(this.txtCliente, "Seleccione un cliente");
+            this.ttMensaje.SetToolTip(this.txtSerie, "Ingrese una serie de comprobante");
+            this.ttMensaje.SetToolTip(this.txtCorrelativo, "Ingrese el correlativo");
+            this.ttMensaje.SetToolTip(this.txtCantidad, "Ingrese la cantidad");
+            this.ttMensaje.SetToolTip(this.txtArticulo, "Seleccione un articulo");
+
+            this.txtIdCliente.Visible = false;
             this.txtIdArticulo.Visible = false;
-            this.txtIdProveedor.Visible = false;
+            this.txtCliente.ReadOnly = true;
             this.txtArticulo.ReadOnly = true;
-            this.txtProveedor.ReadOnly = true;
-          
+            this.txtPrecioCompra.ReadOnly = true;
+            this.txtStockActual.ReadOnly = true;
+
         }
 
-        private void FrmIngreso_Load(object sender, EventArgs e)
+        private void FrmVenta_Load(object sender, EventArgs e)
         {
             this.Top = 0;
             this.Left = 0;
@@ -40,6 +45,7 @@ namespace CapaPresentacion
             this.Botones();
             this.CrearTabla();
         }
+
         //Mostrar mensaje de confirmación
         private void MensajeOk(string mensaje)
         {
@@ -53,9 +59,9 @@ namespace CapaPresentacion
         //Método para limpiar los controles del formulario
         private void Limpiar()
         {
-            this.txtIdIngreso.Text = string.Empty;
-            this.txtIdProveedor.Text = string.Empty;
-            this.txtProveedor.Text = string.Empty;
+            this.txtIdVenta.Text = string.Empty;
+            this.txtIdCliente.Text = string.Empty;
+            this.txtIdCliente.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
             this.txtCorrelativo.Text = string.Empty;
             this.txtIgv.Text = "19";
@@ -67,25 +73,28 @@ namespace CapaPresentacion
         {
             this.txtIdArticulo.Text = string.Empty;
             this.txtArticulo.Text = string.Empty;
-            this.txtStockInicial.Text = string.Empty;
-            this.txtPrecioCompra.Text = string.Empty;
+            this.txtStockActual.Text = string.Empty;
+            this.txtCantidad.Text = string.Empty;
             this.txtPrecioVenta.Text = string.Empty;
+            this.txtPrecioVenta.Text = string.Empty;
+            this.txtDescuento.Text = string.Empty;
 
         }
         //Método para habilitar los controles del formulario
 
         private void Habilitar(bool valor)
         {
-            this.txtIdIngreso.ReadOnly = !valor;
+            this.txtIdVenta.ReadOnly = !valor;
             this.txtSerie.ReadOnly = !valor;
             this.txtCorrelativo.ReadOnly = !valor;
             this.txtIgv.ReadOnly = !valor;
             this.dtFecha.Enabled = valor;
             this.cbTipo_Comprobante.Enabled = valor;
-            this.txtStockInicial.ReadOnly = !valor;
+            this.txtCantidad.ReadOnly = !valor;
             this.txtPrecioCompra.ReadOnly = !valor;
             this.txtPrecioVenta.ReadOnly = !valor;
-            this.dtFechaProduccion.Enabled = valor;
+            this.txtStockActual.ReadOnly = !valor;
+            this.txtDescuento.ReadOnly = !valor;
             this.dtFechaVencimiento.Enabled = valor;
 
             this.btnAgregar.Enabled = valor;
@@ -114,30 +123,31 @@ namespace CapaPresentacion
         {
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns[1].Visible = false;
- 
+
 
             //Ocultar columnas del grid de Articulos
             this.dataListadoArticulos.Columns[0].Visible = false;
             this.dataListadoArticulos.Columns[1].Visible = false;
             this.dataListadoArticulos.Columns[5].Visible = false;
 
-            //Ocultar columnas del grid de Proveedores
-            this.dataListadoProveedores.Columns[0].Visible = false;
-            this.dataListadoProveedores.Columns[1].Visible = false;
+            //Ocultar columnas del grid de Clientes
+            this.dataListadoClientes.Columns[0].Visible = false;
+            this.dataListadoClientes.Columns[1].Visible = false;
         }
         //Método mostrar
         private void Mostrar()
         {
-            this.dataListado.DataSource = NIngreso.Mostrar();
-            this.dataListadoArticulos.DataSource = NArticulo.Mostrar();
-            this.dataListadoProveedores.DataSource = NProveedor.Mostrar();
+            this.dataListado.DataSource = NVenta.Mostrar();
+            this.dataListadoArticulos.DataSource = NVenta.MostrarArticulo_Venta_Nombre(this.txtBuscarNombreArticulo.Text);
+            this.dataListadoClientes.DataSource = NCliente.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
+
         //Método para buscar por fechas
         private void BuscarFechas()
         {
-            this.dataListado.DataSource = NIngreso.BuscarFechas(this.dtFecha1.Value.ToString("dd/MM/yyyy"), this.dtFecha2.Value.ToString("dd/MM/yyyy"));
+            this.dataListado.DataSource = NVenta.BuscarFechas(this.dtFecha1.Value.ToString("dd/MM/yyyy"), this.dtFecha2.Value.ToString("dd/MM/yyyy"));
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -145,19 +155,72 @@ namespace CapaPresentacion
         //Método para buscar detalle
         private void MostrarDetalle()
         {
-            this.dataListado.DataSource = NIngreso.MostrarDetalle(this.txtIdIngreso.Text);
+            this.dataListado.DataSource = NVenta.MostrarDetalle(this.txtIdVenta.Text);
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             this.BuscarFechas();
         }
 
+        //Método BuscarNombre
+        private void MostrarArticulo_Venta_Nombre()
+        {
+            this.dataListadoArticulos.DataSource = NVenta.MostrarArticulo_Venta_Nombre(this.txtBuscarNombreArticulo.Text);
+            this.OcultarColumnas();
+            lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListado.Rows.Count);
+        }
+
+        private void CrearTabla()
+        {
+            this.dtDetalle = new DataTable("Detalle");
+            this.dtDetalle.Columns.Add("iddetalle_ingreso", System.Type.GetType("System.Int32"));
+            this.dtDetalle.Columns.Add("articulo", System.Type.GetType("System.String"));
+            this.dtDetalle.Columns.Add("cantidad", System.Type.GetType("System.Int32"));
+            this.dtDetalle.Columns.Add("precio_venta", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("descuento", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("subtotal", System.Type.GetType("System.Decimal"));
+            //Relacionar nuestro DataGRidView con nuestro DataTable
+            this.dataListadoDetalle.DataSource = this.dtDetalle;
+
+        }
+
+        private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["iddetalle_ingreso"].Value);
+            this.txtArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["nombre"].Value);
+            this.txtPrecioVenta.Text= Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["precio_compra"].Value);
+            this.txtStockActual.Text= Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["stock_actual"].Value);
+            this.dtFechaVencimiento.Value =Convert.ToDateTime(this.dataListadoArticulos.CurrentRow.Cells["fecha_vencimiento"].Value);
+        }
+
+        private void dataListadoClientes_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdCliente.Text = Convert.ToString(this.dataListadoClientes.CurrentRow.Cells["idcliente"].Value);
+            this.txtCliente.Text = Convert.ToString(this.dataListadoClientes.CurrentRow.Cells["nombre"].Value);
+        }
+
+        private void btnBuscar_Click_1(object sender, EventArgs e)
+        {
+            this.BuscarFechas();
+        }
+
+        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkEliminar.Checked)
+            {
+                this.dataListado.Columns[0].Visible = true;
+            }
+            else
+            {
+                this.dataListado.Columns[0].Visible = false;
+            }
+        }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
             {
                 DialogResult Opcion;
-                Opcion = MessageBox.Show("Desea anular los ingresos", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                Opcion = MessageBox.Show("Desea eliminar los ingresos", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 if (Opcion == DialogResult.OK)
                 {
@@ -169,11 +232,11 @@ namespace CapaPresentacion
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
                             Codigo = Convert.ToString(row.Cells[1].Value);
-                            Rpta = NIngreso.Anular(Convert.ToInt32(Codigo));
+                            Rpta = NVenta.Eliminar(Convert.ToInt32(Codigo));
 
                             if (Rpta.Equals("OK"))
                             {
-                                this.MensajeOk("Se anulo correctamente el ingreso");
+                                this.MensajeOk("Se elimino correctamente el ingreso");
                             }
                             else
                             {
@@ -192,16 +255,18 @@ namespace CapaPresentacion
             }
         }
 
-        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
+        private void dataListado_DoubleClick(object sender, EventArgs e)
         {
-            if (chkEliminar.Checked)
-            {
-                this.dataListado.Columns[0].Visible = true;
-            }
-            else
-            {
-                this.dataListado.Columns[0].Visible = false;
-            }
+            this.txtIdVenta.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idventa"].Value);
+            this.txtCliente.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["cliente"].Value);
+            this.dtFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha"].Value);
+            this.cbTipo_Comprobante.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_comprobante"].Value);
+            this.txtSerie.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["serie"].Value);
+            this.txtCorrelativo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["correlativo"].Value);
+            this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["total"].Value);
+
+            this.MostrarDetalle();
+            this.tabControl1.SelectedIndex = 1;
         }
 
         private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -213,31 +278,14 @@ namespace CapaPresentacion
             }
         }
 
-        private void CrearTabla()
-        {
-            this.dtDetalle = new DataTable("Detalle");
-            this.dtDetalle.Columns.Add("idarticulo", System.Type.GetType("System.Int32"));
-            this.dtDetalle.Columns.Add("articulo", System.Type.GetType("System.String"));
-            this.dtDetalle.Columns.Add("precio_compra", System.Type.GetType("System.Decimal"));
-            this.dtDetalle.Columns.Add("precio_venta", System.Type.GetType("System.Decimal"));
-            this.dtDetalle.Columns.Add("stock_inicial", System.Type.GetType("System.Int32"));
-            this.dtDetalle.Columns.Add("fecha_produccion", System.Type.GetType("System.DateTime"));
-            this.dtDetalle.Columns.Add("fecha_vencimiento", System.Type.GetType("System.DateTime"));
-            this.dtDetalle.Columns.Add("subtotal", System.Type.GetType("System.Decimal"));
-            this.dtDetalle.Columns.Add("Impuesto", System.Type.GetType("System.Decimal"));
-            //Relacionar nuestro DataGRidView con nuestro DataTable
-            this.dataListadoDetalle.DataSource = this.dtDetalle;
-
-        }
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             this.IsNuevo = true;
             this.Botones();
             this.Limpiar();
+            this.LimpiarDetalle();
             this.Habilitar(true);
             this.txtSerie.Focus();
-            this.LimpiarDetalle();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -245,8 +293,8 @@ namespace CapaPresentacion
             this.IsNuevo = false;
             this.Botones();
             this.Limpiar();
-            this.Habilitar(false);
             this.LimpiarDetalle();
+            this.Habilitar(false);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -254,31 +302,31 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                if (this.txtIdProveedor.Text == string.Empty || this.txtSerie.Text == string.Empty || this.txtCorrelativo.Text == string.Empty || this.txtIgv.Text == string.Empty)
+                if (this.txtIdCliente.Text == string.Empty || this.txtSerie.Text == string.Empty || this.txtCorrelativo.Text == string.Empty || this.txtIgv.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
-                    errorIcono.SetError(txtIdProveedor, "Ingrese un valor");
+                    errorIcono.SetError(txtIdCliente, "Ingrese un valor");
                     errorIcono.SetError(txtSerie, "Ingrese un valor");
                     errorIcono.SetError(txtCorrelativo, "Ingrese un valor");
                     errorIcono.SetError(txtIgv, "Ingrese un valor");
                 }
                 else
                 {
-                   
+
                     if (this.IsNuevo)
                     {
-             
-                        rpta = NIngreso.Insertar(Idtrabajador, Convert.ToInt32(this.txtIdProveedor.Text), dtFecha.Value, this.cbTipo_Comprobante.Text,
-                                                 this.txtSerie.Text, this.txtCorrelativo.Text, Convert.ToDecimal(this.txtIgv.Text), "EMITIDO", dtDetalle);
+
+                        rpta = NVenta.Insertar(Convert.ToInt32(this.txtIdCliente.Text), Idtrabajador, dtFecha.Value, this.cbTipo_Comprobante.Text,
+                                                 this.txtSerie.Text, this.txtCorrelativo.Text, Convert.ToDecimal(this.txtIgv.Text), dtDetalle);
                     }
-                   
+
                     if (rpta.Equals("OK"))
                     {
                         if (this.IsNuevo)
                         {
                             this.MensajeOk("Se inserto correctamente en registro");
                         }
-                  
+
                     }
                     else
                     {
@@ -301,48 +349,49 @@ namespace CapaPresentacion
         {
             try
             {
-        
-                if (this.txtIdArticulo.Text == string.Empty || this.txtStockInicial.Text == string.Empty || this.txtPrecioCompra.Text == string.Empty || this.txtPrecioVenta.Text == string.Empty)
+
+                if (this.txtIdArticulo.Text == string.Empty || this.txtCantidad.Text == string.Empty || this.txtDescuento.Text == string.Empty || this.txtPrecioVenta.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
                     errorIcono.SetError(txtIdArticulo, "Ingrese un valor");
-                    errorIcono.SetError(txtStockInicial, "Ingrese un valor");
-                    errorIcono.SetError(txtPrecioCompra, "Ingrese un valor");
+                    errorIcono.SetError(txtDescuento, "Ingrese un valor");
                     errorIcono.SetError(txtPrecioVenta, "Ingrese un valor");
                 }
                 else
                 {
                     bool registrar = true;
 
-                    foreach(DataRow row in dtDetalle.Rows)
+                    foreach (DataRow row in dtDetalle.Rows)
                     {
-                        if(Convert.ToInt32(row["idarticulo"])== Convert.ToInt32(this.txtIdArticulo.Text))
+                        if (Convert.ToInt32(row["iddetalle_ingreso"]) == Convert.ToInt32(this.txtIdArticulo.Text))
                         {
                             registrar = false;
                             this.MensajeError("Ya se encuentra el articulo en el detalle");
                         }
                     }
-                    if(registrar)
+                    if (registrar && Convert.ToInt32(this.txtCantidad.Text) <= Convert.ToInt32(this.txtStockActual.Text))
                     {
-                        decimal subtotal = Convert.ToDecimal(this.txtStockInicial.Text) * Convert.ToDecimal(this.txtPrecioCompra.Text);
+                        decimal subtotal = Convert.ToDecimal(this.txtCantidad.Text) * Convert.ToDecimal(this.txtPrecioVenta.Text) - Convert.ToDecimal(this.txtDescuento.Text);
                         totalPagado = totalPagado + subtotal;
                         this.lblTotalPagado.Text = totalPagado.ToString("#0.00#");
                         //Agregar detalle al datalistadoDetalle
                         DataRow row = this.dtDetalle.NewRow();
-                        row["idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
+                        row["iddetalle_ingreso"] = Convert.ToInt32(this.txtIdArticulo.Text);
                         row["articulo"] = this.txtArticulo.Text;
-                        row["precio_compra"] = Convert.ToDecimal(this.txtPrecioCompra.Text);
+                        row["cantidad"] = Convert.ToInt32(this.txtCantidad.Text);
                         row["precio_venta"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
-                        row["stock_inicial"] = Convert.ToInt32(this.txtStockInicial.Text);
-                        row["fecha_produccion"] = dtFechaProduccion.Value;
-                        row["fecha_vencimiento"] = dtFechaVencimiento.Value;
+                        row["descuento"] = Convert.ToDecimal(this.txtDescuento.Text);
                         row["subtotal"] = subtotal;
 
                         this.dtDetalle.Rows.Add(row);
 
                         this.LimpiarDetalle();
                     }
-                   
+                    else
+                    {
+                        MensajeError("No hay stock suficiente");
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -364,37 +413,15 @@ namespace CapaPresentacion
                 this.dtDetalle.Rows.Remove(row);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MensajeError("No hay fila para remover");
             }
         }
 
-        private void dataListado_DoubleClick(object sender, EventArgs e)
+        private void btnBuscarNombreArticulos_Click(object sender, EventArgs e)
         {
-            this.txtIdIngreso.Text =Convert.ToString(this.dataListado.CurrentRow.Cells["idingreso"].Value);
-            this.txtProveedor.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["proveedor"].Value);
-            this.dtFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha"].Value);
-            this.cbTipo_Comprobante.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_comprobante"].Value);
-            this.txtSerie.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["serie"].Value);
-            this.txtCorrelativo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["correlativo"].Value);
-            this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["total"].Value);
-
-            this.MostrarDetalle();
-            this.tabControl1.SelectedIndex = 1;
-
-        }
-
-        private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtIdArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["idarticulo"].Value);
-            this.txtArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["nombre"].Value);
-        }
-
-        private void dataListadoProveedores_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtIdProveedor.Text = Convert.ToString(this.dataListadoProveedores.CurrentRow.Cells["idproveedor"].Value);
-            this.txtProveedor.Text = Convert.ToString(this.dataListadoProveedores.CurrentRow.Cells["razon_social"].Value);
+            this.MostrarArticulo_Venta_Nombre();
         }
     }
 }
