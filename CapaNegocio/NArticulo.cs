@@ -60,6 +60,14 @@ namespace CapaNegocio
             return Obj.BuscarNombre(Obj);
         }
 
+        //Método que llama al método Buscar por codigo de la clase DArticulo de la capa de datos
+        public static DataTable BuscarCodigo(string textoBuscar)
+        {
+            DArticulo Obj = new DArticulo();
+            Obj.TextoBuscar = textoBuscar;
+            return Obj.BuscarCodigo(Obj);
+        }
+
         //Método que llama al método mostrar stock de la clase DArticulo de la capa de datos
         public static DataTable Stock_Articulos()
         {

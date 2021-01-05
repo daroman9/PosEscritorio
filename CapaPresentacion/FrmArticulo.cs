@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 using CapaNegocio;
 
 
@@ -48,8 +49,8 @@ namespace CapaPresentacion
             this.txtDescripcion.Text = string.Empty;
             this.txtIdCategoria.Text = string.Empty;
             this.txtCategoria.Text = string.Empty;
-            //this.pxImagen.Image = global::CapaPresentacion.Properties.Resources.file;
             this.txtIdArticulo.Text = string.Empty;
+            this.pxImagen.Image = global::CapaPresentacion.Properties.Resources.file;
 
         }
         //Método para habilitar los controles del formulario
@@ -143,7 +144,7 @@ namespace CapaPresentacion
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             this.pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
-            //this.pxImagen.Image = global::CapaPresentacion.Properties.Resources.file;
+            this.pxImagen.Image = global::CapaPresentacion.Properties.Resources.file;
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -178,6 +179,8 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
+                DataTable busquedaproducto;
+                string articulo = "";
                 if (this.txtNombre.Text == string.Empty || this.txtIdCategoria.Text==string.Empty || this.txtCodigo.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
@@ -192,10 +195,26 @@ namespace CapaPresentacion
 
                     byte[] imagen = ms.GetBuffer();
 
+                    busquedaproducto = NArticulo.BuscarCodigo(this.txtCodigo.Text);
+
+                    if(busquedaproducto.Rows.Count > 0)
+                    {
+                        articulo = "Articulo encontrado";
+                    }
+                    else
+                    {
+                        articulo = "Articulo no encontrado";
+                    }
+
                     if (this.IsNuevo)
                     {
+                        if(articulo == "Articulo no encontrado")
                         rpta = NArticulo.Insertar(this.txtCodigo.Text, this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), 
                                                   imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue));
+                        else
+                        {
+                            this.MensajeError("No se puede registrar el Artículo ya existe");
+                        }
                     }
                     else
                     {
