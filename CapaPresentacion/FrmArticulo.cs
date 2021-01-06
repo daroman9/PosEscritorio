@@ -22,7 +22,7 @@ namespace CapaPresentacion
         public FrmArticulo()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(this.txtNombre, "Ingrese el nombre del artículo");
+            this.ttMensaje.SetToolTip(this.txtMarca, "Ingrese el nombre del artículo");
             this.ttMensaje.SetToolTip(this.pxImagen, "Seleccione la imagen del artículo");
             this.ttMensaje.SetToolTip(this.cbIdPresentacion, "Seleccione la presentación del artículo");
             this.ttMensaje.SetToolTip(this.txtIdArticulo, "Seleccione la presentación del artículo");
@@ -45,11 +45,12 @@ namespace CapaPresentacion
         private void Limpiar()
         {
             this.txtCodigo.Text = string.Empty;
-            this.txtNombre.Text = string.Empty;
+            this.txtMarca.Text = string.Empty;
             this.txtDescripcion.Text = string.Empty;
             this.txtIdCategoria.Text = string.Empty;
             this.txtCategoria.Text = string.Empty;
             this.txtIdArticulo.Text = string.Empty;
+            this.txtContenido.Text = string.Empty;
             this.pxImagen.Image = global::CapaPresentacion.Properties.Resources.file;
 
         }
@@ -58,8 +59,9 @@ namespace CapaPresentacion
         private void Habilitar(bool valor)
         {
             this.txtCodigo.ReadOnly = !valor;
-            this.txtNombre.ReadOnly = !valor;
+            this.txtMarca.ReadOnly = !valor;
             this.txtDescripcion.ReadOnly = !valor;
+            this.txtContenido.ReadOnly = !valor;
             this.cbIdPresentacion.Enabled = valor;
             this.btnCargar.Enabled = valor;
             this.btnLimpiar.Enabled = valor;
@@ -90,8 +92,8 @@ namespace CapaPresentacion
         {
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns[1].Visible = false;
-            this.dataListado.Columns[6].Visible = false;
-            this.dataListado.Columns[8].Visible = false;
+            this.dataListado.Columns[7].Visible = false;
+            this.dataListado.Columns[9].Visible = false;
 
             //Ocultar columnas del grid de categorias
             this.dataListadoCategorias.Columns[0].Visible = false;
@@ -157,6 +159,9 @@ namespace CapaPresentacion
         }
         private void FrmArticulo_Load(object sender, EventArgs e)
         {
+            this.MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
+            this.WindowState = FormWindowState.Maximized;
+
             this.Top = 0;
             this.Left = 0;
             this.Mostrar();
@@ -171,7 +176,7 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.txtNombre.Focus();
+            this.txtCodigo.Focus();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -181,10 +186,10 @@ namespace CapaPresentacion
                 string rpta = "";
                 DataTable busquedaproducto;
                 string articulo = "";
-                if (this.txtNombre.Text == string.Empty || this.txtIdCategoria.Text==string.Empty || this.txtCodigo.Text == string.Empty)
+                if (this.txtMarca.Text == string.Empty || this.txtIdCategoria.Text==string.Empty || this.txtCodigo.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
-                    errorIcono.SetError(txtNombre, "Ingrese un valor");
+                    errorIcono.SetError(txtMarca, "Ingrese un valor");
                     errorIcono.SetError(txtCodigo, "Ingrese un valor");
                     errorIcono.SetError(txtCategoria, "Ingrese un valor");
                 }
@@ -209,8 +214,8 @@ namespace CapaPresentacion
                     if (this.IsNuevo)
                     {
                         if(articulo == "Articulo no encontrado")
-                        rpta = NArticulo.Insertar(this.txtCodigo.Text, this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), 
-                                                  imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue));
+                        rpta = NArticulo.Insertar(this.txtCodigo.Text, this.txtMarca.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), 
+                                                  imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue), this.txtContenido.Text.Trim().ToUpper());
                         else
                         {
                             this.MensajeError("No se puede registrar el Artículo ya existe");
@@ -218,8 +223,8 @@ namespace CapaPresentacion
                     }
                     else
                     {
-                        rpta = NArticulo.Editar(Convert.ToInt32(this.txtIdArticulo.Text), this.txtCodigo.Text, this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(),
-                                                imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue));
+                        rpta = NArticulo.Editar(Convert.ToInt32(this.txtIdArticulo.Text), this.txtCodigo.Text, this.txtMarca.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(),
+                                                imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue), this.txtContenido.Text.Trim().ToUpper());
                     }
                     if (rpta.Equals("OK"))
                     {
@@ -286,9 +291,9 @@ namespace CapaPresentacion
         {
             this.txtIdArticulo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idarticulo"].Value);
             this.txtCodigo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["codigo"].Value);
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
+            this.txtMarca.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["marca"].Value);
             this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
-
+            this.txtContenido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["contenido"].Value);
             byte[] imagenBuffer = (byte[])this.dataListado.CurrentRow.Cells["imagen"].Value;
             System.IO.MemoryStream ms = new System.IO.MemoryStream(imagenBuffer);
             this.pxImagen.Image = Image.FromStream(ms);
@@ -372,6 +377,11 @@ namespace CapaPresentacion
         }
 
         private void dataListadoCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

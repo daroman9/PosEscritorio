@@ -57,7 +57,6 @@ namespace CapaPresentacion
             this.txtIdProveedor.Text = string.Empty;
             this.txtProveedor.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
-            this.txtCorrelativo.Text = string.Empty;
             this.txtIgv.Text = "19";
             this.lblTotalPagado.Text = "0.0";
             this.CrearTabla();
@@ -78,10 +77,8 @@ namespace CapaPresentacion
         {
             this.txtIdIngreso.ReadOnly = !valor;
             this.txtSerie.ReadOnly = !valor;
-            this.txtCorrelativo.ReadOnly = !valor;
             this.txtIgv.ReadOnly = !valor;
             this.dtFecha.Enabled = valor;
-            this.cbTipo_Comprobante.Enabled = valor;
             this.txtStockInicial.ReadOnly = !valor;
             this.txtPrecioCompra.ReadOnly = !valor;
             this.txtPrecioVenta.ReadOnly = !valor;
@@ -119,7 +116,9 @@ namespace CapaPresentacion
             //Ocultar columnas del grid de Articulos
             this.dataListadoArticulos.Columns[0].Visible = false;
             this.dataListadoArticulos.Columns[1].Visible = false;
-            this.dataListadoArticulos.Columns[5].Visible = false;
+            this.dataListadoArticulos.Columns[7].Visible = false;
+            this.dataListadoArticulos.Columns[9].Visible = false;
+            this.dataListadoArticulos.Columns[10].Visible = false;
 
             //Ocultar columnas del grid de Proveedores
             this.dataListadoProveedores.Columns[0].Visible = false;
@@ -254,12 +253,11 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                if (this.txtIdProveedor.Text == string.Empty || this.txtSerie.Text == string.Empty || this.txtCorrelativo.Text == string.Empty || this.txtIgv.Text == string.Empty)
+                if (this.txtIdProveedor.Text == string.Empty || this.txtSerie.Text == string.Empty || this.txtIgv.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
                     errorIcono.SetError(txtIdProveedor, "Ingrese un valor");
                     errorIcono.SetError(txtSerie, "Ingrese un valor");
-                    errorIcono.SetError(txtCorrelativo, "Ingrese un valor");
                     errorIcono.SetError(txtIgv, "Ingrese un valor");
                 }
                 else
@@ -268,8 +266,8 @@ namespace CapaPresentacion
                     if (this.IsNuevo)
                     {
              
-                        rpta = NIngreso.Insertar(Idtrabajador, Convert.ToInt32(this.txtIdProveedor.Text), dtFecha.Value, this.cbTipo_Comprobante.Text,
-                                                 this.txtSerie.Text, this.txtCorrelativo.Text, Convert.ToDecimal(this.txtIgv.Text), "EMITIDO", dtDetalle);
+                        rpta = NIngreso.Insertar(Idtrabajador, Convert.ToInt32(this.txtIdProveedor.Text), dtFecha.Value,
+                                                 this.txtSerie.Text, Convert.ToDecimal(this.txtIgv.Text), "EMITIDO", dtDetalle);
                     }
                    
                     if (rpta.Equals("OK"))
@@ -375,9 +373,7 @@ namespace CapaPresentacion
             this.txtIdIngreso.Text =Convert.ToString(this.dataListado.CurrentRow.Cells["idingreso"].Value);
             this.txtProveedor.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["proveedor"].Value);
             this.dtFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha"].Value);
-            this.cbTipo_Comprobante.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_comprobante"].Value);
             this.txtSerie.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["serie"].Value);
-            this.txtCorrelativo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["correlativo"].Value);
             this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["total"].Value);
 
             this.MostrarDetalle();
@@ -388,7 +384,7 @@ namespace CapaPresentacion
         private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
         {
             this.txtIdArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["idarticulo"].Value);
-            this.txtArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["nombre"].Value);
+            this.txtArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["marca"].Value);
         }
 
         private void dataListadoProveedores_DoubleClick(object sender, EventArgs e)

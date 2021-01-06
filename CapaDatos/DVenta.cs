@@ -17,19 +17,17 @@ namespace CapaDatos
         private int _Idcliente;
         private int _Idtrabajador;
         private DateTime _Fecha;
-        private string _Tipo_Comprobante;
         private string _Serie;
-        private string _Correlativo;
         private decimal _Igv;
+        private decimal _Total_Pagado;
 
         public int Idventa { get => _Idventa; set => _Idventa = value; }
         public int Idcliente { get => _Idcliente; set => _Idcliente = value; }
         public int Idtrabajador { get => _Idtrabajador; set => _Idtrabajador = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
-        public string Tipo_Comprobante { get => _Tipo_Comprobante; set => _Tipo_Comprobante = value; }
         public string Serie { get => _Serie; set => _Serie = value; }
-        public string Correlativo { get => _Correlativo; set => _Correlativo = value; }
         public decimal Igv { get => _Igv; set => _Igv = value; }
+        public decimal Total_Pagado { get => _Total_Pagado; set => _Total_Pagado = value; }
 
         //Constructor vacio
 
@@ -39,16 +37,15 @@ namespace CapaDatos
         }
 
         //Constructor con parametros
-        public DVenta(int idventa, int idcliente, int idtrabajador, DateTime fecha, string tipo_comprobate, string serie, string correlativo, decimal igv)
+        public DVenta(int idventa, int idcliente, int idtrabajador, DateTime fecha, string serie, decimal igv, decimal total_pagado)
         {
             this.Idventa = idventa;
             this.Idcliente = idcliente;
             this.Idtrabajador = idtrabajador;
             this.Fecha = fecha;
-            this.Tipo_Comprobante = tipo_comprobate;
             this.Serie = serie;
-            this.Correlativo = correlativo;
             this.Igv = igv;
+            this.Total_Pagado = total_pagado;
         }
         //Métodos
         public string DisminuirStock(int iddetalle_ingreso, int cantidad)
@@ -138,26 +135,12 @@ namespace CapaDatos
                 ParFecha.Value = Venta.Fecha;
                 SqlCmd.Parameters.Add(ParFecha);
 
-                SqlParameter ParTipo_Comprobante = new SqlParameter();
-                ParTipo_Comprobante.ParameterName = "@tipo_comprobante";
-                ParTipo_Comprobante.SqlDbType = SqlDbType.VarChar;
-                ParTipo_Comprobante.Size = 20;
-                ParTipo_Comprobante.Value = Venta.Tipo_Comprobante;
-                SqlCmd.Parameters.Add(ParTipo_Comprobante);
-
                 SqlParameter ParSerie = new SqlParameter();
                 ParSerie.ParameterName = "@serie";
                 ParSerie.SqlDbType = SqlDbType.VarChar;
                 ParSerie.Size = 4;
                 ParSerie.Value = Venta.Serie;
                 SqlCmd.Parameters.Add(ParSerie);
-
-                SqlParameter ParCorrelativo = new SqlParameter();
-                ParCorrelativo.ParameterName = "@correlativo";
-                ParCorrelativo.SqlDbType = SqlDbType.VarChar;
-                ParCorrelativo.Size = 7;
-                ParCorrelativo.Value = Venta.Correlativo;
-                SqlCmd.Parameters.Add(ParCorrelativo);
 
                 SqlParameter ParIgv = new SqlParameter();
                 ParIgv.ParameterName = "@igv";
@@ -166,6 +149,12 @@ namespace CapaDatos
                 ParIgv.Scale = 2;
                 ParIgv.Value = Venta.Igv;
                 SqlCmd.Parameters.Add(ParIgv);
+
+                SqlParameter ParTotal_Pagado = new SqlParameter();
+                ParTotal_Pagado.ParameterName = "@totalpagado";
+                ParTotal_Pagado.SqlDbType = SqlDbType.Decimal;
+                ParTotal_Pagado.Value = Venta.Total_Pagado;
+                SqlCmd.Parameters.Add(ParTotal_Pagado);
 
 
                 //Ejecutamos nuestro comando
@@ -239,7 +228,7 @@ namespace CapaDatos
                 SqlCmd.Parameters.Add(ParIdventa);
                 //Ejecutamos nuestro comando
 
-                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "OK";
+                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se elimino el registro";
             }
             catch (Exception ex)
             {

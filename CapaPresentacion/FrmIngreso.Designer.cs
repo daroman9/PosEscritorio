@@ -88,16 +88,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtIgv = new System.Windows.Forms.TextBox();
-            this.txtCorrelativo = new System.Windows.Forms.TextBox();
             this.txtSerie = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbTipo_Comprobante = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.txtProveedor = new System.Windows.Forms.TextBox();
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -411,16 +408,13 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.txtIgv);
-            this.groupBox1.Controls.Add(this.txtCorrelativo);
             this.groupBox1.Controls.Add(this.txtSerie);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.cbTipo_Comprobante);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.dtFecha);
             this.groupBox1.Controls.Add(this.txtProveedor);
             this.groupBox1.Controls.Add(this.txtIdProveedor);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnGuardar);
             this.groupBox1.Controls.Add(this.btnNuevo);
@@ -702,13 +696,6 @@
             this.txtIgv.Size = new System.Drawing.Size(124, 20);
             this.txtIgv.TabIndex = 31;
             // 
-            // txtCorrelativo
-            // 
-            this.txtCorrelativo.Location = new System.Drawing.Point(375, 107);
-            this.txtCorrelativo.Name = "txtCorrelativo";
-            this.txtCorrelativo.Size = new System.Drawing.Size(167, 20);
-            this.txtCorrelativo.TabIndex = 30;
-            // 
             // txtSerie
             // 
             this.txtSerie.Location = new System.Drawing.Point(139, 107);
@@ -724,20 +711,6 @@
             this.label8.Size = new System.Drawing.Size(47, 13);
             this.label8.TabIndex = 28;
             this.label8.Text = "Número:";
-            // 
-            // cbTipo_Comprobante
-            // 
-            this.cbTipo_Comprobante.FormattingEnabled = true;
-            this.cbTipo_Comprobante.Items.AddRange(new object[] {
-            "TICEKT",
-            "BOLETA",
-            "FACTURA",
-            "GUIA REMISION"});
-            this.cbTipo_Comprobante.Location = new System.Drawing.Point(139, 67);
-            this.cbTipo_Comprobante.Name = "cbTipo_Comprobante";
-            this.cbTipo_Comprobante.Size = new System.Drawing.Size(407, 21);
-            this.cbTipo_Comprobante.TabIndex = 27;
-            this.cbTipo_Comprobante.Text = "TICKET";
             // 
             // label13
             // 
@@ -778,15 +751,6 @@
             this.label7.Size = new System.Drawing.Size(56, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "Proveedor";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 67);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Comprobante: ";
             // 
             // btnCancelar
             // 
@@ -907,7 +871,6 @@
         private System.Windows.Forms.TextBox txtProveedor;
         private System.Windows.Forms.TextBox txtIdProveedor;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnNuevo;
@@ -940,10 +903,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtIgv;
-        private System.Windows.Forms.TextBox txtCorrelativo;
         private System.Windows.Forms.TextBox txtSerie;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbTipo_Comprobante;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dtFecha;
         private System.Windows.Forms.TabControl tabControl3;

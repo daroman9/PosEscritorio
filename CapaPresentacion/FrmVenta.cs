@@ -23,7 +23,6 @@ namespace CapaPresentacion
             InitializeComponent();
             this.ttMensaje.SetToolTip(this.txtCliente, "Seleccione un cliente");
             this.ttMensaje.SetToolTip(this.txtSerie, "Ingrese una serie de comprobante");
-            this.ttMensaje.SetToolTip(this.txtCorrelativo, "Ingrese el correlativo");
             this.ttMensaje.SetToolTip(this.txtCantidad, "Ingrese la cantidad");
             this.ttMensaje.SetToolTip(this.txtArticulo, "Seleccione un articulo");
 
@@ -32,7 +31,7 @@ namespace CapaPresentacion
             this.txtCliente.ReadOnly = true;
             this.txtArticulo.ReadOnly = true;
             this.txtPrecioCompra.ReadOnly = true;
-            this.txtStockActual.ReadOnly = true;
+          
 
         }
 
@@ -63,7 +62,6 @@ namespace CapaPresentacion
             this.txtIdCliente.Text = string.Empty;
             this.txtIdCliente.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
-            this.txtCorrelativo.Text = string.Empty;
             this.txtIgv.Text = "19";
             this.lblTotalPagado.Text = "0.0";
             this.CrearTabla();
@@ -73,7 +71,6 @@ namespace CapaPresentacion
         {
             this.txtIdArticulo.Text = string.Empty;
             this.txtArticulo.Text = string.Empty;
-            this.txtStockActual.Text = string.Empty;
             this.txtCantidad.Text = string.Empty;
             this.txtPrecioVenta.Text = string.Empty;
             this.txtPrecioVenta.Text = string.Empty;
@@ -86,16 +83,12 @@ namespace CapaPresentacion
         {
             this.txtIdVenta.ReadOnly = !valor;
             this.txtSerie.ReadOnly = !valor;
-            this.txtCorrelativo.ReadOnly = !valor;
             this.txtIgv.ReadOnly = !valor;
             this.dtFecha.Enabled = valor;
-            this.cbTipo_Comprobante.Enabled = valor;
             this.txtCantidad.ReadOnly = !valor;
             this.txtPrecioCompra.ReadOnly = !valor;
             this.txtPrecioVenta.ReadOnly = !valor;
-            this.txtStockActual.ReadOnly = !valor;
             this.txtDescuento.ReadOnly = !valor;
-            this.dtFechaVencimiento.Enabled = valor;
 
             this.btnAgregar.Enabled = valor;
             this.btnQuitar.Enabled = valor;
@@ -124,13 +117,11 @@ namespace CapaPresentacion
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns[1].Visible = false;
 
-
-            //Ocultar columnas del grid de Articulos
+            //ocultar las columnas del listado de articulos
             this.dataListadoArticulos.Columns[0].Visible = false;
             this.dataListadoArticulos.Columns[1].Visible = false;
-            this.dataListadoArticulos.Columns[5].Visible = false;
 
-            //Ocultar columnas del grid de Clientes
+            //ocultar las columnas del listado de clientes
             this.dataListadoClientes.Columns[0].Visible = false;
             this.dataListadoClientes.Columns[1].Visible = false;
         }
@@ -165,7 +156,7 @@ namespace CapaPresentacion
         //Método BuscarNombre
         private void MostrarArticulo_Venta_Nombre()
         {
-            this.dataListadoArticulos.DataSource = NVenta.MostrarArticulo_Venta_Nombre(this.txtBuscarNombreArticulo.Text);
+            //this.dataListadoArticulos.DataSource = NVenta.MostrarArticulo_Venta_Nombre(this.txtBuscarNombreArticulo.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -183,22 +174,6 @@ namespace CapaPresentacion
             this.dataListadoDetalle.DataSource = this.dtDetalle;
 
         }
-
-        private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtIdArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["iddetalle_ingreso"].Value);
-            this.txtArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["nombre"].Value);
-            this.txtPrecioVenta.Text= Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["precio_compra"].Value);
-            this.txtStockActual.Text= Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["stock_actual"].Value);
-            this.dtFechaVencimiento.Value =Convert.ToDateTime(this.dataListadoArticulos.CurrentRow.Cells["fecha_vencimiento"].Value);
-        }
-
-        private void dataListadoClientes_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtIdCliente.Text = Convert.ToString(this.dataListadoClientes.CurrentRow.Cells["idcliente"].Value);
-            this.txtCliente.Text = Convert.ToString(this.dataListadoClientes.CurrentRow.Cells["nombre"].Value);
-        }
-
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
             this.BuscarFechas();
@@ -260,9 +235,7 @@ namespace CapaPresentacion
             this.txtIdVenta.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idventa"].Value);
             this.txtCliente.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["cliente"].Value);
             this.dtFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha"].Value);
-            this.cbTipo_Comprobante.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_comprobante"].Value);
             this.txtSerie.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["serie"].Value);
-            this.txtCorrelativo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["correlativo"].Value);
             this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["total"].Value);
 
             this.MostrarDetalle();
@@ -302,12 +275,10 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                if (this.txtIdCliente.Text == string.Empty || this.txtSerie.Text == string.Empty || this.txtCorrelativo.Text == string.Empty || this.txtIgv.Text == string.Empty)
+                if (this.txtSerie.Text == string.Empty || this.txtIgv.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
-                    errorIcono.SetError(txtIdCliente, "Ingrese un valor");
                     errorIcono.SetError(txtSerie, "Ingrese un valor");
-                    errorIcono.SetError(txtCorrelativo, "Ingrese un valor");
                     errorIcono.SetError(txtIgv, "Ingrese un valor");
                 }
                 else
@@ -316,8 +287,8 @@ namespace CapaPresentacion
                     if (this.IsNuevo)
                     {
 
-                        rpta = NVenta.Insertar(Convert.ToInt32(this.txtIdCliente.Text), Idtrabajador, dtFecha.Value, this.cbTipo_Comprobante.Text,
-                                                 this.txtSerie.Text, this.txtCorrelativo.Text, Convert.ToDecimal(this.txtIgv.Text), dtDetalle);
+                        rpta = NVenta.Insertar(Convert.ToInt32(this.txtIdCliente.Text), Idtrabajador, dtFecha.Value,
+                                                 this.txtSerie.Text, Convert.ToDecimal(this.txtIgv.Text), Convert.ToDecimal(this.lblTotalPagado.Text), dtDetalle);
                     }
 
                     if (rpta.Equals("OK"))
@@ -422,6 +393,19 @@ namespace CapaPresentacion
         private void btnBuscarNombreArticulos_Click(object sender, EventArgs e)
         {
             this.MostrarArticulo_Venta_Nombre();
+        }
+
+        private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void dataListadoClientes_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdCliente.Text = Convert.ToString(this.dataListadoClientes.CurrentRow.Cells["idcliente"].Value);
+            this.txtCliente.Text = Convert.ToString(this.dataListadoClientes.CurrentRow.Cells["nombre"].Value)  + ' ' + (this.dataListadoClientes.CurrentRow.Cells["apellidos"].Value);
+
+            this.tabControl1.SelectedIndex = 1;
         }
     }
 }

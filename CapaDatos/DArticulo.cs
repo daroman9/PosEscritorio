@@ -14,37 +14,42 @@ namespace CapaDatos
     {
         private int _IdArticulo;
         private string _Codigo;
-        private string _Nombre;
+        private string _Marca;
         private string _Descripcion;
         private byte[] _Imagen;
         private int _IdCategoria;
         private int _IdPresentacion;
+        private string _Contenido;
         private string _TextoBuscar;
 
         public int IdArticulo { get => _IdArticulo; set => _IdArticulo = value; }
         public string Codigo { get => _Codigo; set => _Codigo = value; }
-        public string Nombre { get => _Nombre; set => _Nombre = value; }
+        public string Marca { get => _Marca; set => _Marca = value; }
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
         public byte[] Imagen { get => _Imagen; set => _Imagen = value; }
         public int IdCategoria { get => _IdCategoria; set => _IdCategoria = value; }
         public int IdPresentacion { get => _IdPresentacion; set => _IdPresentacion = value; }
+        public string Contenido { get => _Contenido; set => _Contenido = value; }
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
         
+
+
         //Constructor sin parametros
         public DArticulo()
         {
 
         }
         //Constructor con parametros
-        public DArticulo(int idarticulo, string codigo, string nombre, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string textobuscar)
+        public DArticulo(int idarticulo, string codigo, string marca, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string contenido, string textobuscar)
         {
             this.IdArticulo = idarticulo;
             this.Codigo = codigo;
-            this.Nombre = nombre;
+            this.Marca = marca;
             this.Descripcion = descripcion;
             this.Imagen = imagen;
             this.IdArticulo = idarticulo;
             this.IdPresentacion = idpresentacion;
+            this.Contenido = contenido;
             this.TextoBuscar = textobuscar;
         }
         //Método Insertar
@@ -77,17 +82,17 @@ namespace CapaDatos
                 ParCodigo.Value = Articulo.Codigo;
                 SqlCmd.Parameters.Add(ParCodigo);
 
-                SqlParameter ParNombre = new SqlParameter();
-                ParNombre.ParameterName = "@nombre";
-                ParNombre.SqlDbType = SqlDbType.VarChar;
-                ParNombre.Size = 50;
-                ParNombre.Value = Articulo.Nombre;
-                SqlCmd.Parameters.Add(ParNombre);
+                SqlParameter ParMarca = new SqlParameter();
+                ParMarca.ParameterName = "@marca";
+                ParMarca.SqlDbType = SqlDbType.VarChar;
+                ParMarca.Size = 50;
+                ParMarca.Value = Articulo.Marca;
+                SqlCmd.Parameters.Add(ParMarca);
 
                 SqlParameter ParDescripcion = new SqlParameter();
                 ParDescripcion.ParameterName = "@descripcion";
                 ParDescripcion.SqlDbType = SqlDbType.VarChar;
-                ParDescripcion.Size = 1024;
+                ParDescripcion.Size = 50;
                 ParDescripcion.Value = Articulo.Descripcion;
                 SqlCmd.Parameters.Add(ParDescripcion);
 
@@ -108,6 +113,15 @@ namespace CapaDatos
                 ParIdPresentacion.SqlDbType = SqlDbType.Int;
                 ParIdPresentacion.Value = Articulo.IdPresentacion;
                 SqlCmd.Parameters.Add(ParIdPresentacion);
+
+                SqlParameter ParContenido = new SqlParameter();
+                ParContenido.ParameterName = "@contenido";
+                ParContenido.SqlDbType = SqlDbType.VarChar;
+                ParContenido.Size = 50;
+                ParContenido.Value = Articulo.Descripcion;
+                SqlCmd.Parameters.Add(ParContenido);
+
+
 
                 //Ejecutar el comando
 
@@ -155,12 +169,12 @@ namespace CapaDatos
                 ParCodigo.Value = Articulo.Codigo;
                 SqlCmd.Parameters.Add(ParCodigo);
 
-                SqlParameter ParNombre = new SqlParameter();
-                ParNombre.ParameterName = "@nombre";
-                ParNombre.SqlDbType = SqlDbType.VarChar;
-                ParNombre.Size = 50;
-                ParNombre.Value = Articulo.Nombre;
-                SqlCmd.Parameters.Add(ParNombre);
+                SqlParameter ParMarca = new SqlParameter();
+                ParMarca.ParameterName = "@marca";
+                ParMarca.SqlDbType = SqlDbType.VarChar;
+                ParMarca.Size = 50;
+                ParMarca.Value = Articulo.Marca;
+                SqlCmd.Parameters.Add(ParMarca); ;
 
                 SqlParameter ParDescripcion = new SqlParameter();
                 ParDescripcion.ParameterName = "@descripcion";
@@ -186,6 +200,13 @@ namespace CapaDatos
                 ParIdPresentacion.SqlDbType = SqlDbType.Int;
                 ParIdPresentacion.Value = Articulo.IdPresentacion;
                 SqlCmd.Parameters.Add(ParIdPresentacion);
+
+                SqlParameter ParContenido = new SqlParameter();
+                ParContenido.ParameterName = "@contenido";
+                ParContenido.SqlDbType = SqlDbType.VarChar;
+                ParContenido.Size = 1024;
+                ParContenido.Value = Articulo.Contenido;
+                SqlCmd.Parameters.Add(ParContenido);
 
                 //Ejecutar el comando
 

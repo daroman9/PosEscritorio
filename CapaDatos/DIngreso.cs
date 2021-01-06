@@ -16,9 +16,7 @@ namespace CapaDatos
         private int _Idtrabajador;
         private int _Idproveedor;
         private DateTime _Fecha;
-        private string _Tipo_Comprobante;
         private string _Serie;
-        private string _Correlativo;
         private decimal __Igv;
         private string _Estado;
 
@@ -26,9 +24,7 @@ namespace CapaDatos
         public int Idtrabajador { get => _Idtrabajador; set => _Idtrabajador = value; }
         public int Idproveedor { get => _Idproveedor; set => _Idproveedor = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
-        public string Tipo_Comprobante { get => _Tipo_Comprobante; set => _Tipo_Comprobante = value; }
         public string Serie { get => _Serie; set => _Serie = value; }
-        public string Correlativo { get => _Correlativo; set => _Correlativo = value; }
         public decimal Igv { get => __Igv; set => __Igv = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
 
@@ -38,15 +34,13 @@ namespace CapaDatos
 
         }
         //Constructor con parametros
-        public DIngreso(int idingreso, int idtrabajador, int idproveedor, DateTime fecha, string tipo_comprobante, string serie, string correlativo, decimal igv, string estado)
+        public DIngreso(int idingreso, int idtrabajador, int idproveedor, DateTime fecha, string serie, decimal igv, string estado)
         {
             this.Idingreso = idingreso;
             this.Idtrabajador = idtrabajador;
             this.Idproveedor = idproveedor;
             this.Fecha = fecha;
-            this.Tipo_Comprobante = tipo_comprobante;
             this.Serie = serie;
-            this.Correlativo = correlativo;
             this.Igv = igv;
             this.Estado = estado;
         }
@@ -94,26 +88,12 @@ namespace CapaDatos
                 ParFecha.Value = Ingreso.Fecha;
                 SqlCmd.Parameters.Add(ParFecha);
 
-                SqlParameter ParTipo_Comprobante = new SqlParameter();
-                ParTipo_Comprobante.ParameterName = "@tipo_comprobante";
-                ParTipo_Comprobante.SqlDbType = SqlDbType.VarChar;
-                ParTipo_Comprobante.Size = 20;
-                ParTipo_Comprobante.Value = Ingreso.Tipo_Comprobante;
-                SqlCmd.Parameters.Add(ParTipo_Comprobante);
-
                 SqlParameter ParSerie = new SqlParameter();
                 ParSerie.ParameterName = "@serie";
                 ParSerie.SqlDbType = SqlDbType.VarChar;
                 ParSerie.Size = 4;
                 ParSerie.Value = Ingreso.Serie;
                 SqlCmd.Parameters.Add(ParSerie);
-
-                SqlParameter ParCorrelativo = new SqlParameter();
-                ParCorrelativo.ParameterName = "@correlativo";
-                ParCorrelativo.SqlDbType = SqlDbType.VarChar;
-                ParCorrelativo.Size = 10;
-                ParCorrelativo.Value = Ingreso.Correlativo;
-                SqlCmd.Parameters.Add(ParCorrelativo);
 
                 SqlParameter ParIgv = new SqlParameter();
                 ParIgv.ParameterName = "@igv";

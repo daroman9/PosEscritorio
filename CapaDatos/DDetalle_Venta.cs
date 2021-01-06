@@ -17,6 +17,7 @@ namespace CapaDatos
         private int _Iddetalle_ingreso;
         private int _Cantidad;
         private decimal _Precio_Venta;
+        private decimal _Total;
         private decimal _Descuento;
 
         public int Iddetalle_Venta { get => _Iddetalle_Venta; set => _Iddetalle_Venta = value; }
@@ -24,8 +25,10 @@ namespace CapaDatos
         public int Iddetalle_ingreso { get => _Iddetalle_ingreso; set => _Iddetalle_ingreso = value; }
         public int Cantidad { get => _Cantidad; set => _Cantidad = value; }
         public decimal Precio_Venta { get => _Precio_Venta; set => _Precio_Venta = value; }
+        public decimal Total { get => _Total; set => _Total = value; }
         public decimal Descuento { get => _Descuento; set => _Descuento = value; }
-       
+      
+
 
         //Constructo vacio
         public DDetalle_Venta()
@@ -33,13 +36,14 @@ namespace CapaDatos
 
         }
         //Constuctor con parametros
-        public DDetalle_Venta(int iddetalle_venta, int idventa, int iddetalle_ingreso, int cantidad, decimal precio_venta, decimal descuento)
+        public DDetalle_Venta(int iddetalle_venta, int idventa, int iddetalle_ingreso, int cantidad, decimal precio_venta, decimal total, decimal descuento)
         {
             this.Iddetalle_Venta = iddetalle_venta;
             this.Idventa = idventa;
             this.Iddetalle_ingreso = Iddetalle_ingreso;
             this.Cantidad = cantidad;
             this.Precio_Venta = precio_venta;
+            this.Total = total;
             this.Descuento = descuento;
         }
 
@@ -87,6 +91,12 @@ namespace CapaDatos
                 ParPrecio_Venta.SqlDbType = SqlDbType.Money;
                 ParPrecio_Venta.Value = Detalle_Venta.Precio_Venta;
                 SqlCmd.Parameters.Add(ParPrecio_Venta);
+
+                SqlParameter ParTotal = new SqlParameter();
+                ParTotal.ParameterName = "@total";
+                ParTotal.SqlDbType = SqlDbType.Money;
+                ParTotal.Value = Detalle_Venta.Total;
+                SqlCmd.Parameters.Add(ParTotal);
 
                 SqlParameter ParDescuento = new SqlParameter();
                 ParDescuento.ParameterName = "@descuento";

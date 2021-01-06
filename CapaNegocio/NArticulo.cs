@@ -13,29 +13,31 @@ namespace CapaNegocio
     {
         //Método que llama al método insertar de la clase DArticulo de la capa datos
 
-        public static string Insertar(string codigo, string nombre, string descripcion, byte[] imagen, int idcategoria, int idpresentacion)
+        public static string Insertar(string codigo, string marca, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string contenido)
         {
             DArticulo Obj = new DArticulo();
             Obj.Codigo = codigo;
-            Obj.Nombre = nombre;
+            Obj.Marca = marca;
             Obj.Descripcion = descripcion;
             Obj.Imagen = imagen;
             Obj.IdCategoria = idcategoria;
             Obj.IdPresentacion = idpresentacion;
+            Obj.Contenido = contenido;
 
             return Obj.Insertar(Obj);
         }
         //Método que llama al método editar de la clase DArticulo de la capa de datos
-        public static string Editar(int idarticulo, string codigo, string nombre, string descripcion, byte[] imagen, int idcategoria, int idpresentacion)
+        public static string Editar(int idarticulo, string codigo, string marca, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string contenido)
         {
             DArticulo Obj = new DArticulo();
             Obj.IdArticulo = idarticulo;
             Obj.Codigo = codigo;
-            Obj.Nombre = nombre;
+            Obj.Marca = marca;
             Obj.Descripcion = descripcion;
             Obj.Imagen = imagen;
             Obj.IdCategoria = idcategoria;
             Obj.IdPresentacion = idpresentacion;
+            Obj.Contenido = contenido;
 
             return Obj.Editar(Obj);
         }
