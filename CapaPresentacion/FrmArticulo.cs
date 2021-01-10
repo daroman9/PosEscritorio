@@ -51,6 +51,7 @@ namespace CapaPresentacion
             this.txtCategoria.Text = string.Empty;
             this.txtIdArticulo.Text = string.Empty;
             this.txtContenido.Text = string.Empty;
+            this.txtDescuento.Text = string.Empty;
             this.pxImagen.Image = global::CapaPresentacion.Properties.Resources.file;
 
         }
@@ -62,6 +63,7 @@ namespace CapaPresentacion
             this.txtMarca.ReadOnly = !valor;
             this.txtDescripcion.ReadOnly = !valor;
             this.txtContenido.ReadOnly = !valor;
+            this.txtDescuento.ReadOnly = !valor;
             this.cbIdPresentacion.Enabled = valor;
             this.btnCargar.Enabled = valor;
             this.btnLimpiar.Enabled = valor;
@@ -213,9 +215,14 @@ namespace CapaPresentacion
 
                     if (this.IsNuevo)
                     {
+                        if(this.txtDescuento.Text == null || this.txtDescuento.Text== string.Empty)
+                        {
+                            this.txtDescuento.Text = "0";
+                        }
+
                         if(articulo == "Articulo no encontrado")
                         rpta = NArticulo.Insertar(this.txtCodigo.Text, this.txtMarca.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), 
-                                                  imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue), this.txtContenido.Text.Trim().ToUpper());
+                                                  imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue), this.txtContenido.Text.Trim().ToUpper(), Convert.ToInt32(this.txtDescuento.Text));
                         else
                         {
                             this.MensajeError("No se puede registrar el Artículo ya existe");
@@ -223,8 +230,12 @@ namespace CapaPresentacion
                     }
                     else
                     {
+                        if (this.txtDescuento.Text == null || this.txtDescuento.Text == string.Empty)
+                        {
+                            this.txtDescuento.Text = "0";
+                        }
                         rpta = NArticulo.Editar(Convert.ToInt32(this.txtIdArticulo.Text), this.txtCodigo.Text, this.txtMarca.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(),
-                                                imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue), this.txtContenido.Text.Trim().ToUpper());
+                                                imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue), this.txtContenido.Text.Trim().ToUpper(), Convert.ToInt32(this.txtDescuento.Text));
                     }
                     if (rpta.Equals("OK"))
                     {

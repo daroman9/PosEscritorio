@@ -263,6 +263,43 @@ namespace CapaDatos
             return DtResultado;
 
         }
+
+        //Método Mostrar por trabajador y por fecha
+        public DataTable MostrarTrabajadorFecha(int idtrabajador, DateTime fecha)
+        {
+            DataTable DtResultado = new DataTable("venta");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spmostrar_ventas_trabajador";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParIdTrabajador = new SqlParameter();
+                ParIdTrabajador.ParameterName = "@idtrabajador";
+                ParIdTrabajador.SqlDbType = SqlDbType.Int;
+                ParIdTrabajador.Value = idtrabajador;
+                SqlCmd.Parameters.Add(ParIdTrabajador);
+
+                SqlParameter ParFecha = new SqlParameter();
+                ParFecha.ParameterName = "@fecha";
+                ParFecha.SqlDbType = SqlDbType.Date;
+                ParFecha.Value = fecha;
+                SqlCmd.Parameters.Add(ParFecha);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+            return DtResultado;
+
+        }
+
         //Método Buscarfechas
         public DataTable BuscarFechas(String TextoBuscar, String TextoBuscar2)
         {

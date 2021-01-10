@@ -21,6 +21,7 @@ namespace CapaDatos
         private int _IdPresentacion;
         private string _Contenido;
         private string _TextoBuscar;
+        private int _Descuento;
 
         public int IdArticulo { get => _IdArticulo; set => _IdArticulo = value; }
         public string Codigo { get => _Codigo; set => _Codigo = value; }
@@ -31,7 +32,9 @@ namespace CapaDatos
         public int IdPresentacion { get => _IdPresentacion; set => _IdPresentacion = value; }
         public string Contenido { get => _Contenido; set => _Contenido = value; }
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
-        
+        public int Descuento { get => _Descuento; set => _Descuento = value; }
+
+
 
 
         //Constructor sin parametros
@@ -40,7 +43,7 @@ namespace CapaDatos
 
         }
         //Constructor con parametros
-        public DArticulo(int idarticulo, string codigo, string marca, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string contenido, string textobuscar)
+        public DArticulo(int idarticulo, string codigo, string marca, string descripcion, byte[] imagen, int idcategoria, int idpresentacion, string contenido, string textobuscar, int descuento)
         {
             this.IdArticulo = idarticulo;
             this.Codigo = codigo;
@@ -51,6 +54,8 @@ namespace CapaDatos
             this.IdPresentacion = idpresentacion;
             this.Contenido = contenido;
             this.TextoBuscar = textobuscar;
+            this.Descuento = descuento;
+            
         }
         //Método Insertar
         public string Insertar(DArticulo Articulo)
@@ -121,6 +126,11 @@ namespace CapaDatos
                 ParContenido.Value = Articulo.Descripcion;
                 SqlCmd.Parameters.Add(ParContenido);
 
+                SqlParameter ParDescuento = new SqlParameter();
+                ParDescuento.ParameterName = "@descuento";
+                ParDescuento.SqlDbType = SqlDbType.Int;
+                ParDescuento.Value = Articulo.Descuento;
+                SqlCmd.Parameters.Add(ParDescuento);
 
 
                 //Ejecutar el comando
@@ -207,6 +217,12 @@ namespace CapaDatos
                 ParContenido.Size = 1024;
                 ParContenido.Value = Articulo.Contenido;
                 SqlCmd.Parameters.Add(ParContenido);
+
+                SqlParameter ParDescuento = new SqlParameter();
+                ParDescuento.ParameterName = "@descuento";
+                ParDescuento.SqlDbType = SqlDbType.Int;
+                ParDescuento.Value = Articulo.Descuento;
+                SqlCmd.Parameters.Add(ParDescuento);
 
                 //Ejecutar el comando
 
