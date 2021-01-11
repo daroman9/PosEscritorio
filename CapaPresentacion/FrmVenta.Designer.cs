@@ -68,6 +68,9 @@
             this.label17 = new System.Windows.Forms.Label();
             this.txtDescuento = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnMultiplicar = new System.Windows.Forms.Button();
+            this.lblTotalArticulos = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.dataArticulo = new System.Windows.Forms.DataGridView();
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -102,8 +105,6 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblTotalArticulos = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -429,6 +430,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnMultiplicar);
             this.groupBox1.Controls.Add(this.lblTotalArticulos);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.dataArticulo);
@@ -472,6 +474,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ventas";
             // 
+            // btnMultiplicar
+            // 
+            this.btnMultiplicar.Location = new System.Drawing.Point(397, 24);
+            this.btnMultiplicar.Name = "btnMultiplicar";
+            this.btnMultiplicar.Size = new System.Drawing.Size(75, 23);
+            this.btnMultiplicar.TabIndex = 84;
+            this.btnMultiplicar.Text = "Multiplicar";
+            this.btnMultiplicar.UseVisualStyleBackColor = true;
+            this.btnMultiplicar.Click += new System.EventHandler(this.btnMultiplicar_Click);
+            // 
+            // lblTotalArticulos
+            // 
+            this.lblTotalArticulos.AutoSize = true;
+            this.lblTotalArticulos.Location = new System.Drawing.Point(962, 90);
+            this.lblTotalArticulos.Name = "lblTotalArticulos";
+            this.lblTotalArticulos.Size = new System.Drawing.Size(41, 13);
+            this.lblTotalArticulos.TabIndex = 83;
+            this.lblTotalArticulos.Text = "label15";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(777, 90);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 13);
+            this.label11.TabIndex = 82;
+            this.label11.Text = "Total de Articulos";
+            // 
             // dataArticulo
             // 
             this.dataArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -479,6 +509,7 @@
             this.dataArticulo.Name = "dataArticulo";
             this.dataArticulo.Size = new System.Drawing.Size(509, 32);
             this.dataArticulo.TabIndex = 10;
+            this.dataArticulo.Visible = false;
             // 
             // txtCodigoBarras
             // 
@@ -583,12 +614,13 @@
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(1335, 527);
+            this.btnQuitar.Location = new System.Drawing.Point(1335, 480);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(75, 23);
             this.btnQuitar.TabIndex = 69;
             this.btnQuitar.Text = "Quitar";
             this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click_1);
             // 
             // txtCliente
             // 
@@ -810,24 +842,6 @@
             this.label10.TabIndex = 8;
             this.label10.Text = "Nombre:";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(777, 90);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 13);
-            this.label11.TabIndex = 82;
-            this.label11.Text = "Total de Articulos";
-            // 
-            // lblTotalArticulos
-            // 
-            this.lblTotalArticulos.AutoSize = true;
-            this.lblTotalArticulos.Location = new System.Drawing.Point(962, 90);
-            this.lblTotalArticulos.Name = "lblTotalArticulos";
-            this.lblTotalArticulos.Size = new System.Drawing.Size(41, 13);
-            this.lblTotalArticulos.TabIndex = 83;
-            this.lblTotalArticulos.Text = "label15";
-            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -930,5 +944,6 @@
         private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.Label lblTotalArticulos;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnMultiplicar;
     }
 }
