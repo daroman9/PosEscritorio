@@ -15,6 +15,12 @@ namespace CapaPresentacion
         FrmArticulo Articulo;
         FrmCategoria Categoria;
         FrmPresentacion Presentacion;
+        FrmCliente Cliente;
+        FrmIngreso Ingreso;
+        FrmProveedor Proveedor;
+        FrmTrabajador Trabajador;
+        FrmVenta Venta;
+        Consultas.FrmConsulta_Stock_Articulos Stock;
         private int childFormNumber = 0;
         public string Idtrabajador = "";
         public string Apellidos = "";
@@ -127,7 +133,7 @@ namespace CapaPresentacion
         }
         private void CerrarCategoria(object sender, EventArgs e)
         {
-            Presentacion = null;
+            Categoria = null;
         }
         private void presentacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -160,32 +166,63 @@ namespace CapaPresentacion
         }
         private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmIngreso frm = new FrmIngreso();
-            frm.MdiParent = this;
-            frm.Show();
-            frm.Idtrabajador = Convert.ToInt32(this.Idtrabajador);
+            if (Ingreso == null)
+            {
+                Ingreso = new FrmIngreso();
+                Ingreso.MdiParent = this;
+                Ingreso.FormClosed += new FormClosedEventHandler(CerrarIngreso);
+                Ingreso.Show();
+            }
+        }
+        private void CerrarIngreso(object sender, EventArgs e)
+        {
+            Ingreso = null;
         }
         private void proveedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmProveedor frm = new FrmProveedor();
-            frm.MdiParent = this;
-            frm.Show();
+            if (Proveedor == null)
+            {
+                Proveedor = new FrmProveedor();
+                Proveedor.MdiParent = this;
+                Proveedor.FormClosed += new FormClosedEventHandler(CerrarProveedor);
+                Proveedor.Show();
+            }
+        }
+        private void CerrarProveedor(object sender, EventArgs e)
+        {
+            Proveedor = null;
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCliente frm = new FrmCliente();
-            frm.MdiParent = this;
-            frm.Show();
+            if (Cliente == null)
+            {
+                Cliente = new FrmCliente();
+                Cliente.MdiParent = this;
+                Cliente.FormClosed += new FormClosedEventHandler(CerrarCliente);
+                Cliente.Show();
+            }
 
+        }
+        private void CerrarCliente(object sender, EventArgs e)
+        {
+            Cliente = null;
         }
 
         private void trabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            FrmTrabajador frm = new FrmTrabajador();
-            frm.MdiParent = this;
-            frm.Show();
+            if (Trabajador == null)
+            {
+                Trabajador = new FrmTrabajador();
+                Trabajador.MdiParent = this;
+                Trabajador.FormClosed += new FormClosedEventHandler(CerrarTrabajador);
+                Trabajador.Show();
+            }
+        }
+        private void CerrarTrabajador(object sender, EventArgs e)
+        {
+            Trabajador = null;
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
@@ -245,18 +282,32 @@ namespace CapaPresentacion
 
         private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FrmVenta frm =new FrmVenta();
-            frm.MdiParent = this;
-            frm.Show();
-            frm.Idtrabajador = Convert.ToInt32(this.Idtrabajador);
+            if (Venta == null)
+            {
+                Venta = new FrmVenta();
+                Venta.MdiParent = this;
+                Venta.FormClosed += new FormClosedEventHandler(CerrarVenta);
+                Venta.Show();
+                Venta.Idtrabajador = Convert.ToInt32(this.Idtrabajador);
+            }
         }
-
+        private void CerrarVenta(object sender, EventArgs e)
+        {
+            Venta = null;
+        }
         private void stockDeArticulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Consultas.FrmConsulta_Stock_Articulos frm = new Consultas.FrmConsulta_Stock_Articulos();
-            frm.MdiParent = this;
-            frm.Show();
-
+            if (Stock == null)
+            {
+                Stock = new Consultas.FrmConsulta_Stock_Articulos();
+                Stock.MdiParent = this;
+                Stock.FormClosed += new FormClosedEventHandler(CerrarStock);
+                Stock.Show();
+            }
+        }
+        private void CerrarStock(object sender, EventArgs e)
+        {
+            Stock = null;
         }
 
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

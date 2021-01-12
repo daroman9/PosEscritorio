@@ -33,8 +33,6 @@ namespace CapaPresentacion
 
         private void FrmIngreso_Load(object sender, EventArgs e)
         {
-            this.Top = 0;
-            this.Left = 0;
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();

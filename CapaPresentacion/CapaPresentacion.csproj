@@ -109,18 +109,6 @@
     <Compile Include="FrmVenta.Designer.cs">
       <DependentUpon>FrmVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmVistaArticuloIngreso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmVistaArticuloIngreso.Designer.cs">
-      <DependentUpon>FrmVistaArticuloIngreso.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmVistaCategoria_Articulo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmVistaCategoria_Articulo.Designer.cs">
-      <DependentUpon>frmVistaCategoria_Articulo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -167,12 +155,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVenta.resx">
       <DependentUpon>FrmVenta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmVistaArticuloIngreso.resx">
-      <DependentUpon>FrmVistaArticuloIngreso.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmVistaCategoria_Articulo.resx">
-      <DependentUpon>frmVistaCategoria_Articulo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

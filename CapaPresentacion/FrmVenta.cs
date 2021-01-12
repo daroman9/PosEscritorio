@@ -33,8 +33,6 @@ namespace CapaPresentacion
 
         private void FrmVenta_Load(object sender, EventArgs e)
         {
-            this.Top = 0;
-            this.Left = 0;
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
@@ -543,6 +541,11 @@ namespace CapaPresentacion
             {
                 MensajeError("No hay fila para remover");
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

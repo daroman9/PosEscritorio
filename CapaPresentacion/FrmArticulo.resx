@@ -457,10 +457,10 @@
     <value>Eliminar</value>
   </data>
   <data name="dataListadoCategorias.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 53</value>
+    <value>3, 47</value>
   </data>
   <data name="dataListadoCategorias.Size" type="System.Drawing.Size, System.Drawing">
-    <value>715, 174</value>
+    <value>791, 174</value>
   </data>
   <data name="dataListadoCategorias.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -583,7 +583,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>724, 227</value>
+    <value>800, 227</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -607,7 +607,7 @@
     <value>6, 317</value>
   </data>
   <data name="tabControl2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>732, 253</value>
+    <value>808, 253</value>
   </data>
   <data name="tabControl2.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -775,7 +775,7 @@
     <value>10</value>
   </data>
   <data name="btnLimpiar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1078, 387</value>
+    <value>1064, 350</value>
   </data>
   <data name="btnLimpiar.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -799,7 +799,7 @@
     <value>11</value>
   </data>
   <data name="btnCargar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1078, 339</value>
+    <value>877, 351</value>
   </data>
   <data name="btnCargar.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -823,10 +823,10 @@
     <value>12</value>
   </data>
   <data name="pxImagen.Location" type="System.Drawing.Point, System.Drawing">
-    <value>779, 339</value>
+    <value>877, 19</value>
   </data>
   <data name="pxImagen.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 227</value>
+    <value>421, 302</value>
   </data>
   <data name="pxImagen.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -1138,7 +1138,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1580, 648</value>
+    <value>1582, 649</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

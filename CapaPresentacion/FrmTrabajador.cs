@@ -118,8 +118,6 @@ namespace CapaPresentacion
 
         private void FrmTrabajador_Load(object sender, EventArgs e)
         {
-            this.Top = 0;
-            this.Left = 0;
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
