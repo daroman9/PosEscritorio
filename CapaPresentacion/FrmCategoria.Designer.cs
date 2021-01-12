@@ -333,7 +333,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mantenimiento de Categorías";
+            this.Text = "CATEGORÍAS";
             this.Load += new System.EventHandler(this.FrmCategoria_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

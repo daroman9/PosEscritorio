@@ -17,11 +17,11 @@ namespace CapaPresentacion
         private bool IsNuevo = false;
         public int Idtrabajador;
         private DataTable dtDetalle;
-        //private decimal totalPagado = 0;
         public int codLength;
         public string codigoBarras;
         public string serie;
         public double totalcuenta = 0;
+        public int totalArticulos = 0;
 
         public FrmVenta()
         {
@@ -37,6 +37,8 @@ namespace CapaPresentacion
             this.Habilitar(false);
             this.Botones();
             this.CrearTabla();
+            this.alternarColores(this.dataListadoDetalle);
+
         }
 
         //Mostrar mensaje de confirmación
@@ -110,6 +112,12 @@ namespace CapaPresentacion
             //ocultar las columnas del listado de clientes
             this.dataListadoClientes.Columns[0].Visible = false;
             this.dataListadoClientes.Columns[1].Visible = false;
+        }
+        //Método para alternar los colores de las filas del datagrid
+        public void alternarColores(DataGridView dgv)
+        {
+            dgv.RowsDefaultCellStyle.BackColor = Color.LightBlue;
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
         }
         //Método mostrar
         private void Mostrar()
@@ -339,7 +347,7 @@ namespace CapaPresentacion
             descuentoarticulo = Convert.ToDouble(par9) * descuento;
 
             preciodescuento = par9 - Convert.ToDouble(descuentoarticulo);
-            // descuentoaplicado = par9 * descuento;
+           
             //Agregar al listado de articulos para la factura
             DataRow row = this.dtDetalle.NewRow();
             row["Detalle_Ingreso"] = par1;
@@ -365,8 +373,7 @@ namespace CapaPresentacion
             lblTotalPagado.Text = Convert.ToString(totalcuenta);
 
             //Calcular el total de items de cada compra
-  
-            lblTotalArticulos.Text = Convert.ToString(dtDetalle.Rows.Count);
+            cacularItems();
             //Limpar las variables
             par1 = 0;
             par2 = string.Empty;
@@ -392,6 +399,19 @@ namespace CapaPresentacion
 
             this.tabControl1.SelectedIndex = 1;
         }
+
+        private void cacularItems()
+        {
+            int sumatoria = 0;
+
+            foreach (DataGridViewRow row in dataListadoDetalle.Rows)
+            {
+                sumatoria += Convert.ToInt32(row.Cells["Cantidad"].Value);
+            }
+        
+            lblTotalArticulos.Text = Convert.ToString(sumatoria);
+        }
+
         private void txtCodigoBarras_TextChanged(object sender, EventArgs e)
         {
       
@@ -408,8 +428,7 @@ namespace CapaPresentacion
                 {
                     int par1, par7;
                     string par2, par3, par4, par5, par6;
-                    decimal par8, par9, preciodescuento;
-                    double par10, descuento, descuentoarticulo;
+                    double par8, par9, par10, descuento, descuentoarticulo, preciodescuento;
                     DateTime par11;
                     par1 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Detalle_Ingreso"].Value);
                     par2 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Codigo"].Value);
@@ -418,8 +437,8 @@ namespace CapaPresentacion
                     par5 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Categoria"].Value);
                     par6 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Presentacion"].Value);
                     par7 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Stock"].Value);
-                    par8 = Convert.ToDecimal(this.dataArticulo.CurrentRow.Cells["Precio_Compra"].Value);
-                    par9 = Convert.ToDecimal(this.dataArticulo.CurrentRow.Cells["Precio_Venta"].Value);
+                    par8 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Precio_Compra"].Value);
+                    par9 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Precio_Venta"].Value);
                     par10 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Descuento"].Value);
                     par11 = Convert.ToDateTime(this.dataArticulo.CurrentRow.Cells["Fecha_Vencimiento"].Value);
 
@@ -429,7 +448,7 @@ namespace CapaPresentacion
 
                     descuentoarticulo = Convert.ToDouble(par9) * descuento;
 
-                    preciodescuento = par9 - Convert.ToDecimal(descuentoarticulo);
+                    preciodescuento = par9 - Convert.ToDouble(descuentoarticulo);
 
 
                     //Agregar al listado de articulos para la factura
@@ -452,11 +471,13 @@ namespace CapaPresentacion
                     lblArticulo.Text = par3 + " " + par4 + " " + par6;
 
                     //Calcular el total de la cuenta
+                    totalcuenta = totalcuenta + preciodescuento;
+
                     lblTotalPagado.Text = Convert.ToString(totalcuenta);
 
                     //Calcular el total de items de cada compra
+                    cacularItems();
 
-                    lblTotalArticulos.Text = Convert.ToString(dtDetalle.Rows.Count);
                     //Limpar las variables
                     par1 = 0;
                     par2 = string.Empty;
@@ -508,6 +529,9 @@ namespace CapaPresentacion
                 row.Cells["Precio_Venta"].Value = Convert.ToDecimal(valor);
                 totalcuenta = totalcuenta +  Convert.ToDouble(valor) - Convert.ToDouble(preciostandar);
                 lblTotalPagado.Text = Convert.ToString(totalcuenta);
+                //Sumar los articulos multiplicados
+                cacularItems();
+
                 this.txtCantidad.Text = string.Empty;
                 this.txtCantidad.ReadOnly = true;
                 this.btnMultiplicar.Enabled = false;
@@ -527,14 +551,11 @@ namespace CapaPresentacion
 
                 totalcuenta = totalcuenta - Convert.ToDouble(rowPrecio.Cells["Precio_Venta"].Value);
                 this.lblTotalPagado.Text = Convert.ToString(totalcuenta);
-
                 //Quitar el articulo del grid
                 DataRow row = this.dtDetalle.Rows[indiceFila];
                 this.dtDetalle.Rows.Remove(row);
-               
-
-                //Removemos la fila
-
+                //Disminuir los items del total
+                cacularItems();
             }
             
             catch (Exception ex)

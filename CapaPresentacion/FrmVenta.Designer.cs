@@ -32,6 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -99,6 +102,11 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -111,6 +119,7 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCantidad
@@ -241,7 +250,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1582, 649);
+            this.tabPage1.Size = new System.Drawing.Size(1582, 681);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -429,7 +438,6 @@
             this.groupBox1.Controls.Add(this.btnMultiplicar);
             this.groupBox1.Controls.Add(this.lblTotalArticulos);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.dataArticulo);
             this.groupBox1.Controls.Add(this.txtCodigoBarras);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.textBox2);
@@ -459,7 +467,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1425, 687);
+            this.groupBox1.Size = new System.Drawing.Size(1576, 687);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ventas";
@@ -494,12 +502,14 @@
             // 
             // dataArticulo
             // 
+            this.dataArticulo.BackgroundColor = System.Drawing.Color.White;
+            this.dataArticulo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataArticulo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataArticulo.Location = new System.Drawing.Point(1137, 480);
+            this.dataArticulo.GridColor = System.Drawing.Color.White;
+            this.dataArticulo.Location = new System.Drawing.Point(1635, 739);
             this.dataArticulo.Name = "dataArticulo";
-            this.dataArticulo.Size = new System.Drawing.Size(158, 10);
+            this.dataArticulo.Size = new System.Drawing.Size(10, 10);
             this.dataArticulo.TabIndex = 10;
-            this.dataArticulo.Visible = false;
             // 
             // txtCodigoBarras
             // 
@@ -586,12 +596,12 @@
             this.dataListadoDetalle.GridColor = System.Drawing.Color.White;
             this.dataListadoDetalle.Location = new System.Drawing.Point(12, 133);
             this.dataListadoDetalle.Name = "dataListadoDetalle";
-            this.dataListadoDetalle.Size = new System.Drawing.Size(1398, 341);
+            this.dataListadoDetalle.Size = new System.Drawing.Size(1558, 341);
             this.dataListadoDetalle.TabIndex = 59;
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(1335, 480);
+            this.btnQuitar.Location = new System.Drawing.Point(1495, 480);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(75, 23);
             this.btnQuitar.TabIndex = 69;
@@ -631,7 +641,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1582, 649);
+            this.tabPage2.Size = new System.Drawing.Size(1582, 681);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -644,11 +654,15 @@
             this.tabControl1.Location = new System.Drawing.Point(55, 57);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1590, 675);
+            this.tabControl1.Size = new System.Drawing.Size(1590, 707);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Controls.Add(this.btnBuscarCliente);
             this.tabPage3.Controls.Add(this.btnBuscarArticulo);
             this.tabPage3.Controls.Add(this.cbBuscar);
@@ -660,14 +674,14 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1582, 649);
+            this.tabPage3.Size = new System.Drawing.Size(1582, 681);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Articulos y Clientes";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // btnBuscarCliente
             // 
-            this.btnBuscarCliente.Location = new System.Drawing.Point(336, 337);
+            this.btnBuscarCliente.Location = new System.Drawing.Point(313, 494);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarCliente.TabIndex = 25;
@@ -676,7 +690,7 @@
             // 
             // btnBuscarArticulo
             // 
-            this.btnBuscarArticulo.Location = new System.Drawing.Point(345, 22);
+            this.btnBuscarArticulo.Location = new System.Drawing.Point(324, 270);
             this.btnBuscarArticulo.Name = "btnBuscarArticulo";
             this.btnBuscarArticulo.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarArticulo.TabIndex = 24;
@@ -690,7 +704,7 @@
             this.cbBuscar.Items.AddRange(new object[] {
             "DOCUMENTO",
             "APELLIDO"});
-            this.cbBuscar.Location = new System.Drawing.Point(29, 343);
+            this.cbBuscar.Location = new System.Drawing.Point(6, 500);
             this.cbBuscar.Name = "cbBuscar";
             this.cbBuscar.Size = new System.Drawing.Size(121, 21);
             this.cbBuscar.TabIndex = 23;
@@ -706,12 +720,12 @@
             this.dataListadoClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListadoClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn2});
-            this.dataListadoClientes.Location = new System.Drawing.Point(29, 409);
+            this.dataListadoClientes.Location = new System.Drawing.Point(0, 527);
             this.dataListadoClientes.MultiSelect = false;
             this.dataListadoClientes.Name = "dataListadoClientes";
             this.dataListadoClientes.ReadOnly = true;
             this.dataListadoClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoClientes.Size = new System.Drawing.Size(1575, 200);
+            this.dataListadoClientes.Size = new System.Drawing.Size(1575, 150);
             this.dataListadoClientes.TabIndex = 22;
             this.dataListadoClientes.DoubleClick += new System.EventHandler(this.dataListadoClientes_DoubleClick);
             // 
@@ -723,7 +737,7 @@
             // 
             // txtBuscarCliente
             // 
-            this.txtBuscarCliente.Location = new System.Drawing.Point(169, 341);
+            this.txtBuscarCliente.Location = new System.Drawing.Point(146, 498);
             this.txtBuscarCliente.Name = "txtBuscarCliente";
             this.txtBuscarCliente.Size = new System.Drawing.Size(143, 20);
             this.txtBuscarCliente.TabIndex = 16;
@@ -735,39 +749,39 @@
             this.dataListadoArticulos.AllowUserToOrderColumns = true;
             this.dataListadoArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataListadoArticulos.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataListadoArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataListadoArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataListadoArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListadoArticulos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewCheckBoxColumn1});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataListadoArticulos.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataListadoArticulos.Location = new System.Drawing.Point(26, 88);
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataListadoArticulos.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataListadoArticulos.Location = new System.Drawing.Point(1, 294);
             this.dataListadoArticulos.MultiSelect = false;
             this.dataListadoArticulos.Name = "dataListadoArticulos";
             this.dataListadoArticulos.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataListadoArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataListadoArticulos.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataListadoArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoArticulos.Size = new System.Drawing.Size(1575, 200);
+            this.dataListadoArticulos.Size = new System.Drawing.Size(1575, 150);
             this.dataListadoArticulos.TabIndex = 15;
             this.dataListadoArticulos.DoubleClick += new System.EventHandler(this.dataListadoArticulos_DoubleClick);
             // 
@@ -779,7 +793,7 @@
             // 
             // txtBuscarNombreArticulo
             // 
-            this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(76, 20);
+            this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(55, 268);
             this.txtBuscarNombreArticulo.Name = "txtBuscarNombreArticulo";
             this.txtBuscarNombreArticulo.Size = new System.Drawing.Size(143, 20);
             this.txtBuscarNombreArticulo.TabIndex = 9;
@@ -788,11 +802,84 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(23, 27);
+            this.label10.Location = new System.Drawing.Point(4, 273);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 13);
             this.label10.TabIndex = 8;
             this.label10.Text = "Nombre:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(326, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Buscar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCheckBoxColumn3});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 70);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1575, 150);
+            this.dataGridView1.TabIndex = 27;
+            // 
+            // dataGridViewCheckBoxColumn3
+            // 
+            this.dataGridViewCheckBoxColumn3.HeaderText = "Eliminar";
+            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
+            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(79, 44);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(143, 20);
+            this.textBox1.TabIndex = 26;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(5, 51);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(47, 13);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Nombre:";
             // 
             // FrmVenta
             // 
@@ -802,6 +889,7 @@
             this.ClientSize = new System.Drawing.Size(1654, 761);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.dataArticulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -823,6 +911,7 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -893,5 +982,10 @@
         private System.Windows.Forms.Label lblTotalArticulos;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnMultiplicar;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

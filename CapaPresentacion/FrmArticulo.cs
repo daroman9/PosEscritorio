@@ -31,6 +31,14 @@ namespace CapaPresentacion
             this.txtCategoria.ReadOnly = true;
             this.LlenarComboPresentacion();
         }
+        private void FrmArticulo_Load(object sender, EventArgs e)
+        {
+
+            this.Mostrar();
+            this.Habilitar(false);
+            this.Botones();
+            this.alternarColores(this.dataListado);
+        }
         //Mostrar mensaje de confirmación
         private void MensajeOk(string mensaje)
         {
@@ -101,6 +109,12 @@ namespace CapaPresentacion
             this.dataListadoCategorias.Columns[0].Visible = false;
             this.dataListadoCategorias.Columns[1].Visible = false;
         }
+        //Método para alternas los colores en del datagrid
+        public void alternarColores(DataGridView dgv)
+        {
+            dgv.RowsDefaultCellStyle.BackColor = Color.LightBlue;
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+        }
 
         //Método mostrar
         private void Mostrar()
@@ -159,14 +173,6 @@ namespace CapaPresentacion
         {
             this.BuscarNombre();
         }
-        private void FrmArticulo_Load(object sender, EventArgs e)
-        {
-         
-            this.Mostrar();
-            this.Habilitar(false);
-            this.Botones();
-        }
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             this.IsNuevo = true;

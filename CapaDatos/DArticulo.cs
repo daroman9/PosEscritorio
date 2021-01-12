@@ -123,7 +123,7 @@ namespace CapaDatos
                 ParContenido.ParameterName = "@contenido";
                 ParContenido.SqlDbType = SqlDbType.VarChar;
                 ParContenido.Size = 50;
-                ParContenido.Value = Articulo.Descripcion;
+                ParContenido.Value = Articulo.Contenido;
                 SqlCmd.Parameters.Add(ParContenido);
 
                 SqlParameter ParDescuento = new SqlParameter();

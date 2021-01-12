@@ -331,7 +331,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmPresentacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mantenimiento de presentaciones";
+            this.Text = "PRESENTACIONES";
             this.Load += new System.EventHandler(this.FrmPresentacion_Load);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
