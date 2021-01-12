@@ -183,6 +183,7 @@
     <Folder Include="Consultas\Imagen\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Banned User.png" />
     <Content Include="Resources\file.png" />
     <None Include="Resources\file1.png" />
   </ItemGroup>

@@ -17,7 +17,7 @@ namespace CapaPresentacion
         private bool IsNuevo = false;
         public int Idtrabajador;
         private DataTable dtDetalle;
-        private decimal totalPagado = 0;
+        //private decimal totalPagado = 0;
         public int codLength;
         public string codigoBarras;
         public string serie;
@@ -27,10 +27,8 @@ namespace CapaPresentacion
         {
             InitializeComponent();
             this.txtIdCliente.Visible = false;
-            this.txtIdArticulo.Visible = false;
             this.txtCliente.ReadOnly = true;
-            this.txtArticulo.ReadOnly = true;
-            this.txtPrecioCompra.ReadOnly = true;
+          
         }
 
         private void FrmVenta_Load(object sender, EventArgs e)
@@ -67,11 +65,7 @@ namespace CapaPresentacion
         }
         private void LimpiarDetalle()
         {
-            this.txtIdArticulo.Text = string.Empty;
-            this.txtArticulo.Text = string.Empty;
-            this.txtCantidad.Text = string.Empty;
-            this.txtPrecioVenta.Text = string.Empty;
-            this.txtPrecioVenta.Text = string.Empty;
+           
             this.txtDescuento.Text = string.Empty;
 
         }
@@ -84,8 +78,6 @@ namespace CapaPresentacion
             this.txtIgv.ReadOnly = !valor;
             this.dtFecha.Enabled = valor;
             this.txtCantidad.ReadOnly = !valor;
-            this.txtPrecioCompra.ReadOnly = !valor;
-            this.txtPrecioVenta.ReadOnly = !valor;
             this.txtDescuento.ReadOnly = !valor;
             this.btnQuitar.Enabled = valor;
         }
@@ -317,25 +309,7 @@ namespace CapaPresentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
-        private void btnQuitar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int indiceFila = this.dataListadoDetalle.CurrentCell.RowIndex;
-                DataRow row = this.dtDetalle.Rows[indiceFila];
-                //Disminuir el total pagado
-                this.totalPagado = this.totalPagado - Convert.ToDecimal(row["subtotal"].ToString());
-                this.lblTotalPagado.Text = totalPagado.ToString("#0.00#");
-                //Removemos la fila
-                this.dtDetalle.Rows.Remove(row);
-
-            }
-            catch (Exception ex)
-            {
-                MensajeError("No hay fila para remover");
-            }
-        }
-
+      
         private void btnBuscarNombreArticulos_Click(object sender, EventArgs e)
         {
             this.MostrarArticulo_Venta_Nombre();
@@ -480,8 +454,6 @@ namespace CapaPresentacion
                     lblArticulo.Text = par3 + " " + par4 + " " + par6;
 
                     //Calcular el total de la cuenta
-                    //totalcuenta = totalcuenta + preciodescuento;
-
                     lblTotalPagado.Text = Convert.ToString(totalcuenta);
 
                     //Calcular el total de items de cada compra
@@ -526,6 +498,7 @@ namespace CapaPresentacion
         private void btnMultiplicar_Click(object sender, EventArgs e)
         {
             int ultimafila=0;
+            decimal preciostandar;
             ultimafila = dtDetalle.Rows.Count;
 
             DataGridViewRow row = dataListadoDetalle.Rows[ultimafila -1];    
@@ -533,26 +506,39 @@ namespace CapaPresentacion
             {
                 double valor = Convert.ToDouble(row.Cells["Precio_Venta"].Value) * Convert.ToDouble(this.txtCantidad.Text);
                 row.Cells["Cantidad"].Value = this.txtCantidad.Text;
+                preciostandar = Convert.ToDecimal(row.Cells["Precio_Venta"].Value);
                 row.Cells["Precio_Venta"].Value = Convert.ToDecimal(valor);
-                //totalcuenta = totalcuenta +  Convert.ToDecimal(valor);
+                totalcuenta = totalcuenta +  Convert.ToDouble(valor) - Convert.ToDouble(preciostandar);
+                lblTotalPagado.Text = Convert.ToString(totalcuenta);
+                this.txtCantidad.Text = string.Empty;
+                this.txtCantidad.ReadOnly = true;
+                this.btnMultiplicar.Enabled = false;
             }
-           
-           
-
         }
 
         private void btnQuitar_Click_1(object sender, EventArgs e)
         {
+            int indicefilaPrecio = 0;
             try
             {
                 int indiceFila = this.dataListadoDetalle.CurrentCell.RowIndex;
-                DataRow row = this.dtDetalle.Rows[indiceFila];
+                indicefilaPrecio = indiceFila;
+
                 //Disminuir el totalPAgado
-               // this.totalPagado = this.totalPagado - Convert.ToDecimal(row["subtotal"].ToString());
-               // this.lblTotal_Pagado.Text = totalPagado.ToString("#0.00#");
-                //Removemos la fila
+                DataGridViewRow rowPrecio = dataListadoDetalle.Rows[indicefilaPrecio];
+
+                totalcuenta = totalcuenta - Convert.ToDouble(rowPrecio.Cells["Precio_Venta"].Value);
+                this.lblTotalPagado.Text = Convert.ToString(totalcuenta);
+
+                //Quitar el articulo del grid
+                DataRow row = this.dtDetalle.Rows[indiceFila];
                 this.dtDetalle.Rows.Remove(row);
+               
+
+                //Removemos la fila
+
             }
+            
             catch (Exception ex)
             {
                 MensajeError("No hay fila para remover");
