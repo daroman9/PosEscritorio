@@ -12,6 +12,9 @@ namespace CapaPresentacion
 {
     public partial class FrmPrincipal : Form
     {
+        FrmArticulo Articulo;
+        FrmCategoria Categoria;
+        FrmPresentacion Presentacion;
         private int childFormNumber = 0;
         public string Idtrabajador = "";
         public string Apellidos = "";
@@ -114,23 +117,46 @@ namespace CapaPresentacion
 
         private void categoríasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCategoria frm = new FrmCategoria();
-            frm.MdiParent = this;
-            frm.Show();
+            if (Categoria == null)
+            {
+                Categoria = new FrmCategoria();
+                Categoria.MdiParent = this;
+                Categoria.FormClosed += new FormClosedEventHandler(CerrarCategoria);
+                Categoria.Show();
+            }
         }
-
+        private void CerrarCategoria(object sender, EventArgs e)
+        {
+            Presentacion = null;
+        }
         private void presentacionesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPresentacion frm = new FrmPresentacion();
-            frm.MdiParent = this;
-            frm.Show();
+            if (Presentacion == null)
+            {
+                Presentacion = new FrmPresentacion();
+                Presentacion.MdiParent = this;
+                Presentacion.FormClosed += new FormClosedEventHandler(CerrarPresentacion);
+                Presentacion.Show();
+            }
+        }
+        private void CerrarPresentacion(object sender, EventArgs e)
+        {
+            Presentacion = null;
         }
 
         private void articulosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmArticulo frm = new FrmArticulo();
-            frm.MdiParent = this;
-            frm.Show();
+            if(Articulo == null)
+            {
+                Articulo = new FrmArticulo();
+                Articulo.MdiParent = this;
+                Articulo.FormClosed += new FormClosedEventHandler(CerrarArticulo);
+                Articulo.Show();
+            }
+        }
+        private void CerrarArticulo(object sender, EventArgs e)
+        {
+            Articulo = null;
         }
         private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -164,7 +190,7 @@ namespace CapaPresentacion
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.SlateBlue;
             this.GestionUsuario();
         }
 
@@ -230,6 +256,11 @@ namespace CapaPresentacion
             Consultas.FrmConsulta_Stock_Articulos frm = new Consultas.FrmConsulta_Stock_Articulos();
             frm.MdiParent = this;
             frm.Show();
+
+        }
+
+        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
 
         }
     }

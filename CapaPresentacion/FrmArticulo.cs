@@ -161,11 +161,7 @@ namespace CapaPresentacion
         }
         private void FrmArticulo_Load(object sender, EventArgs e)
         {
-            this.MaximumSize = SystemInformation.PrimaryMonitorMaximizedWindowSize;
-            this.WindowState = FormWindowState.Maximized;
-
-            this.Top = 0;
-            this.Left = 0;
+         
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
