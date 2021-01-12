@@ -171,6 +171,7 @@ namespace CapaPresentacion
                 Ingreso = new FrmIngreso();
                 Ingreso.MdiParent = this;
                 Ingreso.FormClosed += new FormClosedEventHandler(CerrarIngreso);
+                Ingreso.Idtrabajador = Convert.ToInt32(this.Idtrabajador);
                 Ingreso.Show();
             }
         }
@@ -287,8 +288,9 @@ namespace CapaPresentacion
                 Venta = new FrmVenta();
                 Venta.MdiParent = this;
                 Venta.FormClosed += new FormClosedEventHandler(CerrarVenta);
-                Venta.Show();
                 Venta.Idtrabajador = Convert.ToInt32(this.Idtrabajador);
+                Venta.Show();
+               
             }
         }
         private void CerrarVenta(object sender, EventArgs e)
