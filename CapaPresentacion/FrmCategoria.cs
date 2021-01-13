@@ -121,12 +121,26 @@ namespace CapaPresentacion
             this.txtNombre.Focus();
         }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (!this.txtIdCategoria.Text.Equals(""))
+            {
+                this.IsEditar = true;
+                this.Botones();
+                this.Habilitar(true);
+            }
+            else
+            {
+                this.MensajeError("Debe seleccionar el registro a modificar");
+            }
+        }
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
                 string rpta = "";
-                if(this.txtNombre.Text==string.Empty)
+                if (this.txtNombre.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
                     errorIcono.SetError(txtNombre, "Ingrese un nombre");
@@ -139,7 +153,7 @@ namespace CapaPresentacion
                     }
                     else
                     {
-                        rpta = NCategoria.Editar(Convert.ToInt32(this.txtIdCategoria.Text),this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper());
+                        rpta = NCategoria.Editar(Convert.ToInt32(this.txtIdCategoria.Text), this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper());
                     }
                     if (rpta.Equals("OK"))
                     {
@@ -163,32 +177,9 @@ namespace CapaPresentacion
                     this.Mostrar();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
-            }
-        }
-
-        private void dataListado_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtIdCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
-
-            this.tabControl1.SelectedIndex = 1;
-        }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if(!this.txtIdCategoria.Text.Equals(""))
-            {
-                this.IsEditar=true;
-                this.Botones();
-                this.Habilitar(true);
-            }
-            else
-            {
-                this.MensajeError("Debe seleccionar el registro a modificar");
             }
         }
 
@@ -200,6 +191,16 @@ namespace CapaPresentacion
             this.Limpiar();
             this.Habilitar(false);
         }
+        private void dataListado_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtIdCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
+            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
+
+            this.tabControl1.SelectedIndex = 1;
+        }
+
+       
 
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
         {

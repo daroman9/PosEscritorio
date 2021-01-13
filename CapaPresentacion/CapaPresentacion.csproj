@@ -159,14 +159,22 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Consultas\Imagen\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\search.png" />
+    <None Include="Resources\guardar.png" />
     <None Include="Resources\Banned User.png" />
     <None Include="Resources\add.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\cancel1.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\adding.png" />
     <Content Include="Resources\file.png" />
     <None Include="Resources\file1.png" />
   </ItemGroup>
