@@ -31,18 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArticulo));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataListado = new System.Windows.Forms.DataGridView();
-            this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.chkEliminar = new System.Windows.Forms.CheckBox();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtDescuento = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -51,7 +47,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataListadoCategorias = new System.Windows.Forms.DataGridView();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
             this.btnBuscarNombreCategorias = new System.Windows.Forms.Button();
             this.txtBuscarNombreCategoria = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -59,7 +54,6 @@
             this.cbIdPresentacion = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCategoria = new System.Windows.Forms.TextBox();
-            this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnCargar = new System.Windows.Forms.Button();
@@ -72,116 +66,44 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtMarca = new System.Windows.Forms.TextBox();
-            this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dataListado = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.chkEliminar = new System.Windows.Forms.CheckBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtIdCategoria = new System.Windows.Forms.TextBox();
+            this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoCategorias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.dataListado);
-            this.tabPage1.Controls.Add(this.lblTotal);
-            this.tabPage1.Controls.Add(this.chkEliminar);
-            this.tabPage1.Controls.Add(this.btnImprimir);
-            this.tabPage1.Controls.Add(this.btnEliminar);
-            this.tabPage1.Controls.Add(this.btnBuscar);
-            this.tabPage1.Controls.Add(this.txtBuscar);
-            this.tabPage1.Controls.Add(this.label2);
-            resources.ApplyResources(this.tabPage1, "tabPage1");
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dataListado
-            // 
-            this.dataListado.AllowUserToAddRows = false;
-            this.dataListado.AllowUserToDeleteRows = false;
-            this.dataListado.AllowUserToOrderColumns = true;
-            this.dataListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataListado.BackgroundColor = System.Drawing.Color.White;
-            this.dataListado.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Eliminar});
-            resources.ApplyResources(this.dataListado, "dataListado");
-            this.dataListado.MultiSelect = false;
-            this.dataListado.Name = "dataListado";
-            this.dataListado.ReadOnly = true;
-            this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
-            this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
-            // 
-            // Eliminar
-            // 
-            resources.ApplyResources(this.Eliminar, "Eliminar");
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            // 
-            // lblTotal
-            // 
-            resources.ApplyResources(this.lblTotal, "lblTotal");
-            this.lblTotal.Name = "lblTotal";
-            // 
-            // chkEliminar
-            // 
-            resources.ApplyResources(this.chkEliminar, "chkEliminar");
-            this.chkEliminar.Name = "chkEliminar";
-            this.chkEliminar.UseVisualStyleBackColor = true;
-            this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
-            // 
-            // btnImprimir
-            // 
-            resources.ApplyResources(this.btnImprimir, "btnImprimir");
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminar
-            // 
-            resources.ApplyResources(this.btnEliminar, "btnEliminar");
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnBuscar
-            // 
-            resources.ApplyResources(this.btnBuscar, "btnBuscar");
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // txtBuscar
-            // 
-            resources.ApplyResources(this.txtBuscar, "txtBuscar");
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // label2
-            // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
             // 
             // tabPage2
             // 
@@ -192,6 +114,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtDescuento);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label13);
@@ -201,7 +129,6 @@
             this.groupBox1.Controls.Add(this.cbIdPresentacion);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtCategoria);
-            this.groupBox1.Controls.Add(this.txtIdCategoria);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.btnLimpiar);
             this.groupBox1.Controls.Add(this.btnCargar);
@@ -214,12 +141,41 @@
             this.groupBox1.Controls.Add(this.btnNuevo);
             this.groupBox1.Controls.Add(this.txtDescripcion);
             this.groupBox1.Controls.Add(this.txtMarca);
-            this.groupBox1.Controls.Add(this.txtIdArticulo);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
             // 
             // txtDescuento
             // 
@@ -251,7 +207,6 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dataListadoCategorias);
-            this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.btnBuscarNombreCategorias);
             this.tabPage3.Controls.Add(this.txtBuscarNombreCategoria);
             this.tabPage3.Controls.Add(this.label10);
@@ -274,8 +229,8 @@
             this.dataListadoCategorias.MultiSelect = false;
             this.dataListadoCategorias.Name = "dataListadoCategorias";
             this.dataListadoCategorias.ReadOnly = true;
+            this.dataListadoCategorias.RowHeadersVisible = false;
             this.dataListadoCategorias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListadoCategorias_CellContentClick);
             this.dataListadoCategorias.DoubleClick += new System.EventHandler(this.dataListadoCategorias_DoubleClick);
             // 
             // dataGridViewCheckBoxColumn1
@@ -284,14 +239,11 @@
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
-            // label9
-            // 
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.Name = "label9";
-            // 
             // btnBuscarNombreCategorias
             // 
+            this.btnBuscarNombreCategorias.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
             resources.ApplyResources(this.btnBuscarNombreCategorias, "btnBuscarNombreCategorias");
+            this.btnBuscarNombreCategorias.FlatAppearance.BorderSize = 0;
             this.btnBuscarNombreCategorias.Name = "btnBuscarNombreCategorias";
             this.btnBuscarNombreCategorias.UseVisualStyleBackColor = true;
             this.btnBuscarNombreCategorias.Click += new System.EventHandler(this.btnBuscarNombreCategorias_Click);
@@ -329,11 +281,6 @@
             resources.ApplyResources(this.txtCategoria, "txtCategoria");
             this.txtCategoria.Name = "txtCategoria";
             // 
-            // txtIdCategoria
-            // 
-            resources.ApplyResources(this.txtIdCategoria, "txtIdCategoria");
-            this.txtIdCategoria.Name = "txtIdCategoria";
-            // 
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
@@ -341,14 +288,18 @@
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.BackgroundImage = global::CapaPresentacion.Properties.Resources.deletePicture;
             resources.ApplyResources(this.btnLimpiar, "btnLimpiar");
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnCargar
             // 
+            this.btnCargar.BackgroundImage = global::CapaPresentacion.Properties.Resources.addPicture;
             resources.ApplyResources(this.btnCargar, "btnCargar");
+            this.btnCargar.FlatAppearance.BorderSize = 0;
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
@@ -373,28 +324,36 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
             resources.ApplyResources(this.btnCancelar, "btnCancelar");
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnEditar
             // 
+            this.btnEditar.BackgroundImage = global::CapaPresentacion.Properties.Resources.edit;
             resources.ApplyResources(this.btnEditar, "btnEditar");
+            this.btnEditar.FlatAppearance.BorderSize = 0;
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
+            this.btnGuardar.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
             resources.ApplyResources(this.btnGuardar, "btnGuardar");
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnNuevo
             // 
+            this.btnNuevo.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
             resources.ApplyResources(this.btnNuevo, "btnNuevo");
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -409,11 +368,6 @@
             resources.ApplyResources(this.txtMarca, "txtMarca");
             this.txtMarca.Name = "txtMarca";
             // 
-            // txtIdArticulo
-            // 
-            resources.ApplyResources(this.txtIdArticulo, "txtIdArticulo");
-            this.txtIdArticulo.Name = "txtIdArticulo";
-            // 
             // label5
             // 
             resources.ApplyResources(this.label5, "label5");
@@ -423,6 +377,96 @@
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dataListado);
+            this.tabPage1.Controls.Add(this.lblTotal);
+            this.tabPage1.Controls.Add(this.chkEliminar);
+            this.tabPage1.Controls.Add(this.btnEliminar);
+            this.tabPage1.Controls.Add(this.btnBuscar);
+            this.tabPage1.Controls.Add(this.txtBuscar);
+            this.tabPage1.Controls.Add(this.label2);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dataListado
+            // 
+            this.dataListado.AllowUserToAddRows = false;
+            this.dataListado.AllowUserToDeleteRows = false;
+            this.dataListado.AllowUserToOrderColumns = true;
+            this.dataListado.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataListado.BackgroundColor = System.Drawing.Color.White;
+            this.dataListado.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Eliminar});
+            resources.ApplyResources(this.dataListado, "dataListado");
+            this.dataListado.MultiSelect = false;
+            this.dataListado.Name = "dataListado";
+            this.dataListado.ReadOnly = true;
+            this.dataListado.RowHeadersVisible = false;
+            this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
+            this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
+            // 
+            // Eliminar
+            // 
+            resources.ApplyResources(this.Eliminar, "Eliminar");
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            // 
+            // lblTotal
+            // 
+            resources.ApplyResources(this.lblTotal, "lblTotal");
+            this.lblTotal.Name = "lblTotal";
+            // 
+            // chkEliminar
+            // 
+            resources.ApplyResources(this.chkEliminar, "chkEliminar");
+            this.chkEliminar.Name = "chkEliminar";
+            this.chkEliminar.UseVisualStyleBackColor = true;
+            this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
+            resources.ApplyResources(this.btnEliminar, "btnEliminar");
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            resources.ApplyResources(this.btnBuscar, "btnBuscar");
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtBuscar
+            // 
+            resources.ApplyResources(this.txtBuscar, "txtBuscar");
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // txtIdCategoria
+            // 
+            resources.ApplyResources(this.txtIdCategoria, "txtIdCategoria");
+            this.txtIdCategoria.Name = "txtIdCategoria";
+            // 
+            // txtIdArticulo
+            // 
+            resources.ApplyResources(this.txtIdArticulo, "txtIdArticulo");
+            this.txtIdArticulo.Name = "txtIdArticulo";
             // 
             // label1
             // 
@@ -453,13 +497,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtIdArticulo);
+            this.Controls.Add(this.txtIdCategoria);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmArticulo";
             this.Load += new System.EventHandler(this.FrmArticulo_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -468,6 +511,9 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoCategorias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -483,7 +529,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.CheckBox chkEliminar;
-        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
@@ -515,7 +560,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView dataListadoCategorias;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnBuscarNombreCategorias;
         private System.Windows.Forms.TextBox txtBuscarNombreCategoria;
         private System.Windows.Forms.Label label10;
@@ -527,5 +571,11 @@
         private System.Windows.Forms.TextBox txtContenido;
         private System.Windows.Forms.TextBox txtDescuento;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
     }
 }

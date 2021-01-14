@@ -44,9 +44,9 @@ namespace CapaPresentacion
 
         private void Habilitar(bool valor)
         {
-            this.txtNombre.ReadOnly = !valor;
-            this.txtDescripcion.ReadOnly = !valor;
-            this.txtIdPresentacion.ReadOnly = !valor;
+            this.txtNombre.Enabled = valor;
+            this.txtDescripcion.Enabled = valor;
+            this.txtIdPresentacion.Enabled = valor;
         }
         //Método para habilitar los botones
         private void Botones()
@@ -97,22 +97,15 @@ namespace CapaPresentacion
             this.Botones();
 
         }
- 
-  
-
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
-            this.IsNuevo = false;
+            this.IsNuevo = true;
             this.IsEditar = false;
             this.Botones();
             this.Limpiar();
-            this.Habilitar(false);
+            this.Habilitar(true);
+            this.txtNombre.Focus();
         }
-
-   
- 
-
-
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -160,23 +153,36 @@ namespace CapaPresentacion
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            this.IsNuevo = true;
+            if (!this.txtIdPresentacion.Text.Equals(""))
+            {
+                this.IsEditar = true;
+                this.Botones();
+                this.Habilitar(true);
+            }
+            else
+            {
+                this.MensajeError("Debe seleccionar el registro a modificar");
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.IsNuevo = false;
             this.IsEditar = false;
             this.Botones();
             this.Limpiar();
-            this.Habilitar(true);
-            this.txtNombre.Focus();
+            this.Habilitar(false);
         }
-
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
             this.txtIdPresentacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idpresentacion"].Value);
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
+            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Descripción"].Value);
 
             this.tabControl1.SelectedIndex = 1;
         }
@@ -230,21 +236,6 @@ namespace CapaPresentacion
         {
             this.BuscarNombre();
         }
-
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if (!this.txtIdPresentacion.Text.Equals(""))
-            {
-                this.IsEditar = true;
-                this.Botones();
-                this.Habilitar(true);
-            }
-            else
-            {
-                this.MensajeError("Debe seleccionar el registro a modificar");
-            }
-        }
-
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
         {
             if (chkEliminar.Checked)

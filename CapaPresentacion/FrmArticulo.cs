@@ -67,15 +67,15 @@ namespace CapaPresentacion
 
         private void Habilitar(bool valor)
         {
-            this.txtCodigo.ReadOnly = !valor;
-            this.txtMarca.ReadOnly = !valor;
-            this.txtDescripcion.ReadOnly = !valor;
-            this.txtContenido.ReadOnly = !valor;
-            this.txtDescuento.ReadOnly = !valor;
+            this.txtCodigo.Enabled = valor;
+            this.txtMarca.Enabled = valor;
+            this.txtDescripcion.Enabled = valor;
+            this.txtContenido.Enabled = valor;
+            this.txtDescuento.Enabled = valor;
             this.cbIdPresentacion.Enabled = valor;
             this.btnCargar.Enabled = valor;
             this.btnLimpiar.Enabled = valor;
-            this.txtIdArticulo.ReadOnly = !valor;
+            this.txtIdArticulo.Enabled = valor;
         }
         //Método para habilitar los botones
         private void Botones()
@@ -133,9 +133,8 @@ namespace CapaPresentacion
         }
         private void BuscarNombreCategorias()
         {
-            this.dataListadoCategorias.DataSource = NCategoria.BuscarNombre(this.txtBuscar.Text);
+            this.dataListadoCategorias.DataSource = NCategoria.BuscarNombre(this.txtBuscarNombreCategoria.Text);
             this.OcultarColumnas();
-            lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
         //Método para llenar el combo box con las presentaciones
         private void LlenarComboPresentacion()
@@ -307,6 +306,7 @@ namespace CapaPresentacion
             this.txtMarca.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["marca"].Value);
             this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
             this.txtContenido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["contenido"].Value);
+            this.txtDescuento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descuento"].Value);
             byte[] imagenBuffer = (byte[])this.dataListado.CurrentRow.Cells["imagen"].Value;
             System.IO.MemoryStream ms = new System.IO.MemoryStream(imagenBuffer);
             this.pxImagen.Image = Image.FromStream(ms);
@@ -318,7 +318,7 @@ namespace CapaPresentacion
 
 
 
-            this.tabControl1.SelectedIndex = 1;
+            this.tabControl1.SelectedIndex = 0;
         }
 
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
@@ -389,14 +389,5 @@ namespace CapaPresentacion
             BuscarNombreCategorias();
         }
 
-        private void dataListadoCategorias_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

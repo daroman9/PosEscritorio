@@ -44,9 +44,9 @@ namespace CapaPresentacion
 
         private void Habilitar (bool valor)
         {
-            this.txtNombre.ReadOnly = !valor;
-            this.txtDescripcion.ReadOnly = !valor;
-            this.txtIdCategoria.ReadOnly = !valor;
+            this.txtNombre.Enabled = valor;
+            this.txtDescripcion.Enabled = valor;
+            this.txtIdCategoria.Enabled = valor;
         }
         //Método para habilitar los botones
         private void Botones()
@@ -89,11 +89,6 @@ namespace CapaPresentacion
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmCategoria_Load(object sender, EventArgs e)
         {
             this.Mostrar();
@@ -194,14 +189,11 @@ namespace CapaPresentacion
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
             this.txtIdCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
+            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Descripción"].Value);
 
             this.tabControl1.SelectedIndex = 1;
         }
-
-       
-
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
         {
             if(chkEliminar.Checked)

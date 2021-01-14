@@ -118,9 +118,9 @@
             // MnuAlmacen
             // 
             this.MnuAlmacen.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.articulosToolStripMenuItem,
             this.categoríasToolStripMenuItem,
-            this.presentacionesToolStripMenuItem});
+            this.presentacionesToolStripMenuItem,
+            this.articulosToolStripMenuItem});
             this.MnuAlmacen.Name = "MnuAlmacen";
             this.MnuAlmacen.Size = new System.Drawing.Size(66, 20);
             this.MnuAlmacen.Text = "Almacen";
@@ -128,21 +128,21 @@
             // articulosToolStripMenuItem
             // 
             this.articulosToolStripMenuItem.Name = "articulosToolStripMenuItem";
-            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.articulosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.articulosToolStripMenuItem.Text = "Articulos";
             this.articulosToolStripMenuItem.Click += new System.EventHandler(this.articulosToolStripMenuItem_Click);
             // 
             // categoríasToolStripMenuItem
             // 
             this.categoríasToolStripMenuItem.Name = "categoríasToolStripMenuItem";
-            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.categoríasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.categoríasToolStripMenuItem.Text = "Categorías";
             this.categoríasToolStripMenuItem.Click += new System.EventHandler(this.categoríasToolStripMenuItem_Click);
             // 
             // presentacionesToolStripMenuItem
             // 
             this.presentacionesToolStripMenuItem.Name = "presentacionesToolStripMenuItem";
-            this.presentacionesToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.presentacionesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.presentacionesToolStripMenuItem.Text = "Presentaciones";
             this.presentacionesToolStripMenuItem.Click += new System.EventHandler(this.presentacionesToolStripMenuItem_Click);
             // 

@@ -83,6 +83,16 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addPicture {
+            get {
+                object obj = ResourceManager.GetObject("addPicture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Banned_User {
             get {
                 object obj = ResourceManager.GetObject("Banned User", resourceCulture);
@@ -116,6 +126,16 @@ namespace CapaPresentacion.Properties {
         internal static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap deletePicture {
+            get {
+                object obj = ResourceManager.GetObject("deletePicture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
