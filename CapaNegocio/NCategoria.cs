@@ -13,21 +13,23 @@ namespace CapaNegocio
     {
         //Método que llama al método insertar de la clase DCategoria de la capa datos
 
-        public static string Insertar (string nombre, string descripcion)
+        public static string Insertar (string nombre, string descripcion, int impuesto)
         {
             DCategoria Obj = new DCategoria();
             Obj.Nombre = nombre;
             Obj.Descripcion = descripcion;
+            Obj.Impuesto = impuesto;
 
             return Obj.Insertar(Obj);
         }
         //Método que llama al método editar de la clase DCategoria de la capa de datos
-        public static string Editar(int idcategoria, string nombre, string descripcion)
+        public static string Editar(int idcategoria, string nombre, string descripcion, int impuesto)
         {
             DCategoria Obj = new DCategoria();
             Obj.Idcategoria = idcategoria;
             Obj.Nombre = nombre;
             Obj.Descripcion = descripcion;
+            Obj.Impuesto = impuesto;
 
             return Obj.Editar(Obj);
         }

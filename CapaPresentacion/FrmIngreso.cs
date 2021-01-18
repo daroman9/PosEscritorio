@@ -113,14 +113,24 @@ namespace CapaPresentacion
 
             //Ocultar columnas del grid de Articulos
             this.dataListadoArticulos.Columns[0].Visible = false;
-            this.dataListadoArticulos.Columns[1].Visible = false;
-            this.dataListadoArticulos.Columns[7].Visible = false;
+            //this.dataListadoArticulos.Columns[1].Visible = false;
+            //this.dataListadoArticulos.Columns[2].Visible = false;
+            //this.dataListadoArticulos.Columns[3].Visible = false;
+            //this.dataListadoArticulos.Columns[4].Visible = false;
+            //this.dataListadoArticulos.Columns[5].Visible = false;
+            this.dataListadoArticulos.Columns[6].Visible = false;
+            //this.dataListadoArticulos.Columns[7].Visible = false;
+            this.dataListadoArticulos.Columns[8].Visible = false;
             this.dataListadoArticulos.Columns[9].Visible = false;
             this.dataListadoArticulos.Columns[10].Visible = false;
+            //this.dataListadoArticulos.Columns[11].Visible = false;
 
             //Ocultar columnas del grid de Proveedores
             this.dataListadoProveedores.Columns[0].Visible = false;
-            this.dataListadoProveedores.Columns[1].Visible = false;
+            this.dataListadoProveedores.Columns[5].Visible = false;
+            this.dataListadoProveedores.Columns[6].Visible = false;
+            this.dataListadoProveedores.Columns[7].Visible = false;
+            this.dataListadoProveedores.Columns[8].Visible = false;
         }
         //Método mostrar
         private void Mostrar()
@@ -130,6 +140,8 @@ namespace CapaPresentacion
             this.dataListadoProveedores.DataSource = NProveedor.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
+            lblTotalArticulos.Text = "Total de registros: " + Convert.ToString(dataListadoArticulos.Rows.Count);
+            lblTotalProveedores.Text = "Total de registros: " + Convert.ToString(dataListadoProveedores.Rows.Count);
         }
         //Método para buscar por fechas
         private void BuscarFechas()
@@ -221,7 +233,7 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("fecha_produccion", System.Type.GetType("System.DateTime"));
             this.dtDetalle.Columns.Add("fecha_vencimiento", System.Type.GetType("System.DateTime"));
             this.dtDetalle.Columns.Add("subtotal", System.Type.GetType("System.Decimal"));
-            this.dtDetalle.Columns.Add("Impuesto", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Impuesto", System.Type.GetType("System.Int32"));
             //Relacionar nuestro DataGRidView con nuestro DataTable
             this.dataListadoDetalle.DataSource = this.dtDetalle;
 
@@ -333,6 +345,7 @@ namespace CapaPresentacion
                         row["fecha_produccion"] = dtFechaProduccion.Value;
                         row["fecha_vencimiento"] = dtFechaVencimiento.Value;
                         row["subtotal"] = subtotal;
+                        row["Impuesto"] = Convert.ToInt32(this.txtIgv.Text);
 
                         this.dtDetalle.Rows.Add(row);
 
@@ -389,6 +402,13 @@ namespace CapaPresentacion
         {
             this.txtIdProveedor.Text = Convert.ToString(this.dataListadoProveedores.CurrentRow.Cells["idproveedor"].Value);
             this.txtProveedor.Text = Convert.ToString(this.dataListadoProveedores.CurrentRow.Cells["razon_social"].Value);
+        }
+
+        private void txtBuscarNombreArticulo_TextChanged(object sender, EventArgs e)
+        {
+            this.dataListadoArticulos.DataSource = NArticulo.BuscarNombre(this.txtBuscarNombreArticulo.Text);
+            this.OcultarColumnas();
+            lblTotalArticulos.Text = "Total de registros: " + Convert.ToString(dataListadoArticulos.Rows.Count);
         }
     }
 }

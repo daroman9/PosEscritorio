@@ -17,11 +17,13 @@ namespace CapaDatos
         private string _Nombre;
         private string _Descripcion;
         private string _TextoBuscar;
+        private int _Impuesto;
 
         public int Idcategoria { get => _Idcategoria; set => _Idcategoria = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public string Descripcion { get => _Descripcion; set => _Descripcion = value; }
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
+        public int Impuesto { get => _Impuesto; set => _Impuesto = value; }
 
         //Constructor vacio 
         public DCategoria()
@@ -31,12 +33,13 @@ namespace CapaDatos
 
         //Constructor con parámetros
 
-        public DCategoria(int idcategoria, string nombre, string descripcion, string textobuscar)
+        public DCategoria(int idcategoria, string nombre, string descripcion, string textobuscar, int impuesto)
         {
             this.Idcategoria = idcategoria;
             this.Nombre = nombre;
             this.Descripcion = descripcion;
             this.TextoBuscar = textobuscar;
+            this.Impuesto = impuesto;
         }
 
         //Método Insertar
@@ -75,6 +78,12 @@ namespace CapaDatos
                 ParDescripcion.Size = 256;
                 ParDescripcion.Value = Categoria.Descripcion;
                 SqlCmd.Parameters.Add(ParDescripcion);
+
+                SqlParameter ParImpuesto = new SqlParameter();
+                ParImpuesto.ParameterName = "@impuesto";
+                ParImpuesto.SqlDbType = SqlDbType.Int;
+                ParImpuesto.Value = Categoria.Impuesto;
+                SqlCmd.Parameters.Add(ParImpuesto);
 
                 //Ejecutar el comando
 
@@ -128,6 +137,12 @@ namespace CapaDatos
                 ParDescripcion.Size = 256;
                 ParDescripcion.Value = Categoria.Descripcion;
                 SqlCmd.Parameters.Add(ParDescripcion);
+
+                SqlParameter ParImpuesto = new SqlParameter();
+                ParImpuesto.ParameterName = "@impuesto";
+                ParImpuesto.SqlDbType = SqlDbType.Int;
+                ParImpuesto.Value = Categoria.Impuesto;
+                SqlCmd.Parameters.Add(ParImpuesto);
 
                 //Ejecutar el comando
 

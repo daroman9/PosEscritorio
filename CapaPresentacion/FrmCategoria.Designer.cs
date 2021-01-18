@@ -35,6 +35,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtImpuesto = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -120,6 +122,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtImpuesto);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -139,6 +143,24 @@
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Agregar Categorías";
+            // 
+            // txtImpuesto
+            // 
+            this.txtImpuesto.Location = new System.Drawing.Point(185, 129);
+            this.txtImpuesto.Multiline = true;
+            this.txtImpuesto.Name = "txtImpuesto";
+            this.txtImpuesto.Size = new System.Drawing.Size(400, 26);
+            this.txtImpuesto.TabIndex = 26;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(15, 132);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(87, 18);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Impuesto:";
             // 
             // label9
             // 
@@ -185,7 +207,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(1065, 35);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 70);
-            this.btnCancelar.TabIndex = 19;
+            this.btnCancelar.TabIndex = 6;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -198,7 +220,7 @@
             this.btnEditar.Location = new System.Drawing.Point(945, 35);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(70, 70);
-            this.btnEditar.TabIndex = 18;
+            this.btnEditar.TabIndex = 5;
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
@@ -221,7 +243,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(795, 35);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(70, 70);
-            this.btnGuardar.TabIndex = 17;
+            this.btnGuardar.TabIndex = 4;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -230,7 +252,7 @@
             this.txtNombre.Location = new System.Drawing.Point(185, 30);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(400, 26);
-            this.txtNombre.TabIndex = 14;
+            this.txtNombre.TabIndex = 1;
             // 
             // btnNuevo
             // 
@@ -242,23 +264,23 @@
             this.btnNuevo.Location = new System.Drawing.Point(655, 35);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(70, 70);
-            this.btnNuevo.TabIndex = 16;
+            this.btnNuevo.TabIndex = 3;
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(185, 85);
+            this.txtDescripcion.Location = new System.Drawing.Point(185, 82);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(400, 65);
-            this.txtDescripcion.TabIndex = 15;
+            this.txtDescripcion.Size = new System.Drawing.Size(400, 26);
+            this.txtDescripcion.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(15, 90);
+            this.label5.Location = new System.Drawing.Point(15, 85);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(109, 18);
             this.label5.TabIndex = 12;
@@ -319,7 +341,7 @@
             this.chkEliminar.Location = new System.Drawing.Point(18, 275);
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Size = new System.Drawing.Size(91, 22);
-            this.chkEliminar.TabIndex = 5;
+            this.chkEliminar.TabIndex = 9;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
             this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
@@ -333,7 +355,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(795, 195);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(70, 70);
-            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.TabIndex = 9;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -346,7 +368,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(655, 195);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(70, 70);
-            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.TabIndex = 8;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -355,7 +377,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(185, 220);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(400, 26);
-            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TabIndex = 7;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // label2
@@ -372,7 +394,7 @@
             // 
             this.txtIdCategoria.Location = new System.Drawing.Point(17, 9);
             this.txtIdCategoria.Name = "txtIdCategoria";
-            this.txtIdCategoria.Size = new System.Drawing.Size(20, 20);
+            this.txtIdCategoria.Size = new System.Drawing.Size(10, 20);
             this.txtIdCategoria.TabIndex = 13;
             this.txtIdCategoria.Visible = false;
             // 
@@ -441,5 +463,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtImpuesto;
+        private System.Windows.Forms.Label label11;
     }
 }

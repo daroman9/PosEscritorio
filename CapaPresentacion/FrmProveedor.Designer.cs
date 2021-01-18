@@ -48,6 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSectorComercial = new System.Windows.Forms.TextBox();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.lbl = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -64,7 +65,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.txtSectorComercial = new System.Windows.Forms.TextBox();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -163,7 +163,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(789, 12);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(70, 70);
-            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.TabIndex = 4;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -176,7 +176,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(665, 12);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(70, 70);
-            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.TabIndex = 3;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -185,7 +185,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(215, 24);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(400, 26);
-            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TabIndex = 2;
             // 
             // btnCancelar
             // 
@@ -196,7 +196,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(473, 445);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 70);
-            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.TabIndex = 12;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -209,7 +209,7 @@
             this.btnEditar.Location = new System.Drawing.Point(330, 445);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(70, 70);
-            this.btnEditar.TabIndex = 8;
+            this.btnEditar.TabIndex = 11;
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
@@ -222,7 +222,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(182, 445);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(70, 70);
-            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.TabIndex = 10;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -235,7 +235,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(30, 445);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(70, 70);
-            this.btnNuevo.TabIndex = 6;
+            this.btnNuevo.TabIndex = 9;
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
@@ -244,7 +244,7 @@
             this.txtRazonSocial.Location = new System.Drawing.Point(187, 45);
             this.txtRazonSocial.Name = "txtRazonSocial";
             this.txtRazonSocial.Size = new System.Drawing.Size(400, 26);
-            this.txtRazonSocial.TabIndex = 4;
+            this.txtRazonSocial.TabIndex = 1;
             // 
             // txtIdProveedor
             // 
@@ -301,12 +301,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proveedores";
             // 
+            // txtSectorComercial
+            // 
+            this.txtSectorComercial.Location = new System.Drawing.Point(930, 225);
+            this.txtSectorComercial.Name = "txtSectorComercial";
+            this.txtSectorComercial.Size = new System.Drawing.Size(400, 26);
+            this.txtSectorComercial.TabIndex = 8;
+            // 
             // txtUrl
             // 
             this.txtUrl.Location = new System.Drawing.Point(187, 225);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(400, 26);
-            this.txtUrl.TabIndex = 22;
+            this.txtUrl.TabIndex = 4;
             // 
             // lbl
             // 
@@ -322,7 +329,7 @@
             this.txtEmail.Location = new System.Drawing.Point(187, 165);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(400, 26);
-            this.txtEmail.TabIndex = 20;
+            this.txtEmail.TabIndex = 3;
             // 
             // label10
             // 
@@ -338,7 +345,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(930, 165);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(400, 26);
-            this.txtTelefono.TabIndex = 18;
+            this.txtTelefono.TabIndex = 7;
             // 
             // label9
             // 
@@ -354,14 +361,14 @@
             this.txtDireccion.Location = new System.Drawing.Point(187, 105);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(400, 26);
-            this.txtDireccion.TabIndex = 16;
+            this.txtDireccion.TabIndex = 2;
             // 
             // txtNumDocumento
             // 
             this.txtNumDocumento.Location = new System.Drawing.Point(930, 105);
             this.txtNumDocumento.Name = "txtNumDocumento";
             this.txtNumDocumento.Size = new System.Drawing.Size(400, 26);
-            this.txtNumDocumento.TabIndex = 15;
+            this.txtNumDocumento.TabIndex = 6;
             // 
             // label8
             // 
@@ -381,7 +388,7 @@
             this.cbTipoDocumento.Location = new System.Drawing.Point(930, 45);
             this.cbTipoDocumento.Name = "cbTipoDocumento";
             this.cbTipoDocumento.Size = new System.Drawing.Size(400, 26);
-            this.cbTipoDocumento.TabIndex = 13;
+            this.cbTipoDocumento.TabIndex = 5;
             // 
             // label7
             // 
@@ -421,7 +428,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1590, 675);
-            this.tabControl1.TabIndex = 3;
+            this.tabControl1.TabIndex = 1;
             // 
             // errorIcono
             // 
@@ -430,20 +437,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(648, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(309, 55);
+            this.label1.Size = new System.Drawing.Size(325, 55);
             this.label1.TabIndex = 2;
             this.label1.Text = "Proveedores";
-            // 
-            // txtSectorComercial
-            // 
-            this.txtSectorComercial.Location = new System.Drawing.Point(930, 225);
-            this.txtSectorComercial.Name = "txtSectorComercial";
-            this.txtSectorComercial.Size = new System.Drawing.Size(400, 26);
-            this.txtSectorComercial.TabIndex = 23;
             // 
             // FrmProveedor
             // 

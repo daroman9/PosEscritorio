@@ -38,6 +38,7 @@ namespace CapaPresentacion
             this.txtNombre.Text = string.Empty;
             this.txtDescripcion.Text = string.Empty;
             this.txtIdCategoria.Text = string.Empty;
+            this.txtImpuesto.Text = string.Empty;
         }
 
         //Método para habilitar los controles del formulario
@@ -47,6 +48,7 @@ namespace CapaPresentacion
             this.txtNombre.Enabled = valor;
             this.txtDescripcion.Enabled = valor;
             this.txtIdCategoria.Enabled = valor;
+            this.txtImpuesto.Enabled = valor;
         }
         //Método para habilitar los botones
         private void Botones()
@@ -144,11 +146,11 @@ namespace CapaPresentacion
                 {
                     if (this.IsNuevo)
                     {
-                        rpta = NCategoria.Insertar(this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper());
+                        rpta = NCategoria.Insertar(this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), Convert.ToInt32(this.txtImpuesto.Text));
                     }
                     else
                     {
-                        rpta = NCategoria.Editar(Convert.ToInt32(this.txtIdCategoria.Text), this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper());
+                        rpta = NCategoria.Editar(Convert.ToInt32(this.txtIdCategoria.Text), this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), Convert.ToInt32(this.txtImpuesto.Text));
                     }
                     if (rpta.Equals("OK"))
                     {
@@ -191,6 +193,7 @@ namespace CapaPresentacion
             this.txtIdCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcategoria"].Value);
             this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
             this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Descripción"].Value);
+            this.txtImpuesto.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Impuesto"].Value);
 
             this.tabControl1.SelectedIndex = 1;
         }
