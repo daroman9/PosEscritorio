@@ -44,21 +44,22 @@ namespace CapaPresentacion
             this.txtEmail.Text = string.Empty;
             this.txtIdProveedor.Text = string.Empty;
             this.txtUrl.Text = string.Empty;
+            this.txtSectorComercial.Text = string.Empty;
         }
 
         //Método para habilitar los controles del formulario
 
         private void Habilitar(bool valor)
         {
-            this.txtRazonSocial.ReadOnly = !valor;
-            this.txtNumDocumento.ReadOnly = !valor;
-            this.txtDireccion.ReadOnly = !valor;
-            this.cbSectorComercial.Enabled = valor;
+            this.txtRazonSocial.Enabled = valor;
+            this.txtNumDocumento.Enabled = valor;
+            this.txtDireccion.Enabled = valor;
+            this.txtSectorComercial.Enabled = valor;
             this.cbTipoDocumento.Enabled = valor;
-            this.txtTelefono.ReadOnly = !valor;
-            this.txtEmail.ReadOnly = !valor;
-            this.txtUrl.ReadOnly = !valor;
-            this.txtIdProveedor.ReadOnly = !valor;
+            this.txtTelefono.Enabled = valor;
+            this.txtEmail.Enabled = valor;
+            this.txtUrl.Enabled = valor;
+            this.txtIdProveedor.Enabled = valor;
         }
         //Método para habilitar los botones
         private void Botones()
@@ -205,13 +206,13 @@ namespace CapaPresentacion
                 {
                     if (this.IsNuevo)
                     {
-                        rpta = NProveedor.Insertar(this.txtRazonSocial.Text.Trim().ToUpper(), this.cbSectorComercial.Text.ToUpper(),
+                        rpta = NProveedor.Insertar(this.txtRazonSocial.Text.Trim().ToUpper(), this.txtSectorComercial.Text.Trim().ToUpper(),
                                                    this.cbTipoDocumento.Text.ToUpper(),this.txtNumDocumento.Text, this.txtDireccion.Text.Trim().ToUpper(),
                                                    this.txtTelefono.Text.Trim().ToUpper(), this.txtEmail.Text.Trim().ToUpper(), this.txtUrl.Text.Trim().ToUpper());
                     }
                     else
                     {
-                        rpta = NProveedor.Editar(Convert.ToInt32(this.txtIdProveedor.Text), this.txtRazonSocial.Text.Trim().ToUpper(), this.cbSectorComercial.Text.ToUpper(),
+                        rpta = NProveedor.Editar(Convert.ToInt32(this.txtIdProveedor.Text), this.txtRazonSocial.Text.Trim().ToUpper(), this.txtSectorComercial.Text.Trim().ToUpper(),
                                                    this.cbTipoDocumento.Text.ToUpper(), this.txtNumDocumento.Text, this.txtDireccion.Text.Trim().ToUpper(),
                                                    this.txtTelefono.Text.Trim().ToUpper(), this.txtEmail.Text.Trim().ToUpper(), this.txtUrl.Text.Trim().ToUpper());
                     }
@@ -278,7 +279,7 @@ namespace CapaPresentacion
         {
             this.txtIdProveedor.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idproveedor"].Value);
             this.txtRazonSocial.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["razon_social"].Value);
-            this.cbSectorComercial.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sector_comercial"].Value);
+            this.txtSectorComercial.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sector_comercial"].Value);
             this.cbTipoDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_documento"].Value);
             this.txtNumDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["num_documento"].Value);
             this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["direccion"].Value);
@@ -286,7 +287,7 @@ namespace CapaPresentacion
             this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["email"].Value);
             this.txtUrl.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["url"].Value);
 
-            this.tabControl1.SelectedIndex = 1;
+            this.tabControl1.SelectedIndex = 0;
         }
     }
 }

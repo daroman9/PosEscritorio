@@ -290,7 +290,7 @@ namespace CapaPresentacion
             this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["telefono"].Value);
             this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["email"].Value);
          
-            this.tabControl1.SelectedIndex = 1;
+            this.tabControl1.SelectedIndex = 0;
         }
     }
 }
