@@ -50,9 +50,9 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
@@ -293,14 +293,6 @@
             this.txtNombre.Size = new System.Drawing.Size(400, 26);
             this.txtNombre.TabIndex = 4;
             // 
-            // txtIdCliente
-            // 
-            this.txtIdCliente.Location = new System.Drawing.Point(17, 12);
-            this.txtIdCliente.Name = "txtIdCliente";
-            this.txtIdCliente.Size = new System.Drawing.Size(10, 20);
-            this.txtIdCliente.TabIndex = 3;
-            this.txtIdCliente.Visible = false;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -319,6 +311,14 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Nombres:";
             // 
+            // txtIdCliente
+            // 
+            this.txtIdCliente.Location = new System.Drawing.Point(17, 12);
+            this.txtIdCliente.Name = "txtIdCliente";
+            this.txtIdCliente.Size = new System.Drawing.Size(10, 20);
+            this.txtIdCliente.TabIndex = 3;
+            this.txtIdCliente.Visible = false;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -333,11 +333,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(648, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 55);
+            this.label1.Size = new System.Drawing.Size(216, 55);
             this.label1.TabIndex = 4;
             this.label1.Text = "Clientes";
             // 

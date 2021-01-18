@@ -150,7 +150,7 @@
             this.txtImpuesto.Multiline = true;
             this.txtImpuesto.Name = "txtImpuesto";
             this.txtImpuesto.Size = new System.Drawing.Size(400, 26);
-            this.txtImpuesto.TabIndex = 26;
+            this.txtImpuesto.TabIndex = 3;
             // 
             // label11
             // 
@@ -207,7 +207,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(1065, 35);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(70, 70);
-            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -220,7 +220,7 @@
             this.btnEditar.Location = new System.Drawing.Point(945, 35);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(70, 70);
-            this.btnEditar.TabIndex = 5;
+            this.btnEditar.TabIndex = 6;
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
@@ -243,7 +243,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(795, 35);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(70, 70);
-            this.btnGuardar.TabIndex = 4;
+            this.btnGuardar.TabIndex = 5;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -264,7 +264,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(655, 35);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(70, 70);
-            this.btnNuevo.TabIndex = 3;
+            this.btnNuevo.TabIndex = 4;
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
@@ -355,7 +355,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(795, 195);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(70, 70);
-            this.btnEliminar.TabIndex = 9;
+            this.btnEliminar.TabIndex = 10;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -368,7 +368,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(655, 195);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(70, 70);
-            this.btnBuscar.TabIndex = 8;
+            this.btnBuscar.TabIndex = 9;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -377,7 +377,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(185, 220);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(400, 26);
-            this.txtBuscar.TabIndex = 7;
+            this.txtBuscar.TabIndex = 8;
             this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // label2
