@@ -389,11 +389,11 @@ namespace CapaPresentacion
             }
             else
             {
+
                 // this.chkEliminar.Visible = true;
                 MessageBox.Show("Hola");
                
             }
-
         }
         //Método para obtener la serie del último registro
         public void UltimaSerie()
