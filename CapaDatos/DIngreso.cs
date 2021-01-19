@@ -17,7 +17,6 @@ namespace CapaDatos
         private int _Idproveedor;
         private DateTime _Fecha;
         private string _Serie;
-        private decimal __Igv;
         private string _Estado;
 
         public int Idingreso { get => _Idingreso; set => _Idingreso = value; }
@@ -25,7 +24,6 @@ namespace CapaDatos
         public int Idproveedor { get => _Idproveedor; set => _Idproveedor = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
         public string Serie { get => _Serie; set => _Serie = value; }
-        public decimal Igv { get => __Igv; set => __Igv = value; }
         public string Estado { get => _Estado; set => _Estado = value; }
 
         //Constructor vacio
@@ -34,14 +32,13 @@ namespace CapaDatos
 
         }
         //Constructor con parametros
-        public DIngreso(int idingreso, int idtrabajador, int idproveedor, DateTime fecha, string serie, decimal igv, string estado)
+        public DIngreso(int idingreso, int idtrabajador, int idproveedor, DateTime fecha, string serie, string estado)
         {
             this.Idingreso = idingreso;
             this.Idtrabajador = idtrabajador;
             this.Idproveedor = idproveedor;
             this.Fecha = fecha;
             this.Serie = serie;
-            this.Igv = igv;
             this.Estado = estado;
         }
         //Método Insertar
@@ -94,14 +91,6 @@ namespace CapaDatos
                 ParSerie.Size = 4;
                 ParSerie.Value = Ingreso.Serie;
                 SqlCmd.Parameters.Add(ParSerie);
-
-                SqlParameter ParIgv = new SqlParameter();
-                ParIgv.ParameterName = "@igv";
-                ParIgv.SqlDbType = SqlDbType.Decimal;
-                ParIgv.Precision = 4;
-                ParIgv.Scale = 2;
-                ParIgv.Value = Ingreso.Igv;
-                SqlCmd.Parameters.Add(ParIgv);
 
                 SqlParameter ParEstado = new SqlParameter();
                 ParEstado.ParameterName = "@estado";
@@ -292,5 +281,34 @@ namespace CapaDatos
 
             return DtResultado;
         }
+        //Método para traer la serie del ultimo registro
+        public DataTable UltimaSerie()
+        {
+            DataTable DtResultado = new DataTable("ingreso");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "sp_ultimo_ingreso";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
+
+
+
+
     }
 }

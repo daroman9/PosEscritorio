@@ -39,10 +39,8 @@
             this.dtFecha2 = new System.Windows.Forms.DateTimePicker();
             this.dtFecha1 = new System.Windows.Forms.DateTimePicker();
             this.dataListado = new System.Windows.Forms.DataGridView();
-            this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotal = new System.Windows.Forms.Label();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -66,12 +64,10 @@
             this.lblTotalPagado = new System.Windows.Forms.Label();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
             this.dtFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.dtFechaProduccion = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtIgv = new System.Windows.Forms.TextBox();
             this.txtStockInicial = new System.Windows.Forms.TextBox();
             this.txtSerie = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -97,6 +93,8 @@
             this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.txtIdIngreso = new System.Windows.Forms.TextBox();
+            this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnVolverDataListado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -142,13 +140,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnVolverDataListado);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.dtFecha2);
             this.tabPage1.Controls.Add(this.dtFecha1);
             this.tabPage1.Controls.Add(this.dataListado);
             this.tabPage1.Controls.Add(this.lblTotal);
             this.tabPage1.Controls.Add(this.chkEliminar);
-            this.tabPage1.Controls.Add(this.btnImprimir);
             this.tabPage1.Controls.Add(this.btnEliminar);
             this.tabPage1.Controls.Add(this.btnBuscar);
             this.tabPage1.Controls.Add(this.label2);
@@ -163,7 +161,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(295, 22);
+            this.label12.Location = new System.Drawing.Point(443, 32);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 18);
             this.label12.TabIndex = 10;
@@ -172,17 +170,17 @@
             // dtFecha2
             // 
             this.dtFecha2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha2.Location = new System.Drawing.Point(402, 20);
+            this.dtFecha2.Location = new System.Drawing.Point(551, 24);
             this.dtFecha2.Name = "dtFecha2";
-            this.dtFecha2.Size = new System.Drawing.Size(200, 26);
+            this.dtFecha2.Size = new System.Drawing.Size(300, 26);
             this.dtFecha2.TabIndex = 9;
             // 
             // dtFecha1
             // 
             this.dtFecha1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha1.Location = new System.Drawing.Point(122, 16);
+            this.dtFecha1.Location = new System.Drawing.Point(119, 26);
             this.dtFecha1.Name = "dtFecha1";
-            this.dtFecha1.Size = new System.Drawing.Size(200, 26);
+            this.dtFecha1.Size = new System.Drawing.Size(300, 26);
             this.dtFecha1.TabIndex = 8;
             // 
             // dataListado
@@ -201,23 +199,18 @@
             this.dataListado.ReadOnly = true;
             this.dataListado.RowHeadersVisible = false;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(1575, 535);
+            this.dataListado.Size = new System.Drawing.Size(1575, 647);
             this.dataListado.TabIndex = 7;
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
             // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(222, 69);
+            this.lblTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(1134, 52);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(56, 18);
+            this.lblTotal.Size = new System.Drawing.Size(71, 24);
             this.lblTotal.TabIndex = 6;
             this.lblTotal.Text = "label3";
             // 
@@ -232,39 +225,36 @@
             this.chkEliminar.UseVisualStyleBackColor = true;
             this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
             // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Location = new System.Drawing.Point(862, 21);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(70, 70);
-            this.btnImprimir.TabIndex = 4;
-            this.btnImprimir.Text = "&Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(757, 21);
+            this.btnEliminar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Location = new System.Drawing.Point(998, 6);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(70, 70);
             this.btnEliminar.TabIndex = 3;
-            this.btnEliminar.Text = "&Anular";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(647, 21);
+            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(876, 6);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(70, 70);
             this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "&Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 21);
+            this.label2.Location = new System.Drawing.Point(3, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 18);
             this.label2.TabIndex = 0;
@@ -306,12 +296,10 @@
             this.groupBox1.Controls.Add(this.lblTotalPagado);
             this.groupBox1.Controls.Add(this.btnQuitar);
             this.groupBox1.Controls.Add(this.btnAgregar);
-            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.dtFechaVencimiento);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.dtFechaProduccion);
             this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.txtIgv);
             this.groupBox1.Controls.Add(this.txtStockInicial);
             this.groupBox1.Controls.Add(this.txtSerie);
             this.groupBox1.Controls.Add(this.label5);
@@ -355,7 +343,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(935, 308);
+            this.label6.Location = new System.Drawing.Point(935, 346);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 18);
             this.label6.TabIndex = 53;
@@ -364,7 +352,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(935, 419);
+            this.label3.Location = new System.Drawing.Point(604, 425);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 18);
             this.label3.TabIndex = 52;
@@ -372,17 +360,19 @@
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(1066, 296);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(1066, 334);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(300, 26);
             this.txtPrecioVenta.TabIndex = 51;
+            this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // txtPrecioCompra
             // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(1066, 338);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(1066, 304);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(300, 26);
             this.txtPrecioCompra.TabIndex = 50;
+            this.txtPrecioCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioCompra_KeyPress);
             // 
             // dataListadoDetalle
             // 
@@ -480,7 +470,7 @@
             // lblTotalPagado
             // 
             this.lblTotalPagado.AutoSize = true;
-            this.lblTotalPagado.Location = new System.Drawing.Point(1063, 419);
+            this.lblTotalPagado.Location = new System.Drawing.Point(806, 425);
             this.lblTotalPagado.Name = "lblTotalPagado";
             this.lblTotalPagado.Size = new System.Drawing.Size(33, 18);
             this.lblTotalPagado.TabIndex = 40;
@@ -512,15 +502,6 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(433, 414);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 18);
-            this.label14.TabIndex = 32;
-            this.label14.Text = "Igv: ";
-            // 
             // dtFechaVencimiento
             // 
             this.dtFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -549,18 +530,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(935, 344);
+            this.label15.Location = new System.Drawing.Point(935, 310);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(136, 18);
             this.label15.TabIndex = 40;
             this.label15.Text = "Precio Compra: ";
-            // 
-            // txtIgv
-            // 
-            this.txtIgv.Location = new System.Drawing.Point(607, 414);
-            this.txtIgv.Name = "txtIgv";
-            this.txtIgv.Size = new System.Drawing.Size(300, 26);
-            this.txtIgv.TabIndex = 31;
             // 
             // txtStockInicial
             // 
@@ -568,6 +542,7 @@
             this.txtStockInicial.Name = "txtStockInicial";
             this.txtStockInicial.Size = new System.Drawing.Size(300, 26);
             this.txtStockInicial.TabIndex = 39;
+            this.txtStockInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockInicial_KeyPress);
             // 
             // txtSerie
             // 
@@ -803,6 +778,23 @@
             this.txtIdIngreso.TabIndex = 3;
             this.txtIdIngreso.Visible = false;
             // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Anular";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            // 
+            // btnVolverDataListado
+            // 
+            this.btnVolverDataListado.Location = new System.Drawing.Point(119, 69);
+            this.btnVolverDataListado.Name = "btnVolverDataListado";
+            this.btnVolverDataListado.Size = new System.Drawing.Size(75, 23);
+            this.btnVolverDataListado.TabIndex = 11;
+            this.btnVolverDataListado.Text = "Volver";
+            this.btnVolverDataListado.UseVisualStyleBackColor = true;
+            this.btnVolverDataListado.Visible = false;
+            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
+            // 
             // FrmIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -850,10 +842,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dataListado;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.CheckBox chkEliminar;
-        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label label2;
@@ -874,8 +864,6 @@
         private System.Windows.Forms.DateTimePicker dtFecha1;
         private System.Windows.Forms.Label lblTotalPagado;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtIgv;
         private System.Windows.Forms.TextBox txtSerie;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label13;
@@ -913,5 +901,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
+        private System.Windows.Forms.Button btnVolverDataListado;
     }
 }

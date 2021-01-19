@@ -14,14 +14,13 @@ namespace CapaNegocio
         //Método que llama al método insertar de la clase DIngreso de la capa datos
 
         public static string Insertar(int idtrabajador, int idproveedor, DateTime fecha,
-            string serie, decimal igv, string estado, DataTable dtDetalles)
+            string serie, string estado, DataTable dtDetalles)
         {
             DIngreso Obj = new DIngreso();
             Obj.Idtrabajador = idtrabajador;
             Obj.Idproveedor = idproveedor;
             Obj.Fecha = fecha;
             Obj.Serie = serie;
-            Obj.Igv = igv;
             Obj.Estado = estado;
             List<DDetalle_Ingreso> detalles = new List<DDetalle_Ingreso>();
             foreach (DataRow row in dtDetalles.Rows)
@@ -65,6 +64,12 @@ namespace CapaNegocio
             DIngreso Obj = new DIngreso();
 
             return Obj.MostrarDetalle(textoBuscar);
+        }
+
+        //Método que llama el método que busca la serie del último registro
+        public static DataTable UltimaSerie()
+        {
+            return new DIngreso().UltimaSerie();
         }
     }
 }

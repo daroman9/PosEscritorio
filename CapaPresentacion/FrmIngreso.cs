@@ -18,6 +18,8 @@ namespace CapaPresentacion
         private bool IsNuevo;
         private DataTable dtDetalle;
         private decimal totalPagado = 0;
+        private DataTable ultimaSerie;
+        private bool listadoDetalle = true;
         public FrmIngreso()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace CapaPresentacion
             this.txtIdProveedor.Visible = false;
             this.txtArticulo.ReadOnly = true;
             this.txtProveedor.ReadOnly = true;
+            this.txtSerie.ReadOnly = true;
           
         }
 
@@ -55,10 +58,9 @@ namespace CapaPresentacion
             this.txtIdProveedor.Text = string.Empty;
             this.txtProveedor.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
-            this.txtIgv.Text = "19";
             this.lblTotalPagado.Text = "0.0";
+            this.ultimaSerie = null;
             this.CrearTabla();
-
         }
         private void LimpiarDetalle()
         {
@@ -67,19 +69,16 @@ namespace CapaPresentacion
             this.txtStockInicial.Text = string.Empty;
             this.txtPrecioCompra.Text = string.Empty;
             this.txtPrecioVenta.Text = string.Empty;
-
         }
         //Método para habilitar los controles del formulario
 
         private void Habilitar(bool valor)
         {
-            this.txtIdIngreso.ReadOnly = !valor;
-            this.txtSerie.ReadOnly = !valor;
-            this.txtIgv.ReadOnly = !valor;
+            this.txtIdIngreso.Enabled = valor;
             this.dtFecha.Enabled = valor;
-            this.txtStockInicial.ReadOnly = !valor;
-            this.txtPrecioCompra.ReadOnly = !valor;
-            this.txtPrecioVenta.ReadOnly = !valor;
+            this.txtStockInicial.Enabled = valor;
+            this.txtPrecioCompra.Enabled = valor;
+            this.txtPrecioVenta.Enabled = valor;
             this.dtFechaProduccion.Enabled = valor;
             this.dtFechaVencimiento.Enabled = valor;
 
@@ -113,18 +112,11 @@ namespace CapaPresentacion
 
             //Ocultar columnas del grid de Articulos
             this.dataListadoArticulos.Columns[0].Visible = false;
-            //this.dataListadoArticulos.Columns[1].Visible = false;
-            //this.dataListadoArticulos.Columns[2].Visible = false;
-            //this.dataListadoArticulos.Columns[3].Visible = false;
-            //this.dataListadoArticulos.Columns[4].Visible = false;
-            //this.dataListadoArticulos.Columns[5].Visible = false;
             this.dataListadoArticulos.Columns[6].Visible = false;
-            //this.dataListadoArticulos.Columns[7].Visible = false;
             this.dataListadoArticulos.Columns[8].Visible = false;
             this.dataListadoArticulos.Columns[9].Visible = false;
             this.dataListadoArticulos.Columns[10].Visible = false;
-            //this.dataListadoArticulos.Columns[11].Visible = false;
-
+      
             //Ocultar columnas del grid de Proveedores
             this.dataListadoProveedores.Columns[0].Visible = false;
             this.dataListadoProveedores.Columns[5].Visible = false;
@@ -155,6 +147,7 @@ namespace CapaPresentacion
         private void MostrarDetalle()
         {
             this.dataListado.DataSource = NIngreso.MostrarDetalle(this.txtIdIngreso.Text);
+
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -225,15 +218,14 @@ namespace CapaPresentacion
         private void CrearTabla()
         {
             this.dtDetalle = new DataTable("Detalle");
-            this.dtDetalle.Columns.Add("idarticulo", System.Type.GetType("System.Int32"));
-            this.dtDetalle.Columns.Add("articulo", System.Type.GetType("System.String"));
-            this.dtDetalle.Columns.Add("precio_compra", System.Type.GetType("System.Decimal"));
-            this.dtDetalle.Columns.Add("precio_venta", System.Type.GetType("System.Decimal"));
-            this.dtDetalle.Columns.Add("stock_inicial", System.Type.GetType("System.Int32"));
-            this.dtDetalle.Columns.Add("fecha_produccion", System.Type.GetType("System.DateTime"));
-            this.dtDetalle.Columns.Add("fecha_vencimiento", System.Type.GetType("System.DateTime"));
-            this.dtDetalle.Columns.Add("subtotal", System.Type.GetType("System.Decimal"));
-            this.dtDetalle.Columns.Add("Impuesto", System.Type.GetType("System.Int32"));
+            this.dtDetalle.Columns.Add("Idarticulo", System.Type.GetType("System.Int32"));
+            this.dtDetalle.Columns.Add("Articulo", System.Type.GetType("System.String"));
+            this.dtDetalle.Columns.Add("Precio_compra", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Precio_venta", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Stock_inicial", System.Type.GetType("System.Int32"));
+            this.dtDetalle.Columns.Add("Fecha_produccion", System.Type.GetType("System.DateTime"));
+            this.dtDetalle.Columns.Add("Fecha_vencimiento", System.Type.GetType("System.DateTime"));
+            this.dtDetalle.Columns.Add("Subtotal", System.Type.GetType("System.Decimal"));
             //Relacionar nuestro DataGRidView con nuestro DataTable
             this.dataListadoDetalle.DataSource = this.dtDetalle;
 
@@ -245,7 +237,8 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.txtSerie.Focus();
+            this.UltimaSerie();
+            this.txtStockInicial.Focus();
             this.LimpiarDetalle();
         }
 
@@ -263,12 +256,11 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
-                if (this.txtIdProveedor.Text == string.Empty || this.txtSerie.Text == string.Empty || this.txtIgv.Text == string.Empty)
+                if (this.txtIdProveedor.Text == string.Empty || this.txtSerie.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
                     errorIcono.SetError(txtIdProveedor, "Ingrese un valor");
                     errorIcono.SetError(txtSerie, "Ingrese un valor");
-                    errorIcono.SetError(txtIgv, "Ingrese un valor");
                 }
                 else
                 {
@@ -277,7 +269,7 @@ namespace CapaPresentacion
                     {
              
                         rpta = NIngreso.Insertar(Idtrabajador, Convert.ToInt32(this.txtIdProveedor.Text), dtFecha.Value,
-                                                 this.txtSerie.Text, Convert.ToDecimal(this.txtIgv.Text), "EMITIDO", dtDetalle);
+                                                 this.txtSerie.Text, "EMITIDO", dtDetalle);
                     }
                    
                     if (rpta.Equals("OK"))
@@ -337,15 +329,14 @@ namespace CapaPresentacion
                         this.lblTotalPagado.Text = totalPagado.ToString("#0.00#");
                         //Agregar detalle al datalistadoDetalle
                         DataRow row = this.dtDetalle.NewRow();
-                        row["idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
-                        row["articulo"] = this.txtArticulo.Text;
-                        row["precio_compra"] = Convert.ToDecimal(this.txtPrecioCompra.Text);
-                        row["precio_venta"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
-                        row["stock_inicial"] = Convert.ToInt32(this.txtStockInicial.Text);
-                        row["fecha_produccion"] = dtFechaProduccion.Value;
-                        row["fecha_vencimiento"] = dtFechaVencimiento.Value;
-                        row["subtotal"] = subtotal;
-                        row["Impuesto"] = Convert.ToInt32(this.txtIgv.Text);
+                        row["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
+                        row["Articulo"] = this.txtArticulo.Text;
+                        row["Precio_compra"] = Convert.ToDecimal(this.txtPrecioCompra.Text);
+                        row["Precio_venta"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
+                        row["Stock_inicial"] = Convert.ToInt32(this.txtStockInicial.Text);
+                        row["Fecha_produccion"] = dtFechaProduccion.Value;
+                        row["Fecha_vencimiento"] = dtFechaVencimiento.Value;
+                        row["Subtotal"] = subtotal;
 
                         this.dtDetalle.Rows.Add(row);
 
@@ -381,21 +372,43 @@ namespace CapaPresentacion
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
-            this.txtIdIngreso.Text =Convert.ToString(this.dataListado.CurrentRow.Cells["idingreso"].Value);
-            this.txtProveedor.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["proveedor"].Value);
-            this.dtFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha"].Value);
-            this.txtSerie.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["serie"].Value);
-            this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["total"].Value);
+            if(listadoDetalle)
+            {
+                this.txtIdIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idingreso"].Value);
+                this.txtProveedor.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Proveedor"].Value);
+                this.dtFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha"].Value);
+                this.txtSerie.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Serie"].Value);
+                this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Total"].Value);
 
-            this.MostrarDetalle();
-            this.tabControl1.SelectedIndex = 1;
+                this.MostrarDetalle();
+                //this.tabControl1.SelectedIndex = 0;
+                this.chkEliminar.Visible = false;
+                this.btnVolverDataListado.Visible = true;
+                this.lblTotal.Text = Convert.ToString("Total de registros: " + dataListado.Rows.Count);
+                this.listadoDetalle = false;
+            }
+            else
+            {
+                // this.chkEliminar.Visible = true;
+                MessageBox.Show("Hola");
+               
+            }
 
         }
-
+        //Método para obtener la serie del último registro
+        public void UltimaSerie()
+        {
+            int ultimoValor;
+            this.ultimaSerie = NIngreso.UltimaSerie();
+            ultimoValor = Convert.ToInt32(this.ultimaSerie.Rows[0]["Serie"].ToString().Substring(3));
+            ultimoValor++;
+            this.txtSerie.Text = Convert.ToString("IN-"+ultimoValor);
+        }
         private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
         {
             this.txtIdArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["idarticulo"].Value);
-            this.txtArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["marca"].Value);
+            this.txtArticulo.Text = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["descripcion"].Value + " " +
+            this.dataListadoArticulos.CurrentRow.Cells["marca"].Value + " " + "X" + " " + this.dataListadoArticulos.CurrentRow.Cells["contenido"].Value);
         }
 
         private void dataListadoProveedores_DoubleClick(object sender, EventArgs e)
@@ -408,7 +421,75 @@ namespace CapaPresentacion
         {
             this.dataListadoArticulos.DataSource = NArticulo.BuscarNombre(this.txtBuscarNombreArticulo.Text);
             this.OcultarColumnas();
-            lblTotalArticulos.Text = "Total de registros: " + Convert.ToString(dataListadoArticulos.Rows.Count);
+            this.lblTotalArticulos.Text = "Total de registros: " + Convert.ToString(dataListadoArticulos.Rows.Count);
+        }
+
+        private void txtStockInicial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrecioCompra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPrecioVenta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnVolverDataListado_Click(object sender, EventArgs e)
+        {
+            this.dataListado.DataSource = NIngreso.Mostrar();
+            this.chkEliminar.Visible = true;
+            this.lblTotal.Text = Convert.ToString("Total de registros: " + dataListado.Rows.Count);
+            this.listadoDetalle = true;
         }
     }
 }

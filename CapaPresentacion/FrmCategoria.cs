@@ -257,5 +257,25 @@ namespace CapaPresentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+        //Validación para que solo permita ingresar valores númericos
+        private void txtImpuesto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+              e.Handled = false;
+            }
+            else
+            {
+              e.Handled = true;
+            }
+        }
     }
 }

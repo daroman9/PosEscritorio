@@ -34,9 +34,6 @@ namespace CapaDatos
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
         public int Descuento { get => _Descuento; set => _Descuento = value; }
 
-
-
-
         //Constructor sin parametros
         public DArticulo()
         {
