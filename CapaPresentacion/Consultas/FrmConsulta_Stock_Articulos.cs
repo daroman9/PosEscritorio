@@ -23,7 +23,6 @@ namespace CapaPresentacion.Consultas
         private void OcultarColumnas()
         {
             this.dataListado.Columns[0].Visible = false;
-            this.dataListado.Columns[6].Visible = false;
         }
 
         //Método mostrar

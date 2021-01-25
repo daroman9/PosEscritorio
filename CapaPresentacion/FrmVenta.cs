@@ -386,7 +386,7 @@ namespace CapaPresentacion
             par9 = 0;
             par10 = 0;
 
-            this.tabControl1.SelectedIndex = 1;
+            this.tabControl1.SelectedIndex = 0;
             this.txtCodigoBarras.Text = string.Empty;
             this.txtCodigoBarras.Focus();
 
@@ -397,7 +397,7 @@ namespace CapaPresentacion
             this.txtIdCliente.Text = Convert.ToString(this.dataListadoClientes.CurrentRow.Cells["idcliente"].Value);
             this.txtCliente.Text = Convert.ToString(this.dataListadoClientes.CurrentRow.Cells["nombre"].Value)  + ' ' + (this.dataListadoClientes.CurrentRow.Cells["apellidos"].Value);
 
-            this.tabControl1.SelectedIndex = 1;
+            this.tabControl1.SelectedIndex = 0;
         }
 
         private void cacularItems()
@@ -556,11 +556,6 @@ namespace CapaPresentacion
             {
                 MensajeError("No hay fila para remover");
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

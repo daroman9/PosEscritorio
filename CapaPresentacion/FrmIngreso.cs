@@ -63,8 +63,6 @@ namespace CapaPresentacion
             this.txtIdProveedor.Text = string.Empty;
             this.txtProveedor.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
-            this.txtPorcentaje.Text = string.Empty;
-            this.txtUtilidad.Text = string.Empty;
             this.lblTotalPagado.Text = "0.0";
             this.ultimaSerie = null;
             this.CrearTabla();
@@ -74,8 +72,11 @@ namespace CapaPresentacion
             this.txtIdArticulo.Text = string.Empty;
             this.txtArticulo.Text = string.Empty;
             this.txtStockInicial.Text = string.Empty;
-            //this.txtPrecioCompra.Text = string.Empty;
-            //this.txtPrecioVenta.Text = string.Empty;
+            this.txtPorcentaje.Text = string.Empty;
+            this.txtUtilidad.Text = string.Empty;
+            this.txtPrecioCompra.Text = string.Empty;
+            this.txtUtilidad.Text = string.Empty;
+            this.txtPrecioVenta.Text = string.Empty;
         }
         //Método para habilitar los controles del formulario
 
@@ -404,22 +405,29 @@ namespace CapaPresentacion
             }
             else
             {
-                this.txtIddetalleIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["iddetalle_ingreso"].Value);
-                this.txtMarca.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["marca"].Value);
-                this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
-                this.txtContenido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["contenido"].Value);
-                this.txtPrecioCompraIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_compra"].Value);
-                this.txtPrecioVentaIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta"].Value);
-                this.txtPorcentajeIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["porcentaje"].Value);
-                this.txtUtilidadIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["utilidad"].Value);
-                this.txtStockInicialIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["stock_inicial"].Value);
-                this.dtFechaProduccionIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_produccion"].Value);
-                this.dtFechaVencimientoIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_vencimiento"].Value);
-
+                MostrarArticulos();
                 this.tabControl1.SelectedIndex = 2;
 
             }
         }
+        //Método para mostrar los articulos ingresados
+        public void MostrarArticulos()
+        {
+            this.txtIddetalleIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["iddetalle_ingreso"].Value);
+            this.txtMarca.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["marca"].Value);
+            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
+            this.txtContenido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["contenido"].Value);
+            this.txtPrecioCompraIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_compra"].Value);
+            this.txtPrecioVentaIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta"].Value);
+            this.txtPorcentajeIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["porcentaje"].Value);
+            this.txtUtilidadIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["utilidad"].Value);
+            this.txtStockInicialIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["stock_inicial"].Value);
+            this.dtFechaProduccionIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_produccion"].Value);
+            this.dtFechaVencimientoIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_vencimiento"].Value);
+        }
+
+
+
         //Método para obtener la serie del último registro
         public void UltimaSerie()
         {
@@ -644,22 +652,6 @@ namespace CapaPresentacion
                 MessageBox.Show("Revise los valores ingresados");
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            calcularPorcentaje();
-        }
-
-        private void txtPorcentaje_TextChanged(object sender, EventArgs e)
-        {
-            calcularPrecioVenta();
-        }
-
-        private void txtPrecioVenta_TextChanged(object sender, EventArgs e)
-        {
-            calcularPorcentaje();
-        }
-
         private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (13))
@@ -670,7 +662,6 @@ namespace CapaPresentacion
             }   
 
         }
-
         private void btnGuardarIngreso_Click(object sender, EventArgs e)
         {
             try
@@ -695,9 +686,11 @@ namespace CapaPresentacion
                {
                  this.MensajeError(rpta);
                }
-              //this.Botones();
-              //this.Limpiar();
-              //this.Mostrar();
+              this.LimpiarArticulos();
+              this.MostrarDetalle();
+              this.MostrarArticulos();
+              this.tabControl1.SelectedIndex = 1;                
+
             
             }
             catch (Exception ex)
@@ -719,6 +712,15 @@ namespace CapaPresentacion
         }
 
         private void btnCancelarIngreso_Click(object sender, EventArgs e)
+        {
+            LimpiarArticulos();
+            this.MostrarDetalle();
+            this.MostrarArticulos();
+            this.tabControl1.SelectedIndex = 1;
+        }
+
+        //Función para limpiar los campos de los articulos modificados
+        public void LimpiarArticulos()
         {
             this.rdbPorcentajeIngreso.Enabled = false;
             this.rdbPrecioIngreso.Enabled = false;
@@ -841,15 +843,28 @@ namespace CapaPresentacion
                 this.txtUtilidadIngreso.Text = string.Empty;
             }
         }
-
-        private void txtPorcentajeIngreso_TextChanged(object sender, EventArgs e)
+        private void btnCalcularIngreso_Click(object sender, EventArgs e)
         {
-            calcularPrecioVentaIngreso();
+            if(rdbPorcentaje.Checked == true & rdbPrecio.Checked == false)
+            {
+                calcularPrecioVenta(); 
+            }
+            else if(rdbPorcentaje.Checked == false & rdbPrecio.Checked == true)
+            {
+                calcularPorcentaje();
+            }
         }
 
-        private void txtPrecioVentaIngreso_TextChanged(object sender, EventArgs e)
+        private void btnCalcularArticulo_Click(object sender, EventArgs e)
         {
-            calcularPorcentajeIngreso();
+            if (rdbPorcentajeIngreso.Checked == true & rdbPrecioIngreso.Checked == false)
+            {
+                calcularPrecioVentaIngreso();
+            }
+            else if (rdbPorcentajeIngreso.Checked == false & rdbPrecioIngreso.Checked == true)
+            {
+                calcularPorcentajeIngreso();
+            }
         }
     }
 }

@@ -49,7 +49,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCalcularIngreso = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.txtUtilidad = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -100,31 +100,33 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.tabArticulos = new System.Windows.Forms.TabPage();
-            this.btnEditarIngreso = new System.Windows.Forms.Button();
-            this.btnCancelarIngreso = new System.Windows.Forms.Button();
-            this.btnGuardarIngreso = new System.Windows.Forms.Button();
-            this.rdbPrecioIngreso = new System.Windows.Forms.RadioButton();
-            this.rdbPorcentajeIngreso = new System.Windows.Forms.RadioButton();
-            this.v = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.dtFechaVencimientoIngreso = new System.Windows.Forms.DateTimePicker();
-            this.label22 = new System.Windows.Forms.Label();
-            this.dtFechaProduccionIngreso = new System.Windows.Forms.DateTimePicker();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtPrecioCompraIngreso = new System.Windows.Forms.TextBox();
-            this.txtContenido = new System.Windows.Forms.TextBox();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.txtPrecioVentaIngreso = new System.Windows.Forms.TextBox();
-            this.txtUtilidadIngreso = new System.Windows.Forms.TextBox();
-            this.txtStockInicialIngreso = new System.Windows.Forms.TextBox();
-            this.txtPorcentajeIngreso = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCalcularArticulo = new System.Windows.Forms.Button();
             this.txtMarca = new System.Windows.Forms.TextBox();
+            this.btnEditarIngreso = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.btnCancelarIngreso = new System.Windows.Forms.Button();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.btnGuardarIngreso = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.dtFechaVencimientoIngreso = new System.Windows.Forms.DateTimePicker();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.dtFechaProduccionIngreso = new System.Windows.Forms.DateTimePicker();
+            this.v = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.rdbPrecioIngreso = new System.Windows.Forms.RadioButton();
+            this.label31 = new System.Windows.Forms.Label();
+            this.txtUtilidadIngreso = new System.Windows.Forms.TextBox();
+            this.rdbPorcentajeIngreso = new System.Windows.Forms.RadioButton();
+            this.txtContenido = new System.Windows.Forms.TextBox();
+            this.txtStockInicialIngreso = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtPrecioVentaIngreso = new System.Windows.Forms.TextBox();
+            this.txtPrecioCompraIngreso = new System.Windows.Forms.TextBox();
+            this.txtPorcentajeIngreso = new System.Windows.Forms.TextBox();
             this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.txtIdIngreso = new System.Windows.Forms.TextBox();
@@ -144,6 +146,7 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).BeginInit();
             this.tabArticulos.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -324,7 +327,7 @@
             this.tabControl1.Location = new System.Drawing.Point(17, 70);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1590, 789);
+            this.tabControl1.Size = new System.Drawing.Size(1590, 790);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage2
@@ -341,7 +344,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnCalcularIngreso);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtUtilidad);
             this.groupBox1.Controls.Add(this.label14);
@@ -385,15 +388,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresos Almacen";
             // 
-            // button1
+            // btnCalcularIngreso
             // 
-            this.button1.Location = new System.Drawing.Point(711, 414);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 62;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCalcularIngreso.Location = new System.Drawing.Point(1276, 310);
+            this.btnCalcularIngreso.Name = "btnCalcularIngreso";
+            this.btnCalcularIngreso.Size = new System.Drawing.Size(118, 32);
+            this.btnCalcularIngreso.TabIndex = 62;
+            this.btnCalcularIngreso.Text = "Calcular";
+            this.btnCalcularIngreso.UseVisualStyleBackColor = true;
+            this.btnCalcularIngreso.Click += new System.EventHandler(this.btnCalcularIngreso_Click);
             // 
             // label16
             // 
@@ -426,7 +429,6 @@
             this.txtPorcentaje.Name = "txtPorcentaje";
             this.txtPorcentaje.Size = new System.Drawing.Size(300, 26);
             this.txtPorcentaje.TabIndex = 58;
-            this.txtPorcentaje.TextChanged += new System.EventHandler(this.txtPorcentaje_TextChanged);
             this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje_KeyPress);
             // 
             // rdbPrecio
@@ -494,7 +496,6 @@
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(300, 26);
             this.txtPrecioVenta.TabIndex = 51;
-            this.txtPrecioVenta.TextChanged += new System.EventHandler(this.txtPrecioVenta_TextChanged);
             this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // txtPrecioCompra
@@ -888,37 +889,66 @@
             // 
             // tabArticulos
             // 
-            this.tabArticulos.Controls.Add(this.btnEditarIngreso);
-            this.tabArticulos.Controls.Add(this.btnCancelarIngreso);
-            this.tabArticulos.Controls.Add(this.btnGuardarIngreso);
-            this.tabArticulos.Controls.Add(this.rdbPrecioIngreso);
-            this.tabArticulos.Controls.Add(this.rdbPorcentajeIngreso);
-            this.tabArticulos.Controls.Add(this.v);
-            this.tabArticulos.Controls.Add(this.label31);
-            this.tabArticulos.Controls.Add(this.label30);
-            this.tabArticulos.Controls.Add(this.label28);
-            this.tabArticulos.Controls.Add(this.label27);
-            this.tabArticulos.Controls.Add(this.label26);
-            this.tabArticulos.Controls.Add(this.label25);
-            this.tabArticulos.Controls.Add(this.label24);
-            this.tabArticulos.Controls.Add(this.dtFechaVencimientoIngreso);
-            this.tabArticulos.Controls.Add(this.label22);
-            this.tabArticulos.Controls.Add(this.dtFechaProduccionIngreso);
-            this.tabArticulos.Controls.Add(this.label23);
-            this.tabArticulos.Controls.Add(this.txtPrecioCompraIngreso);
-            this.tabArticulos.Controls.Add(this.txtContenido);
-            this.tabArticulos.Controls.Add(this.txtDescripcion);
-            this.tabArticulos.Controls.Add(this.txtPrecioVentaIngreso);
-            this.tabArticulos.Controls.Add(this.txtUtilidadIngreso);
-            this.tabArticulos.Controls.Add(this.txtStockInicialIngreso);
-            this.tabArticulos.Controls.Add(this.txtPorcentajeIngreso);
-            this.tabArticulos.Controls.Add(this.txtMarca);
+            this.tabArticulos.Controls.Add(this.groupBox2);
             this.tabArticulos.Location = new System.Drawing.Point(4, 27);
             this.tabArticulos.Name = "tabArticulos";
-            this.tabArticulos.Size = new System.Drawing.Size(1582, 758);
+            this.tabArticulos.Size = new System.Drawing.Size(1582, 759);
             this.tabArticulos.TabIndex = 2;
-            this.tabArticulos.Text = "Artículos";
+            this.tabArticulos.Text = "Modificar Artículos";
             this.tabArticulos.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnCalcularArticulo);
+            this.groupBox2.Controls.Add(this.txtMarca);
+            this.groupBox2.Controls.Add(this.btnEditarIngreso);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.btnCancelarIngreso);
+            this.groupBox2.Controls.Add(this.txtDescripcion);
+            this.groupBox2.Controls.Add(this.btnGuardarIngreso);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.dtFechaVencimientoIngreso);
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.label30);
+            this.groupBox2.Controls.Add(this.dtFechaProduccionIngreso);
+            this.groupBox2.Controls.Add(this.v);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.Controls.Add(this.rdbPrecioIngreso);
+            this.groupBox2.Controls.Add(this.label31);
+            this.groupBox2.Controls.Add(this.txtUtilidadIngreso);
+            this.groupBox2.Controls.Add(this.rdbPorcentajeIngreso);
+            this.groupBox2.Controls.Add(this.txtContenido);
+            this.groupBox2.Controls.Add(this.txtStockInicialIngreso);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.txtPrecioVentaIngreso);
+            this.groupBox2.Controls.Add(this.txtPrecioCompraIngreso);
+            this.groupBox2.Controls.Add(this.txtPorcentajeIngreso);
+            this.groupBox2.Location = new System.Drawing.Point(266, 106);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1030, 544);
+            this.groupBox2.TabIndex = 67;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Modificar";
+            // 
+            // btnCalcularArticulo
+            // 
+            this.btnCalcularArticulo.Location = new System.Drawing.Point(346, 149);
+            this.btnCalcularArticulo.Name = "btnCalcularArticulo";
+            this.btnCalcularArticulo.Size = new System.Drawing.Size(118, 32);
+            this.btnCalcularArticulo.TabIndex = 67;
+            this.btnCalcularArticulo.Text = "Calcular";
+            this.btnCalcularArticulo.UseVisualStyleBackColor = true;
+            this.btnCalcularArticulo.Click += new System.EventHandler(this.btnCalcularArticulo_Click);
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Enabled = false;
+            this.txtMarca.Location = new System.Drawing.Point(164, 30);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(300, 26);
+            this.txtMarca.TabIndex = 1;
             // 
             // btnEditarIngreso
             // 
@@ -927,12 +957,21 @@
             this.btnEditarIngreso.FlatAppearance.BorderSize = 0;
             this.btnEditarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarIngreso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEditarIngreso.Location = new System.Drawing.Point(169, 460);
+            this.btnEditarIngreso.Location = new System.Drawing.Point(196, 434);
             this.btnEditarIngreso.Name = "btnEditarIngreso";
             this.btnEditarIngreso.Size = new System.Drawing.Size(70, 70);
             this.btnEditarIngreso.TabIndex = 66;
             this.btnEditarIngreso.UseVisualStyleBackColor = true;
             this.btnEditarIngreso.Click += new System.EventHandler(this.btnEditarIngreso_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(28, 33);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(63, 18);
+            this.label24.TabIndex = 52;
+            this.label24.Text = "Marca:";
             // 
             // btnCancelarIngreso
             // 
@@ -940,12 +979,20 @@
             this.btnCancelarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelarIngreso.FlatAppearance.BorderSize = 0;
             this.btnCancelarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelarIngreso.Location = new System.Drawing.Point(306, 460);
+            this.btnCancelarIngreso.Location = new System.Drawing.Point(333, 434);
             this.btnCancelarIngreso.Name = "btnCancelarIngreso";
             this.btnCancelarIngreso.Size = new System.Drawing.Size(70, 70);
             this.btnCancelarIngreso.TabIndex = 65;
             this.btnCancelarIngreso.UseVisualStyleBackColor = true;
             this.btnCancelarIngreso.Click += new System.EventHandler(this.btnCancelarIngreso_Click);
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Enabled = false;
+            this.txtDescripcion.Location = new System.Drawing.Point(683, 30);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(300, 26);
+            this.txtDescripcion.TabIndex = 6;
             // 
             // btnGuardarIngreso
             // 
@@ -954,18 +1001,99 @@
             this.btnGuardarIngreso.Enabled = false;
             this.btnGuardarIngreso.FlatAppearance.BorderSize = 0;
             this.btnGuardarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarIngreso.Location = new System.Drawing.Point(22, 460);
+            this.btnGuardarIngreso.Location = new System.Drawing.Point(49, 434);
             this.btnGuardarIngreso.Name = "btnGuardarIngreso";
             this.btnGuardarIngreso.Size = new System.Drawing.Size(70, 70);
             this.btnGuardarIngreso.TabIndex = 64;
             this.btnGuardarIngreso.UseVisualStyleBackColor = true;
             this.btnGuardarIngreso.Click += new System.EventHandler(this.btnGuardarIngreso_Click);
             // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(503, 33);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(113, 18);
+            this.label25.TabIndex = 53;
+            this.label25.Text = "Descripción: ";
+            // 
+            // dtFechaVencimientoIngreso
+            // 
+            this.dtFechaVencimientoIngreso.Enabled = false;
+            this.dtFechaVencimientoIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaVencimientoIngreso.Location = new System.Drawing.Point(683, 337);
+            this.dtFechaVencimientoIngreso.Name = "dtFechaVencimientoIngreso";
+            this.dtFechaVencimientoIngreso.Size = new System.Drawing.Size(300, 26);
+            this.dtFechaVencimientoIngreso.TabIndex = 50;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(28, 273);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(73, 18);
+            this.label28.TabIndex = 56;
+            this.label28.Text = "Utilidad:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(503, 343);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(174, 18);
+            this.label22.TabIndex = 51;
+            this.label22.Text = "Fecha Vencimiento:  ";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(506, 96);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(110, 18);
+            this.label30.TabIndex = 58;
+            this.label30.Text = "Stock Inicial:";
+            // 
+            // dtFechaProduccionIngreso
+            // 
+            this.dtFechaProduccionIngreso.Enabled = false;
+            this.dtFechaProduccionIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaProduccionIngreso.Location = new System.Drawing.Point(202, 337);
+            this.dtFechaProduccionIngreso.Name = "dtFechaProduccionIngreso";
+            this.dtFechaProduccionIngreso.Size = new System.Drawing.Size(262, 26);
+            this.dtFechaProduccionIngreso.TabIndex = 48;
+            // 
+            // v
+            // 
+            this.v.AutoSize = true;
+            this.v.Location = new System.Drawing.Point(28, 209);
+            this.v.Name = "v";
+            this.v.Size = new System.Drawing.Size(101, 18);
+            this.v.TabIndex = 60;
+            this.v.Text = "Porcentaje:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(28, 343);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(168, 18);
+            this.label23.TabIndex = 49;
+            this.label23.Text = "Fecha: Producción: ";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(506, 209);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(116, 18);
+            this.label27.TabIndex = 55;
+            this.label27.Text = "Precio Venta:";
+            // 
             // rdbPrecioIngreso
             // 
             this.rdbPrecioIngreso.AutoSize = true;
             this.rdbPrecioIngreso.Enabled = false;
-            this.rdbPrecioIngreso.Location = new System.Drawing.Point(194, 149);
+            this.rdbPrecioIngreso.Location = new System.Drawing.Point(164, 154);
             this.rdbPrecioIngreso.Name = "rdbPrecioIngreso";
             this.rdbPrecioIngreso.Size = new System.Drawing.Size(139, 22);
             this.rdbPrecioIngreso.TabIndex = 62;
@@ -973,11 +1101,28 @@
             this.rdbPrecioIngreso.Text = "Precio Manual";
             this.rdbPrecioIngreso.UseVisualStyleBackColor = true;
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(506, 154);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(132, 18);
+            this.label31.TabIndex = 59;
+            this.label31.Text = "Precio Compra:";
+            // 
+            // txtUtilidadIngreso
+            // 
+            this.txtUtilidadIngreso.Enabled = false;
+            this.txtUtilidadIngreso.Location = new System.Drawing.Point(164, 270);
+            this.txtUtilidadIngreso.Name = "txtUtilidadIngreso";
+            this.txtUtilidadIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtUtilidadIngreso.TabIndex = 4;
+            // 
             // rdbPorcentajeIngreso
             // 
             this.rdbPorcentajeIngreso.AutoSize = true;
             this.rdbPorcentajeIngreso.Enabled = false;
-            this.rdbPorcentajeIngreso.Location = new System.Drawing.Point(23, 149);
+            this.rdbPorcentajeIngreso.Location = new System.Drawing.Point(31, 154);
             this.rdbPorcentajeIngreso.Name = "rdbPorcentajeIngreso";
             this.rdbPorcentajeIngreso.Size = new System.Drawing.Size(114, 22);
             this.rdbPorcentajeIngreso.TabIndex = 61;
@@ -986,179 +1131,54 @@
             this.rdbPorcentajeIngreso.UseVisualStyleBackColor = true;
             this.rdbPorcentajeIngreso.CheckedChanged += new System.EventHandler(this.rdbPorcentajeIngreso_CheckedChanged);
             // 
-            // v
+            // txtContenido
             // 
-            this.v.AutoSize = true;
-            this.v.Location = new System.Drawing.Point(1038, 157);
-            this.v.Name = "v";
-            this.v.Size = new System.Drawing.Size(101, 18);
-            this.v.TabIndex = 60;
-            this.v.Text = "Porcentaje:";
+            this.txtContenido.Enabled = false;
+            this.txtContenido.Location = new System.Drawing.Point(164, 93);
+            this.txtContenido.Name = "txtContenido";
+            this.txtContenido.Size = new System.Drawing.Size(300, 26);
+            this.txtContenido.TabIndex = 7;
             // 
-            // label31
+            // txtStockInicialIngreso
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(533, 157);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(132, 18);
-            this.label31.TabIndex = 59;
-            this.label31.Text = "Precio Compra:";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(1038, 266);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(110, 18);
-            this.label30.TabIndex = 58;
-            this.label30.Text = "Stock Inicial:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(533, 266);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(73, 18);
-            this.label28.TabIndex = 56;
-            this.label28.Text = "Utilidad:";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(19, 266);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(116, 18);
-            this.label27.TabIndex = 55;
-            this.label27.Text = "Precio Venta:";
+            this.txtStockInicialIngreso.Enabled = false;
+            this.txtStockInicialIngreso.Location = new System.Drawing.Point(683, 93);
+            this.txtStockInicialIngreso.Name = "txtStockInicialIngreso";
+            this.txtStockInicialIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtStockInicialIngreso.TabIndex = 3;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(1038, 55);
+            this.label26.Location = new System.Drawing.Point(28, 96);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(99, 18);
             this.label26.TabIndex = 54;
             this.label26.Text = "Contenido: ";
             // 
-            // label25
+            // txtPrecioVentaIngreso
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(533, 50);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(113, 18);
-            this.label25.TabIndex = 53;
-            this.label25.Text = "Descripción: ";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(20, 50);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(63, 18);
-            this.label24.TabIndex = 52;
-            this.label24.Text = "Marca:";
-            // 
-            // dtFechaVencimientoIngreso
-            // 
-            this.dtFechaVencimientoIngreso.Enabled = false;
-            this.dtFechaVencimientoIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaVencimientoIngreso.Location = new System.Drawing.Point(704, 356);
-            this.dtFechaVencimientoIngreso.Name = "dtFechaVencimientoIngreso";
-            this.dtFechaVencimientoIngreso.Size = new System.Drawing.Size(284, 26);
-            this.dtFechaVencimientoIngreso.TabIndex = 50;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(533, 364);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(174, 18);
-            this.label22.TabIndex = 51;
-            this.label22.Text = "Fecha Vencimiento:  ";
-            // 
-            // dtFechaProduccionIngreso
-            // 
-            this.dtFechaProduccionIngreso.Enabled = false;
-            this.dtFechaProduccionIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaProduccionIngreso.Location = new System.Drawing.Point(194, 356);
-            this.dtFechaProduccionIngreso.Name = "dtFechaProduccionIngreso";
-            this.dtFechaProduccionIngreso.Size = new System.Drawing.Size(262, 26);
-            this.dtFechaProduccionIngreso.TabIndex = 48;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(20, 364);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(168, 18);
-            this.label23.TabIndex = 49;
-            this.label23.Text = "Fecha: Producción: ";
+            this.txtPrecioVentaIngreso.Enabled = false;
+            this.txtPrecioVentaIngreso.Location = new System.Drawing.Point(683, 206);
+            this.txtPrecioVentaIngreso.Name = "txtPrecioVentaIngreso";
+            this.txtPrecioVentaIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioVentaIngreso.TabIndex = 5;
             // 
             // txtPrecioCompraIngreso
             // 
             this.txtPrecioCompraIngreso.Enabled = false;
-            this.txtPrecioCompraIngreso.Location = new System.Drawing.Point(688, 149);
+            this.txtPrecioCompraIngreso.Location = new System.Drawing.Point(683, 153);
             this.txtPrecioCompraIngreso.Name = "txtPrecioCompraIngreso";
             this.txtPrecioCompraIngreso.Size = new System.Drawing.Size(300, 26);
             this.txtPrecioCompraIngreso.TabIndex = 8;
             // 
-            // txtContenido
-            // 
-            this.txtContenido.Enabled = false;
-            this.txtContenido.Location = new System.Drawing.Point(1242, 47);
-            this.txtContenido.Name = "txtContenido";
-            this.txtContenido.Size = new System.Drawing.Size(300, 26);
-            this.txtContenido.TabIndex = 7;
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(688, 47);
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(300, 26);
-            this.txtDescripcion.TabIndex = 6;
-            // 
-            // txtPrecioVentaIngreso
-            // 
-            this.txtPrecioVentaIngreso.Enabled = false;
-            this.txtPrecioVentaIngreso.Location = new System.Drawing.Point(156, 258);
-            this.txtPrecioVentaIngreso.Name = "txtPrecioVentaIngreso";
-            this.txtPrecioVentaIngreso.Size = new System.Drawing.Size(300, 26);
-            this.txtPrecioVentaIngreso.TabIndex = 5;
-            this.txtPrecioVentaIngreso.TextChanged += new System.EventHandler(this.txtPrecioVentaIngreso_TextChanged);
-            // 
-            // txtUtilidadIngreso
-            // 
-            this.txtUtilidadIngreso.Enabled = false;
-            this.txtUtilidadIngreso.Location = new System.Drawing.Point(688, 258);
-            this.txtUtilidadIngreso.Name = "txtUtilidadIngreso";
-            this.txtUtilidadIngreso.Size = new System.Drawing.Size(300, 26);
-            this.txtUtilidadIngreso.TabIndex = 4;
-            // 
-            // txtStockInicialIngreso
-            // 
-            this.txtStockInicialIngreso.Enabled = false;
-            this.txtStockInicialIngreso.Location = new System.Drawing.Point(1242, 263);
-            this.txtStockInicialIngreso.Name = "txtStockInicialIngreso";
-            this.txtStockInicialIngreso.Size = new System.Drawing.Size(300, 26);
-            this.txtStockInicialIngreso.TabIndex = 3;
-            // 
             // txtPorcentajeIngreso
             // 
             this.txtPorcentajeIngreso.Enabled = false;
-            this.txtPorcentajeIngreso.Location = new System.Drawing.Point(1242, 149);
+            this.txtPorcentajeIngreso.Location = new System.Drawing.Point(164, 206);
             this.txtPorcentajeIngreso.Name = "txtPorcentajeIngreso";
             this.txtPorcentajeIngreso.Size = new System.Drawing.Size(300, 26);
             this.txtPorcentajeIngreso.TabIndex = 2;
-            this.txtPorcentajeIngreso.TextChanged += new System.EventHandler(this.txtPorcentajeIngreso_TextChanged);
-            // 
-            // txtMarca
-            // 
-            this.txtMarca.Enabled = false;
-            this.txtMarca.Location = new System.Drawing.Point(156, 42);
-            this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(300, 26);
-            this.txtMarca.TabIndex = 1;
             // 
             // txtIdArticulo
             // 
@@ -1227,7 +1247,8 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).EndInit();
             this.tabArticulos.ResumeLayout(false);
-            this.tabArticulos.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1305,7 +1326,6 @@
         private System.Windows.Forms.TextBox txtPorcentaje;
         private System.Windows.Forms.RadioButton rdbPrecio;
         private System.Windows.Forms.RadioButton rdbPorcentaje;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox txtCodigoBarras;
         private System.Windows.Forms.TabPage tabArticulos;
@@ -1335,5 +1355,8 @@
         private System.Windows.Forms.Button btnCancelarIngreso;
         private System.Windows.Forms.Button btnGuardarIngreso;
         private System.Windows.Forms.Button btnEditarIngreso;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnCalcularIngreso;
+        private System.Windows.Forms.Button btnCalcularArticulo;
     }
 }

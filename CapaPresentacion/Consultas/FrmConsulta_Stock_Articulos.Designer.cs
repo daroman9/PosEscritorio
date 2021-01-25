@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -41,8 +43,6 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -54,6 +54,16 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.errorProvider1.SetIconAlignment(this.label3, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.label3.Location = new System.Drawing.Point(13, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 18);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Codigo:";
+            // 
             // ttMensaje
             // 
             this.ttMensaje.IsBalloon = true;
@@ -61,6 +71,15 @@
             // errorIcono
             // 
             this.errorIcono.ContainerControl = this;
+            // 
+            // txtCodigo
+            // 
+            this.errorIcono.SetIconAlignment(this.txtCodigo, System.Windows.Forms.ErrorIconAlignment.TopLeft);
+            this.txtCodigo.Location = new System.Drawing.Point(106, 65);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(400, 26);
+            this.txtCodigo.TabIndex = 9;
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
             // label1
             // 
@@ -160,25 +179,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1590, 675);
             this.tabControl1.TabIndex = 7;
             // 
-            // txtCodigo
-            // 
-            this.errorIcono.SetIconAlignment(this.txtCodigo, System.Windows.Forms.ErrorIconAlignment.TopLeft);
-            this.txtCodigo.Location = new System.Drawing.Point(106, 65);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(400, 26);
-            this.txtCodigo.TabIndex = 9;
-            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.errorProvider1.SetIconAlignment(this.label3, System.Windows.Forms.ErrorIconAlignment.TopLeft);
-            this.label3.Location = new System.Drawing.Point(13, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 18);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Codigo:";
-            // 
             // FrmConsulta_Stock_Articulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,7 +190,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmConsulta_Stock_Articulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Stock de Articulos";
+            this.Text = "STOCK DE ARTÍCULOS";
             this.Load += new System.EventHandler(this.FrmConsulta_Stock_Articulos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
