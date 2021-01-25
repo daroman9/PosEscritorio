@@ -19,6 +19,8 @@ namespace CapaDatos
         private decimal _Precio_Venta;
         private int _Stock_Inicial;
         private int _Stock_Actual;
+        private decimal _Porcentaje;
+        private decimal _Utilidad;
         private DateTime _Fecha_Produccion;
         private DateTime _Fecha_Vencimiento;
 
@@ -29,8 +31,12 @@ namespace CapaDatos
         public decimal Precio_Venta { get => _Precio_Venta; set => _Precio_Venta = value; }
         public int Stock_Inicial { get => _Stock_Inicial; set => _Stock_Inicial = value; }
         public int Stock_Actual { get => _Stock_Actual; set => _Stock_Actual = value; }
+        public decimal Porcentaje { get => _Porcentaje; set => _Porcentaje = value; }
+        public decimal Utilidad { get => _Utilidad; set => _Utilidad = value; }
         public DateTime Fecha_Produccion { get => _Fecha_Produccion; set => _Fecha_Produccion = value; }
         public DateTime Fecha_Vencimiento { get => _Fecha_Vencimiento; set => _Fecha_Vencimiento = value; }
+       
+       
 
         //Constructor vacio
         public DDetalle_Ingreso()
@@ -39,7 +45,7 @@ namespace CapaDatos
         }
 
         //Constructor con parametros
-        public DDetalle_Ingreso(int iddetalle_ingreso, int idingreso, int idarticulo, decimal precio_compra, decimal precio_venta, int stock_inicial, int stock_actual, DateTime fecha_produccion, DateTime fecha_vencimiento)
+        public DDetalle_Ingreso(int iddetalle_ingreso, int idingreso, int idarticulo, decimal precio_compra, decimal precio_venta, int stock_inicial, int stock_actual, decimal porcentaje, decimal utilidad, DateTime fecha_produccion, DateTime fecha_vencimiento)
         {
             this.Iddetalle_Ingreso = iddetalle_ingreso;
             this.Idingreso = idingreso;
@@ -48,6 +54,8 @@ namespace CapaDatos
             this.Precio_Venta = precio_venta;
             this.Stock_Inicial = stock_inicial;
             this.Stock_Actual = stock_actual;
+            this.Porcentaje = porcentaje;
+            this.Utilidad = utilidad;
             this.Fecha_Produccion = fecha_produccion;
             this.Fecha_Vencimiento = fecha_vencimiento;   
         }
@@ -57,7 +65,7 @@ namespace CapaDatos
             string rpta = "";
             try
             {
-            
+          
                 //Establecer comando para ejecutar sentencias sql
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
@@ -86,13 +94,13 @@ namespace CapaDatos
 
                 SqlParameter ParPrecio_Compra = new SqlParameter();
                 ParPrecio_Compra.ParameterName = "@precio_compra";
-                ParPrecio_Compra.SqlDbType = SqlDbType.Money;
+                ParPrecio_Compra.SqlDbType = SqlDbType.Decimal;
                 ParPrecio_Compra.Value = Detalle_Ingreso.Precio_Compra;
                 SqlCmd.Parameters.Add(ParPrecio_Compra);
 
                 SqlParameter ParPrecio_Venta = new SqlParameter();
                 ParPrecio_Venta.ParameterName = "@precio_venta";
-                ParPrecio_Venta.SqlDbType = SqlDbType.Money;
+                ParPrecio_Venta.SqlDbType = SqlDbType.Decimal;
                 ParPrecio_Venta.Value = Detalle_Ingreso.Precio_Venta;
                 SqlCmd.Parameters.Add(ParPrecio_Venta);
 
@@ -107,6 +115,18 @@ namespace CapaDatos
                 ParStock_Actual.SqlDbType = SqlDbType.Int;
                 ParStock_Actual.Value = Detalle_Ingreso.Stock_Actual;
                 SqlCmd.Parameters.Add(ParStock_Actual);
+
+                SqlParameter ParPorcentaje = new SqlParameter();
+                ParPorcentaje.ParameterName = "@porcentaje";
+                ParPorcentaje.SqlDbType = SqlDbType.Decimal;
+                ParPorcentaje.Value = Detalle_Ingreso.Porcentaje;
+                SqlCmd.Parameters.Add(ParPorcentaje);
+
+                SqlParameter ParUtilidad = new SqlParameter();
+                ParUtilidad.ParameterName = "@utilidad";
+                ParUtilidad.SqlDbType = SqlDbType.Decimal;
+                ParUtilidad.Value = Detalle_Ingreso.Utilidad;
+                SqlCmd.Parameters.Add(ParUtilidad);
 
                 SqlParameter ParFecha_Produccion = new SqlParameter();
                 ParFecha_Produccion.ParameterName = "@fecha_produccion";
@@ -132,6 +152,85 @@ namespace CapaDatos
            
             return rpta;
         }
+        //Método Editar
+        public string Editar(DDetalle_Ingreso Detalle_Ingreso)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código para insertar registros
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+                //Establecer comando para ejecutar sentencias sql
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "speditar_detalle_ingreso";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
 
+                //Parametros que se van a enviar al procedimiento almacenado
+                SqlParameter ParIddetalle_ingreso = new SqlParameter();
+                ParIddetalle_ingreso.ParameterName = "@iddetalle_ingreso";
+                ParIddetalle_ingreso.SqlDbType = SqlDbType.Int;
+                ParIddetalle_ingreso.Value = Detalle_Ingreso.Iddetalle_Ingreso;
+                SqlCmd.Parameters.Add(ParIddetalle_ingreso);
+
+                SqlParameter ParPrecio_Compra = new SqlParameter();
+                ParPrecio_Compra.ParameterName = "@precio_compra";
+                ParPrecio_Compra.SqlDbType = SqlDbType.Decimal;
+                ParPrecio_Compra.Value = Detalle_Ingreso.Precio_Compra;
+                SqlCmd.Parameters.Add(ParPrecio_Compra);
+
+                SqlParameter ParPrecio_Venta = new SqlParameter();
+                ParPrecio_Venta.ParameterName = "@precio_venta";
+                ParPrecio_Venta.SqlDbType = SqlDbType.Decimal;
+                ParPrecio_Venta.Value = Detalle_Ingreso.Precio_Venta;
+                SqlCmd.Parameters.Add(ParPrecio_Venta);
+
+                SqlParameter ParStock_Inicial = new SqlParameter();
+                ParStock_Inicial.ParameterName = "@stock_inicial";
+                ParStock_Inicial.SqlDbType = SqlDbType.Int;
+                ParStock_Inicial.Value = Detalle_Ingreso.Stock_Inicial;
+                SqlCmd.Parameters.Add(ParStock_Inicial);
+
+                SqlParameter ParPorcentaje = new SqlParameter();
+                ParPorcentaje.ParameterName = "@porcentaje";
+                ParPorcentaje.SqlDbType = SqlDbType.Decimal;
+                ParPorcentaje.Value = Detalle_Ingreso.Porcentaje;
+                SqlCmd.Parameters.Add(ParPorcentaje);
+
+                SqlParameter ParUtilidad = new SqlParameter();
+                ParUtilidad.ParameterName = "@utilidad";
+                ParUtilidad.SqlDbType = SqlDbType.Decimal;
+                ParUtilidad.Value = Detalle_Ingreso.Utilidad;
+                SqlCmd.Parameters.Add(ParUtilidad);
+
+                SqlParameter ParFecha_Produccion = new SqlParameter();
+                ParFecha_Produccion.ParameterName = "@fecha_produccion";
+                ParFecha_Produccion.SqlDbType = SqlDbType.Date;
+                ParFecha_Produccion.Value = Detalle_Ingreso.Fecha_Produccion;
+                SqlCmd.Parameters.Add(ParFecha_Produccion);
+
+                SqlParameter ParFecha_Vencimiento = new SqlParameter();
+                ParFecha_Vencimiento.ParameterName = "@fecha_vencimiento";
+                ParFecha_Vencimiento.SqlDbType = SqlDbType.Date;
+                ParFecha_Vencimiento.Value = Detalle_Ingreso.Fecha_Vencimiento;
+                SqlCmd.Parameters.Add(ParFecha_Vencimiento);
+                //Ejecutar el comando
+
+                rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizo el registro";
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+
+        }
    }
 }

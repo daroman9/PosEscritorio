@@ -411,12 +411,6 @@ namespace CapaPresentacion
         
             lblTotalArticulos.Text = Convert.ToString(sumatoria);
         }
-
-        private void txtCodigoBarras_TextChanged(object sender, EventArgs e)
-        {
-      
-        }
-
         private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (13))

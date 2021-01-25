@@ -35,10 +35,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnVolverDataListado = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dtFecha2 = new System.Windows.Forms.DateTimePicker();
             this.dtFecha1 = new System.Windows.Forms.DateTimePicker();
             this.dataListado = new System.Windows.Forms.DataGridView();
+            this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotal = new System.Windows.Forms.Label();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -47,6 +49,13 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtUtilidad = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtPorcentaje = new System.Windows.Forms.TextBox();
+            this.rdbPrecio = new System.Windows.Forms.RadioButton();
+            this.rdbPorcentaje = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -57,7 +66,6 @@
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataListadoProveedores = new System.Windows.Forms.DataGridView();
-            this.lblTotalProveedores = new System.Windows.Forms.Label();
             this.btnBuscarProveedores = new System.Windows.Forms.Button();
             this.txtBuscarNombreProveedores = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -81,8 +89,9 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.dataListadoArticulos = new System.Windows.Forms.DataGridView();
-            this.lblTotalArticulos = new System.Windows.Forms.Label();
             this.btnBuscarNombreArticulos = new System.Windows.Forms.Button();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -90,11 +99,36 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.tabArticulos = new System.Windows.Forms.TabPage();
+            this.btnEditarIngreso = new System.Windows.Forms.Button();
+            this.btnCancelarIngreso = new System.Windows.Forms.Button();
+            this.btnGuardarIngreso = new System.Windows.Forms.Button();
+            this.rdbPrecioIngreso = new System.Windows.Forms.RadioButton();
+            this.rdbPorcentajeIngreso = new System.Windows.Forms.RadioButton();
+            this.v = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.dtFechaVencimientoIngreso = new System.Windows.Forms.DateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
+            this.dtFechaProduccionIngreso = new System.Windows.Forms.DateTimePicker();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtPrecioCompraIngreso = new System.Windows.Forms.TextBox();
+            this.txtContenido = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtPrecioVentaIngreso = new System.Windows.Forms.TextBox();
+            this.txtUtilidadIngreso = new System.Windows.Forms.TextBox();
+            this.txtStockInicialIngreso = new System.Windows.Forms.TextBox();
+            this.txtPorcentajeIngreso = new System.Windows.Forms.TextBox();
+            this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.txtIdIngreso = new System.Windows.Forms.TextBox();
-            this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnVolverDataListado = new System.Windows.Forms.Button();
+            this.txtIddetalleIngreso = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -109,6 +143,7 @@
             this.tabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).BeginInit();
+            this.tabArticulos.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -158,6 +193,20 @@
             this.tabPage1.Text = "Listado de ingresos";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnVolverDataListado
+            // 
+            this.btnVolverDataListado.BackgroundImage = global::CapaPresentacion.Properties.Resources.back;
+            this.btnVolverDataListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVolverDataListado.FlatAppearance.BorderSize = 0;
+            this.btnVolverDataListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolverDataListado.Location = new System.Drawing.Point(119, 62);
+            this.btnVolverDataListado.Name = "btnVolverDataListado";
+            this.btnVolverDataListado.Size = new System.Drawing.Size(40, 40);
+            this.btnVolverDataListado.TabIndex = 11;
+            this.btnVolverDataListado.UseVisualStyleBackColor = true;
+            this.btnVolverDataListado.Visible = false;
+            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -203,6 +252,12 @@
             this.dataListado.TabIndex = 7;
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Anular";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             // 
             // lblTotal
             // 
@@ -264,6 +319,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabArticulos);
             this.tabControl1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(17, 70);
             this.tabControl1.Name = "tabControl1";
@@ -285,6 +341,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.txtUtilidad);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.txtPorcentaje);
+            this.groupBox1.Controls.Add(this.rdbPrecio);
+            this.groupBox1.Controls.Add(this.rdbPorcentaje);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label6);
@@ -322,6 +385,73 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresos Almacen";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(711, 414);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 62;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(935, 430);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(77, 18);
+            this.label16.TabIndex = 61;
+            this.label16.Text = "Utilidad: ";
+            // 
+            // txtUtilidad
+            // 
+            this.txtUtilidad.Location = new System.Drawing.Point(1094, 422);
+            this.txtUtilidad.Name = "txtUtilidad";
+            this.txtUtilidad.Size = new System.Drawing.Size(300, 26);
+            this.txtUtilidad.TabIndex = 60;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(935, 360);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 18);
+            this.label14.TabIndex = 59;
+            this.label14.Text = "Porcentaje: ";
+            // 
+            // txtPorcentaje
+            // 
+            this.txtPorcentaje.Location = new System.Drawing.Point(1094, 348);
+            this.txtPorcentaje.Name = "txtPorcentaje";
+            this.txtPorcentaje.Size = new System.Drawing.Size(300, 26);
+            this.txtPorcentaje.TabIndex = 58;
+            this.txtPorcentaje.TextChanged += new System.EventHandler(this.txtPorcentaje_TextChanged);
+            this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje_KeyPress);
+            // 
+            // rdbPrecio
+            // 
+            this.rdbPrecio.AutoSize = true;
+            this.rdbPrecio.Location = new System.Drawing.Point(1094, 317);
+            this.rdbPrecio.Name = "rdbPrecio";
+            this.rdbPrecio.Size = new System.Drawing.Size(139, 22);
+            this.rdbPrecio.TabIndex = 57;
+            this.rdbPrecio.TabStop = true;
+            this.rdbPrecio.Text = "Precio Manual";
+            this.rdbPrecio.UseVisualStyleBackColor = true;
+            // 
+            // rdbPorcentaje
+            // 
+            this.rdbPorcentaje.AutoSize = true;
+            this.rdbPorcentaje.Location = new System.Drawing.Point(938, 317);
+            this.rdbPorcentaje.Name = "rdbPorcentaje";
+            this.rdbPorcentaje.Size = new System.Drawing.Size(114, 22);
+            this.rdbPorcentaje.TabIndex = 56;
+            this.rdbPorcentaje.TabStop = true;
+            this.rdbPorcentaje.Text = "Porcentaje";
+            this.rdbPorcentaje.UseVisualStyleBackColor = true;
+            this.rdbPorcentaje.CheckedChanged += new System.EventHandler(this.rdbPorcentaje_CheckedChanged);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -343,7 +473,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(935, 346);
+            this.label6.Location = new System.Drawing.Point(935, 398);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 18);
             this.label6.TabIndex = 53;
@@ -360,15 +490,16 @@
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(1066, 334);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(1094, 390);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(300, 26);
             this.txtPrecioVenta.TabIndex = 51;
+            this.txtPrecioVenta.TextChanged += new System.EventHandler(this.txtPrecioVenta_TextChanged);
             this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // txtPrecioCompra
             // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(1066, 304);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(1094, 278);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(300, 26);
             this.txtPrecioCompra.TabIndex = 50;
@@ -399,7 +530,6 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.dataListadoProveedores);
-            this.tabPage4.Controls.Add(this.lblTotalProveedores);
             this.tabPage4.Controls.Add(this.btnBuscarProveedores);
             this.tabPage4.Controls.Add(this.txtBuscarNombreProveedores);
             this.tabPage4.Controls.Add(this.label20);
@@ -429,15 +559,6 @@
             this.dataListadoProveedores.Size = new System.Drawing.Size(770, 155);
             this.dataListadoProveedores.TabIndex = 7;
             this.dataListadoProveedores.DoubleClick += new System.EventHandler(this.dataListadoProveedores_DoubleClick);
-            // 
-            // lblTotalProveedores
-            // 
-            this.lblTotalProveedores.AutoSize = true;
-            this.lblTotalProveedores.Location = new System.Drawing.Point(466, 26);
-            this.lblTotalProveedores.Name = "lblTotalProveedores";
-            this.lblTotalProveedores.Size = new System.Drawing.Size(56, 18);
-            this.lblTotalProveedores.TabIndex = 6;
-            this.lblTotalProveedores.Text = "label3";
             // 
             // btnBuscarProveedores
             // 
@@ -530,7 +651,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(935, 310);
+            this.label15.Location = new System.Drawing.Point(935, 283);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(136, 18);
             this.label15.TabIndex = 40;
@@ -642,8 +763,9 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label21);
+            this.tabPage3.Controls.Add(this.txtCodigoBarras);
             this.tabPage3.Controls.Add(this.dataListadoArticulos);
-            this.tabPage3.Controls.Add(this.lblTotalArticulos);
             this.tabPage3.Controls.Add(this.btnBuscarNombreArticulos);
             this.tabPage3.Controls.Add(this.txtBuscarNombreArticulo);
             this.tabPage3.Controls.Add(this.label10);
@@ -654,6 +776,23 @@
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Listado Artículos";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(8, 22);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(69, 18);
+            this.label21.TabIndex = 9;
+            this.label21.Text = "Codigo:";
+            // 
+            // txtCodigoBarras
+            // 
+            this.txtCodigoBarras.Location = new System.Drawing.Point(106, 16);
+            this.txtCodigoBarras.Name = "txtCodigoBarras";
+            this.txtCodigoBarras.Size = new System.Drawing.Size(230, 26);
+            this.txtCodigoBarras.TabIndex = 8;
+            this.txtCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarras_KeyPress);
             // 
             // dataListadoArticulos
             // 
@@ -674,22 +813,13 @@
             this.dataListadoArticulos.TabIndex = 7;
             this.dataListadoArticulos.DoubleClick += new System.EventHandler(this.dataListadoArticulos_DoubleClick);
             // 
-            // lblTotalArticulos
-            // 
-            this.lblTotalArticulos.AutoSize = true;
-            this.lblTotalArticulos.Location = new System.Drawing.Point(466, 26);
-            this.lblTotalArticulos.Name = "lblTotalArticulos";
-            this.lblTotalArticulos.Size = new System.Drawing.Size(36, 18);
-            this.lblTotalArticulos.TabIndex = 6;
-            this.lblTotalArticulos.Text = "lbl9";
-            // 
             // btnBuscarNombreArticulos
             // 
             this.btnBuscarNombreArticulos.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
             this.btnBuscarNombreArticulos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarNombreArticulos.FlatAppearance.BorderSize = 0;
             this.btnBuscarNombreArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarNombreArticulos.Location = new System.Drawing.Point(372, 3);
+            this.btnBuscarNombreArticulos.Location = new System.Drawing.Point(675, 0);
             this.btnBuscarNombreArticulos.Name = "btnBuscarNombreArticulos";
             this.btnBuscarNombreArticulos.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarNombreArticulos.TabIndex = 2;
@@ -697,7 +827,7 @@
             // 
             // txtBuscarNombreArticulo
             // 
-            this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(118, 14);
+            this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(424, 16);
             this.txtBuscarNombreArticulo.Name = "txtBuscarNombreArticulo";
             this.txtBuscarNombreArticulo.Size = new System.Drawing.Size(230, 26);
             this.txtBuscarNombreArticulo.TabIndex = 1;
@@ -706,7 +836,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 21);
+            this.label10.Location = new System.Drawing.Point(342, 19);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(76, 18);
             this.label10.TabIndex = 0;
@@ -756,6 +886,280 @@
             this.label19.TabIndex = 39;
             this.label19.Text = "Total Pagado";
             // 
+            // tabArticulos
+            // 
+            this.tabArticulos.Controls.Add(this.btnEditarIngreso);
+            this.tabArticulos.Controls.Add(this.btnCancelarIngreso);
+            this.tabArticulos.Controls.Add(this.btnGuardarIngreso);
+            this.tabArticulos.Controls.Add(this.rdbPrecioIngreso);
+            this.tabArticulos.Controls.Add(this.rdbPorcentajeIngreso);
+            this.tabArticulos.Controls.Add(this.v);
+            this.tabArticulos.Controls.Add(this.label31);
+            this.tabArticulos.Controls.Add(this.label30);
+            this.tabArticulos.Controls.Add(this.label28);
+            this.tabArticulos.Controls.Add(this.label27);
+            this.tabArticulos.Controls.Add(this.label26);
+            this.tabArticulos.Controls.Add(this.label25);
+            this.tabArticulos.Controls.Add(this.label24);
+            this.tabArticulos.Controls.Add(this.dtFechaVencimientoIngreso);
+            this.tabArticulos.Controls.Add(this.label22);
+            this.tabArticulos.Controls.Add(this.dtFechaProduccionIngreso);
+            this.tabArticulos.Controls.Add(this.label23);
+            this.tabArticulos.Controls.Add(this.txtPrecioCompraIngreso);
+            this.tabArticulos.Controls.Add(this.txtContenido);
+            this.tabArticulos.Controls.Add(this.txtDescripcion);
+            this.tabArticulos.Controls.Add(this.txtPrecioVentaIngreso);
+            this.tabArticulos.Controls.Add(this.txtUtilidadIngreso);
+            this.tabArticulos.Controls.Add(this.txtStockInicialIngreso);
+            this.tabArticulos.Controls.Add(this.txtPorcentajeIngreso);
+            this.tabArticulos.Controls.Add(this.txtMarca);
+            this.tabArticulos.Location = new System.Drawing.Point(4, 27);
+            this.tabArticulos.Name = "tabArticulos";
+            this.tabArticulos.Size = new System.Drawing.Size(1582, 758);
+            this.tabArticulos.TabIndex = 2;
+            this.tabArticulos.Text = "Artículos";
+            this.tabArticulos.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarIngreso
+            // 
+            this.btnEditarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.edit;
+            this.btnEditarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditarIngreso.FlatAppearance.BorderSize = 0;
+            this.btnEditarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarIngreso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnEditarIngreso.Location = new System.Drawing.Point(169, 460);
+            this.btnEditarIngreso.Name = "btnEditarIngreso";
+            this.btnEditarIngreso.Size = new System.Drawing.Size(70, 70);
+            this.btnEditarIngreso.TabIndex = 66;
+            this.btnEditarIngreso.UseVisualStyleBackColor = true;
+            this.btnEditarIngreso.Click += new System.EventHandler(this.btnEditarIngreso_Click);
+            // 
+            // btnCancelarIngreso
+            // 
+            this.btnCancelarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
+            this.btnCancelarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelarIngreso.FlatAppearance.BorderSize = 0;
+            this.btnCancelarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarIngreso.Location = new System.Drawing.Point(306, 460);
+            this.btnCancelarIngreso.Name = "btnCancelarIngreso";
+            this.btnCancelarIngreso.Size = new System.Drawing.Size(70, 70);
+            this.btnCancelarIngreso.TabIndex = 65;
+            this.btnCancelarIngreso.UseVisualStyleBackColor = true;
+            this.btnCancelarIngreso.Click += new System.EventHandler(this.btnCancelarIngreso_Click);
+            // 
+            // btnGuardarIngreso
+            // 
+            this.btnGuardarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
+            this.btnGuardarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGuardarIngreso.Enabled = false;
+            this.btnGuardarIngreso.FlatAppearance.BorderSize = 0;
+            this.btnGuardarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarIngreso.Location = new System.Drawing.Point(22, 460);
+            this.btnGuardarIngreso.Name = "btnGuardarIngreso";
+            this.btnGuardarIngreso.Size = new System.Drawing.Size(70, 70);
+            this.btnGuardarIngreso.TabIndex = 64;
+            this.btnGuardarIngreso.UseVisualStyleBackColor = true;
+            this.btnGuardarIngreso.Click += new System.EventHandler(this.btnGuardarIngreso_Click);
+            // 
+            // rdbPrecioIngreso
+            // 
+            this.rdbPrecioIngreso.AutoSize = true;
+            this.rdbPrecioIngreso.Enabled = false;
+            this.rdbPrecioIngreso.Location = new System.Drawing.Point(194, 149);
+            this.rdbPrecioIngreso.Name = "rdbPrecioIngreso";
+            this.rdbPrecioIngreso.Size = new System.Drawing.Size(139, 22);
+            this.rdbPrecioIngreso.TabIndex = 62;
+            this.rdbPrecioIngreso.TabStop = true;
+            this.rdbPrecioIngreso.Text = "Precio Manual";
+            this.rdbPrecioIngreso.UseVisualStyleBackColor = true;
+            // 
+            // rdbPorcentajeIngreso
+            // 
+            this.rdbPorcentajeIngreso.AutoSize = true;
+            this.rdbPorcentajeIngreso.Enabled = false;
+            this.rdbPorcentajeIngreso.Location = new System.Drawing.Point(23, 149);
+            this.rdbPorcentajeIngreso.Name = "rdbPorcentajeIngreso";
+            this.rdbPorcentajeIngreso.Size = new System.Drawing.Size(114, 22);
+            this.rdbPorcentajeIngreso.TabIndex = 61;
+            this.rdbPorcentajeIngreso.TabStop = true;
+            this.rdbPorcentajeIngreso.Text = "Porcentaje";
+            this.rdbPorcentajeIngreso.UseVisualStyleBackColor = true;
+            this.rdbPorcentajeIngreso.CheckedChanged += new System.EventHandler(this.rdbPorcentajeIngreso_CheckedChanged);
+            // 
+            // v
+            // 
+            this.v.AutoSize = true;
+            this.v.Location = new System.Drawing.Point(1038, 157);
+            this.v.Name = "v";
+            this.v.Size = new System.Drawing.Size(101, 18);
+            this.v.TabIndex = 60;
+            this.v.Text = "Porcentaje:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(533, 157);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(132, 18);
+            this.label31.TabIndex = 59;
+            this.label31.Text = "Precio Compra:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(1038, 266);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(110, 18);
+            this.label30.TabIndex = 58;
+            this.label30.Text = "Stock Inicial:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(533, 266);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(73, 18);
+            this.label28.TabIndex = 56;
+            this.label28.Text = "Utilidad:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(19, 266);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(116, 18);
+            this.label27.TabIndex = 55;
+            this.label27.Text = "Precio Venta:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(1038, 55);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(99, 18);
+            this.label26.TabIndex = 54;
+            this.label26.Text = "Contenido: ";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(533, 50);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(113, 18);
+            this.label25.TabIndex = 53;
+            this.label25.Text = "Descripción: ";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(20, 50);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(63, 18);
+            this.label24.TabIndex = 52;
+            this.label24.Text = "Marca:";
+            // 
+            // dtFechaVencimientoIngreso
+            // 
+            this.dtFechaVencimientoIngreso.Enabled = false;
+            this.dtFechaVencimientoIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaVencimientoIngreso.Location = new System.Drawing.Point(704, 356);
+            this.dtFechaVencimientoIngreso.Name = "dtFechaVencimientoIngreso";
+            this.dtFechaVencimientoIngreso.Size = new System.Drawing.Size(284, 26);
+            this.dtFechaVencimientoIngreso.TabIndex = 50;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(533, 364);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(174, 18);
+            this.label22.TabIndex = 51;
+            this.label22.Text = "Fecha Vencimiento:  ";
+            // 
+            // dtFechaProduccionIngreso
+            // 
+            this.dtFechaProduccionIngreso.Enabled = false;
+            this.dtFechaProduccionIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtFechaProduccionIngreso.Location = new System.Drawing.Point(194, 356);
+            this.dtFechaProduccionIngreso.Name = "dtFechaProduccionIngreso";
+            this.dtFechaProduccionIngreso.Size = new System.Drawing.Size(262, 26);
+            this.dtFechaProduccionIngreso.TabIndex = 48;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(20, 364);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(168, 18);
+            this.label23.TabIndex = 49;
+            this.label23.Text = "Fecha: Producción: ";
+            // 
+            // txtPrecioCompraIngreso
+            // 
+            this.txtPrecioCompraIngreso.Enabled = false;
+            this.txtPrecioCompraIngreso.Location = new System.Drawing.Point(688, 149);
+            this.txtPrecioCompraIngreso.Name = "txtPrecioCompraIngreso";
+            this.txtPrecioCompraIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioCompraIngreso.TabIndex = 8;
+            // 
+            // txtContenido
+            // 
+            this.txtContenido.Enabled = false;
+            this.txtContenido.Location = new System.Drawing.Point(1242, 47);
+            this.txtContenido.Name = "txtContenido";
+            this.txtContenido.Size = new System.Drawing.Size(300, 26);
+            this.txtContenido.TabIndex = 7;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Enabled = false;
+            this.txtDescripcion.Location = new System.Drawing.Point(688, 47);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(300, 26);
+            this.txtDescripcion.TabIndex = 6;
+            // 
+            // txtPrecioVentaIngreso
+            // 
+            this.txtPrecioVentaIngreso.Enabled = false;
+            this.txtPrecioVentaIngreso.Location = new System.Drawing.Point(156, 258);
+            this.txtPrecioVentaIngreso.Name = "txtPrecioVentaIngreso";
+            this.txtPrecioVentaIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioVentaIngreso.TabIndex = 5;
+            this.txtPrecioVentaIngreso.TextChanged += new System.EventHandler(this.txtPrecioVentaIngreso_TextChanged);
+            // 
+            // txtUtilidadIngreso
+            // 
+            this.txtUtilidadIngreso.Enabled = false;
+            this.txtUtilidadIngreso.Location = new System.Drawing.Point(688, 258);
+            this.txtUtilidadIngreso.Name = "txtUtilidadIngreso";
+            this.txtUtilidadIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtUtilidadIngreso.TabIndex = 4;
+            // 
+            // txtStockInicialIngreso
+            // 
+            this.txtStockInicialIngreso.Enabled = false;
+            this.txtStockInicialIngreso.Location = new System.Drawing.Point(1242, 263);
+            this.txtStockInicialIngreso.Name = "txtStockInicialIngreso";
+            this.txtStockInicialIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtStockInicialIngreso.TabIndex = 3;
+            // 
+            // txtPorcentajeIngreso
+            // 
+            this.txtPorcentajeIngreso.Enabled = false;
+            this.txtPorcentajeIngreso.Location = new System.Drawing.Point(1242, 149);
+            this.txtPorcentajeIngreso.Name = "txtPorcentajeIngreso";
+            this.txtPorcentajeIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPorcentajeIngreso.TabIndex = 2;
+            this.txtPorcentajeIngreso.TextChanged += new System.EventHandler(this.txtPorcentajeIngreso_TextChanged);
+            // 
+            // txtMarca
+            // 
+            this.txtMarca.Enabled = false;
+            this.txtMarca.Location = new System.Drawing.Point(156, 42);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(300, 26);
+            this.txtMarca.TabIndex = 1;
+            // 
             // txtIdArticulo
             // 
             this.txtIdArticulo.Location = new System.Drawing.Point(43, 12);
@@ -778,22 +1182,13 @@
             this.txtIdIngreso.TabIndex = 3;
             this.txtIdIngreso.Visible = false;
             // 
-            // Eliminar
+            // txtIddetalleIngreso
             // 
-            this.Eliminar.HeaderText = "Anular";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            // 
-            // btnVolverDataListado
-            // 
-            this.btnVolverDataListado.Location = new System.Drawing.Point(119, 69);
-            this.btnVolverDataListado.Name = "btnVolverDataListado";
-            this.btnVolverDataListado.Size = new System.Drawing.Size(75, 23);
-            this.btnVolverDataListado.TabIndex = 11;
-            this.btnVolverDataListado.Text = "Volver";
-            this.btnVolverDataListado.UseVisualStyleBackColor = true;
-            this.btnVolverDataListado.Visible = false;
-            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
+            this.txtIddetalleIngreso.Location = new System.Drawing.Point(59, 12);
+            this.txtIddetalleIngreso.Name = "txtIddetalleIngreso";
+            this.txtIddetalleIngreso.Size = new System.Drawing.Size(10, 20);
+            this.txtIddetalleIngreso.TabIndex = 0;
+            this.txtIddetalleIngreso.Visible = false;
             // 
             // FrmIngreso
             // 
@@ -806,6 +1201,7 @@
             this.Controls.Add(this.txtIdIngreso);
             this.Controls.Add(this.txtIdProveedor);
             this.Controls.Add(this.txtIdArticulo);
+            this.Controls.Add(this.txtIddetalleIngreso);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmIngreso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -830,6 +1226,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).EndInit();
+            this.tabArticulos.ResumeLayout(false);
+            this.tabArticulos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -871,7 +1269,6 @@
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView dataListadoProveedores;
-        private System.Windows.Forms.Label lblTotalProveedores;
         private System.Windows.Forms.Button btnBuscarProveedores;
         private System.Windows.Forms.TextBox txtBuscarNombreProveedores;
         private System.Windows.Forms.Label label20;
@@ -889,7 +1286,6 @@
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView dataListadoArticulos;
-        private System.Windows.Forms.Label lblTotalArticulos;
         private System.Windows.Forms.Button btnBuscarNombreArticulos;
         private System.Windows.Forms.TextBox txtBuscarNombreArticulo;
         private System.Windows.Forms.Label label10;
@@ -903,5 +1299,41 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Button btnVolverDataListado;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtUtilidad;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtPorcentaje;
+        private System.Windows.Forms.RadioButton rdbPrecio;
+        private System.Windows.Forms.RadioButton rdbPorcentaje;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtCodigoBarras;
+        private System.Windows.Forms.TabPage tabArticulos;
+        private System.Windows.Forms.Label v;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.DateTimePicker dtFechaVencimientoIngreso;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DateTimePicker dtFechaProduccionIngreso;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtPrecioCompraIngreso;
+        private System.Windows.Forms.TextBox txtContenido;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtPrecioVentaIngreso;
+        private System.Windows.Forms.TextBox txtUtilidadIngreso;
+        private System.Windows.Forms.TextBox txtStockInicialIngreso;
+        private System.Windows.Forms.TextBox txtPorcentajeIngreso;
+        private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.TextBox txtIddetalleIngreso;
+        private System.Windows.Forms.RadioButton rdbPrecioIngreso;
+        private System.Windows.Forms.RadioButton rdbPorcentajeIngreso;
+        private System.Windows.Forms.Button btnCancelarIngreso;
+        private System.Windows.Forms.Button btnGuardarIngreso;
+        private System.Windows.Forms.Button btnEditarIngreso;
     }
 }

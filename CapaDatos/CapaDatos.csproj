@@ -50,6 +50,7 @@
     <Compile Include="DIngreso.cs" />
     <Compile Include="DPresentacion.cs" />
     <Compile Include="DProveedor.cs" />
+    <Compile Include="DStock.cs" />
     <Compile Include="DTrabajador.cs" />
     <Compile Include="DVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

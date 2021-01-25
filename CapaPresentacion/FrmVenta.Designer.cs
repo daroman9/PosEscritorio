@@ -517,7 +517,6 @@
             this.txtCodigoBarras.Name = "txtCodigoBarras";
             this.txtCodigoBarras.Size = new System.Drawing.Size(302, 20);
             this.txtCodigoBarras.TabIndex = 81;
-            this.txtCodigoBarras.TextChanged += new System.EventHandler(this.txtCodigoBarras_TextChanged);
             this.txtCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarras_KeyPress);
             // 
             // textBox3

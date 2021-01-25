@@ -336,7 +336,7 @@ namespace CapaDatos
 
             return DtResultado;
         }
-        //Método Buscar por codigo de barras
+        //Método Buscar por codigo de barras para ventas
         public DataTable BuscarCodigo(DArticulo Articulo)
         {
             DataTable DtResultado = new DataTable("articulo");
@@ -348,6 +348,40 @@ namespace CapaDatos
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "spmostrarcodigo_articulo";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@textobuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 50;
+                ParTextoBuscar.Value = Articulo.TextoBuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
+
+        //Método Buscar por codigo de barras para ingresos
+        public DataTable BuscarCodigoIngresos(DArticulo Articulo)
+        {
+            DataTable DtResultado = new DataTable("articulo");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spbuscar_articulo_codigo";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter ParTextoBuscar = new SqlParameter();
@@ -394,7 +428,5 @@ namespace CapaDatos
 
             return DtResultado;
         }
-
-
     }
 }

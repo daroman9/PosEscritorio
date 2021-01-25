@@ -177,6 +177,7 @@
     <None Include="Resources\adding.png" />
     <None Include="Resources\addPicture.png" />
     <None Include="Resources\deletePicture.png" />
+    <None Include="Resources\back.png" />
     <Content Include="Resources\file.png" />
     <None Include="Resources\file1.png" />
   </ItemGroup>

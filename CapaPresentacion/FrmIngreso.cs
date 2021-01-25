@@ -30,8 +30,13 @@ namespace CapaPresentacion
             this.txtIdProveedor.Visible = false;
             this.txtArticulo.ReadOnly = true;
             this.txtProveedor.ReadOnly = true;
+            this.txtPorcentaje.Enabled = false;
+            this.txtPrecioVenta.Enabled = false;
             this.txtSerie.ReadOnly = true;
-          
+            this.txtUtilidad.ReadOnly = true;
+            this.rdbPorcentaje.Checked = false;
+            this.rdbPrecio.Checked = false;
+           
         }
 
         private void FrmIngreso_Load(object sender, EventArgs e)
@@ -58,6 +63,8 @@ namespace CapaPresentacion
             this.txtIdProveedor.Text = string.Empty;
             this.txtProveedor.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
+            this.txtPorcentaje.Text = string.Empty;
+            this.txtUtilidad.Text = string.Empty;
             this.lblTotalPagado.Text = "0.0";
             this.ultimaSerie = null;
             this.CrearTabla();
@@ -67,8 +74,8 @@ namespace CapaPresentacion
             this.txtIdArticulo.Text = string.Empty;
             this.txtArticulo.Text = string.Empty;
             this.txtStockInicial.Text = string.Empty;
-            this.txtPrecioCompra.Text = string.Empty;
-            this.txtPrecioVenta.Text = string.Empty;
+            //this.txtPrecioCompra.Text = string.Empty;
+            //this.txtPrecioVenta.Text = string.Empty;
         }
         //Método para habilitar los controles del formulario
 
@@ -78,10 +85,8 @@ namespace CapaPresentacion
             this.dtFecha.Enabled = valor;
             this.txtStockInicial.Enabled = valor;
             this.txtPrecioCompra.Enabled = valor;
-            this.txtPrecioVenta.Enabled = valor;
             this.dtFechaProduccion.Enabled = valor;
             this.dtFechaVencimiento.Enabled = valor;
-
             this.btnAgregar.Enabled = valor;
             this.btnQuitar.Enabled = valor;
         }
@@ -132,8 +137,6 @@ namespace CapaPresentacion
             this.dataListadoProveedores.DataSource = NProveedor.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
-            lblTotalArticulos.Text = "Total de registros: " + Convert.ToString(dataListadoArticulos.Rows.Count);
-            lblTotalProveedores.Text = "Total de registros: " + Convert.ToString(dataListadoProveedores.Rows.Count);
         }
         //Método para buscar por fechas
         private void BuscarFechas()
@@ -222,6 +225,8 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("Articulo", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Precio_compra", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Precio_venta", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Porcentaje", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Utilidad", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Stock_inicial", System.Type.GetType("System.Int32"));
             this.dtDetalle.Columns.Add("Fecha_produccion", System.Type.GetType("System.DateTime"));
             this.dtDetalle.Columns.Add("Fecha_vencimiento", System.Type.GetType("System.DateTime"));
@@ -267,9 +272,15 @@ namespace CapaPresentacion
                    
                     if (this.IsNuevo)
                     {
-             
-                        rpta = NIngreso.Insertar(Idtrabajador, Convert.ToInt32(this.txtIdProveedor.Text), dtFecha.Value,
-                                                 this.txtSerie.Text, "EMITIDO", dtDetalle);
+                        if(dtDetalle.Rows.Count > 0)
+                        {
+                            rpta = NIngreso.Insertar(Idtrabajador, Convert.ToInt32(this.txtIdProveedor.Text), dtFecha.Value,
+                                                this.txtSerie.Text, "EMITIDO", dtDetalle);
+                        }
+                        else
+                        {
+                            MensajeError("No ha adjuntado articulos en el ingreso ");
+                        }
                     }
                    
                     if (rpta.Equals("OK"))
@@ -334,6 +345,8 @@ namespace CapaPresentacion
                         row["Precio_compra"] = Convert.ToDecimal(this.txtPrecioCompra.Text);
                         row["Precio_venta"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
                         row["Stock_inicial"] = Convert.ToInt32(this.txtStockInicial.Text);
+                        row["Porcentaje"] = Convert.ToDecimal(this.txtPorcentaje.Text);
+                        row["Utilidad"] = Convert.ToDecimal(this.txtUtilidad.Text);
                         row["Fecha_produccion"] = dtFechaProduccion.Value;
                         row["Fecha_vencimiento"] = dtFechaVencimiento.Value;
                         row["Subtotal"] = subtotal;
@@ -381,18 +394,30 @@ namespace CapaPresentacion
                 this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Total"].Value);
 
                 this.MostrarDetalle();
-                //this.tabControl1.SelectedIndex = 0;
+               
                 this.chkEliminar.Visible = false;
                 this.btnVolverDataListado.Visible = true;
                 this.lblTotal.Text = Convert.ToString("Total de registros: " + dataListado.Rows.Count);
                 this.listadoDetalle = false;
+                this.dataListado.Columns[1].Visible = false;
+                this.dataListado.Columns[2].Visible = false;
             }
             else
             {
+                this.txtIddetalleIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["iddetalle_ingreso"].Value);
+                this.txtMarca.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["marca"].Value);
+                this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
+                this.txtContenido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["contenido"].Value);
+                this.txtPrecioCompraIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_compra"].Value);
+                this.txtPrecioVentaIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta"].Value);
+                this.txtPorcentajeIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["porcentaje"].Value);
+                this.txtUtilidadIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["utilidad"].Value);
+                this.txtStockInicialIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["stock_inicial"].Value);
+                this.dtFechaProduccionIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_produccion"].Value);
+                this.dtFechaVencimientoIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_vencimiento"].Value);
 
-                // this.chkEliminar.Visible = true;
-                MessageBox.Show("Hola");
-               
+                this.tabControl1.SelectedIndex = 2;
+
             }
         }
         //Método para obtener la serie del último registro
@@ -400,7 +425,14 @@ namespace CapaPresentacion
         {
             int ultimoValor;
             this.ultimaSerie = NIngreso.UltimaSerie();
-            ultimoValor = Convert.ToInt32(this.ultimaSerie.Rows[0]["Serie"].ToString().Substring(3));
+            if (this.ultimaSerie.Rows.Count == 0)
+            {
+                ultimoValor = 0;
+            }
+            else
+            {
+                ultimoValor = Convert.ToInt32(this.ultimaSerie.Rows[0]["Serie"].ToString().Substring(3));
+            }
             ultimoValor++;
             this.txtSerie.Text = Convert.ToString("IN-"+ultimoValor);
         }
@@ -421,7 +453,6 @@ namespace CapaPresentacion
         {
             this.dataListadoArticulos.DataSource = NArticulo.BuscarNombre(this.txtBuscarNombreArticulo.Text);
             this.OcultarColumnas();
-            this.lblTotalArticulos.Text = "Total de registros: " + Convert.ToString(dataListadoArticulos.Rows.Count);
         }
 
         private void txtStockInicial_KeyPress(object sender, KeyPressEventArgs e)
@@ -490,6 +521,335 @@ namespace CapaPresentacion
             this.chkEliminar.Visible = true;
             this.lblTotal.Text = Convert.ToString("Total de registros: " + dataListado.Rows.Count);
             this.listadoDetalle = true;
+            this.chkEliminar.Checked = false;
+            this.OcultarColumnas();
+        }
+
+        private void rdbPorcentaje_CheckedChanged(object sender, EventArgs e)
+        {
+            if(this.txtPorcentaje.Enabled == false)
+            {
+                this.txtPorcentaje.Enabled = true;
+                this.txtPrecioVenta.Enabled = false;
+                this.txtPrecioVenta.Text = string.Empty;
+                this.txtUtilidad.Text = string.Empty;
+            }
+            else
+            {
+                this.txtPorcentaje.Enabled = false;
+                this.txtPrecioVenta.Enabled = true;
+                this.txtPorcentaje.Text = string.Empty;
+                this.txtPrecioVenta.Text = string.Empty;
+                this.txtUtilidad.Text = string.Empty;
+            }
+        }
+
+        private void rdbPrecio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.txtProveedor.Enabled == true)
+            {
+                this.txtPorcentaje.Enabled = false;
+                this.txtPrecioVenta.Enabled = true;
+                this.txtPorcentaje.Text = string.Empty;
+                this.txtPrecioVenta.Text = string.Empty;
+                this.txtUtilidad.Text = string.Empty;
+            }
+            else
+            {
+                this.txtPorcentaje.Enabled = true;
+                this.txtPrecioVenta.Enabled = false;
+                this.txtPrecioVenta.Text = string.Empty;
+                this.txtUtilidad.Text = string.Empty;
+            }
+        }
+
+        private void txtPorcentaje_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+        //Función para calcular el precio de venta basado en porcentaje
+        public void calcularPrecioVenta()
+        {
+            decimal precioCompra;
+            decimal porcentaje;
+            decimal precioVenta;
+            decimal utilidad;
+
+            try
+            {
+                precioCompra = Convert.ToDecimal(this.txtPrecioCompra.Text);
+                if (this.txtPorcentaje.Text != string.Empty)
+                {
+                    porcentaje = Convert.ToDecimal(this.txtPorcentaje.Text);
+                    precioVenta = (precioCompra * porcentaje / 100) + precioCompra;
+                    this.txtPrecioVenta.Text = Convert.ToString(precioVenta);
+                    utilidad = (precioCompra * porcentaje / 100);
+                    this.txtUtilidad.Text = Convert.ToString(utilidad);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Revise los valores ingresados");
+            }
+        }
+        //Función para calcular el porcentaje usando el precio de venta manual
+
+        public void calcularPorcentaje()
+        {
+            decimal precioCompra2 =0;
+            decimal porcentaje2 =0;
+            decimal precioVenta2;
+            decimal utilidad2=0;
+
+            try
+            {
+                if (this.txtPrecioVenta.Text != string.Empty)
+                {
+                    precioCompra2 = Convert.ToDecimal(this.txtPrecioCompra.Text);
+                    precioVenta2 = Convert.ToDecimal(this.txtPrecioVenta.Text);
+                    utilidad2 = precioVenta2 - precioCompra2;
+                    // this.txtUtilidad.Text = Convert.ToString(utilidad2);
+
+
+                    this.txtUtilidad.Text = utilidad2.ToString("N1");
+
+
+                    porcentaje2 = (utilidad2 * 100) / precioCompra2;
+
+                }
+
+                if (porcentaje2 > 0)
+                {
+                    // this.txtPorcentaje.Text = Convert.ToString(porcentaje2);
+                    this.txtPorcentaje.Text = porcentaje2.ToString("N1");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Revise los valores ingresados");
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            calcularPorcentaje();
+        }
+
+        private void txtPorcentaje_TextChanged(object sender, EventArgs e)
+        {
+            calcularPrecioVenta();
+        }
+
+        private void txtPrecioVenta_TextChanged(object sender, EventArgs e)
+        {
+            calcularPorcentaje();
+        }
+
+        private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (13))
+            {
+
+                this.dataListadoArticulos.DataSource = NArticulo.BuscarCodigoIngresos(this.txtCodigoBarras.Text);
+
+            }   
+
+        }
+
+        private void btnGuardarIngreso_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rpta = "";
+                rpta = NIngreso.Editar(Convert.ToInt32(this.txtIddetalleIngreso.Text), Convert.ToDecimal(this.txtPrecioCompraIngreso.Text), Convert.ToDecimal(this.txtPrecioVentaIngreso.Text),
+                                       Convert.ToInt32(this.txtStockInicialIngreso.Text), Convert.ToDecimal(this.txtPorcentajeIngreso.Text), Convert.ToDecimal(this.txtUtilidadIngreso.Text),
+                                       this.dtFechaProduccionIngreso.Value, this.dtFechaVencimientoIngreso.Value);
+                    
+               if (rpta.Equals("OK"))
+               {
+                 if (this.IsNuevo)
+                 {
+                   this.MensajeOk("Se inserto correctamente en registro");
+                 }
+                 else
+                 {
+                   this.MensajeOk("Se actualizó correctamente en registro");
+                 }
+               }
+               else
+               {
+                 this.MensajeError(rpta);
+               }
+              //this.Botones();
+              //this.Limpiar();
+              //this.Mostrar();
+            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+
+        }
+
+        private void btnEditarIngreso_Click(object sender, EventArgs e)
+        {
+            this.rdbPorcentajeIngreso.Enabled = true;
+            this.rdbPrecioIngreso.Enabled = true;
+            this.txtPrecioCompraIngreso.Enabled = true;
+            this.txtStockInicialIngreso.Enabled = true;
+            this.dtFechaProduccionIngreso.Enabled = true;
+            this.dtFechaVencimientoIngreso.Enabled = true;
+            this.btnGuardarIngreso.Enabled = true;
+        }
+
+        private void btnCancelarIngreso_Click(object sender, EventArgs e)
+        {
+            this.rdbPorcentajeIngreso.Enabled = false;
+            this.rdbPrecioIngreso.Enabled = false;
+            this.txtPrecioCompraIngreso.Enabled = false;
+            this.txtStockInicialIngreso.Enabled = false;
+            this.dtFechaProduccionIngreso.Enabled = false;
+            this.dtFechaVencimientoIngreso.Enabled = false;
+            this.btnGuardarIngreso.Enabled = false;
+
+            this.txtMarca.Text = string.Empty;
+            this.txtDescripcion.Text = string.Empty;
+            this.txtContenido.Text = string.Empty;
+            this.rdbPorcentajeIngreso.Checked = false;
+            this.rdbPrecioIngreso.Checked = false;
+            this.txtPrecioCompraIngreso.Text = string.Empty;
+            this.txtPorcentajeIngreso.Text = string.Empty;
+            this.txtPrecioVentaIngreso.Text = string.Empty;
+            this.txtUtilidadIngreso.Text = string.Empty;
+            this.txtStockInicialIngreso.Text = string.Empty;
+            this.dtFechaProduccionIngreso.Value = DateTime.Now;
+            this.dtFechaVencimientoIngreso.Value = DateTime.Now;
+        }
+
+        //Función para calcular el precio de venta basado en porcentaje
+        public void calcularPrecioVentaIngreso()
+        {
+            decimal precioCompra;
+            decimal porcentaje;
+            decimal precioVenta;
+            decimal utilidad;
+
+            try
+            {
+                precioCompra = Convert.ToDecimal(this.txtPrecioCompraIngreso.Text);
+                if (this.txtPorcentajeIngreso.Text != string.Empty)
+                {
+                    porcentaje = Convert.ToDecimal(this.txtPorcentajeIngreso.Text);
+                    precioVenta = (precioCompra * porcentaje / 100) + precioCompra;
+                    this.txtPrecioVentaIngreso.Text = Convert.ToString(precioVenta);
+                    utilidad = (precioCompra * porcentaje / 100);
+                    this.txtUtilidadIngreso.Text = Convert.ToString(utilidad);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Revise los valores ingresados");
+            }
+        }
+        //Función para calcular el porcentaje usando el precio de venta manual
+
+        public void calcularPorcentajeIngreso()
+        {
+            decimal precioCompra2 = 0;
+            decimal porcentaje2 = 0;
+            decimal precioVenta2;
+            decimal utilidad2 = 0;
+
+            try
+            {
+                if (this.txtPrecioVentaIngreso.Text != string.Empty)
+                {
+                    precioCompra2 = Convert.ToDecimal(this.txtPrecioCompraIngreso.Text);
+                    precioVenta2 = Convert.ToDecimal(this.txtPrecioVentaIngreso.Text);
+                    utilidad2 = precioVenta2 - precioCompra2;
+                    // this.txtUtilidad.Text = Convert.ToString(utilidad2);
+
+
+                    this.txtUtilidadIngreso.Text = utilidad2.ToString("N1");
+
+
+                    porcentaje2 = (utilidad2 * 100) / precioCompra2;
+
+                }
+
+                if (porcentaje2 > 0)
+                {
+                    // this.txtPorcentaje.Text = Convert.ToString(porcentaje2);
+                    this.txtPorcentajeIngreso.Text = porcentaje2.ToString("N1");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Revise los valores ingresados");
+            }
+        }
+        private void rdbPorcentajeIngreso_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.txtPorcentajeIngreso.Enabled == false)
+            {
+                this.txtPorcentajeIngreso.Enabled = true;
+                this.txtPrecioVentaIngreso.Enabled = false;
+                this.txtPrecioVentaIngreso.Text = string.Empty;
+                this.txtUtilidadIngreso.Text = string.Empty;
+            }
+            else
+            {
+                this.txtPorcentajeIngreso.Enabled = false;
+                this.txtPrecioVentaIngreso.Enabled = true;
+                this.txtPorcentajeIngreso.Text = string.Empty;
+                this.txtPrecioVentaIngreso.Text = string.Empty;
+                this.txtUtilidadIngreso.Text = string.Empty;
+            }
+        }
+
+        private void rdbPrecioIngreso_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.txtPorcentajeIngreso.Enabled == true)
+            {
+                this.txtPorcentajeIngreso.Enabled = false;
+                this.txtPrecioVentaIngreso.Enabled = true;
+                this.txtPorcentajeIngreso.Text = string.Empty;
+                this.txtPrecioVentaIngreso.Text = string.Empty;
+                this.txtUtilidadIngreso.Text = string.Empty;
+            }
+            else
+            {
+                this.txtPorcentajeIngreso.Enabled = true;
+                this.txtPrecioVentaIngreso.Enabled = false;
+                this.txtPrecioVentaIngreso.Text = string.Empty;
+                this.txtUtilidadIngreso.Text = string.Empty;
+            }
+        }
+
+        private void txtPorcentajeIngreso_TextChanged(object sender, EventArgs e)
+        {
+            calcularPrecioVentaIngreso();
+        }
+
+        private void txtPrecioVentaIngreso_TextChanged(object sender, EventArgs e)
+        {
+            calcularPorcentajeIngreso();
         }
     }
 }
