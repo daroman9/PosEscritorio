@@ -528,6 +528,7 @@
             this.dataListadoDetalle.GridColor = System.Drawing.Color.White;
             this.dataListadoDetalle.Location = new System.Drawing.Point(12, 133);
             this.dataListadoDetalle.Name = "dataListadoDetalle";
+            this.dataListadoDetalle.RowHeadersVisible = false;
             this.dataListadoDetalle.Size = new System.Drawing.Size(1558, 341);
             this.dataListadoDetalle.TabIndex = 59;
             // 

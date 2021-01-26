@@ -866,5 +866,23 @@ namespace CapaPresentacion
                 calcularPorcentajeIngreso();
             }
         }
+
+        private void txtBuscarNombreProveedores_TextChanged(object sender, EventArgs e)
+        {
+            this.dataListadoProveedores.DataSource = NProveedor.BuscarRazonSocial(this.txtBuscarNombreProveedores.Text);
+            this.OcultarColumnas();
+        }
+
+        private void btnBuscarNombreArticulos_Click(object sender, EventArgs e)
+        {
+            this.dataListadoArticulos.DataSource = NArticulo.BuscarNombre(this.txtBuscarNombreArticulo.Text);
+            this.OcultarColumnas();
+        }
+
+        private void btnBuscarProveedores_Click(object sender, EventArgs e)
+        {
+            this.dataListadoProveedores.DataSource = NProveedor.BuscarRazonSocial(this.txtBuscarNombreProveedores.Text);
+            this.OcultarColumnas();
+        }
     }
 }

@@ -191,7 +191,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1582, 758);
+            this.tabPage1.Size = new System.Drawing.Size(1582, 759);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de ingresos";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -337,7 +337,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1582, 758);
+            this.tabPage2.Size = new System.Drawing.Size(1582, 759);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Crear ingreso";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -572,6 +572,7 @@
             this.btnBuscarProveedores.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarProveedores.TabIndex = 2;
             this.btnBuscarProveedores.UseVisualStyleBackColor = true;
+            this.btnBuscarProveedores.Click += new System.EventHandler(this.btnBuscarProveedores_Click);
             // 
             // txtBuscarNombreProveedores
             // 
@@ -579,6 +580,7 @@
             this.txtBuscarNombreProveedores.Name = "txtBuscarNombreProveedores";
             this.txtBuscarNombreProveedores.Size = new System.Drawing.Size(230, 26);
             this.txtBuscarNombreProveedores.TabIndex = 1;
+            this.txtBuscarNombreProveedores.TextChanged += new System.EventHandler(this.txtBuscarNombreProveedores_TextChanged);
             // 
             // label20
             // 
@@ -825,6 +827,7 @@
             this.btnBuscarNombreArticulos.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarNombreArticulos.TabIndex = 2;
             this.btnBuscarNombreArticulos.UseVisualStyleBackColor = true;
+            this.btnBuscarNombreArticulos.Click += new System.EventHandler(this.btnBuscarNombreArticulos_Click);
             // 
             // txtBuscarNombreArticulo
             // 
