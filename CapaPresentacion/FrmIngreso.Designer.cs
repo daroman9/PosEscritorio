@@ -518,6 +518,7 @@
             this.dataListadoDetalle.RowHeadersVisible = false;
             this.dataListadoDetalle.Size = new System.Drawing.Size(1575, 220);
             this.dataListadoDetalle.TabIndex = 35;
+            this.dataListadoDetalle.Click += new System.EventHandler(this.dataListadoDetalle_Click);
             // 
             // tabControl3
             // 
@@ -604,6 +605,7 @@
             // 
             this.btnQuitar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
             this.btnQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuitar.Enabled = false;
             this.btnQuitar.FlatAppearance.BorderSize = 0;
             this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuitar.Location = new System.Drawing.Point(1466, 381);

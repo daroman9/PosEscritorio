@@ -29,6 +29,7 @@ namespace CapaNegocio
                 detalle.Idarticulo = Convert.ToInt32(row["idarticulo"].ToString());
                 detalle.Precio_Compra = Convert.ToDecimal(row["precio_compra"].ToString());
                 detalle.Precio_Venta= Convert.ToDecimal(row["precio_venta"].ToString());
+                detalle.Precio_Venta_Real = Convert.ToDecimal(row["precio_venta_real"].ToString());
                 detalle.Stock_Inicial = Convert.ToInt32(row["stock_inicial"].ToString());
                 detalle.Stock_Actual = Convert.ToInt32(row["stock_inicial"].ToString());
                 detalle.Porcentaje = Convert.ToDecimal(row["porcentaje"].ToString());
@@ -39,6 +40,22 @@ namespace CapaNegocio
                 detalles.Add(detalle);
             }
             return Obj.Insertar(Obj, detalles);
+        }
+
+        //Método para actualizzr los precios cada vez que se genere un ingreso de articulos
+        public static string EditarPrecios(DataTable dtDetalles)
+        {
+            DIngreso Obj = new DIngreso();
+            List<DDetalle_Ingreso> detalles = new List<DDetalle_Ingreso>();
+            foreach (DataRow row in dtDetalles.Rows)
+            {
+                DDetalle_Ingreso detalle = new DDetalle_Ingreso();
+                detalle.Idarticulo = Convert.ToInt32(row["idarticulo"].ToString());
+                detalle.Precio_Venta_Real = Convert.ToDecimal(row["precio_venta_real"].ToString());
+                
+                detalles.Add(detalle);
+            }
+            return Obj.EditarPrecios(detalles);
         }
         //Método que llama el método editat de la clase DDetalle_Ingreso de la capa de datos
         public static string Editar(int iddetalleingreso, decimal precio_compra, decimal precio_venta, int stock_inicial, decimal porcentaje, decimal utilidad, DateTime fecha_produccion, DateTime fecha_vencimiento)

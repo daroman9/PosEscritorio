@@ -143,6 +143,50 @@ namespace CapaDatos
             return rpta;
         }
 
+        //Método que edita los precios de venta
+        public string EditarPrecios(List<DDetalle_Ingreso> Detalle)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código para insertar registros
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+                //Establecer la transaccion
+                SqlTransaction SqlTra = SqlCon.BeginTransaction();
+                //Establecer comando para ejecutar sentencias sql
+               foreach (DDetalle_Ingreso det in Detalle)
+               {
+                //Llamar al método para editar los precios de la clase DDetalle_Ingreso
+                rpta = det.EditarPrecios(det, ref SqlCon, ref SqlTra);
+
+               if (!rpta.Equals("OK"))
+               {
+                break;
+               }
+
+               }
+               if (rpta.Equals("OK"))
+               {
+                SqlTra.Commit();
+               }
+               else
+               {
+                SqlTra.Rollback();
+               }
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+        }
         //Método Anular
         public string Anular(DIngreso Ingreso)
         {

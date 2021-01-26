@@ -17,6 +17,7 @@ namespace CapaPresentacion
         public int Idtrabajador;
         private bool IsNuevo;
         private DataTable dtDetalle;
+        private DataTable dtPrecioReal;
         private decimal totalPagado = 0;
         private DataTable ultimaSerie;
         private bool listadoDetalle = true;
@@ -45,6 +46,7 @@ namespace CapaPresentacion
             this.Habilitar(false);
             this.Botones();
             this.CrearTabla();
+            this.CrearTablaPrecios();
         }
         //Mostrar mensaje de confirmación
         private void MensajeOk(string mensaje)
@@ -66,6 +68,7 @@ namespace CapaPresentacion
             this.lblTotalPagado.Text = "0.0";
             this.ultimaSerie = null;
             this.CrearTabla();
+            this.CrearTablaPrecios();
         }
         private void LimpiarDetalle()
         {
@@ -89,7 +92,7 @@ namespace CapaPresentacion
             this.dtFechaProduccion.Enabled = valor;
             this.dtFechaVencimiento.Enabled = valor;
             this.btnAgregar.Enabled = valor;
-            this.btnQuitar.Enabled = valor;
+            //this.btnQuitar.Enabled = valor;
         }
         //Método para habilitar los botones
         private void Botones()
@@ -129,6 +132,7 @@ namespace CapaPresentacion
             this.dataListadoProveedores.Columns[6].Visible = false;
             this.dataListadoProveedores.Columns[7].Visible = false;
             this.dataListadoProveedores.Columns[8].Visible = false;
+
         }
         //Método mostrar
         private void Mostrar()
@@ -226,6 +230,7 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("Articulo", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Precio_compra", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Precio_venta", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Precio_venta_real", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Porcentaje", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Utilidad", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Stock_inicial", System.Type.GetType("System.Int32"));
@@ -236,7 +241,12 @@ namespace CapaPresentacion
             this.dataListadoDetalle.DataSource = this.dtDetalle;
 
         }
-
+        private void CrearTablaPrecios()
+        {
+            this.dtPrecioReal = new DataTable("PrecioReal");
+            this.dtPrecioReal.Columns.Add("idarticulo", System.Type.GetType("System.Int32"));
+            this.dtPrecioReal.Columns.Add("precio_venta_real", System.Type.GetType("System.Decimal"));
+        }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             this.IsNuevo = true;
@@ -262,6 +272,7 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
+                string updatePrecios = "";
                 if (this.txtIdProveedor.Text == string.Empty || this.txtSerie.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
@@ -273,11 +284,16 @@ namespace CapaPresentacion
                    
                     if (this.IsNuevo)
                     {
-                        if(dtDetalle.Rows.Count > 0)
+                        if (dtDetalle.Rows.Count > 0)
                         {
                             rpta = NIngreso.Insertar(Idtrabajador, Convert.ToInt32(this.txtIdProveedor.Text), dtFecha.Value,
                                                 this.txtSerie.Text, "EMITIDO", dtDetalle);
-                        }
+
+                            if (rpta.Equals("OK"))
+                            {
+                               updatePrecios = NIngreso.EditarPrecios(dtPrecioReal);
+                            }
+                        }   
                         else
                         {
                             MensajeError("No ha adjuntado articulos en el ingreso ");
@@ -345,6 +361,7 @@ namespace CapaPresentacion
                         row["Articulo"] = this.txtArticulo.Text;
                         row["Precio_compra"] = Convert.ToDecimal(this.txtPrecioCompra.Text);
                         row["Precio_venta"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
+                        row["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
                         row["Stock_inicial"] = Convert.ToInt32(this.txtStockInicial.Text);
                         row["Porcentaje"] = Convert.ToDecimal(this.txtPorcentaje.Text);
                         row["Utilidad"] = Convert.ToDecimal(this.txtUtilidad.Text);
@@ -354,9 +371,18 @@ namespace CapaPresentacion
 
                         this.dtDetalle.Rows.Add(row);
 
+                        //Agregar el precio real en el datatable
+                        DataRow fila = this.dtPrecioReal.NewRow();
+                        fila["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
+                        fila["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
+                        this.dtPrecioReal.Rows.Add(fila);
+                        
                         this.LimpiarDetalle();
+
+                        //Ocultar las columnas de detalle de ingreso
+                        this.dataListadoDetalle.Columns[0].Visible = false;
+                        this.dataListadoDetalle.Columns[4].Visible = false;
                     }
-                   
                 }
             }
             catch (Exception ex)
@@ -367,22 +393,27 @@ namespace CapaPresentacion
 
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int indiceFila = this.dataListadoDetalle.CurrentCell.RowIndex;
-                DataRow row = this.dtDetalle.Rows[indiceFila];
-                //Disminuir el total pagado
-                this.totalPagado = this.totalPagado - Convert.ToDecimal(row["subtotal"].ToString());
-                this.lblTotalPagado.Text = totalPagado.ToString("#0.00#");
-                //Removemos la fila
-                this.dtDetalle.Rows.Remove(row);
 
+            if (this.dataListadoDetalle.Rows.Count > 0)
+            {
+
+                try
+                {
+                    int indiceFila = this.dataListadoDetalle.CurrentCell.RowIndex;
+                    DataRow row = this.dtDetalle.Rows[indiceFila];
+                    //Disminuir el total pagado
+                    this.totalPagado = this.totalPagado - Convert.ToDecimal(row["subtotal"].ToString());
+                    this.lblTotalPagado.Text = totalPagado.ToString("#0.00#");
+                    //Removemos la fila
+                    this.dtDetalle.Rows.Remove(row);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MensajeError("No hay fila para remover");
             }
         }
+        }
+
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
@@ -424,6 +455,16 @@ namespace CapaPresentacion
             this.txtStockInicialIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["stock_inicial"].Value);
             this.dtFechaProduccionIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_produccion"].Value);
             this.dtFechaVencimientoIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_vencimiento"].Value);
+
+            //Agref
+          
+            //Agregar el precio real en el datatable
+            //DataRow fila = this.dtPrecioReal.NewRow();
+            //fila["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
+            //fila["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
+            //this.dtPrecioReal.Rows.Add(fila);
+
+
         }
 
 
@@ -883,6 +924,11 @@ namespace CapaPresentacion
         {
             this.dataListadoProveedores.DataSource = NProveedor.BuscarRazonSocial(this.txtBuscarNombreProveedores.Text);
             this.OcultarColumnas();
+        }
+
+        private void dataListadoDetalle_Click(object sender, EventArgs e)
+        {
+            this.btnQuitar.Enabled = true;
         }
     }
 }
