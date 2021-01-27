@@ -99,6 +99,13 @@ namespace CapaNegocio
 
             return Obj.MostrarDetalle(textoBuscar);
         }
+        //Método que llama al método que muestra el stock el precio y el total de ganancias
+        public static DataTable MostrarDetalleGanancias(int textoBuscar)
+        {
+            DDetalle_Ingreso Obj = new DDetalle_Ingreso();
+
+            return Obj.MostrarGanancias(textoBuscar);
+        }
 
         //Método que llama el método que busca la serie del último registro
         public static DataTable UltimaSerie()

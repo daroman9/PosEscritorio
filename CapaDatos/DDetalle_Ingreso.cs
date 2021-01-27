@@ -24,6 +24,7 @@ namespace CapaDatos
         private decimal _Precio_Venta_Real;
         private DateTime _Fecha_Produccion;
         private DateTime _Fecha_Vencimiento;
+        private int _Textobuscar;
 
         public int Iddetalle_Ingreso { get => _Iddetalle_Ingreso; set => _Iddetalle_Ingreso = value; }
         public int Idingreso { get => _Idingreso; set => _Idingreso = value; }
@@ -37,7 +38,8 @@ namespace CapaDatos
         public decimal Precio_Venta_Real { get => _Precio_Venta_Real; set => _Precio_Venta_Real = value; }
         public DateTime Fecha_Produccion { get => _Fecha_Produccion; set => _Fecha_Produccion = value; }
         public DateTime Fecha_Vencimiento { get => _Fecha_Vencimiento; set => _Fecha_Vencimiento = value; }
-       
+        public int Textobuscar { get => _Textobuscar; set => _Textobuscar = value; }
+
         //Constructor vacio
         public DDetalle_Ingreso()
         {
@@ -45,7 +47,7 @@ namespace CapaDatos
         }
 
         //Constructor con parametros
-        public DDetalle_Ingreso(int iddetalle_ingreso, int idingreso, int idarticulo, decimal precio_compra, decimal precio_venta, int stock_inicial, int stock_actual, decimal porcentaje, decimal utilidad, decimal precio_venta_real, DateTime fecha_produccion, DateTime fecha_vencimiento)
+        public DDetalle_Ingreso(int iddetalle_ingreso, int idingreso, int idarticulo, decimal precio_compra, decimal precio_venta, int stock_inicial, int stock_actual, decimal porcentaje, decimal utilidad, decimal precio_venta_real, DateTime fecha_produccion, DateTime fecha_vencimiento, int textobuscar)
         {
             this.Iddetalle_Ingreso = iddetalle_ingreso;
             this.Idingreso = idingreso;
@@ -58,7 +60,8 @@ namespace CapaDatos
             this.Utilidad = utilidad;
             this.Precio_Venta_Real = precio_venta_real;
             this.Fecha_Produccion = fecha_produccion;
-            this.Fecha_Vencimiento = fecha_vencimiento;   
+            this.Fecha_Vencimiento = fecha_vencimiento;
+            this.Textobuscar = textobuscar;
         }
         //Método Insertar
         public string Insertar(DDetalle_Ingreso Detalle_Ingreso, ref SqlConnection SqlCon, ref SqlTransaction SqlTra)
@@ -279,6 +282,39 @@ namespace CapaDatos
             }
             return rpta;
 
+        }
+        //Método que recupera el total de stock el precio de venta real y la ganancia total de un articulo
+
+        public DataTable MostrarGanancias(int TextoBuscar)
+        {
+            DataTable DtResultado = new DataTable("articulo");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spmostrar_detalle_ingreso_precios";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@textobuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 50;
+                ParTextoBuscar.Value = TextoBuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
         }
    }
 }

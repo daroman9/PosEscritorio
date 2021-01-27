@@ -20,11 +20,12 @@ namespace CapaPresentacion
         private DataTable dtPrecioReal;
         private decimal totalPagado = 0;
         private DataTable ultimaSerie;
+        private DataTable ganancias;
         private bool listadoDetalle = true;
         public FrmIngreso()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(this.txtProveedor,"Seleccione el proveedor");
+            this.ttMensaje.SetToolTip(this.txtProveedor, "Seleccione el proveedor");
             this.ttMensaje.SetToolTip(this.txtSerie, "Ingrese la serie del comprobante");
             this.ttMensaje.SetToolTip(this.txtStockInicial, "Ingrese la cantidad de compra");
             this.txtIdArticulo.Visible = false;
@@ -37,7 +38,7 @@ namespace CapaPresentacion
             this.txtUtilidad.ReadOnly = true;
             this.rdbPorcentaje.Checked = false;
             this.rdbPrecio.Checked = false;
-           
+
         }
 
         private void FrmIngreso_Load(object sender, EventArgs e)
@@ -117,7 +118,7 @@ namespace CapaPresentacion
         {
             this.dataListado.Columns[0].Visible = false;
             this.dataListado.Columns[1].Visible = false;
- 
+
 
             //Ocultar columnas del grid de Articulos
             this.dataListadoArticulos.Columns[0].Visible = false;
@@ -125,7 +126,7 @@ namespace CapaPresentacion
             this.dataListadoArticulos.Columns[8].Visible = false;
             this.dataListadoArticulos.Columns[9].Visible = false;
             this.dataListadoArticulos.Columns[10].Visible = false;
-      
+
             //Ocultar columnas del grid de Proveedores
             this.dataListadoProveedores.Columns[0].Visible = false;
             this.dataListadoProveedores.Columns[5].Visible = false;
@@ -281,7 +282,7 @@ namespace CapaPresentacion
                 }
                 else
                 {
-                   
+
                     if (this.IsNuevo)
                     {
                         if (dtDetalle.Rows.Count > 0)
@@ -291,22 +292,22 @@ namespace CapaPresentacion
 
                             if (rpta.Equals("OK"))
                             {
-                               updatePrecios = NIngreso.EditarPrecios(dtPrecioReal);
+                                updatePrecios = NIngreso.EditarPrecios(dtPrecioReal);
                             }
-                        }   
+                        }
                         else
                         {
                             MensajeError("No ha adjuntado articulos en el ingreso ");
                         }
                     }
-                   
+
                     if (rpta.Equals("OK"))
                     {
                         if (this.IsNuevo)
                         {
                             this.MensajeOk("Se inserto correctamente en registro");
                         }
-                  
+
                     }
                     else
                     {
@@ -329,7 +330,7 @@ namespace CapaPresentacion
         {
             try
             {
-        
+
                 if (this.txtIdArticulo.Text == string.Empty || this.txtStockInicial.Text == string.Empty || this.txtPrecioCompra.Text == string.Empty || this.txtPrecioVenta.Text == string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
@@ -342,15 +343,15 @@ namespace CapaPresentacion
                 {
                     bool registrar = true;
 
-                    foreach(DataRow row in dtDetalle.Rows)
+                    foreach (DataRow row in dtDetalle.Rows)
                     {
-                        if(Convert.ToInt32(row["idarticulo"])== Convert.ToInt32(this.txtIdArticulo.Text))
+                        if (Convert.ToInt32(row["idarticulo"]) == Convert.ToInt32(this.txtIdArticulo.Text))
                         {
                             registrar = false;
                             this.MensajeError("Ya se encuentra el articulo en el detalle");
                         }
                     }
-                    if(registrar)
+                    if (registrar)
                     {
                         decimal subtotal = Convert.ToDecimal(this.txtStockInicial.Text) * Convert.ToDecimal(this.txtPrecioCompra.Text);
                         totalPagado = totalPagado + subtotal;
@@ -376,7 +377,7 @@ namespace CapaPresentacion
                         fila["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
                         fila["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
                         this.dtPrecioReal.Rows.Add(fila);
-                        
+
                         this.LimpiarDetalle();
 
                         //Ocultar las columnas de detalle de ingreso
@@ -406,18 +407,18 @@ namespace CapaPresentacion
                     this.lblTotalPagado.Text = totalPagado.ToString("#0.00#");
                     //Removemos la fila
                     this.dtDetalle.Rows.Remove(row);
+                }
+                catch (Exception ex)
+                {
+                    MensajeError("No hay fila para remover");
+                }
             }
-            catch (Exception ex)
-            {
-                MensajeError("No hay fila para remover");
-            }
-        }
         }
 
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
-            if(listadoDetalle)
+            if (listadoDetalle)
             {
                 this.txtIdIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idingreso"].Value);
                 this.txtProveedor.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Proveedor"].Value);
@@ -426,7 +427,7 @@ namespace CapaPresentacion
                 this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Total"].Value);
 
                 this.MostrarDetalle();
-               
+
                 this.chkEliminar.Visible = false;
                 this.btnVolverDataListado.Visible = true;
                 this.lblTotal.Text = Convert.ToString("Total de registros: " + dataListado.Rows.Count);
@@ -456,18 +457,9 @@ namespace CapaPresentacion
             this.dtFechaProduccionIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_produccion"].Value);
             this.dtFechaVencimientoIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_vencimiento"].Value);
 
-            //Agref
-          
-            //Agregar el precio real en el datatable
-            //DataRow fila = this.dtPrecioReal.NewRow();
-            //fila["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
-            //fila["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
-            //this.dtPrecioReal.Rows.Add(fila);
-
-
+            //Agregar el id del articulo
+            this.txtIdArticulo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Id_articulo"].Value);
         }
-
-
 
         //Método para obtener la serie del último registro
         public void UltimaSerie()
@@ -483,7 +475,7 @@ namespace CapaPresentacion
                 ultimoValor = Convert.ToInt32(this.ultimaSerie.Rows[0]["Serie"].ToString().Substring(3));
             }
             ultimoValor++;
-            this.txtSerie.Text = Convert.ToString("IN-"+ultimoValor);
+            this.txtSerie.Text = Convert.ToString("IN-" + ultimoValor);
         }
         private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
         {
@@ -576,7 +568,7 @@ namespace CapaPresentacion
 
         private void rdbPorcentaje_CheckedChanged(object sender, EventArgs e)
         {
-            if(this.txtPorcentaje.Enabled == false)
+            if (this.txtPorcentaje.Enabled == false)
             {
                 this.txtPorcentaje.Enabled = true;
                 this.txtPrecioVenta.Enabled = false;
@@ -651,7 +643,7 @@ namespace CapaPresentacion
                     this.txtUtilidad.Text = Convert.ToString(utilidad);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Revise los valores ingresados");
             }
@@ -660,10 +652,10 @@ namespace CapaPresentacion
 
         public void calcularPorcentaje()
         {
-            decimal precioCompra2 =0;
-            decimal porcentaje2 =0;
+            decimal precioCompra2 = 0;
+            decimal porcentaje2 = 0;
             decimal precioVenta2;
-            decimal utilidad2=0;
+            decimal utilidad2 = 0;
 
             try
             {
@@ -700,7 +692,7 @@ namespace CapaPresentacion
 
                 this.dataListadoArticulos.DataSource = NArticulo.BuscarCodigoIngresos(this.txtCodigoBarras.Text);
 
-            }   
+            }
 
         }
         private void btnGuardarIngreso_Click(object sender, EventArgs e)
@@ -708,31 +700,40 @@ namespace CapaPresentacion
             try
             {
                 string rpta = "";
+                string updatePrecios = "";
+
+                //Agregar el precio real en el datatable
+                DataRow fila = this.dtPrecioReal.NewRow();
+                fila["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
+                fila["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVentaIngreso.Text);
+                this.dtPrecioReal.Rows.Add(fila);
+
                 rpta = NIngreso.Editar(Convert.ToInt32(this.txtIddetalleIngreso.Text), Convert.ToDecimal(this.txtPrecioCompraIngreso.Text), Convert.ToDecimal(this.txtPrecioVentaIngreso.Text),
                                        Convert.ToInt32(this.txtStockInicialIngreso.Text), Convert.ToDecimal(this.txtPorcentajeIngreso.Text), Convert.ToDecimal(this.txtUtilidadIngreso.Text),
                                        this.dtFechaProduccionIngreso.Value, this.dtFechaVencimientoIngreso.Value);
-                    
-               if (rpta.Equals("OK"))
-               {
-                 if (this.IsNuevo)
-                 {
-                   this.MensajeOk("Se inserto correctamente en registro");
-                 }
-                 else
-                 {
-                   this.MensajeOk("Se actualizó correctamente en registro");
-                 }
-               }
-               else
-               {
-                 this.MensajeError(rpta);
-               }
-              this.LimpiarArticulos();
-              this.MostrarDetalle();
-              this.MostrarArticulos();
-              this.tabControl1.SelectedIndex = 1;                
+                if (rpta.Equals("OK"))
+                {
+                    //Actualizar el precio de los demas articulos
+                    updatePrecios = NIngreso.EditarPrecios(dtPrecioReal);
+                    if (this.IsNuevo)
+                    {
+                        this.MensajeOk("Se inserto correctamente en registro");
+                    }
+                    else
+                    {
+                        this.MensajeOk("Se actualizó correctamente en registro");
+                    }
+                }
+                else
+                {
+                    this.MensajeError(rpta);
+                }
+                this.LimpiarArticulos();
+                this.MostrarDetalle();
+                this.MostrarArticulos();
+                this.tabControl1.SelectedIndex = 1;
 
-            
+
             }
             catch (Exception ex)
             {
@@ -886,16 +887,136 @@ namespace CapaPresentacion
         }
         private void btnCalcularIngreso_Click(object sender, EventArgs e)
         {
-            if(rdbPorcentaje.Checked == true & rdbPrecio.Checked == false)
+            if (rdbPorcentaje.Checked == true & rdbPrecio.Checked == false)
             {
-                calcularPrecioVenta(); 
+                calcularPrecioVenta();
             }
-            else if(rdbPorcentaje.Checked == false & rdbPrecio.Checked == true)
+            else if (rdbPorcentaje.Checked == false & rdbPrecio.Checked == true)
             {
                 calcularPorcentaje();
             }
+            compararPrecios();
         }
+        private void compararPrecios()
+        {
+            //Traer el stock, el precio y el total de ganancias por cada artículo
+            //string marca;
+            //string descripcion;
+            //string contenido;
+            int cantidadStock = 0;
+            decimal precioVentaReal = 0;
+            decimal totalGanancias = 0;
+            decimal precioVentaTemporal = 0;
+            decimal precioVentaCalculado = 0;
+            this.ganancias = NIngreso.MostrarDetalleGanancias(Convert.ToInt32(this.txtIdArticulo.Text));
+            if (this.ganancias.Rows.Count == 0)
+            {
+                this.ganancias = null;
+            }
+            else
+            {
+                //marca = Convert.ToString(this.ganancias.Rows[0]["Marca"]);
+                //descripcion = Convert.ToString(this.ganancias.Rows[0]["Descripcion"]);
+                //contenido = Convert.ToString(this.ganancias.Rows[0]["Contenido"]);
+                cantidadStock = Convert.ToInt32(this.ganancias.Rows[0]["Cantidad_Stock"]);
+                precioVentaReal = Convert.ToDecimal(this.ganancias.Rows[0]["Precio_Venta_Real"]);
+                totalGanancias = Convert.ToDecimal(this.ganancias.Rows[0]["Total_Ganancia"]);
 
+            }
+            //Comparar el precio anterior con el nuevo y mostrar las alertas correspondientes
+
+            if (precioVentaReal > Convert.ToDecimal(this.txtPrecioVenta.Text))
+            {
+
+                precioVentaCalculado = (Convert.ToDecimal(this.txtPrecioVenta.Text) * cantidadStock);
+
+                precioVentaTemporal = totalGanancias - precioVentaCalculado;
+
+                string ttgan = string.Format("{0:n}", totalGanancias);
+                string pventem = string.Format("{0:n}", precioVentaTemporal);
+                string pventre = string.Format("{0:n}", precioVentaReal);
+
+                MessageBox.Show("El valor de venta ingresado es inferior al valor de venta actual " + "Existen " + cantidadStock + " unidades del producto que representan un valor de " +
+                ttgan + " con el valor de venta que quiere ingresar tendra una perdida de " + pventem +
+                " el valor de venta actual es de " + pventre
+                , "Disminución de utilidad",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (precioVentaReal < Convert.ToDecimal(this.txtPrecioVenta.Text))
+            {
+                precioVentaCalculado = (Convert.ToDecimal(this.txtPrecioVenta.Text) * cantidadStock);
+                
+                precioVentaTemporal = precioVentaCalculado - totalGanancias;
+
+                string ttgan = string.Format("{0:n}", totalGanancias);
+                string pventem = string.Format("{0:n}", precioVentaTemporal);
+                string pventre = string.Format("{0:n}", precioVentaReal);
+
+                MessageBox.Show("El valor de venta ingresado es superior al valor de venta actual " + "Existen " + cantidadStock + " unidades del producto que representan un valor de " +
+                ttgan + " con el valor de venta que quiere ingresar tendra una ganancia de " + pventem +
+                " el valor de venta actual es de " + pventre
+                , "Aumento de utilidad",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+        private void compararPreciosIngresos()
+        {
+            //Traer el stock, el precio y el total de ganancias por cada artículo
+            int cantidadStock = 0;
+            decimal precioVentaReal = 0;
+            decimal totalGanancias = 0;
+            decimal precioVentaTemporal = 0;
+            decimal precioVentaCalculado = 0;
+            this.ganancias = NIngreso.MostrarDetalleGanancias(Convert.ToInt32(this.txtIdArticulo.Text));
+            if (this.ganancias.Rows.Count == 0)
+            {
+                this.ganancias = null;
+            }
+            else
+            {
+                cantidadStock = Convert.ToInt32(this.ganancias.Rows[0]["Cantidad_Stock"]);
+                precioVentaReal = Convert.ToDecimal(this.ganancias.Rows[0]["Precio_Venta_Real"]);
+                totalGanancias = Convert.ToDecimal(this.ganancias.Rows[0]["Total_Ganancia"]);
+
+            }
+            //Comparar el precio anterior con el nuevo y mostrar las alertas correspondientes
+
+            if (precioVentaReal > Convert.ToDecimal(this.txtPrecioVentaIngreso.Text))
+            {
+
+                precioVentaCalculado = (Convert.ToDecimal(this.txtPrecioVentaIngreso.Text) * cantidadStock);
+         
+                precioVentaTemporal = totalGanancias - precioVentaCalculado;
+
+                string ttgan = string.Format("{0:n}", totalGanancias);
+                string pventem = string.Format("{0:n}", precioVentaTemporal);
+                string pventre = string.Format("{0:n}", precioVentaReal);
+
+                MessageBox.Show("El valor de venta ingresado es inferior al valor de venta actual " + "Existen " + cantidadStock + " unidades del producto que representan un valor de " +
+                ttgan + " con el valor de venta que quiere ingresar tendra una perdida de " + pventem +
+                " el valor de venta actual es de " + pventre
+                , "Disminución de utilidad",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (precioVentaReal < Convert.ToDecimal(this.txtPrecioVentaIngreso.Text))
+            {
+                precioVentaCalculado = (Convert.ToDecimal(this.txtPrecioVentaIngreso.Text) * cantidadStock);
+                
+                precioVentaTemporal = precioVentaCalculado - totalGanancias;
+
+                string ttgan = string.Format("{0:n}", totalGanancias);
+                string pventem = string.Format("{0:n}", precioVentaTemporal);
+                string pventre = string.Format("{0:n}", precioVentaReal);
+
+                MessageBox.Show("El valor de venta ingresado es superior al valor de venta actual " + "Existen " + cantidadStock + " unidades del producto que representan un valor de " +
+                ttgan + " con el valor de venta que quiere ingresar tendra una ganancia de " + pventem +
+                " el valor de venta actual es de " + pventre
+                , "Aumento de utilidad",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
         private void btnCalcularArticulo_Click(object sender, EventArgs e)
         {
             if (rdbPorcentajeIngreso.Checked == true & rdbPrecioIngreso.Checked == false)
@@ -906,6 +1027,8 @@ namespace CapaPresentacion
             {
                 calcularPorcentajeIngreso();
             }
+
+            compararPreciosIngresos();
         }
 
         private void txtBuscarNombreProveedores_TextChanged(object sender, EventArgs e)
