@@ -231,7 +231,7 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("Articulo", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Precio_compra", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Precio_venta", System.Type.GetType("System.Decimal"));
-            this.dtDetalle.Columns.Add("Precio_venta_real", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Precio_venta_Actual", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Porcentaje", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Utilidad", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Stock_inicial", System.Type.GetType("System.Int32"));
@@ -246,7 +246,7 @@ namespace CapaPresentacion
         {
             this.dtPrecioReal = new DataTable("PrecioReal");
             this.dtPrecioReal.Columns.Add("idarticulo", System.Type.GetType("System.Int32"));
-            this.dtPrecioReal.Columns.Add("precio_venta_real", System.Type.GetType("System.Decimal"));
+            this.dtPrecioReal.Columns.Add("precio_venta_actual", System.Type.GetType("System.Decimal"));
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -257,6 +257,8 @@ namespace CapaPresentacion
             this.UltimaSerie();
             this.txtStockInicial.Focus();
             this.LimpiarDetalle();
+            this.dataListadoArticulos.Enabled = true;
+            this.dataListadoProveedores.Enabled = true;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -362,7 +364,7 @@ namespace CapaPresentacion
                         row["Articulo"] = this.txtArticulo.Text;
                         row["Precio_compra"] = Convert.ToDecimal(this.txtPrecioCompra.Text);
                         row["Precio_venta"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
-                        row["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
+                        row["Precio_venta_actual"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
                         row["Stock_inicial"] = Convert.ToInt32(this.txtStockInicial.Text);
                         row["Porcentaje"] = Convert.ToDecimal(this.txtPorcentaje.Text);
                         row["Utilidad"] = Convert.ToDecimal(this.txtUtilidad.Text);
@@ -375,7 +377,7 @@ namespace CapaPresentacion
                         //Agregar el precio real en el datatable
                         DataRow fila = this.dtPrecioReal.NewRow();
                         fila["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
-                        fila["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
+                        fila["Precio_venta_actual"] = Convert.ToDecimal(this.txtPrecioVenta.Text);
                         this.dtPrecioReal.Rows.Add(fila);
 
                         this.LimpiarDetalle();
@@ -451,6 +453,7 @@ namespace CapaPresentacion
             this.txtContenido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["contenido"].Value);
             this.txtPrecioCompraIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_compra"].Value);
             this.txtPrecioVentaIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta"].Value);
+            this.txtPrecioVentaRealIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta_actual"].Value);
             this.txtPorcentajeIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["porcentaje"].Value);
             this.txtUtilidadIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["utilidad"].Value);
             this.txtStockInicialIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["stock_inicial"].Value);
@@ -705,7 +708,7 @@ namespace CapaPresentacion
                 //Agregar el precio real en el datatable
                 DataRow fila = this.dtPrecioReal.NewRow();
                 fila["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
-                fila["Precio_venta_real"] = Convert.ToDecimal(this.txtPrecioVentaIngreso.Text);
+                fila["Precio_venta_actual"] = Convert.ToDecimal(this.txtPrecioVentaIngreso.Text);
                 this.dtPrecioReal.Rows.Add(fila);
 
                 rpta = NIngreso.Editar(Convert.ToInt32(this.txtIddetalleIngreso.Text), Convert.ToDecimal(this.txtPrecioCompraIngreso.Text), Convert.ToDecimal(this.txtPrecioVentaIngreso.Text),
@@ -919,7 +922,7 @@ namespace CapaPresentacion
                 //descripcion = Convert.ToString(this.ganancias.Rows[0]["Descripcion"]);
                 //contenido = Convert.ToString(this.ganancias.Rows[0]["Contenido"]);
                 cantidadStock = Convert.ToInt32(this.ganancias.Rows[0]["Cantidad_Stock"]);
-                precioVentaReal = Convert.ToDecimal(this.ganancias.Rows[0]["Precio_Venta_Real"]);
+                precioVentaReal = Convert.ToDecimal(this.ganancias.Rows[0]["Precio_Venta_Actual"]);
                 totalGanancias = Convert.ToDecimal(this.ganancias.Rows[0]["Total_Ganancia"]);
 
             }
@@ -976,7 +979,7 @@ namespace CapaPresentacion
             else
             {
                 cantidadStock = Convert.ToInt32(this.ganancias.Rows[0]["Cantidad_Stock"]);
-                precioVentaReal = Convert.ToDecimal(this.ganancias.Rows[0]["Precio_Venta_Real"]);
+                precioVentaReal = Convert.ToDecimal(this.ganancias.Rows[0]["Precio_Venta_Actual"]);
                 totalGanancias = Convert.ToDecimal(this.ganancias.Rows[0]["Total_Ganancia"]);
 
             }

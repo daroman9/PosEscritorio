@@ -131,6 +131,8 @@
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.txtIdIngreso = new System.Windows.Forms.TextBox();
             this.txtIddetalleIngreso = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtPrecioVentaRealIngreso = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -552,6 +554,7 @@
             this.dataListadoProveedores.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataListadoProveedores.BackgroundColor = System.Drawing.Color.White;
             this.dataListadoProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListadoProveedores.Enabled = false;
             this.dataListadoProveedores.Location = new System.Drawing.Point(0, 53);
             this.dataListadoProveedores.MultiSelect = false;
             this.dataListadoProveedores.Name = "dataListadoProveedores";
@@ -808,6 +811,7 @@
             this.dataListadoArticulos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataListadoArticulos.BackgroundColor = System.Drawing.Color.White;
             this.dataListadoArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListadoArticulos.Enabled = false;
             this.dataListadoArticulos.Location = new System.Drawing.Point(0, 53);
             this.dataListadoArticulos.MultiSelect = false;
             this.dataListadoArticulos.Name = "dataListadoArticulos";
@@ -904,6 +908,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label29);
+            this.groupBox2.Controls.Add(this.txtPrecioVentaRealIngreso);
             this.groupBox2.Controls.Add(this.btnCalcularArticulo);
             this.groupBox2.Controls.Add(this.txtMarca);
             this.groupBox2.Controls.Add(this.btnEditarIngreso);
@@ -1090,9 +1096,9 @@
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(506, 209);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(116, 18);
+            this.label27.Size = new System.Drawing.Size(162, 18);
             this.label27.TabIndex = 55;
-            this.label27.Text = "Precio Venta:";
+            this.label27.Text = "Precio Venta Inicial";
             // 
             // rdbPrecioIngreso
             // 
@@ -1214,6 +1220,23 @@
             this.txtIddetalleIngreso.Size = new System.Drawing.Size(10, 20);
             this.txtIddetalleIngreso.TabIndex = 0;
             this.txtIddetalleIngreso.Visible = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(506, 273);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(156, 18);
+            this.label29.TabIndex = 69;
+            this.label29.Text = "Precio Venta Real:";
+            // 
+            // txtPrecioVentaRealIngreso
+            // 
+            this.txtPrecioVentaRealIngreso.Enabled = false;
+            this.txtPrecioVentaRealIngreso.Location = new System.Drawing.Point(683, 270);
+            this.txtPrecioVentaRealIngreso.Name = "txtPrecioVentaRealIngreso";
+            this.txtPrecioVentaRealIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioVentaRealIngreso.TabIndex = 68;
             // 
             // FrmIngreso
             // 
@@ -1363,5 +1386,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnCalcularIngreso;
         private System.Windows.Forms.Button btnCalcularArticulo;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtPrecioVentaRealIngreso;
     }
 }

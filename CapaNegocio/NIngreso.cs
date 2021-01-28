@@ -29,7 +29,7 @@ namespace CapaNegocio
                 detalle.Idarticulo = Convert.ToInt32(row["idarticulo"].ToString());
                 detalle.Precio_Compra = Convert.ToDecimal(row["precio_compra"].ToString());
                 detalle.Precio_Venta= Convert.ToDecimal(row["precio_venta"].ToString());
-                detalle.Precio_Venta_Real = Convert.ToDecimal(row["precio_venta_real"].ToString());
+                detalle.Precio_Venta_Actual = Convert.ToDecimal(row["precio_venta_actual"].ToString());
                 detalle.Stock_Inicial = Convert.ToInt32(row["stock_inicial"].ToString());
                 detalle.Stock_Actual = Convert.ToInt32(row["stock_inicial"].ToString());
                 detalle.Porcentaje = Convert.ToDecimal(row["porcentaje"].ToString());
@@ -51,7 +51,7 @@ namespace CapaNegocio
             {
                 DDetalle_Ingreso detalle = new DDetalle_Ingreso();
                 detalle.Idarticulo = Convert.ToInt32(row["idarticulo"].ToString());
-                detalle.Precio_Venta_Real = Convert.ToDecimal(row["precio_venta_real"].ToString());
+                detalle.Precio_Venta_Actual = Convert.ToDecimal(row["precio_venta_actual"].ToString());
                 
                 detalles.Add(detalle);
             }

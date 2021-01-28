@@ -21,7 +21,7 @@ namespace CapaDatos
         private int _Stock_Actual;
         private decimal _Porcentaje;
         private decimal _Utilidad;
-        private decimal _Precio_Venta_Real;
+        private decimal _Precio_Venta_Actual;
         private DateTime _Fecha_Produccion;
         private DateTime _Fecha_Vencimiento;
         private int _Textobuscar;
@@ -35,7 +35,7 @@ namespace CapaDatos
         public int Stock_Actual { get => _Stock_Actual; set => _Stock_Actual = value; }
         public decimal Porcentaje { get => _Porcentaje; set => _Porcentaje = value; }
         public decimal Utilidad { get => _Utilidad; set => _Utilidad = value; }
-        public decimal Precio_Venta_Real { get => _Precio_Venta_Real; set => _Precio_Venta_Real = value; }
+        public decimal Precio_Venta_Actual { get => _Precio_Venta_Actual; set => _Precio_Venta_Actual = value; }
         public DateTime Fecha_Produccion { get => _Fecha_Produccion; set => _Fecha_Produccion = value; }
         public DateTime Fecha_Vencimiento { get => _Fecha_Vencimiento; set => _Fecha_Vencimiento = value; }
         public int Textobuscar { get => _Textobuscar; set => _Textobuscar = value; }
@@ -47,7 +47,7 @@ namespace CapaDatos
         }
 
         //Constructor con parametros
-        public DDetalle_Ingreso(int iddetalle_ingreso, int idingreso, int idarticulo, decimal precio_compra, decimal precio_venta, int stock_inicial, int stock_actual, decimal porcentaje, decimal utilidad, decimal precio_venta_real, DateTime fecha_produccion, DateTime fecha_vencimiento, int textobuscar)
+        public DDetalle_Ingreso(int iddetalle_ingreso, int idingreso, int idarticulo, decimal precio_compra, decimal precio_venta, int stock_inicial, int stock_actual, decimal porcentaje, decimal utilidad, decimal precio_venta_actual, DateTime fecha_produccion, DateTime fecha_vencimiento, int textobuscar)
         {
             this.Iddetalle_Ingreso = iddetalle_ingreso;
             this.Idingreso = idingreso;
@@ -58,7 +58,7 @@ namespace CapaDatos
             this.Stock_Actual = stock_actual;
             this.Porcentaje = porcentaje;
             this.Utilidad = utilidad;
-            this.Precio_Venta_Real = precio_venta_real;
+            this.Precio_Venta_Actual = precio_venta_actual;
             this.Fecha_Produccion = fecha_produccion;
             this.Fecha_Vencimiento = fecha_vencimiento;
             this.Textobuscar = textobuscar;
@@ -102,11 +102,11 @@ namespace CapaDatos
                 ParPrecio_Compra.Value = Detalle_Ingreso.Precio_Compra;
                 SqlCmd.Parameters.Add(ParPrecio_Compra);
 
-                SqlParameter ParPrecio_Venta_Real = new SqlParameter();
-                ParPrecio_Venta_Real.ParameterName = "@precio_venta_real";
-                ParPrecio_Venta_Real.SqlDbType = SqlDbType.Decimal;
-                ParPrecio_Venta_Real.Value = Detalle_Ingreso.Precio_Venta_Real;
-                SqlCmd.Parameters.Add(ParPrecio_Venta_Real);
+                SqlParameter ParPrecio_Venta_Actual = new SqlParameter();
+                ParPrecio_Venta_Actual.ParameterName = "@precio_venta_actual";
+                ParPrecio_Venta_Actual.SqlDbType = SqlDbType.Decimal;
+                ParPrecio_Venta_Actual.Value = Detalle_Ingreso.Precio_Venta_Actual;
+                SqlCmd.Parameters.Add(ParPrecio_Venta_Actual);
 
                 SqlParameter ParPrecio_Venta = new SqlParameter();
                 ParPrecio_Venta.ParameterName = "@precio_venta";
@@ -175,7 +175,7 @@ namespace CapaDatos
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.Transaction = SqlTra;
-                SqlCmd.CommandText = "speditar_precio_venta_real";
+                SqlCmd.CommandText = "speditar_precio_venta_actual";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
 
                 //Parametros que se van a enviar al procedimiento almacenado
@@ -186,11 +186,11 @@ namespace CapaDatos
                 ParIdarticulo.Value = Detalle_Ingreso.Idarticulo;
                 SqlCmd.Parameters.Add(ParIdarticulo);
 
-                SqlParameter ParPrecio_Venta_Real = new SqlParameter();
-                ParPrecio_Venta_Real.ParameterName = "@precio_venta_real";
-                ParPrecio_Venta_Real.SqlDbType = SqlDbType.Decimal;
-                ParPrecio_Venta_Real.Value = Detalle_Ingreso.Precio_Venta_Real;
-                SqlCmd.Parameters.Add(ParPrecio_Venta_Real);
+                SqlParameter ParPrecio_Venta_Actual = new SqlParameter();
+                ParPrecio_Venta_Actual.ParameterName = "@precio_venta_actual";
+                ParPrecio_Venta_Actual.SqlDbType = SqlDbType.Decimal;
+                ParPrecio_Venta_Actual.Value = Detalle_Ingreso.Precio_Venta_Actual;
+                SqlCmd.Parameters.Add(ParPrecio_Venta_Actual);
                 //Ejecutar el comando
 
                 rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "No se ingreso el registro";
