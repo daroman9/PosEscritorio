@@ -101,6 +101,10 @@
             this.label19 = new System.Windows.Forms.Label();
             this.tabArticulos = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtUtilidadActualIngreso = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtPrecioVentaActualIngreso = new System.Windows.Forms.TextBox();
             this.btnCalcularArticulo = new System.Windows.Forms.Button();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.btnEditarIngreso = new System.Windows.Forms.Button();
@@ -131,8 +135,6 @@
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.txtIdIngreso = new System.Windows.Forms.TextBox();
             this.txtIddetalleIngreso = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.txtPrecioVentaRealIngreso = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -908,8 +910,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label32);
+            this.groupBox2.Controls.Add(this.txtUtilidadActualIngreso);
             this.groupBox2.Controls.Add(this.label29);
-            this.groupBox2.Controls.Add(this.txtPrecioVentaRealIngreso);
+            this.groupBox2.Controls.Add(this.txtPrecioVentaActualIngreso);
             this.groupBox2.Controls.Add(this.btnCalcularArticulo);
             this.groupBox2.Controls.Add(this.txtMarca);
             this.groupBox2.Controls.Add(this.btnEditarIngreso);
@@ -942,6 +946,40 @@
             this.groupBox2.TabIndex = 67;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Modificar";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(28, 333);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(129, 18);
+            this.label32.TabIndex = 71;
+            this.label32.Text = "Utilidad Actual:";
+            // 
+            // txtUtilidadActualIngreso
+            // 
+            this.txtUtilidadActualIngreso.Enabled = false;
+            this.txtUtilidadActualIngreso.Location = new System.Drawing.Point(164, 330);
+            this.txtUtilidadActualIngreso.Name = "txtUtilidadActualIngreso";
+            this.txtUtilidadActualIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtUtilidadActualIngreso.TabIndex = 70;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(506, 273);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(172, 18);
+            this.label29.TabIndex = 69;
+            this.label29.Text = "Precio Venta Actual:";
+            // 
+            // txtPrecioVentaActualIngreso
+            // 
+            this.txtPrecioVentaActualIngreso.Enabled = false;
+            this.txtPrecioVentaActualIngreso.Location = new System.Drawing.Point(683, 270);
+            this.txtPrecioVentaActualIngreso.Name = "txtPrecioVentaActualIngreso";
+            this.txtPrecioVentaActualIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioVentaActualIngreso.TabIndex = 68;
             // 
             // btnCalcularArticulo
             // 
@@ -1032,7 +1070,7 @@
             // 
             this.dtFechaVencimientoIngreso.Enabled = false;
             this.dtFechaVencimientoIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaVencimientoIngreso.Location = new System.Drawing.Point(683, 337);
+            this.dtFechaVencimientoIngreso.Location = new System.Drawing.Point(683, 376);
             this.dtFechaVencimientoIngreso.Name = "dtFechaVencimientoIngreso";
             this.dtFechaVencimientoIngreso.Size = new System.Drawing.Size(300, 26);
             this.dtFechaVencimientoIngreso.TabIndex = 50;
@@ -1042,14 +1080,14 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(28, 273);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(73, 18);
+            this.label28.Size = new System.Drawing.Size(124, 18);
             this.label28.TabIndex = 56;
-            this.label28.Text = "Utilidad:";
+            this.label28.Text = "Utilidad Inicial:";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(503, 343);
+            this.label22.Location = new System.Drawing.Point(503, 382);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(174, 18);
             this.label22.TabIndex = 51;
@@ -1068,7 +1106,7 @@
             // 
             this.dtFechaProduccionIngreso.Enabled = false;
             this.dtFechaProduccionIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaProduccionIngreso.Location = new System.Drawing.Point(202, 337);
+            this.dtFechaProduccionIngreso.Location = new System.Drawing.Point(202, 376);
             this.dtFechaProduccionIngreso.Name = "dtFechaProduccionIngreso";
             this.dtFechaProduccionIngreso.Size = new System.Drawing.Size(262, 26);
             this.dtFechaProduccionIngreso.TabIndex = 48;
@@ -1085,7 +1123,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(28, 343);
+            this.label23.Location = new System.Drawing.Point(28, 382);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(168, 18);
             this.label23.TabIndex = 49;
@@ -1111,6 +1149,7 @@
             this.rdbPrecioIngreso.TabStop = true;
             this.rdbPrecioIngreso.Text = "Precio Manual";
             this.rdbPrecioIngreso.UseVisualStyleBackColor = true;
+            this.rdbPrecioIngreso.CheckedChanged += new System.EventHandler(this.rdbPrecioIngreso_CheckedChanged_1);
             // 
             // label31
             // 
@@ -1220,23 +1259,6 @@
             this.txtIddetalleIngreso.Size = new System.Drawing.Size(10, 20);
             this.txtIddetalleIngreso.TabIndex = 0;
             this.txtIddetalleIngreso.Visible = false;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(506, 273);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(156, 18);
-            this.label29.TabIndex = 69;
-            this.label29.Text = "Precio Venta Real:";
-            // 
-            // txtPrecioVentaRealIngreso
-            // 
-            this.txtPrecioVentaRealIngreso.Enabled = false;
-            this.txtPrecioVentaRealIngreso.Location = new System.Drawing.Point(683, 270);
-            this.txtPrecioVentaRealIngreso.Name = "txtPrecioVentaRealIngreso";
-            this.txtPrecioVentaRealIngreso.Size = new System.Drawing.Size(300, 26);
-            this.txtPrecioVentaRealIngreso.TabIndex = 68;
             // 
             // FrmIngreso
             // 
@@ -1387,6 +1409,8 @@
         private System.Windows.Forms.Button btnCalcularIngreso;
         private System.Windows.Forms.Button btnCalcularArticulo;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox txtPrecioVentaRealIngreso;
+        private System.Windows.Forms.TextBox txtPrecioVentaActualIngreso;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txtUtilidadActualIngreso;
     }
 }

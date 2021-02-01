@@ -58,27 +58,19 @@ namespace CapaPresentacion
             this.txtIdCliente.Text = string.Empty;
             this.txtIdCliente.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
-            this.txtIgv.Text = "19";
             this.lblTotalPagado.Text = "0.0";
             //this.CrearTabla();
 
         }
-        private void LimpiarDetalle()
-        {
-           
-            this.txtDescuento.Text = string.Empty;
-
-        }
+      
         //Método para habilitar los controles del formulario
 
         private void Habilitar(bool valor)
         {
             this.txtCodigoBarras.ReadOnly = !valor;
             this.txtSerie.ReadOnly = !valor;
-            this.txtIgv.ReadOnly = !valor;
             this.dtFecha.Enabled = valor;
             this.txtCantidad.ReadOnly = !valor;
-            this.txtDescuento.ReadOnly = !valor;
             this.btnQuitar.Enabled = valor;
         }
         //Método para habilitar los botones
@@ -158,17 +150,14 @@ namespace CapaPresentacion
         private void CrearTabla()
         {
             this.dtDetalle = new DataTable("Detalle");
-            this.dtDetalle.Columns.Add("Detalle_Ingreso", System.Type.GetType("System.Int32"));
             this.dtDetalle.Columns.Add("Codigo", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Descripción", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Marca", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Categoria", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Presentacion", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Stock", System.Type.GetType("System.Int32"));
-            this.dtDetalle.Columns.Add("Precio_Compra", System.Type.GetType("System.Double"));
             this.dtDetalle.Columns.Add("Precio_Venta", System.Type.GetType("System.Double"));
             this.dtDetalle.Columns.Add("Descuento", System.Type.GetType("System.Int32"));
-            this.dtDetalle.Columns.Add("Fecha_Vencimiento", System.Type.GetType("System.DateTime"));
             this.dtDetalle.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
             //Relacionar nuestro DataGRidView con nuestro DataTable
             this.dataListadoDetalle.DataSource = this.dtDetalle;
@@ -177,57 +166,6 @@ namespace CapaPresentacion
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
             this.BuscarFechas();
-        }
-
-        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkEliminar.Checked)
-            {
-                this.dataListado.Columns[0].Visible = true;
-            }
-            else
-            {
-                this.dataListado.Columns[0].Visible = false;
-            }
-        }
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogResult Opcion;
-                Opcion = MessageBox.Show("Desea eliminar los ingresos", "Sistema de ventas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-
-                if (Opcion == DialogResult.OK)
-                {
-                    string Codigo;
-                    string Rpta = "";
-
-                    foreach (DataGridViewRow row in dataListado.Rows)
-                    {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
-                        {
-                            Codigo = Convert.ToString(row.Cells[1].Value);
-                            Rpta = NVenta.Eliminar(Convert.ToInt32(Codigo));
-
-                            if (Rpta.Equals("OK"))
-                            {
-                                this.MensajeOk("Se elimino correctamente el ingreso");
-                            }
-                            else
-                            {
-                                this.MensajeError(Rpta);
-                            }
-                        }
-                    }
-                    this.chkEliminar.Checked = false;
-                    this.Mostrar();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
         }
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
@@ -256,7 +194,6 @@ namespace CapaPresentacion
             this.IsNuevo = true;
             this.Botones();
             this.Limpiar();
-            this.LimpiarDetalle();
             this.Habilitar(true);
             this.txtSerie.Focus();
         }
@@ -266,54 +203,56 @@ namespace CapaPresentacion
             this.IsNuevo = false;
             this.Botones();
             this.Limpiar();
-            this.LimpiarDetalle();
             this.Habilitar(false);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string rpta = "";
-                if (this.txtSerie.Text == string.Empty || this.txtIgv.Text == string.Empty)
-                {
-                    MensajeError("Falta ingresar algun dato");
-                    errorIcono.SetError(txtSerie, "Ingrese un valor");
-                    errorIcono.SetError(txtIgv, "Ingrese un valor");
-                }
-                else
-                {
 
-                    if (this.IsNuevo)
-                    {
+            calcularTotalItems();
 
-                        rpta = NVenta.Insertar(Convert.ToInt32(this.txtIdCliente.Text), Idtrabajador, dtFecha.Value,
-                                                 this.txtSerie.Text, Convert.ToDecimal(this.txtIgv.Text), Convert.ToDecimal(this.lblTotalPagado.Text), dtDetalle);
-                    }
 
-                    if (rpta.Equals("OK"))
-                    {
-                        if (this.IsNuevo)
-                        {
-                            this.MensajeOk("Se inserto correctamente en registro");
-                        }
 
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-                    this.IsNuevo = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.LimpiarDetalle();
-                    this.Mostrar();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + ex.StackTrace);
-            }
+            //try
+            //{
+            //    string rpta = "";
+            //    if (this.txtSerie.Text == string.Empty)
+            //    {
+            //        MensajeError("Falta ingresar algun dato");
+            //        errorIcono.SetError(txtSerie, "Ingrese un valor");
+            //    }
+            //    else
+            //    {
+
+            //        if (this.IsNuevo)
+            //        {
+
+            //            rpta = NVenta.Insertar(Convert.ToInt32(this.txtIdCliente.Text), Idtrabajador, dtFecha.Value,
+            //                                     this.txtSerie.Text, Convert.ToDecimal(this.lblTotalPagado.Text), dtDetalle);
+            //        }
+
+            //        if (rpta.Equals("OK"))
+            //        {
+            //            if (this.IsNuevo)
+            //            {
+            //                this.MensajeOk("Se inserto correctamente en registro");
+            //            }
+
+            //        }
+            //        else
+            //        {
+            //            this.MensajeError(rpta);
+            //        }
+            //        this.IsNuevo = false;
+            //        this.Botones();
+            //        this.Limpiar();
+            //        this.Mostrar();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message + ex.StackTrace);
+            //}
         }
       
         private void btnBuscarNombreArticulos_Click(object sender, EventArgs e)
@@ -323,22 +262,17 @@ namespace CapaPresentacion
 
         private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
         {
-            int par1, par7 ;
+            int  par7 ;
             string par2, par3, par4, par5, par6;
-            double par8, par9,par10, descuento, descuentoarticulo, preciodescuento;
-            DateTime par11;
-            par1 = Convert.ToInt32(this.dataListadoArticulos.CurrentRow.Cells["Detalle_Ingreso"].Value);
+            double  par9,par10, descuento, descuentoarticulo, preciodescuento;
             par2 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Codigo"].Value);
             par3 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Descripción"].Value);
             par4 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Marca"].Value);
             par5 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Categoria"].Value);
             par6 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Presentacion"].Value);
             par7 = Convert.ToInt32(this.dataListadoArticulos.CurrentRow.Cells["Stock"].Value);
-            par8 = Convert.ToDouble(this.dataListadoArticulos.CurrentRow.Cells["Precio_Compra"].Value);
             par9 = Convert.ToDouble(this.dataListadoArticulos.CurrentRow.Cells["Precio_Venta"].Value);
             par10 = Convert.ToDouble(this.dataListadoArticulos.CurrentRow.Cells["Descuento"].Value);
-            par11 = Convert.ToDateTime(this.dataListadoArticulos.CurrentRow.Cells["Fecha_Vencimiento"].Value);
-
 
             //Calculamos el descuento de cada articulo
 
@@ -347,20 +281,17 @@ namespace CapaPresentacion
             descuentoarticulo = Convert.ToDouble(par9) * descuento;
 
             preciodescuento = par9 - Convert.ToDouble(descuentoarticulo);
-           
+
             //Agregar al listado de articulos para la factura
             DataRow row = this.dtDetalle.NewRow();
-            row["Detalle_Ingreso"] = par1;
             row["Codigo"] = par2;
             row["Descripción"] = par3;
             row["Marca"] = par4;
             row["Categoria"] = par5;
             row["Presentacion"] = par6;
             row["Stock"] = par7;
-            row["Precio_Compra"] = par8;
             row["Precio_Venta"] = preciodescuento;
             row["Descuento"] = par10;
-            row["Fecha_Vencimiento"] = par11;
             row["Cantidad"] = 1;
 
             this.dtDetalle.Rows.Add(row);
@@ -375,14 +306,12 @@ namespace CapaPresentacion
             //Calcular el total de items de cada compra
             cacularItems();
             //Limpar las variables
-            par1 = 0;
             par2 = string.Empty;
             par3 = string.Empty;
             par4 = string.Empty;
             par5 = string.Empty;
             par6 = string.Empty;
             par7 = 0;
-            par8 = 0;
             par9 = 0;
             par10 = 0;
 
@@ -422,8 +351,8 @@ namespace CapaPresentacion
                 {
                     int par1, par7;
                     string par2, par3, par4, par5, par6;
-                    double par8, par9, par10, descuento, descuentoarticulo, preciodescuento;
-                    DateTime par11;
+                    double par9, par10, descuento, descuentoarticulo, preciodescuento;
+       
                     par1 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Detalle_Ingreso"].Value);
                     par2 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Codigo"].Value);
                     par3 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Descripción"].Value);
@@ -431,11 +360,8 @@ namespace CapaPresentacion
                     par5 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Categoria"].Value);
                     par6 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Presentacion"].Value);
                     par7 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Stock"].Value);
-                    par8 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Precio_Compra"].Value);
                     par9 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Precio_Venta"].Value);
                     par10 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Descuento"].Value);
-                    par11 = Convert.ToDateTime(this.dataArticulo.CurrentRow.Cells["Fecha_Vencimiento"].Value);
-
                     //Calculamos el descuento de cada articulo
 
                     descuento = par10 / 100.0;
@@ -454,10 +380,8 @@ namespace CapaPresentacion
                     row["Categoria"] = par5;
                     row["Presentacion"] = par6;
                     row["Stock"] = par7;
-                    row["Precio_Compra"] = par8;
                     row["Precio_Venta"] = preciodescuento;
                     row["Descuento"] = par10;
-                    row["Fecha_Vencimiento"] = par11;
                     row["Cantidad"] = 1;
 
                     this.dtDetalle.Rows.Add(row);
@@ -480,11 +404,10 @@ namespace CapaPresentacion
                     par5 = string.Empty;
                     par6 = string.Empty;
                     par7 = 0;
-                    par8 = 0;
                     par9 = 0;
                     par10 = 0;
 
-                    this.tabControl1.SelectedIndex = 1;
+                    //this.tabControl1.SelectedIndex = 1;
                     this.txtCodigoBarras.Text = string.Empty;
                     this.txtCodigoBarras.Focus();
                 }
@@ -555,6 +478,48 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
                 MensajeError("No hay fila para remover");
+            }
+        }
+
+        //Calcular la cantidad de articulos presentes en cada venta
+
+        public void calcularTotalItems()
+        {
+          
+            try
+            {
+                DataTable items = dataListadoDetalle.DataSource as DataTable;
+
+                var result = (from a in items.AsEnumerable()
+                              group a by new { id = a.Field<string>("Codigo") } into g
+                              select new
+                              {
+                                  Codigo = g.Key.id,
+                                  Cantidad = g.Sum(x => x.Field<int>("Cantidad"))
+                              });
+               
+                DataTable totales = new DataTable();
+                //definir las columnas del datatable
+                totales.Columns.Add("Codigo");
+                totales.Columns.Add("Cantidad");
+
+                foreach (var item in result)
+                {
+                    //creas una nueva row
+                    DataRow row = totales.NewRow();
+                    //asignas el dato a cada columna de la row
+                    row["Codigo"] = item.Codigo;
+                    row["Cantidad"] = item.Cantidad;
+
+                    totales.Rows.Add(row);
+                }
+
+                dataPrueba.DataSource = totales;
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
             }
         }
     }

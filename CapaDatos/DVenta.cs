@@ -142,14 +142,6 @@ namespace CapaDatos
                 ParSerie.Value = Venta.Serie;
                 SqlCmd.Parameters.Add(ParSerie);
 
-                SqlParameter ParIgv = new SqlParameter();
-                ParIgv.ParameterName = "@igv";
-                ParIgv.SqlDbType = SqlDbType.Decimal;
-                ParIgv.Precision = 4;
-                ParIgv.Scale = 2;
-                ParIgv.Value = Venta.Igv;
-                SqlCmd.Parameters.Add(ParIgv);
-
                 SqlParameter ParTotal_Pagado = new SqlParameter();
                 ParTotal_Pagado.ParameterName = "@totalpagado";
                 ParTotal_Pagado.SqlDbType = SqlDbType.Decimal;

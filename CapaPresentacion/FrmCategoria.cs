@@ -144,6 +144,10 @@ namespace CapaPresentacion
                 }
                 else
                 {
+                    if(this.txtImpuesto.Text == string.Empty || this.txtImpuesto.Text == "")
+                    {
+                        this.txtImpuesto.Text = Convert.ToString("0");
+                    }
                     if (this.IsNuevo)
                     {
                         rpta = NCategoria.Insertar(this.txtNombre.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), Convert.ToInt32(this.txtImpuesto.Text));

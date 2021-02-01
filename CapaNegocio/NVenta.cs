@@ -15,14 +15,13 @@ namespace CapaNegocio
         //Método que llama al método insertar de la clase DVenta de la capa datos
 
         public static string Insertar(int idcliente, int idtrabajador, DateTime fecha,
-            string serie, decimal igv, decimal totalpagado, DataTable dtDetalles)
+            string serie, decimal totalpagado, DataTable dtDetalles)
         {
             DVenta Obj = new DVenta();
             Obj.Idcliente = idcliente;
             Obj.Idtrabajador = idtrabajador;
             Obj.Fecha = fecha;
             Obj.Serie = serie;
-            Obj.Igv = igv;
             Obj.Total_Pagado = totalpagado;
             List<DDetalle_Venta> detalles = new List<DDetalle_Venta>();
             foreach (DataRow row in dtDetalles.Rows)
