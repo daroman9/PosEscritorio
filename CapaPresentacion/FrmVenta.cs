@@ -155,7 +155,7 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("Marca", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Categoria", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Presentacion", System.Type.GetType("System.String"));
-            this.dtDetalle.Columns.Add("Stock", System.Type.GetType("System.Int32"));
+            this.dtDetalle.Columns.Add("Contenido", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Precio_Venta", System.Type.GetType("System.Double"));
             this.dtDetalle.Columns.Add("Descuento", System.Type.GetType("System.Int32"));
             this.dtDetalle.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
@@ -350,16 +350,15 @@ namespace CapaPresentacion
                 if (articulo.Rows.Count != 0)
                 {
                     int par1, par7;
-                    string par2, par3, par4, par5, par6;
+                    string par2, par3, par4, par5, par6, par8;
                     double par9, par10, descuento, descuentoarticulo, preciodescuento;
-       
-                    par1 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Detalle_Ingreso"].Value);
+      
                     par2 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Codigo"].Value);
                     par3 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Descripción"].Value);
                     par4 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Marca"].Value);
                     par5 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Categoria"].Value);
                     par6 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Presentacion"].Value);
-                    par7 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Stock"].Value);
+                    par8 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Contenido"].Value);
                     par9 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Precio_Venta"].Value);
                     par10 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Descuento"].Value);
                     //Calculamos el descuento de cada articulo
@@ -373,13 +372,12 @@ namespace CapaPresentacion
 
                     //Agregar al listado de articulos para la factura
                     DataRow row = this.dtDetalle.NewRow();
-                    row["Detalle_Ingreso"] = par1;
                     row["Codigo"] = par2;
                     row["Descripción"] = par3;
                     row["Marca"] = par4;
                     row["Categoria"] = par5;
                     row["Presentacion"] = par6;
-                    row["Stock"] = par7;
+                    row["Contenido"] = par8;
                     row["Precio_Venta"] = preciodescuento;
                     row["Descuento"] = par10;
                     row["Cantidad"] = 1;
@@ -403,6 +401,7 @@ namespace CapaPresentacion
                     par4 = string.Empty;
                     par5 = string.Empty;
                     par6 = string.Empty;
+                    par8 = string.Empty;
                     par7 = 0;
                     par9 = 0;
                     par10 = 0;
