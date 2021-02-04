@@ -174,7 +174,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(447, 55);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Ingresos Almacen";
+            this.label1.Text = "Ingresos Almacén";
             // 
             // toolTip1
             // 
@@ -983,6 +983,7 @@
             // 
             // btnCalcularArticulo
             // 
+            this.btnCalcularArticulo.Enabled = false;
             this.btnCalcularArticulo.Location = new System.Drawing.Point(346, 149);
             this.btnCalcularArticulo.Name = "btnCalcularArticulo";
             this.btnCalcularArticulo.Size = new System.Drawing.Size(118, 32);
@@ -1003,6 +1004,7 @@
             // 
             this.btnEditarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.edit;
             this.btnEditarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditarIngreso.Enabled = false;
             this.btnEditarIngreso.FlatAppearance.BorderSize = 0;
             this.btnEditarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarIngreso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -1026,6 +1028,7 @@
             // 
             this.btnCancelarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
             this.btnCancelarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelarIngreso.Enabled = false;
             this.btnCancelarIngreso.FlatAppearance.BorderSize = 0;
             this.btnCancelarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarIngreso.Location = new System.Drawing.Point(333, 434);

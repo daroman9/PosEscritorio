@@ -441,6 +441,9 @@ namespace CapaPresentacion
             {
                 MostrarArticulos();
                 this.tabControl1.SelectedIndex = 2;
+                this.btnCancelarIngreso.Enabled = true;
+                this.btnEditarIngreso.Enabled = true;
+                this.btnCalcularArticulo.Enabled = true;
 
             }
         }
@@ -907,9 +910,6 @@ namespace CapaPresentacion
         private void compararPrecios()
         {
             //Traer el stock, el precio y el total de ganancias por cada artículo
-            //string marca;
-            //string descripcion;
-            //string contenido;
             int cantidadStock = 0;
             decimal precioVentaReal = 0;
             decimal totalGanancias = 0;
@@ -922,12 +922,9 @@ namespace CapaPresentacion
             }
             else
             {
-                //marca = Convert.ToString(this.ganancias.Rows[0]["Marca"]);
-                //descripcion = Convert.ToString(this.ganancias.Rows[0]["Descripcion"]);
-                //contenido = Convert.ToString(this.ganancias.Rows[0]["Contenido"]);
-                cantidadStock = Convert.ToInt32(this.ganancias.Rows[0]["Cantidad_Stock"]);
-                precioVentaReal = Convert.ToDecimal(this.ganancias.Rows[0]["Precio_Venta_Actual"]);
-                totalGanancias = Convert.ToDecimal(this.ganancias.Rows[0]["Total_Ganancia"]);
+               cantidadStock = Convert.ToInt32(this.ganancias.Rows[0]["Cantidad_Stock"]);
+               precioVentaReal = Convert.ToDecimal(this.ganancias.Rows[0]["Precio_Venta_Actual"]);
+               totalGanancias = Convert.ToDecimal(this.ganancias.Rows[0]["Total_Ganancia"]);
 
             }
             //Comparar el precio anterior con el nuevo y mostrar las alertas correspondientes
