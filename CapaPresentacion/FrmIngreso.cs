@@ -79,7 +79,6 @@ namespace CapaPresentacion
             this.txtPorcentaje.Text = string.Empty;
             this.txtUtilidad.Text = string.Empty;
             this.txtPrecioCompra.Text = string.Empty;
-            this.txtUtilidad.Text = string.Empty;
             this.txtPrecioVenta.Text = string.Empty;
         }
         //Método para habilitar los controles del formulario
@@ -234,6 +233,7 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("Precio_venta_Actual", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Porcentaje", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Utilidad", System.Type.GetType("System.Decimal"));
+            this.dtDetalle.Columns.Add("Utilidad_Actual", System.Type.GetType("System.Decimal"));
             this.dtDetalle.Columns.Add("Stock_inicial", System.Type.GetType("System.Int32"));
             this.dtDetalle.Columns.Add("Fecha_produccion", System.Type.GetType("System.DateTime"));
             this.dtDetalle.Columns.Add("Fecha_vencimiento", System.Type.GetType("System.DateTime"));
@@ -307,6 +307,7 @@ namespace CapaPresentacion
                     {
                         if (this.IsNuevo)
                         {
+                            updatePrecios = NIngreso.EditarPrecios(dtPrecioReal);
                             this.MensajeOk("Se inserto correctamente en registro");
                         }
 
@@ -368,6 +369,7 @@ namespace CapaPresentacion
                         row["Stock_inicial"] = Convert.ToInt32(this.txtStockInicial.Text);
                         row["Porcentaje"] = Convert.ToDecimal(this.txtPorcentaje.Text);
                         row["Utilidad"] = Convert.ToDecimal(this.txtUtilidad.Text);
+                        row["Utilidad_Actual"] = Convert.ToDecimal(this.txtUtilidad.Text);
                         row["Fecha_produccion"] = dtFechaProduccion.Value;
                         row["Fecha_vencimiento"] = dtFechaVencimiento.Value;
                         row["Subtotal"] = subtotal;
@@ -440,31 +442,40 @@ namespace CapaPresentacion
             else
             {
                 MostrarArticulos();
+              
+            }
+        }
+        //Método para mostrar los articulos ingresados
+        public void MostrarArticulos()
+        {
+            if(Convert.ToInt32(this.dataListado.CurrentRow.Cells["stock_actual"].Value) > 0)
+            {
+                this.txtIddetalleIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["iddetalle_ingreso"].Value);
+                this.txtMarca.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["marca"].Value);
+                this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
+                this.txtContenido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["contenido"].Value);
+                this.txtPrecioCompraIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_compra"].Value);
+                this.txtPrecioVentaIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta"].Value);
+                this.txtPrecioVentaActual.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta_actual"].Value);
+                this.txtPorcentajeIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["porcentaje"].Value);
+                this.txtUtilidadIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["utilidad"].Value);
+                this.txtUtilidadActual.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["utilidad_actual"].Value);
+                this.txtStockInicialIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["stock_inicial"].Value);
+                this.dtFechaProduccionIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_produccion"].Value);
+                this.dtFechaVencimientoIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_vencimiento"].Value);
+                //Agregar el id del articulo
+                this.txtIdArticulo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Id_articulo"].Value);
+
                 this.tabControl1.SelectedIndex = 2;
                 this.btnCancelarIngreso.Enabled = true;
                 this.btnEditarIngreso.Enabled = true;
                 this.btnCalcularArticulo.Enabled = true;
 
             }
-        }
-        //Método para mostrar los articulos ingresados
-        public void MostrarArticulos()
-        {
-            this.txtIddetalleIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["iddetalle_ingreso"].Value);
-            this.txtMarca.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["marca"].Value);
-            this.txtDescripcion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["descripcion"].Value);
-            this.txtContenido.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["contenido"].Value);
-            this.txtPrecioCompraIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_compra"].Value);
-            this.txtPrecioVentaIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta"].Value);
-            this.txtPrecioVentaActualIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["precio_venta_actual"].Value);
-            this.txtPorcentajeIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["porcentaje"].Value);
-            this.txtUtilidadIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["utilidad"].Value);
-            this.txtStockInicialIngreso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["stock_inicial"].Value);
-            this.dtFechaProduccionIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_produccion"].Value);
-            this.dtFechaVencimientoIngreso.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_vencimiento"].Value);
-
-            //Agregar el id del articulo
-            this.txtIdArticulo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Id_articulo"].Value);
+            else
+            {
+                MensajeError("Este artículo ya no se puede editar");
+            }
         }
 
         //Método para obtener la serie del último registro
@@ -593,7 +604,7 @@ namespace CapaPresentacion
 
         private void rdbPrecio_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.txtProveedor.Enabled == true)
+            if (this.txtPorcentaje.Enabled == false)
             {
                 this.txtPorcentaje.Enabled = false;
                 this.txtPrecioVenta.Enabled = true;
@@ -609,7 +620,6 @@ namespace CapaPresentacion
                 this.txtUtilidad.Text = string.Empty;
             }
         }
-
         private void txtPorcentaje_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
@@ -674,20 +684,21 @@ namespace CapaPresentacion
                     precioCompra2 = Convert.ToDecimal(this.txtPrecioCompra.Text);
                     precioVenta2 = Convert.ToDecimal(this.txtPrecioVenta.Text);
                     utilidad2 = precioVenta2 - precioCompra2;
-                    // this.txtUtilidad.Text = Convert.ToString(utilidad2);
-
-
+                    
                     this.txtUtilidad.Text = utilidad2.ToString("N1");
 
+                    if(precioCompra2 > 0)
+                    {
+                        porcentaje2 = (utilidad2 * 100) / precioCompra2;
+                        this.txtPorcentaje.Text = porcentaje2.ToString("N1");
+                    }
+                    else
+                    {
+                        porcentaje2 = 100;
+                        this.txtPorcentaje.Text = porcentaje2.ToString("N1");
+                    }
 
-                    porcentaje2 = (utilidad2 * 100) / precioCompra2;
 
-                }
-
-                if (porcentaje2 > 0)
-                {
-                    // this.txtPorcentaje.Text = Convert.ToString(porcentaje2);
-                    this.txtPorcentaje.Text = porcentaje2.ToString("N1");
                 }
             }
             catch (Exception ex)
@@ -715,11 +726,11 @@ namespace CapaPresentacion
                 //Agregar el precio real en el datatable
                 DataRow fila = this.dtPrecioReal.NewRow();
                 fila["Idarticulo"] = Convert.ToInt32(this.txtIdArticulo.Text);
-                fila["Precio_venta_actual"] = Convert.ToDecimal(this.txtPrecioVentaIngreso.Text);
+                fila["Precio_venta_actual"] = Convert.ToDecimal(this.txtPrecioVentaActual.Text);
                 this.dtPrecioReal.Rows.Add(fila);
 
-                rpta = NIngreso.Editar(Convert.ToInt32(this.txtIddetalleIngreso.Text), Convert.ToDecimal(this.txtPrecioCompraIngreso.Text), Convert.ToDecimal(this.txtPrecioVentaIngreso.Text),
-                                       Convert.ToInt32(this.txtStockInicialIngreso.Text), Convert.ToDecimal(this.txtPorcentajeIngreso.Text), Convert.ToDecimal(this.txtUtilidadIngreso.Text),
+                rpta = NIngreso.Editar(Convert.ToInt32(this.txtIddetalleIngreso.Text), Convert.ToDecimal(this.txtPrecioCompraIngreso.Text), Convert.ToDecimal(this.txtPrecioVentaActual.Text),
+                                       Convert.ToInt32(this.txtStockInicialIngreso.Text), Convert.ToDecimal(this.txtPorcentajeIngreso.Text), Convert.ToDecimal(this.txtUtilidadActual.Text),
                                        this.dtFechaProduccionIngreso.Value, this.dtFechaVencimientoIngreso.Value);
                 if (rpta.Equals("OK"))
                 {
@@ -811,9 +822,9 @@ namespace CapaPresentacion
                 {
                     porcentaje = Convert.ToDecimal(this.txtPorcentajeIngreso.Text);
                     precioVenta = (precioCompra * porcentaje / 100) + precioCompra;
-                    this.txtPrecioVentaIngreso.Text = Convert.ToString(precioVenta);
+                    this.txtPrecioVentaActual.Text = Convert.ToString(precioVenta);
                     utilidad = (precioCompra * porcentaje / 100);
-                    this.txtUtilidadActualIngreso.Text = Convert.ToString(utilidad);
+                    this.txtUtilidadActual.Text = Convert.ToString(utilidad);
                 }
             }
             catch (Exception ex)
@@ -827,21 +838,17 @@ namespace CapaPresentacion
         {
             decimal precioCompra2 = 0;
             decimal porcentaje2 = 0;
-            decimal precioVenta2;
+            decimal precioVenta2=0;
             decimal utilidad2 = 0;
 
             try
             {
-                if (this.txtPrecioVentaIngreso.Text != string.Empty)
+                if (this.txtPrecioVentaActual.Text != string.Empty)
                 {
+                    precioVenta2 = Convert.ToDecimal(this.txtPrecioVentaActual.Text);
                     precioCompra2 = Convert.ToDecimal(this.txtPrecioCompraIngreso.Text);
-                    precioVenta2 = Convert.ToDecimal(this.txtPrecioVentaActualIngreso.Text);
                     utilidad2 = precioVenta2 - precioCompra2;
-                    // this.txtUtilidad.Text = Convert.ToString(utilidad2);
-
-
-                    this.txtUtilidadActualIngreso.Text = utilidad2.ToString("N1");
-
+                    this.txtUtilidadActual.Text = Convert.ToString(utilidad2);
 
                     porcentaje2 = (utilidad2 * 100) / precioCompra2;
 
@@ -863,36 +870,33 @@ namespace CapaPresentacion
             if (this.txtPorcentajeIngreso.Enabled == false)
             {
                 this.txtPorcentajeIngreso.Enabled = true;
-                this.txtPrecioVentaActualIngreso.Enabled = false;
-                this.txtPrecioVentaActualIngreso.Text = string.Empty;
-                //this.txtUtilidadIngreso.Text = string.Empty;
+                this.txtUtilidadActual.Text = string.Empty;
+                this.txtPrecioVentaActual.Enabled = false;
             }
             else
             {
                 this.txtPorcentajeIngreso.Enabled = false;
-                this.txtPrecioVentaActualIngreso.Enabled = true;
                 this.txtPorcentajeIngreso.Text = string.Empty;
-                this.txtPrecioVentaActualIngreso.Text = string.Empty;
-                //this.txtUtilidadIngreso.Text = string.Empty;
+                this.txtUtilidadActual.Text = string.Empty;
             }
         }
 
         private void rdbPrecioIngreso_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.txtPorcentajeIngreso.Enabled == true)
+            if (this.txtPorcentajeIngreso.Enabled == false)
             {
                 this.txtPorcentajeIngreso.Enabled = false;
-                this.txtPrecioVentaIngreso.Enabled = true;
+                this.txtPrecioVentaActual.Enabled = true;
                 this.txtPorcentajeIngreso.Text = string.Empty;
-                this.txtPrecioVentaIngreso.Text = string.Empty;
-                this.txtUtilidadIngreso.Text = string.Empty;
+                this.txtPrecioVentaActual.Text = string.Empty;
+                this.txtUtilidadActual.Text = string.Empty;
             }
             else
             {
                 this.txtPorcentajeIngreso.Enabled = true;
-                this.txtPrecioVentaIngreso.Enabled = false;
+                this.txtPrecioVentaActual.Enabled = false;
                 this.txtPrecioVentaIngreso.Text = string.Empty;
-                this.txtUtilidadIngreso.Text = string.Empty;
+                this.txtUtilidadActual.Text = string.Empty;
             }
         }
         private void btnCalcularIngreso_Click(object sender, EventArgs e)
@@ -986,10 +990,10 @@ namespace CapaPresentacion
             }
             //Comparar el precio anterior con el nuevo y mostrar las alertas correspondientes
 
-            if (precioVentaReal > Convert.ToDecimal(this.txtPrecioVentaIngreso.Text))
+            if (precioVentaReal > Convert.ToDecimal(this.txtPrecioVentaActual.Text))
             {
 
-                precioVentaCalculado = (Convert.ToDecimal(this.txtPrecioVentaIngreso.Text) * cantidadStock);
+                precioVentaCalculado = (Convert.ToDecimal(this.txtPrecioVentaActual.Text) * cantidadStock);
          
                 precioVentaTemporal = totalGanancias - precioVentaCalculado;
 
@@ -1003,9 +1007,9 @@ namespace CapaPresentacion
                 , "Disminución de utilidad",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (precioVentaReal < Convert.ToDecimal(this.txtPrecioVentaIngreso.Text))
+            else if (precioVentaReal < Convert.ToDecimal(this.txtPrecioVentaActual.Text))
             {
-                precioVentaCalculado = (Convert.ToDecimal(this.txtPrecioVentaIngreso.Text) * cantidadStock);
+                precioVentaCalculado = (Convert.ToDecimal(this.txtPrecioVentaActual.Text) * cantidadStock);
                 
                 precioVentaTemporal = precioVentaCalculado - totalGanancias;
 
@@ -1056,11 +1060,6 @@ namespace CapaPresentacion
         private void dataListadoDetalle_Click(object sender, EventArgs e)
         {
             this.btnQuitar.Enabled = true;
-        }
-
-        private void rdbPrecioIngreso_CheckedChanged_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

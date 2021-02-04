@@ -101,10 +101,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.tabArticulos = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.txtUtilidadActualIngreso = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.txtPrecioVentaActualIngreso = new System.Windows.Forms.TextBox();
             this.btnCalcularArticulo = new System.Windows.Forms.Button();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.btnEditarIngreso = new System.Windows.Forms.Button();
@@ -135,6 +131,10 @@
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.txtIdIngreso = new System.Windows.Forms.TextBox();
             this.txtIddetalleIngreso = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtPrecioVentaActual = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtUtilidadActual = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -445,6 +445,7 @@
             this.rdbPrecio.TabStop = true;
             this.rdbPrecio.Text = "Precio Manual";
             this.rdbPrecio.UseVisualStyleBackColor = true;
+            this.rdbPrecio.CheckedChanged += new System.EventHandler(this.rdbPrecio_CheckedChanged);
             // 
             // rdbPorcentaje
             // 
@@ -911,9 +912,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label32);
-            this.groupBox2.Controls.Add(this.txtUtilidadActualIngreso);
+            this.groupBox2.Controls.Add(this.txtUtilidadActual);
             this.groupBox2.Controls.Add(this.label29);
-            this.groupBox2.Controls.Add(this.txtPrecioVentaActualIngreso);
+            this.groupBox2.Controls.Add(this.txtPrecioVentaActual);
             this.groupBox2.Controls.Add(this.btnCalcularArticulo);
             this.groupBox2.Controls.Add(this.txtMarca);
             this.groupBox2.Controls.Add(this.btnEditarIngreso);
@@ -946,40 +947,6 @@
             this.groupBox2.TabIndex = 67;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Modificar";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(28, 333);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(129, 18);
-            this.label32.TabIndex = 71;
-            this.label32.Text = "Utilidad Actual:";
-            // 
-            // txtUtilidadActualIngreso
-            // 
-            this.txtUtilidadActualIngreso.Enabled = false;
-            this.txtUtilidadActualIngreso.Location = new System.Drawing.Point(164, 330);
-            this.txtUtilidadActualIngreso.Name = "txtUtilidadActualIngreso";
-            this.txtUtilidadActualIngreso.Size = new System.Drawing.Size(300, 26);
-            this.txtUtilidadActualIngreso.TabIndex = 70;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(506, 273);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(172, 18);
-            this.label29.TabIndex = 69;
-            this.label29.Text = "Precio Venta Actual:";
-            // 
-            // txtPrecioVentaActualIngreso
-            // 
-            this.txtPrecioVentaActualIngreso.Enabled = false;
-            this.txtPrecioVentaActualIngreso.Location = new System.Drawing.Point(683, 270);
-            this.txtPrecioVentaActualIngreso.Name = "txtPrecioVentaActualIngreso";
-            this.txtPrecioVentaActualIngreso.Size = new System.Drawing.Size(300, 26);
-            this.txtPrecioVentaActualIngreso.TabIndex = 68;
             // 
             // btnCalcularArticulo
             // 
@@ -1137,9 +1104,9 @@
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(506, 209);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(162, 18);
+            this.label27.Size = new System.Drawing.Size(167, 18);
             this.label27.TabIndex = 55;
-            this.label27.Text = "Precio Venta Inicial";
+            this.label27.Text = "Precio Venta Inicial:";
             // 
             // rdbPrecioIngreso
             // 
@@ -1152,7 +1119,7 @@
             this.rdbPrecioIngreso.TabStop = true;
             this.rdbPrecioIngreso.Text = "Precio Manual";
             this.rdbPrecioIngreso.UseVisualStyleBackColor = true;
-            this.rdbPrecioIngreso.CheckedChanged += new System.EventHandler(this.rdbPrecioIngreso_CheckedChanged_1);
+            this.rdbPrecioIngreso.CheckedChanged += new System.EventHandler(this.rdbPrecioIngreso_CheckedChanged);
             // 
             // label31
             // 
@@ -1262,6 +1229,40 @@
             this.txtIddetalleIngreso.Size = new System.Drawing.Size(10, 20);
             this.txtIddetalleIngreso.TabIndex = 0;
             this.txtIddetalleIngreso.Visible = false;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(506, 278);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(172, 18);
+            this.label29.TabIndex = 69;
+            this.label29.Text = "Precio Venta Actual:";
+            // 
+            // txtPrecioVentaActual
+            // 
+            this.txtPrecioVentaActual.Enabled = false;
+            this.txtPrecioVentaActual.Location = new System.Drawing.Point(683, 275);
+            this.txtPrecioVentaActual.Name = "txtPrecioVentaActual";
+            this.txtPrecioVentaActual.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioVentaActual.TabIndex = 68;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(28, 325);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(129, 18);
+            this.label32.TabIndex = 71;
+            this.label32.Text = "Utilidad Actual:";
+            // 
+            // txtUtilidadActual
+            // 
+            this.txtUtilidadActual.Enabled = false;
+            this.txtUtilidadActual.Location = new System.Drawing.Point(164, 322);
+            this.txtUtilidadActual.Name = "txtUtilidadActual";
+            this.txtUtilidadActual.Size = new System.Drawing.Size(300, 26);
+            this.txtUtilidadActual.TabIndex = 70;
             // 
             // FrmIngreso
             // 
@@ -1411,9 +1412,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnCalcularIngreso;
         private System.Windows.Forms.Button btnCalcularArticulo;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox txtPrecioVentaActualIngreso;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TextBox txtUtilidadActualIngreso;
+        private System.Windows.Forms.TextBox txtUtilidadActual;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox txtPrecioVentaActual;
     }
 }

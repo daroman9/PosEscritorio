@@ -34,6 +34,7 @@ namespace CapaNegocio
                 detalle.Stock_Actual = Convert.ToInt32(row["stock_inicial"].ToString());
                 detalle.Porcentaje = Convert.ToDecimal(row["porcentaje"].ToString());
                 detalle.Utilidad = Convert.ToDecimal(row["utilidad".ToString()]);
+                detalle.Utilidad_Actual = Convert.ToDecimal(row["utilidad_actual".ToString()]);
                 detalle.Fecha_Produccion = Convert.ToDateTime(row["fecha_produccion"].ToString());
                 detalle.Fecha_Vencimiento = Convert.ToDateTime(row["fecha_vencimiento"].ToString());
 
@@ -58,15 +59,15 @@ namespace CapaNegocio
             return Obj.EditarPrecios(detalles);
         }
         //Método que llama el método editat de la clase DDetalle_Ingreso de la capa de datos
-        public static string Editar(int iddetalleingreso, decimal precio_compra, decimal precio_venta, int stock_inicial, decimal porcentaje, decimal utilidad, DateTime fecha_produccion, DateTime fecha_vencimiento)
+        public static string Editar(int iddetalleingreso, decimal precio_compra, decimal precio_venta_actual, int stock_inicial, decimal porcentaje, decimal utilidad_actual, DateTime fecha_produccion, DateTime fecha_vencimiento)
         {
             DDetalle_Ingreso Obj = new DDetalle_Ingreso();
             Obj.Iddetalle_Ingreso = iddetalleingreso;
             Obj.Precio_Compra = precio_compra;
-            Obj.Precio_Venta = precio_venta;
+            Obj.Precio_Venta_Actual = precio_venta_actual;
             Obj.Stock_Inicial = stock_inicial;
             Obj.Porcentaje = porcentaje;
-            Obj.Utilidad = utilidad;
+            Obj.Utilidad_Actual = utilidad_actual;
             Obj.Fecha_Produccion = fecha_produccion;
             Obj.Fecha_Vencimiento = fecha_vencimiento;
             
