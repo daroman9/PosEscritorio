@@ -145,6 +145,44 @@ namespace CapaDatos
             return DtResultado;
         }
 
+        //Método para disminuir el stock de los artículos despues de cada venta
+        public DataTable BuscarArticuloStock(DStock Stock)
+        {
+            DataTable DtResultado = new DataTable("articulo");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spbuscar_articulo_stock";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@textobuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 50;
+                ParTextoBuscar.Value = Stock.TextoBuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
+
+        //Método para aumentar el stock de los articulos si se cancela una venta
+
+
+        //Método para aumentar el stock si se realiza el reembolso de uno o varios artículos
 
     }
 }

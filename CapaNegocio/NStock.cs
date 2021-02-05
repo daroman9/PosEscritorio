@@ -31,5 +31,13 @@ namespace CapaNegocio
             Obj.TextoBuscar = textoBuscar;
             return Obj.BuscarStockCodigo(Obj);
         }
+
+        //Método que llama al método que busca la lista de ingresos con sus cantidades para disminuir el stock por cada venta
+        public static DataTable BuscarArticuloStock(string textoBuscar)
+        {
+            DStock Obj = new DStock();
+            Obj.TextoBuscar = textoBuscar;
+            return Obj.BuscarArticuloStock(Obj);
+        }
     }
 }

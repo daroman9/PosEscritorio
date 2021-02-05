@@ -22,6 +22,8 @@ namespace CapaPresentacion
         public string serie;
         public double totalcuenta = 0;
         public int totalArticulos = 0;
+        private DataTable listadoDisminucion;
+       // private DataTable totales;
 
         public FrmVenta()
         {
@@ -162,6 +164,18 @@ namespace CapaPresentacion
             //Relacionar nuestro DataGRidView con nuestro DataTable
             this.dataListadoDetalle.DataSource = this.dtDetalle;
 
+
+            //Crear tabla para disminucion del stock
+            this.listadoDisminucion = new DataTable("Disminucion");
+
+            this.listadoDisminucion.Columns.Add("Codigo", System.Type.GetType("System.String"));
+            this.listadoDisminucion.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
+            
+
+            //Relacionar nuestro DataGRidView con nuestro DataTable
+            this.dataListadoDisminucion.DataSource = this.listadoDisminucion;
+
+
         }
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
@@ -208,11 +222,11 @@ namespace CapaPresentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
             calcularTotalItems();
 
 
-
+            disminuirArticulosStock();
+           
             //try
             //{
             //    string rpta = "";
@@ -254,7 +268,125 @@ namespace CapaPresentacion
             //    MessageBox.Show(ex.Message + ex.StackTrace);
             //}
         }
-      
+
+        //Calcular la cantidad de articulos presentes en cada venta
+
+        public void calcularTotalItems()
+        {
+
+            try
+            {
+                DataTable items = dataListadoDetalle.DataSource as DataTable;
+
+                var result = (from a in items.AsEnumerable()
+                              group a by new { id = a.Field<string>("Codigo") } into g
+                              select new
+                              {
+                                  Codigo = g.Key.id,
+                                  Cantidad = g.Sum(x => x.Field<int>("Cantidad"))
+                              });
+
+                DataTable totales = new DataTable();
+                //definir las columnas del datatable
+                totales.Columns.Add("Codigo");
+                totales.Columns.Add("Cantidad");
+
+                foreach (var item in result)
+                {
+                    //creas una nueva row
+                    DataRow row = totales.NewRow();
+                    //asignas el dato a cada columna de la row
+                    row["Codigo"] = item.Codigo;
+                    row["Cantidad"] = item.Cantidad;
+
+                    totales.Rows.Add(row);
+                }
+
+                dataPrueba.DataSource = totales;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
+        }
+
+        private void disminuirArticulosStock()
+        {
+            //El ciclo for se encarga de recorrer cada fila del datatable donde se tienen los totales de cada articulo por cada venta
+
+            int totalFilas = dataPrueba.Rows.Count - 1;
+          
+            for (int i=0; i <= totalFilas; i++)
+            {
+                int cantidad = Convert.ToInt32(dataPrueba.Rows[i].Cells["Cantidad"].Value);
+                this.dataDisminuirStock.DataSource = NStock.BuscarArticuloStock(Convert.ToString(dataPrueba.Rows[i].Cells["Codigo"].Value));
+                int sumaStock = 0;
+                int posiciones = 0;
+                int acumulador = cantidad;
+                //Primera posición del datatable con los articulos y su stock
+                int primerPosicion = Convert.ToInt32(this.dataDisminuirStock.Rows[0].Cells["stock_actual"].Value);
+
+                while (sumaStock < cantidad)
+                {
+              
+                    if (primerPosicion >= cantidad)
+                    {
+                        int disminuirStock;
+                        int stockMenos;
+                  
+                        disminuirStock = Convert.ToInt32(this.dataDisminuirStock.Rows[0].Cells["stock_actual"].Value) - cantidad;
+
+                        stockMenos = cantidad - disminuirStock;
+
+                        asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), stockMenos);
+
+                        sumaStock = stockMenos;
+                    }
+                    else
+                    {
+
+
+
+                        //Aca se deben disminuir los articulos de cada ingreso
+
+
+
+                        int disminuirStock;
+                        int stockMenos;
+
+                        disminuirStock = acumulador - Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
+
+                        while(disminuirStock == 0)
+                        {
+                            if (disminuirStock > 0)
+                            {
+                               stockMenos = Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
+                               asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), stockMenos);
+                            }
+                        }
+                        sumaStock = sumaStock + disminuirStock;
+                        posiciones++;
+                    }
+
+                    i++;
+                }
+
+            }
+        }
+
+        private void asignarDisminuirStock(string codigo, int cantidad)
+        {
+           
+            //Agregar al listado de articulos para la factura
+            DataRow row = this.listadoDisminucion.NewRow();
+            row["Codigo"] = codigo;
+            row["Cantidad"] = cantidad;
+            this.listadoDisminucion.Rows.Add(row);
+            this.dataListadoDisminucion.DataSource = this.listadoDisminucion;
+
+        }
+
         private void btnBuscarNombreArticulos_Click(object sender, EventArgs e)
         {
             this.MostrarArticulo_Venta_Nombre();
@@ -289,7 +421,6 @@ namespace CapaPresentacion
             row["Marca"] = par4;
             row["Categoria"] = par5;
             row["Presentacion"] = par6;
-            row["Stock"] = par7;
             row["Precio_Venta"] = preciodescuento;
             row["Descuento"] = par10;
             row["Cantidad"] = 1;
@@ -477,48 +608,6 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
                 MensajeError("No hay fila para remover");
-            }
-        }
-
-        //Calcular la cantidad de articulos presentes en cada venta
-
-        public void calcularTotalItems()
-        {
-          
-            try
-            {
-                DataTable items = dataListadoDetalle.DataSource as DataTable;
-
-                var result = (from a in items.AsEnumerable()
-                              group a by new { id = a.Field<string>("Codigo") } into g
-                              select new
-                              {
-                                  Codigo = g.Key.id,
-                                  Cantidad = g.Sum(x => x.Field<int>("Cantidad"))
-                              });
-               
-                DataTable totales = new DataTable();
-                //definir las columnas del datatable
-                totales.Columns.Add("Codigo");
-                totales.Columns.Add("Cantidad");
-
-                foreach (var item in result)
-                {
-                    //creas una nueva row
-                    DataRow row = totales.NewRow();
-                    //asignas el dato a cada columna de la row
-                    row["Codigo"] = item.Codigo;
-                    row["Cantidad"] = item.Cantidad;
-
-                    totales.Rows.Add(row);
-                }
-
-                dataPrueba.DataSource = totales;
-
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(Convert.ToString(ex));
             }
         }
     }
