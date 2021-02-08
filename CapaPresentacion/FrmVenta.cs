@@ -273,7 +273,7 @@ namespace CapaPresentacion
 
         public void calcularTotalItems()
         {
-
+      
             try
             {
                 DataTable items = dataListadoDetalle.DataSource as DataTable;
@@ -333,40 +333,46 @@ namespace CapaPresentacion
                     if (primerPosicion >= cantidad)
                     {
                         int disminuirStock;
-                        int stockMenos;
-                  
+                        
                         disminuirStock = Convert.ToInt32(this.dataDisminuirStock.Rows[0].Cells["stock_actual"].Value) - cantidad;
 
-                        stockMenos = cantidad - disminuirStock;
+                        asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), disminuirStock);
 
-                        asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), stockMenos);
-
-                        sumaStock = stockMenos;
+                        sumaStock = cantidad;
                     }
                     else
                     {
-
-
-
                         //Aca se deben disminuir los articulos de cada ingreso
-
-
-
-                        int disminuirStock;
-                        int stockMenos;
-
-                        disminuirStock = acumulador - Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
-
-                        while(disminuirStock == 0)
+                        int disminuirStock = cantidad;
+                        int residuo;
+                     
+                        while(disminuirStock > 0)
                         {
-                            if (disminuirStock > 0)
+                            if(disminuirStock >= Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value))
                             {
-                               stockMenos = Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
-                               asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), stockMenos);
+                               asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), 0);
+                               disminuirStock = disminuirStock - Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
+                               sumaStock = sumaStock + Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
                             }
+                            else
+                            {
+                                residuo = Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value) - disminuirStock;
+
+                                asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), residuo);
+
+                                sumaStock = sumaStock + disminuirStock;
+
+                                disminuirStock = disminuirStock - disminuirStock;
+
+
+                            }
+                            posiciones++;
+                            // stockMenos = acumulador - Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
+                            // asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), stockMenos);
+
                         }
-                        sumaStock = sumaStock + disminuirStock;
-                        posiciones++;
+                        //sumaStock = sumaStock + disminuirStock;
+                        
                     }
 
                     i++;

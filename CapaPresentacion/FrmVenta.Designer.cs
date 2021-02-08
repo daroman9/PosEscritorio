@@ -53,6 +53,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblTotalPagado = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataListadoDisminucion = new System.Windows.Forms.DataGridView();
             this.dataDisminuirStock = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -95,12 +96,12 @@
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.dataListadoDisminucion = new System.Windows.Forms.DataGridView();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoDisminucion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataDisminuirStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoDetalle)).BeginInit();
@@ -111,7 +112,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListadoDisminucion)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCantidad
@@ -369,12 +369,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ventas";
             // 
+            // dataListadoDisminucion
+            // 
+            this.dataListadoDisminucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListadoDisminucion.Location = new System.Drawing.Point(1070, 650);
+            this.dataListadoDisminucion.Name = "dataListadoDisminucion";
+            this.dataListadoDisminucion.Size = new System.Drawing.Size(324, 90);
+            this.dataListadoDisminucion.TabIndex = 91;
+            // 
             // dataDisminuirStock
             // 
             this.dataDisminuirStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataDisminuirStock.Location = new System.Drawing.Point(1070, 531);
+            this.dataDisminuirStock.Location = new System.Drawing.Point(1070, 495);
             this.dataDisminuirStock.Name = "dataDisminuirStock";
-            this.dataDisminuirStock.Size = new System.Drawing.Size(324, 43);
+            this.dataDisminuirStock.Size = new System.Drawing.Size(324, 145);
             this.dataDisminuirStock.TabIndex = 90;
             // 
             // label16
@@ -417,9 +425,9 @@
             // dataPrueba
             // 
             this.dataPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataPrueba.Location = new System.Drawing.Point(1070, 480);
+            this.dataPrueba.Location = new System.Drawing.Point(1400, 562);
             this.dataPrueba.Name = "dataPrueba";
-            this.dataPrueba.Size = new System.Drawing.Size(324, 39);
+            this.dataPrueba.Size = new System.Drawing.Size(324, 78);
             this.dataPrueba.TabIndex = 85;
             // 
             // btnMultiplicar
@@ -790,14 +798,6 @@
             this.label10.TabIndex = 8;
             this.label10.Text = "Nombre:";
             // 
-            // dataListadoDisminucion
-            // 
-            this.dataListadoDisminucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoDisminucion.Location = new System.Drawing.Point(1070, 613);
-            this.dataListadoDisminucion.Name = "dataListadoDisminucion";
-            this.dataListadoDisminucion.Size = new System.Drawing.Size(324, 90);
-            this.dataListadoDisminucion.TabIndex = 91;
-            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -820,6 +820,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoDisminucion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataDisminuirStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataPrueba)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoDetalle)).EndInit();
@@ -832,7 +833,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListadoDisminucion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
