@@ -56,16 +56,16 @@
             this.dataListadoDisminucion = new System.Windows.Forms.DataGridView();
             this.dataDisminuirStock = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtDebito = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbMetodoPago = new System.Windows.Forms.ComboBox();
             this.dataPrueba = new System.Windows.Forms.DataGridView();
             this.btnMultiplicar = new System.Windows.Forms.Button();
             this.lblTotalArticulos = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDevuelta = new System.Windows.Forms.TextBox();
+            this.txtEfectivo = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -120,6 +120,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(300, 32);
             this.txtCantidad.TabIndex = 39;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // label5
             // 
@@ -333,16 +334,16 @@
             this.groupBox1.Controls.Add(this.dataListadoDisminucion);
             this.groupBox1.Controls.Add(this.dataDisminuirStock);
             this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.txtDebito);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbMetodoPago);
             this.groupBox1.Controls.Add(this.dataPrueba);
             this.groupBox1.Controls.Add(this.btnMultiplicar);
             this.groupBox1.Controls.Add(this.lblTotalArticulos);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.txtCodigoBarras);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtDevuelta);
+            this.groupBox1.Controls.Add(this.txtEfectivo);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
@@ -372,7 +373,7 @@
             // dataListadoDisminucion
             // 
             this.dataListadoDisminucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoDisminucion.Location = new System.Drawing.Point(1070, 650);
+            this.dataListadoDisminucion.Location = new System.Drawing.Point(1070, 654);
             this.dataListadoDisminucion.Name = "dataListadoDisminucion";
             this.dataListadoDisminucion.Size = new System.Drawing.Size(324, 90);
             this.dataListadoDisminucion.TabIndex = 91;
@@ -380,9 +381,9 @@
             // dataDisminuirStock
             // 
             this.dataDisminuirStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataDisminuirStock.Location = new System.Drawing.Point(1070, 495);
+            this.dataDisminuirStock.Location = new System.Drawing.Point(1070, 480);
             this.dataDisminuirStock.Name = "dataDisminuirStock";
-            this.dataDisminuirStock.Size = new System.Drawing.Size(324, 145);
+            this.dataDisminuirStock.Size = new System.Drawing.Size(324, 84);
             this.dataDisminuirStock.TabIndex = 90;
             // 
             // label16
@@ -394,12 +395,13 @@
             this.label16.TabIndex = 89;
             this.label16.Text = "Método de pago:";
             // 
-            // textBox4
+            // txtDebito
             // 
-            this.textBox4.Location = new System.Drawing.Point(695, 586);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(300, 32);
-            this.textBox4.TabIndex = 88;
+            this.txtDebito.Location = new System.Drawing.Point(695, 586);
+            this.txtDebito.Name = "txtDebito";
+            this.txtDebito.Size = new System.Drawing.Size(300, 32);
+            this.txtDebito.TabIndex = 88;
+            this.txtDebito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDebito_KeyPress);
             // 
             // label14
             // 
@@ -410,22 +412,23 @@
             this.label14.TabIndex = 87;
             this.label14.Text = "Debito/Credito:";
             // 
-            // comboBox1
+            // cmbMetodoPago
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbMetodoPago.FormattingEnabled = true;
+            this.cmbMetodoPago.Items.AddRange(new object[] {
             "EFECTIVO",
             "DEBITO/CREDITO",
             "MIXTO"});
-            this.comboBox1.Location = new System.Drawing.Point(695, 490);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(300, 32);
-            this.comboBox1.TabIndex = 86;
+            this.cmbMetodoPago.Location = new System.Drawing.Point(695, 490);
+            this.cmbMetodoPago.Name = "cmbMetodoPago";
+            this.cmbMetodoPago.Size = new System.Drawing.Size(300, 32);
+            this.cmbMetodoPago.TabIndex = 86;
+            this.cmbMetodoPago.SelectedIndexChanged += new System.EventHandler(this.cmbMetodoPago_SelectedIndexChanged);
             // 
             // dataPrueba
             // 
             this.dataPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataPrueba.Location = new System.Drawing.Point(1400, 562);
+            this.dataPrueba.Location = new System.Drawing.Point(1070, 570);
             this.dataPrueba.Name = "dataPrueba";
             this.dataPrueba.Size = new System.Drawing.Size(324, 78);
             this.dataPrueba.TabIndex = 85;
@@ -466,19 +469,20 @@
             this.txtCodigoBarras.TabIndex = 81;
             this.txtCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarras_KeyPress);
             // 
-            // textBox3
+            // txtDevuelta
             // 
-            this.textBox3.Location = new System.Drawing.Point(695, 652);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(300, 32);
-            this.textBox3.TabIndex = 80;
+            this.txtDevuelta.Location = new System.Drawing.Point(695, 652);
+            this.txtDevuelta.Name = "txtDevuelta";
+            this.txtDevuelta.Size = new System.Drawing.Size(300, 32);
+            this.txtDevuelta.TabIndex = 80;
             // 
-            // textBox2
+            // txtEfectivo
             // 
-            this.textBox2.Location = new System.Drawing.Point(695, 542);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(300, 32);
-            this.textBox2.TabIndex = 79;
+            this.txtEfectivo.Location = new System.Drawing.Point(695, 542);
+            this.txtEfectivo.Name = "txtEfectivo";
+            this.txtEfectivo.Size = new System.Drawing.Size(300, 32);
+            this.txtEfectivo.TabIndex = 79;
+            this.txtEfectivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEfectivo_KeyPress);
             // 
             // label8
             // 
@@ -883,8 +887,8 @@
         private System.Windows.Forms.TextBox txtIdCliente;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtDevuelta;
+        private System.Windows.Forms.TextBox txtEfectivo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCodigoBarras;
@@ -901,9 +905,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataPrueba;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtDebito;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbMetodoPago;
         private System.Windows.Forms.DataGridView dataDisminuirStock;
         private System.Windows.Forms.DataGridView dataListadoDisminucion;
     }

@@ -30,6 +30,9 @@ namespace CapaPresentacion
             InitializeComponent();
             this.txtIdCliente.Visible = false;
             this.txtCliente.ReadOnly = true;
+            this.txtEfectivo.Enabled = false;
+            this.txtDebito.Enabled = false;
+            this.txtDevuelta.Enabled = false;
           
         }
 
@@ -170,7 +173,7 @@ namespace CapaPresentacion
 
             this.listadoDisminucion.Columns.Add("Codigo", System.Type.GetType("System.String"));
             this.listadoDisminucion.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
-            
+            this.listadoDisminucion.Columns.Add("IdDetalle_Ingreso", System.Type.GetType("System.Int32"));
 
             //Relacionar nuestro DataGRidView con nuestro DataTable
             this.dataListadoDisminucion.DataSource = this.listadoDisminucion;
@@ -222,11 +225,72 @@ namespace CapaPresentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            //Método que calcula cuantos items de cada articulo se encuentran en cada venta
             calcularTotalItems();
-
-
+            //Método que crea una tabla con los valores a actualizar en el stock de artículos
             disminuirArticulosStock();
+            //Método para calcular la devuelta de la venta
+            if (calcularVenta())
+            {
+                ejecutarGuardado();
+            }
+                
+            
            
+            //Método que realiza el guardado de la venta
+          
+        }
+
+        //Método para calcular el precio y la devuelta de cada venta
+        private bool calcularVenta()
+        {
+            decimal total = 0;
+            decimal totalIngreso= 0;
+            decimal efectivo = 0;
+            decimal debito =0;
+            decimal devuelta =0;
+
+            total = Convert.ToDecimal(lblTotalPagado.Text);
+
+            if (this.txtEfectivo.Text == string.Empty || this.txtEfectivo.Text =="" || this.txtEfectivo.Text ==null)
+            {
+                efectivo = 0;
+            }
+            else
+            {
+                efectivo = Convert.ToDecimal(this.txtEfectivo.Text);
+               
+            }
+
+            if(this.txtDebito.Text == string.Empty || this.txtDebito.Text =="" || this.txtDebito.Text == null)
+            {
+                debito = 0;
+            }
+            else
+            {
+                debito = Convert.ToDecimal(this.txtDebito.Text);
+               
+            }
+            totalIngreso = efectivo + debito;
+             
+            if(total > totalIngreso)
+            {
+                MensajeError("El pago es inferior al total de la compra");
+                return false;
+            }
+            else
+            {
+                devuelta = totalIngreso - total;
+
+                this.txtDevuelta.Text = Convert.ToString(devuelta);
+                 
+                return true;
+            }
+        }
+
+
+        private void ejecutarGuardado()
+        {
             //try
             //{
             //    string rpta = "";
@@ -267,11 +331,18 @@ namespace CapaPresentacion
             //{
             //    MessageBox.Show(ex.Message + ex.StackTrace);
             //}
+
+            MessageBox.Show("Holii");
+
+
+
         }
 
-        //Calcular la cantidad de articulos presentes en cada venta
 
-        public void calcularTotalItems()
+
+
+        //Calcular la cantidad de articulos presentes en cada venta
+        private void calcularTotalItems()
         {
       
             try
@@ -310,7 +381,6 @@ namespace CapaPresentacion
                 MessageBox.Show(Convert.ToString(ex));
             }
         }
-
         private void disminuirArticulosStock()
         {
             //El ciclo for se encarga de recorrer cada fila del datatable donde se tienen los totales de cada articulo por cada venta
@@ -323,7 +393,6 @@ namespace CapaPresentacion
                 this.dataDisminuirStock.DataSource = NStock.BuscarArticuloStock(Convert.ToString(dataPrueba.Rows[i].Cells["Codigo"].Value));
                 int sumaStock = 0;
                 int posiciones = 0;
-                int acumulador = cantidad;
                 //Primera posición del datatable con los articulos y su stock
                 int primerPosicion = Convert.ToInt32(this.dataDisminuirStock.Rows[0].Cells["stock_actual"].Value);
 
@@ -336,7 +405,7 @@ namespace CapaPresentacion
                         
                         disminuirStock = Convert.ToInt32(this.dataDisminuirStock.Rows[0].Cells["stock_actual"].Value) - cantidad;
 
-                        asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), disminuirStock);
+                        asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), disminuirStock, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
 
                         sumaStock = cantidad;
                     }
@@ -350,7 +419,7 @@ namespace CapaPresentacion
                         {
                             if(disminuirStock >= Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value))
                             {
-                               asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), 0);
+                               asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), 0, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
                                disminuirStock = disminuirStock - Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
                                sumaStock = sumaStock + Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
                             }
@@ -358,7 +427,7 @@ namespace CapaPresentacion
                             {
                                 residuo = Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value) - disminuirStock;
 
-                                asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), residuo);
+                                asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), residuo, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
 
                                 sumaStock = sumaStock + disminuirStock;
 
@@ -367,27 +436,21 @@ namespace CapaPresentacion
 
                             }
                             posiciones++;
-                            // stockMenos = acumulador - Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
-                            // asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), stockMenos);
-
                         }
-                        //sumaStock = sumaStock + disminuirStock;
-                        
                     }
-
-                    i++;
                 }
 
             }
         }
 
-        private void asignarDisminuirStock(string codigo, int cantidad)
+        private void asignarDisminuirStock(string codigo, int cantidad, string idingreso)
         {
            
             //Agregar al listado de articulos para la factura
             DataRow row = this.listadoDisminucion.NewRow();
             row["Codigo"] = codigo;
             row["Cantidad"] = cantidad;
+            row["IdDetalle_Ingreso"] = idingreso;
             this.listadoDisminucion.Rows.Add(row);
             this.dataListadoDisminucion.DataSource = this.listadoDisminucion;
 
@@ -614,6 +677,89 @@ namespace CapaPresentacion
             catch (Exception ex)
             {
                 MensajeError("No hay fila para remover");
+            }
+        }
+
+        private void cmbMetodoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMetodoPago.SelectedIndex == 0)
+            {
+                //Efectivo
+                this.txtEfectivo.Enabled = true;
+                this.txtDebito.Enabled = false;
+                this.txtDebito.Text = string.Empty;
+            }
+            else if(cmbMetodoPago.SelectedIndex == 1)
+            {
+                this.txtDebito.Enabled = true;
+                this.txtEfectivo.Enabled = false;
+                this.txtEfectivo.Text = string.Empty;
+            }
+            else
+            {
+                //Mixto
+                this.txtEfectivo.Enabled = true;
+                this.txtDebito.Enabled = true;
+            }
+        }
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEfectivo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtDebito_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

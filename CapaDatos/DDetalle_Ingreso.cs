@@ -173,6 +173,52 @@ namespace CapaDatos
             return rpta;
         }
 
+        //Método para disminuir el stock dependiendo de cada venta
+        public string DisminuisStock(List<DDetalle_Ingreso> Detalle)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código para insertar registros
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+                //Establecer la transaccion
+                SqlTransaction SqlTra = SqlCon.BeginTransaction();
+                foreach (DDetalle_Ingreso det in Detalle)
+                {
+                    det.Idingreso = this.Idingreso;
+                    //Llamr al método insertar de la clase DDetalle_Ingreso
+                    rpta = det.Insertar(det, ref SqlCon, ref SqlTra);
+
+                    if (!rpta.Equals("OK"))
+                    {
+                        break;
+                    }
+
+                }
+                if (rpta.Equals("OK"))
+                {
+                    SqlTra.Commit();
+                }
+                else
+                {
+                    SqlTra.Rollback();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+        }
+
+
         //Método para editar los precios reales cuando se ingresa un nuevo articulo
 
         public string EditarPrecios(DDetalle_Ingreso Detalle_Ingreso, ref SqlConnection SqlCon, ref SqlTransaction SqlTra)
