@@ -350,9 +350,5 @@ namespace CapaDatos
 
             return DtResultado;
         }
-
-
-
-
     }
 }

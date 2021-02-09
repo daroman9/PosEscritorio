@@ -17,25 +17,22 @@ namespace CapaPresentacion
         private bool IsNuevo = false;
         public int Idtrabajador;
         private DataTable dtDetalle;
+        private DataTable ultimaSerie;
         public int codLength;
         public string codigoBarras;
         public string serie;
         public double totalcuenta = 0;
         public int totalArticulos = 0;
         private DataTable listadoDisminucion;
-       // private DataTable totales;
-
         public FrmVenta()
         {
             InitializeComponent();
-            this.txtIdCliente.Visible = false;
+           // this.txtIdCliente.Visible = false;
             this.txtCliente.ReadOnly = true;
             this.txtEfectivo.Enabled = false;
             this.txtDebito.Enabled = false;
             this.txtDevuelta.Enabled = false;
-          
         }
-
         private void FrmVenta_Load(object sender, EventArgs e)
         {
             this.Mostrar();
@@ -43,7 +40,6 @@ namespace CapaPresentacion
             this.Botones();
             this.CrearTabla();
             this.alternarColores(this.dataListadoDetalle);
-
         }
 
         //Mostrar mensaje de confirmación
@@ -73,7 +69,6 @@ namespace CapaPresentacion
         private void Habilitar(bool valor)
         {
             this.txtCodigoBarras.ReadOnly = !valor;
-            this.txtSerie.ReadOnly = !valor;
             this.dtFecha.Enabled = valor;
             this.txtCantidad.ReadOnly = !valor;
             this.btnQuitar.Enabled = valor;
@@ -109,6 +104,8 @@ namespace CapaPresentacion
             //ocultar las columnas del listado de clientes
             this.dataListadoClientes.Columns[0].Visible = false;
             this.dataListadoClientes.Columns[1].Visible = false;
+
+        
         }
         //Método para alternar los colores de las filas del datagrid
         public void alternarColores(DataGridView dgv)
@@ -155,6 +152,7 @@ namespace CapaPresentacion
         private void CrearTabla()
         {
             this.dtDetalle = new DataTable("Detalle");
+            this.dtDetalle.Columns.Add("IdArticulo", System.Type.GetType("System.Int32"));
             this.dtDetalle.Columns.Add("Codigo", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Descripción", System.Type.GetType("System.String"));
             this.dtDetalle.Columns.Add("Marca", System.Type.GetType("System.String"));
@@ -164,15 +162,18 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("Precio_Venta", System.Type.GetType("System.Double"));
             this.dtDetalle.Columns.Add("Descuento", System.Type.GetType("System.Int32"));
             this.dtDetalle.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
+            
             //Relacionar nuestro DataGRidView con nuestro DataTable
             this.dataListadoDetalle.DataSource = this.dtDetalle;
+
+            this.dataListadoDetalle.Columns[0].Visible = false;
 
 
             //Crear tabla para disminucion del stock
             this.listadoDisminucion = new DataTable("Disminucion");
 
-            this.listadoDisminucion.Columns.Add("Codigo", System.Type.GetType("System.String"));
-            this.listadoDisminucion.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
+            this.listadoDisminucion.Columns.Add("IdArticulo", System.Type.GetType("System.String"));
+            this.listadoDisminucion.Columns.Add("Stock_Actual", System.Type.GetType("System.Int32"));
             this.listadoDisminucion.Columns.Add("IdDetalle_Ingreso", System.Type.GetType("System.Int32"));
 
             //Relacionar nuestro DataGRidView con nuestro DataTable
@@ -185,34 +186,14 @@ namespace CapaPresentacion
             this.BuscarFechas();
         }
 
-        private void dataListado_DoubleClick(object sender, EventArgs e)
-        {
-            this.txtCodigoBarras.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idventa"].Value);
-            this.txtCliente.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["cliente"].Value);
-            this.dtFecha.Value = Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha"].Value);
-            this.txtSerie.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["serie"].Value);
-            this.lblTotalPagado.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["total"].Value);
-
-            this.MostrarDetalle();
-            this.tabControl1.SelectedIndex = 1;
-        }
-
-        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
-            {
-                DataGridViewCheckBoxCell ChkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
-                ChkEliminar.Value = !Convert.ToBoolean(ChkEliminar.Value);
-            }
-        }
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             this.IsNuevo = true;
             this.Botones();
             this.Limpiar();
+            this.UltimaSerie();
             this.Habilitar(true);
-            this.txtSerie.Focus();
+            //this.txtSerie.Focus();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -235,7 +216,6 @@ namespace CapaPresentacion
                 ejecutarGuardado();
             }
                 
-            
            
             //Método que realiza el guardado de la venta
           
@@ -291,54 +271,83 @@ namespace CapaPresentacion
 
         private void ejecutarGuardado()
         {
-            //try
-            //{
-            //    string rpta = "";
-            //    if (this.txtSerie.Text == string.Empty)
-            //    {
-            //        MensajeError("Falta ingresar algun dato");
-            //        errorIcono.SetError(txtSerie, "Ingrese un valor");
-            //    }
-            //    else
-            //    {
+            try
+            {
+                string rpta = "";
+                string updateStock = "";
+                if (this.txtSerie.Text == string.Empty || this.txtDevuelta.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algun dato");
+                    errorIcono.SetError(txtDevuelta, "Revise los valores de pago");
+                    errorIcono.SetError(txtSerie, "Ingrese un valor");
+                }
+                else
+                {
 
-            //        if (this.IsNuevo)
-            //        {
+                    if (this.IsNuevo)
+                    {
+                        //Validar que el cliente exista    
 
-            //            rpta = NVenta.Insertar(Convert.ToInt32(this.txtIdCliente.Text), Idtrabajador, dtFecha.Value,
-            //                                     this.txtSerie.Text, Convert.ToDecimal(this.lblTotalPagado.Text), dtDetalle);
-            //        }
+                        if (dtDetalle.Rows.Count > 0)
+                        {
+                            rpta = NVenta.Insertar(Convert.ToInt32(this.txtIdCliente.Text), Idtrabajador, this.dtFecha.Value, this.txtSerie.Text, 
+                                                   this.cmbMetodoPago.Text , Convert.ToDecimal(this.txtEfectivo.Text), Convert.ToDecimal(this.txtDebito.Text), Convert.ToDecimal(this.txtDevuelta.Text),
+                                                   Convert.ToDecimal(this.lblTotalPagado.Text), dtDetalle);
 
-            //        if (rpta.Equals("OK"))
-            //        {
-            //            if (this.IsNuevo)
-            //            {
-            //                this.MensajeOk("Se inserto correctamente en registro");
-            //            }
+                            if (rpta.Equals("OK"))
+                            {
+                                updateStock = NVenta.updateStock(listadoDisminucion);
+                            }
+                        }
+                        else
+                        {
+                            MensajeError("No ha adjuntado articulos en el ingreso ");
+                        }
+                    }
 
-            //        }
-            //        else
-            //        {
-            //            this.MensajeError(rpta);
-            //        }
-            //        this.IsNuevo = false;
-            //        this.Botones();
-            //        this.Limpiar();
-            //        this.Mostrar();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message + ex.StackTrace);
-            //}
+                    if (rpta.Equals("OK"))
+                    {
+                       // if (this.IsNuevo)
+                        //{
+                          //  updateStock = NIngreso.EditarPrecios(dtPrecioReal);
+                          this.MensajeOk("Se inserto correctamente en registro");
+                       // }
 
-            MessageBox.Show("Holii");
-
-
+                    }
+                    else
+                    {
+                        this.MensajeError(rpta);
+                    }
+                    this.IsNuevo = false;
+                    this.Botones();
+                    this.Limpiar();
+                    //this.LimpiarDetalle();
+                    this.Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
 
         }
 
-
+        //Método para obtener la serie del último registro
+        public void UltimaSerie()
+        {
+            int ultimoValor;
+            this.ultimaSerie = NVenta.UltimaSerie();
+            if (this.ultimaSerie.Rows.Count == 0)
+            {
+                ultimoValor = 0;
+            }
+            else
+            {
+                ultimoValor = Convert.ToInt32(this.ultimaSerie.Rows[0]["Serie"].ToString().Substring(3));
+            }
+            ultimoValor++;
+            this.txtSerie.Text = Convert.ToString("VN-" + ultimoValor);
+        }
 
 
         //Calcular la cantidad de articulos presentes en cada venta
@@ -405,7 +414,7 @@ namespace CapaPresentacion
                         
                         disminuirStock = Convert.ToInt32(this.dataDisminuirStock.Rows[0].Cells["stock_actual"].Value) - cantidad;
 
-                        asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), disminuirStock, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
+                        asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["IdArticulo"].Value.ToString(), disminuirStock, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
 
                         sumaStock = cantidad;
                     }
@@ -419,7 +428,7 @@ namespace CapaPresentacion
                         {
                             if(disminuirStock >= Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value))
                             {
-                               asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), 0, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
+                               asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["IdArticulo"].Value.ToString(), 0, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
                                disminuirStock = disminuirStock - Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
                                sumaStock = sumaStock + Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value);
                             }
@@ -427,7 +436,7 @@ namespace CapaPresentacion
                             {
                                 residuo = Convert.ToInt32(this.dataDisminuirStock.Rows[posiciones].Cells["stock_actual"].Value) - disminuirStock;
 
-                                asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["Codigo"].Value.ToString(), residuo, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
+                                asignarDisminuirStock(this.dataDisminuirStock.Rows[posiciones].Cells["IdArticulo"].Value.ToString(), residuo, this.dataDisminuirStock.Rows[posiciones].Cells["iddetalle_ingreso"].Value.ToString());
 
                                 sumaStock = sumaStock + disminuirStock;
 
@@ -448,8 +457,8 @@ namespace CapaPresentacion
            
             //Agregar al listado de articulos para la factura
             DataRow row = this.listadoDisminucion.NewRow();
-            row["Codigo"] = codigo;
-            row["Cantidad"] = cantidad;
+            row["IdArticulo"] = codigo;
+            row["Stock_Actual"] = cantidad;
             row["IdDetalle_Ingreso"] = idingreso;
             this.listadoDisminucion.Rows.Add(row);
             this.dataListadoDisminucion.DataSource = this.listadoDisminucion;
@@ -463,9 +472,10 @@ namespace CapaPresentacion
 
         private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
         {
-            int  par7 ;
+            int  par1, par7 ;
             string par2, par3, par4, par5, par6;
             double  par9,par10, descuento, descuentoarticulo, preciodescuento;
+            par1 = Convert.ToInt32(this.dataListadoArticulos.CurrentRow.Cells["IdArticulo"].Value);
             par2 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Codigo"].Value);
             par3 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Descripción"].Value);
             par4 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Marca"].Value);
@@ -485,6 +495,7 @@ namespace CapaPresentacion
 
             //Agregar al listado de articulos para la factura
             DataRow row = this.dtDetalle.NewRow();
+            row["IdArticulo"] = par1;
             row["Codigo"] = par2;
             row["Descripción"] = par3;
             row["Marca"] = par4;

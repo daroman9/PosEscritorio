@@ -14,21 +14,19 @@ namespace CapaDatos
     {
         private int _Iddetalle_Venta;
         private int _Idventa;
-        private int _Iddetalle_ingreso;
+        private int _Idarticulo;
         private int _Cantidad;
         private decimal _Precio_Venta;
-        private decimal _Total;
         private decimal _Descuento;
+        private decimal _Total;
 
         public int Iddetalle_Venta { get => _Iddetalle_Venta; set => _Iddetalle_Venta = value; }
         public int Idventa { get => _Idventa; set => _Idventa = value; }
-        public int Iddetalle_ingreso { get => _Iddetalle_ingreso; set => _Iddetalle_ingreso = value; }
+        public int Idarticulo { get => _Idarticulo; set => _Idarticulo = value; }
         public int Cantidad { get => _Cantidad; set => _Cantidad = value; }
         public decimal Precio_Venta { get => _Precio_Venta; set => _Precio_Venta = value; }
-        public decimal Total { get => _Total; set => _Total = value; }
         public decimal Descuento { get => _Descuento; set => _Descuento = value; }
-      
-
+        public decimal Total { get => _Total; set => _Total = value; }
 
         //Constructo vacio
         public DDetalle_Venta()
@@ -36,11 +34,11 @@ namespace CapaDatos
 
         }
         //Constuctor con parametros
-        public DDetalle_Venta(int iddetalle_venta, int idventa, int iddetalle_ingreso, int cantidad, decimal precio_venta, decimal total, decimal descuento)
+        public DDetalle_Venta(int iddetalle_venta, int idventa, int idarticulo, int cantidad, decimal precio_venta, decimal total, decimal descuento)
         {
             this.Iddetalle_Venta = iddetalle_venta;
             this.Idventa = idventa;
-            this.Iddetalle_ingreso = Iddetalle_ingreso;
+            this.Idarticulo = idarticulo;
             this.Cantidad = cantidad;
             this.Precio_Venta = precio_venta;
             this.Total = total;
@@ -53,7 +51,6 @@ namespace CapaDatos
             string rpta = "";
             try
             {
-
                 //Establecer comando para ejecutar sentencias sql
                 SqlCommand SqlCmd = new SqlCommand();
                 SqlCmd.Connection = SqlCon;
@@ -74,11 +71,11 @@ namespace CapaDatos
                 ParIdventa.Value = Detalle_Venta.Idventa;
                 SqlCmd.Parameters.Add(ParIdventa);
 
-                SqlParameter ParIddetalle_ingreso = new SqlParameter();
-                ParIddetalle_ingreso.ParameterName = "@iddetalle_ingreso";
-                ParIddetalle_ingreso.SqlDbType = SqlDbType.Int;
-                ParIddetalle_ingreso.Value = Detalle_Venta.Iddetalle_ingreso;
-                SqlCmd.Parameters.Add(ParIddetalle_ingreso);
+                SqlParameter ParIdarticulo = new SqlParameter();
+                ParIdarticulo.ParameterName = "@idarticulo";
+                ParIdarticulo.SqlDbType = SqlDbType.Int;
+                ParIdarticulo.Value = Detalle_Venta.Idarticulo;
+                SqlCmd.Parameters.Add(ParIdarticulo);
 
                 SqlParameter ParCantidad = new SqlParameter();
                 ParCantidad.ParameterName = "@cantidad";
@@ -92,17 +89,12 @@ namespace CapaDatos
                 ParPrecio_Venta.Value = Detalle_Venta.Precio_Venta;
                 SqlCmd.Parameters.Add(ParPrecio_Venta);
 
-                SqlParameter ParTotal = new SqlParameter();
-                ParTotal.ParameterName = "@total";
-                ParTotal.SqlDbType = SqlDbType.Money;
-                ParTotal.Value = Detalle_Venta.Total;
-                SqlCmd.Parameters.Add(ParTotal);
-
                 SqlParameter ParDescuento = new SqlParameter();
                 ParDescuento.ParameterName = "@descuento";
                 ParDescuento.SqlDbType = SqlDbType.Money;
                 ParDescuento.Value = Detalle_Venta.Descuento;
                 SqlCmd.Parameters.Add(ParDescuento);
+
                 //Ejecutar el comando
 
                 rpta = SqlCmd.ExecuteNonQuery() == 1 ? "OK" : "No se ingreso el registro";

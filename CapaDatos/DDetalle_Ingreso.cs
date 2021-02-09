@@ -173,6 +173,107 @@ namespace CapaDatos
             return rpta;
         }
 
+        //Método que edita los precios de venta
+        public string updateStock(List<DDetalle_Ingreso> Detalle)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código para insertar registros
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+                //Establecer la transaccion
+                SqlTransaction SqlTra = SqlCon.BeginTransaction();
+                //Establecer comando para ejecutar sentencias sql
+                foreach (DDetalle_Ingreso det in Detalle)
+                {
+                    //Llamar al método para editar los precios de la clase DDetalle_Ingreso
+                    rpta = det.EditarStock(det, ref SqlCon, ref SqlTra);
+
+                    if (!rpta.Equals("OK"))
+                    {
+                        break;
+                    }
+
+                }
+                if (rpta.Equals("OK"))
+                {
+                    SqlTra.Commit();
+                }
+                else
+                {
+                    SqlTra.Rollback();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+        }
+
+
+        //Método para editar los precios reales cuando se ingresa un nuevo articulo
+
+        public string EditarStock(DDetalle_Ingreso Detalle_Ingreso, ref SqlConnection SqlCon, ref SqlTransaction SqlTra)
+        {
+            string rpta = "";
+            try
+            {
+
+                //Establecer comando para ejecutar sentencias sql
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.Transaction = SqlTra;
+                SqlCmd.CommandText = "spdisminuir_stock";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                //Parametros que se van a enviar al procedimiento almacenado
+
+                SqlParameter ParIdarticulo = new SqlParameter();
+                ParIdarticulo.ParameterName = "@idarticulo";
+                ParIdarticulo.SqlDbType = SqlDbType.Int;
+                ParIdarticulo.Value = Detalle_Ingreso.Idarticulo;
+                SqlCmd.Parameters.Add(ParIdarticulo);
+
+                SqlParameter ParDetalle_Ingreso = new SqlParameter();
+                ParDetalle_Ingreso.ParameterName = "@iddetalle_ingreso";
+                ParDetalle_Ingreso.SqlDbType = SqlDbType.Int;
+                ParDetalle_Ingreso.Value = Detalle_Ingreso.Iddetalle_Ingreso;
+                SqlCmd.Parameters.Add(ParDetalle_Ingreso);
+
+                SqlParameter ParStock_Actual = new SqlParameter();
+                ParStock_Actual.ParameterName = "@stock_actual";
+                ParStock_Actual.SqlDbType = SqlDbType.Int;
+                ParStock_Actual.Value = Detalle_Ingreso.Stock_Actual;
+                SqlCmd.Parameters.Add(ParStock_Actual);
+                //Ejecutar el comando
+
+                rpta = SqlCmd.ExecuteNonQuery() >= 1 ? "OK" : "No se ingreso el registro";
+
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+
+            return rpta;
+        }
+
+
+
+
+
+
+
+
+
         //Método para disminuir el stock dependiendo de cada venta
         public string DisminuisStock(List<DDetalle_Ingreso> Detalle)
         {

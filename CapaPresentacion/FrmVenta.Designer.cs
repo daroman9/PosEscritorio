@@ -93,7 +93,6 @@
             this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtBuscarCliente = new System.Windows.Forms.TextBox();
             this.dataListadoArticulos = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
@@ -261,8 +260,6 @@
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListado.Size = new System.Drawing.Size(1575, 535);
             this.dataListado.TabIndex = 7;
-            this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
-            this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
             // 
             // lblTotal
             // 
@@ -587,6 +584,7 @@
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(10, 20);
             this.txtIdCliente.TabIndex = 73;
+            this.txtIdCliente.Visible = false;
             // 
             // dataArticulo
             // 
@@ -767,8 +765,6 @@
             this.dataListadoArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataListadoArticulos.BackgroundColor = System.Drawing.Color.White;
             this.dataListadoArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoArticulos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn1});
             this.dataListadoArticulos.Location = new System.Drawing.Point(1, 294);
             this.dataListadoArticulos.MultiSelect = false;
             this.dataListadoArticulos.Name = "dataListadoArticulos";
@@ -778,12 +774,6 @@
             this.dataListadoArticulos.Size = new System.Drawing.Size(1575, 150);
             this.dataListadoArticulos.TabIndex = 15;
             this.dataListadoArticulos.DoubleClick += new System.EventHandler(this.dataListadoArticulos_DoubleClick);
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.HeaderText = "Eliminar";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
             // 
             // txtBuscarNombreArticulo
             // 
@@ -871,7 +861,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.DataGridView dataListadoArticulos;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.TextBox txtBuscarNombreArticulo;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbBuscar;

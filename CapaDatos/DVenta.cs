@@ -18,7 +18,10 @@ namespace CapaDatos
         private int _Idtrabajador;
         private DateTime _Fecha;
         private string _Serie;
-        private decimal _Igv;
+        private string _MetodoPago;
+        private decimal _Efectivo;
+        private decimal _Debito_Credito;
+        private decimal _Devuelta;
         private decimal _Total_Pagado;
 
         public int Idventa { get => _Idventa; set => _Idventa = value; }
@@ -26,9 +29,13 @@ namespace CapaDatos
         public int Idtrabajador { get => _Idtrabajador; set => _Idtrabajador = value; }
         public DateTime Fecha { get => _Fecha; set => _Fecha = value; }
         public string Serie { get => _Serie; set => _Serie = value; }
-        public decimal Igv { get => _Igv; set => _Igv = value; }
-        public decimal Total_Pagado { get => _Total_Pagado; set => _Total_Pagado = value; }
+        public string MetodoPago { get => _MetodoPago; set => _MetodoPago = value; }
+        public decimal Efectivo { get => _Efectivo; set => _Efectivo = value; }
+        public decimal Debito_Credito { get => _Debito_Credito; set => _Debito_Credito = value; }
+        public decimal Devuelta { get => _Devuelta; set => _Devuelta = value; }
 
+        public decimal Total_Pagado { get => _Total_Pagado; set => _Total_Pagado = value; }
+       
         //Constructor vacio
 
         public DVenta()
@@ -37,14 +44,17 @@ namespace CapaDatos
         }
 
         //Constructor con parametros
-        public DVenta(int idventa, int idcliente, int idtrabajador, DateTime fecha, string serie, decimal igv, decimal total_pagado)
+        public DVenta(int idventa, int idcliente, int idtrabajador, DateTime fecha, string serie, string metodopago, decimal efectivo, decimal debito_credito, decimal devuelta, decimal total_pagado)
         {
             this.Idventa = idventa;
             this.Idcliente = idcliente;
             this.Idtrabajador = idtrabajador;
             this.Fecha = fecha;
             this.Serie = serie;
-            this.Igv = igv;
+            this.MetodoPago = metodopago;
+            this.Efectivo = efectivo;
+            this.Debito_Credito = debito_credito;
+            this.Devuelta = devuelta;
             this.Total_Pagado = total_pagado;
         }
         //Métodos
@@ -138,16 +148,40 @@ namespace CapaDatos
                 SqlParameter ParSerie = new SqlParameter();
                 ParSerie.ParameterName = "@serie";
                 ParSerie.SqlDbType = SqlDbType.VarChar;
-                ParSerie.Size = 4;
+                ParSerie.Size = 10;
                 ParSerie.Value = Venta.Serie;
                 SqlCmd.Parameters.Add(ParSerie);
+
+                SqlParameter ParMetodo = new SqlParameter();
+                ParMetodo.ParameterName = "@metodopago";
+                ParMetodo.SqlDbType = SqlDbType.VarChar;
+                ParMetodo.Size = 20;
+                ParMetodo.Value = Venta.MetodoPago;
+                SqlCmd.Parameters.Add(ParMetodo);
+
+                SqlParameter ParEfectivo = new SqlParameter();
+                ParEfectivo.ParameterName = "@efectivo";
+                ParEfectivo.SqlDbType = SqlDbType.Decimal;
+                ParEfectivo.Value = Venta.Efectivo;
+                SqlCmd.Parameters.Add(ParEfectivo);
+
+                SqlParameter ParDebito = new SqlParameter();
+                ParDebito.ParameterName = "@debito_credito";
+                ParDebito.SqlDbType = SqlDbType.Decimal;
+                ParDebito.Value = Venta.Debito_Credito;
+                SqlCmd.Parameters.Add(ParDebito);
+
+                SqlParameter ParDevuelta = new SqlParameter();
+                ParDevuelta.ParameterName = "@devuelta";
+                ParDevuelta.SqlDbType = SqlDbType.Decimal;
+                ParDevuelta.Value = Venta.Devuelta;
+                SqlCmd.Parameters.Add(ParDevuelta);
 
                 SqlParameter ParTotal_Pagado = new SqlParameter();
                 ParTotal_Pagado.ParameterName = "@totalpagado";
                 ParTotal_Pagado.SqlDbType = SqlDbType.Decimal;
                 ParTotal_Pagado.Value = Venta.Total_Pagado;
                 SqlCmd.Parameters.Add(ParTotal_Pagado);
-
 
                 //Ejecutamos nuestro comando
 
@@ -160,7 +194,7 @@ namespace CapaDatos
                     foreach (DDetalle_Venta det in Detalle)
                     {
                         det.Idventa = this.Idventa;
-                        //Llamar al método insertar de la clase DDetalle_Ingreso
+                        //Llamar al método insertar de la clase DDetalle_Venta
                         rpta = det.Insertar(det, ref SqlCon, ref SqlTra);
                         if (!rpta.Equals("OK"))
                         {
@@ -168,8 +202,8 @@ namespace CapaDatos
                         }
                         else
                         {
-                            //Actualizamos el stock
-                            rpta = DisminuirStock(det.Iddetalle_ingreso, det.Cantidad);
+                           //Actualizamos el stock
+                           // rpta = DisminuirStock(det.Iddetalle_ingreso, det.Cantidad);
                             if (!rpta.Equals("OK"))
                             {
                                 break;
@@ -422,5 +456,30 @@ namespace CapaDatos
             }
             return DtResultado;
         }
-  }
+        //Método para traer la serie del ultimo registro
+        public DataTable UltimaSerie()
+        {
+            DataTable DtResultado = new DataTable("ingreso");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "sp_ultima_venta";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+
+            return DtResultado;
+        }
+    }
 }
