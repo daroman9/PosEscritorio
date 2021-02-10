@@ -18,15 +18,34 @@ namespace CapaNegocio
             string serie, string metodopago, decimal efectivo, decimal debito_credito, decimal devuelta, decimal totalpagado, DataTable dtDetalles)
         {
             DVenta Obj = new DVenta();
-            Obj.Idcliente = idcliente;
-            Obj.Idtrabajador = idtrabajador;
-            Obj.Fecha = fecha;
-            Obj.Serie = serie;
-            Obj.MetodoPago = metodopago;
-            Obj.Efectivo = efectivo;
-            Obj.Debito_Credito = debito_credito;
-            Obj.Devuelta = devuelta;
-            Obj.Total_Pagado = totalpagado;
+            if (idcliente ==0)
+            {
+               
+                //Obj.Idcliente = idcliente;
+                Obj.Idtrabajador = idtrabajador;
+                Obj.Fecha = fecha;
+                Obj.Serie = serie;
+                Obj.MetodoPago = metodopago;
+                Obj.Efectivo = efectivo;
+                Obj.Debito_Credito = debito_credito;
+                Obj.Devuelta = devuelta;
+                Obj.Total_Pagado = totalpagado;
+            }
+            else
+            {
+
+                Obj.Idcliente = idcliente;
+                Obj.Idtrabajador = idtrabajador;
+                Obj.Fecha = fecha;
+                Obj.Serie = serie;
+                Obj.MetodoPago = metodopago;
+                Obj.Efectivo = efectivo;
+                Obj.Debito_Credito = debito_credito;
+                Obj.Devuelta = devuelta;
+                Obj.Total_Pagado = totalpagado;
+            }
+
+           
             List<DDetalle_Venta> detalles = new List<DDetalle_Venta>();
             foreach (DataRow row in dtDetalles.Rows)
             {
@@ -97,6 +116,15 @@ namespace CapaNegocio
 
             return Obj.MostrarDetalle(textoBuscar);
         }
+        //Método que llama al método Buscar detalle de la clase DVenta de la capa de datos
+        public static DataTable MostrarArticulo_Sin_Codigo(string textoBuscar)
+        {
+            DVenta Obj = new DVenta();
+
+            return Obj.MostrarArticulo_Sin_Codigo(textoBuscar);
+        }
+
+
         //Método que llama al método Buscar detalle de la clase DVenta de la capa de datos
         public static DataTable MostrarArticulo_Venta_Nombre(string textoBuscar)
         {

@@ -189,11 +189,10 @@ namespace CapaPresentacion
                 string rpta = "";
                 DataTable busquedaproducto;
                 string articulo = "";
-                if (this.txtMarca.Text == string.Empty || this.txtIdCategoria.Text==string.Empty || this.txtCodigo.Text == string.Empty)
+                if (this.txtMarca.Text == string.Empty || this.txtIdCategoria.Text==string.Empty)
                 {
                     MensajeError("Falta ingresar algun dato");
                     errorIcono.SetError(txtMarca, "Ingrese un valor");
-                    errorIcono.SetError(txtCodigo, "Ingrese un valor");
                     errorIcono.SetError(txtCategoria, "Ingrese un valor");
                 }
                 else
@@ -216,13 +215,21 @@ namespace CapaPresentacion
 
                     if (this.IsNuevo)
                     {
+                        string codigo;
                         if(this.txtDescuento.Text == null || this.txtDescuento.Text== string.Empty)
                         {
                             this.txtDescuento.Text = "0";
                         }
-
+                        if (this.txtCodigo.Text == string.Empty)
+                        {
+                            codigo = "0";
+                        }
+                        else
+                        {
+                            codigo = this.txtCodigo.Text;
+                        }
                         if(articulo == "Articulo no encontrado")
-                        rpta = NArticulo.Insertar(this.txtCodigo.Text, this.txtMarca.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), 
+                        rpta = NArticulo.Insertar(codigo, this.txtMarca.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(), 
                                                   imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue), this.txtContenido.Text.Trim().ToUpper(), Convert.ToInt32(this.txtDescuento.Text));
                         else
                         {

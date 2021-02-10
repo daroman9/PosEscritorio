@@ -395,6 +395,37 @@ namespace CapaDatos
 
         }
 
+        //Mostrar Artículos por sin codigo
+        public DataTable MostrarArticulo_Sin_Codigo(String TextoBuscar)
+        {
+            DataTable DtResultado = new DataTable("articulos");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spbuscararticulo_venta_sincodigo";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@textobuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 50;
+                ParTextoBuscar.Value = TextoBuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+            }
+            return DtResultado;
+
+        }
         //Mostrar Artículos por su nombre
         public DataTable MostrarArticulo_Venta_Nombre(String TextoBuscar)
         {

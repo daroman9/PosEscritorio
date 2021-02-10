@@ -82,19 +82,20 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label15 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnBuscarSinCodigo = new System.Windows.Forms.Button();
+            this.dataListadoNoCodigo = new System.Windows.Forms.DataGridView();
+            this.txtBuscarArticuloSinCodigo = new System.Windows.Forms.TextBox();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.btnBuscarArticulo = new System.Windows.Forms.Button();
             this.cbBuscar = new System.Windows.Forms.ComboBox();
             this.dataListadoClientes = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtBuscarCliente = new System.Windows.Forms.TextBox();
             this.dataListadoArticulos = new System.Windows.Forms.DataGridView();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -108,7 +109,7 @@
             this.tabPage2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoNoCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).BeginInit();
             this.SuspendLayout();
@@ -298,7 +299,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(598, 9);
+            this.label1.Location = new System.Drawing.Point(678, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(187, 55);
             this.label1.TabIndex = 8;
@@ -328,13 +329,10 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataListadoDisminucion);
-            this.groupBox1.Controls.Add(this.dataDisminuirStock);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtDebito);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.cmbMetodoPago);
-            this.groupBox1.Controls.Add(this.dataPrueba);
             this.groupBox1.Controls.Add(this.btnMultiplicar);
             this.groupBox1.Controls.Add(this.lblTotalArticulos);
             this.groupBox1.Controls.Add(this.label11);
@@ -370,18 +368,20 @@
             // dataListadoDisminucion
             // 
             this.dataListadoDisminucion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoDisminucion.Location = new System.Drawing.Point(1070, 654);
+            this.dataListadoDisminucion.Location = new System.Drawing.Point(71, 9);
             this.dataListadoDisminucion.Name = "dataListadoDisminucion";
-            this.dataListadoDisminucion.Size = new System.Drawing.Size(324, 90);
+            this.dataListadoDisminucion.Size = new System.Drawing.Size(10, 10);
             this.dataListadoDisminucion.TabIndex = 91;
+            this.dataListadoDisminucion.Visible = false;
             // 
             // dataDisminuirStock
             // 
             this.dataDisminuirStock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataDisminuirStock.Location = new System.Drawing.Point(1070, 480);
+            this.dataDisminuirStock.Location = new System.Drawing.Point(39, 9);
             this.dataDisminuirStock.Name = "dataDisminuirStock";
-            this.dataDisminuirStock.Size = new System.Drawing.Size(324, 84);
+            this.dataDisminuirStock.Size = new System.Drawing.Size(10, 10);
             this.dataDisminuirStock.TabIndex = 90;
+            this.dataDisminuirStock.Visible = false;
             // 
             // label16
             // 
@@ -425,10 +425,11 @@
             // dataPrueba
             // 
             this.dataPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataPrueba.Location = new System.Drawing.Point(1070, 570);
+            this.dataPrueba.Location = new System.Drawing.Point(55, 9);
             this.dataPrueba.Name = "dataPrueba";
-            this.dataPrueba.Size = new System.Drawing.Size(324, 78);
+            this.dataPrueba.Size = new System.Drawing.Size(10, 10);
             this.dataPrueba.TabIndex = 85;
+            this.dataPrueba.Visible = false;
             // 
             // btnMultiplicar
             // 
@@ -623,10 +624,13 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label20);
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.dataGridView1);
-            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.btnBuscarSinCodigo);
+            this.tabPage3.Controls.Add(this.dataListadoNoCodigo);
+            this.tabPage3.Controls.Add(this.txtBuscarArticuloSinCodigo);
             this.tabPage3.Controls.Add(this.btnBuscarCliente);
             this.tabPage3.Controls.Add(this.btnBuscarArticulo);
             this.tabPage3.Controls.Add(this.cbBuscar);
@@ -646,69 +650,73 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 51);
+            this.label15.Location = new System.Drawing.Point(14, 36);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(99, 24);
             this.label15.TabIndex = 29;
             this.label15.Text = "Nombre:";
             // 
-            // button1
+            // btnBuscarSinCodigo
             // 
-            this.button1.Location = new System.Drawing.Point(326, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBuscarSinCodigo.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarSinCodigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarSinCodigo.FlatAppearance.BorderSize = 0;
+            this.btnBuscarSinCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarSinCodigo.Location = new System.Drawing.Point(534, 26);
+            this.btnBuscarSinCodigo.Name = "btnBuscarSinCodigo";
+            this.btnBuscarSinCodigo.Size = new System.Drawing.Size(50, 50);
+            this.btnBuscarSinCodigo.TabIndex = 28;
+            this.btnBuscarSinCodigo.UseVisualStyleBackColor = true;
+            this.btnBuscarSinCodigo.Click += new System.EventHandler(this.btnBuscarSinCodigo_Click);
             // 
-            // dataGridView1
+            // dataListadoNoCodigo
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn3});
-            this.dataGridView1.Location = new System.Drawing.Point(3, 70);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1575, 150);
-            this.dataGridView1.TabIndex = 27;
+            this.dataListadoNoCodigo.AllowUserToAddRows = false;
+            this.dataListadoNoCodigo.AllowUserToDeleteRows = false;
+            this.dataListadoNoCodigo.AllowUserToOrderColumns = true;
+            this.dataListadoNoCodigo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataListadoNoCodigo.BackgroundColor = System.Drawing.Color.White;
+            this.dataListadoNoCodigo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListadoNoCodigo.Location = new System.Drawing.Point(3, 92);
+            this.dataListadoNoCodigo.MultiSelect = false;
+            this.dataListadoNoCodigo.Name = "dataListadoNoCodigo";
+            this.dataListadoNoCodigo.ReadOnly = true;
+            this.dataListadoNoCodigo.RowHeadersVisible = false;
+            this.dataListadoNoCodigo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataListadoNoCodigo.Size = new System.Drawing.Size(1575, 150);
+            this.dataListadoNoCodigo.TabIndex = 27;
+            this.dataListadoNoCodigo.DoubleClick += new System.EventHandler(this.dataListadoNoCodigo_DoubleClick);
             // 
-            // dataGridViewCheckBoxColumn3
+            // txtBuscarArticuloSinCodigo
             // 
-            this.dataGridViewCheckBoxColumn3.HeaderText = "Eliminar";
-            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
-            this.dataGridViewCheckBoxColumn3.ReadOnly = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(146, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 32);
-            this.textBox1.TabIndex = 26;
+            this.txtBuscarArticuloSinCodigo.Location = new System.Drawing.Point(212, 36);
+            this.txtBuscarArticuloSinCodigo.Name = "txtBuscarArticuloSinCodigo";
+            this.txtBuscarArticuloSinCodigo.Size = new System.Drawing.Size(300, 32);
+            this.txtBuscarArticuloSinCodigo.TabIndex = 26;
+            this.txtBuscarArticuloSinCodigo.TextChanged += new System.EventHandler(this.txtBuscarArticuloSinCodigo_TextChanged);
             // 
             // btnBuscarCliente
             // 
-            this.btnBuscarCliente.Location = new System.Drawing.Point(313, 494);
+            this.btnBuscarCliente.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarCliente.FlatAppearance.BorderSize = 0;
+            this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(534, 541);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarCliente.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarCliente.TabIndex = 25;
-            this.btnBuscarCliente.Text = "Buscar";
             this.btnBuscarCliente.UseVisualStyleBackColor = true;
             // 
             // btnBuscarArticulo
             // 
-            this.btnBuscarArticulo.Location = new System.Drawing.Point(324, 270);
+            this.btnBuscarArticulo.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarArticulo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarArticulo.FlatAppearance.BorderSize = 0;
+            this.btnBuscarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarArticulo.Location = new System.Drawing.Point(534, 285);
             this.btnBuscarArticulo.Name = "btnBuscarArticulo";
-            this.btnBuscarArticulo.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscarArticulo.Size = new System.Drawing.Size(50, 50);
             this.btnBuscarArticulo.TabIndex = 24;
-            this.btnBuscarArticulo.Text = "Buscar";
             this.btnBuscarArticulo.UseVisualStyleBackColor = true;
             this.btnBuscarArticulo.Click += new System.EventHandler(this.btnBuscarArticulo_Click);
             // 
@@ -718,9 +726,9 @@
             this.cbBuscar.Items.AddRange(new object[] {
             "DOCUMENTO",
             "APELLIDO"});
-            this.cbBuscar.Location = new System.Drawing.Point(6, 500);
+            this.cbBuscar.Location = new System.Drawing.Point(18, 551);
             this.cbBuscar.Name = "cbBuscar";
-            this.cbBuscar.Size = new System.Drawing.Size(121, 32);
+            this.cbBuscar.Size = new System.Drawing.Size(176, 32);
             this.cbBuscar.TabIndex = 23;
             this.cbBuscar.Text = "DOCUMENTO";
             // 
@@ -732,9 +740,7 @@
             this.dataListadoClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataListadoClientes.BackgroundColor = System.Drawing.Color.White;
             this.dataListadoClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn2});
-            this.dataListadoClientes.Location = new System.Drawing.Point(0, 527);
+            this.dataListadoClientes.Location = new System.Drawing.Point(4, 600);
             this.dataListadoClientes.MultiSelect = false;
             this.dataListadoClientes.Name = "dataListadoClientes";
             this.dataListadoClientes.ReadOnly = true;
@@ -744,17 +750,11 @@
             this.dataListadoClientes.TabIndex = 22;
             this.dataListadoClientes.DoubleClick += new System.EventHandler(this.dataListadoClientes_DoubleClick);
             // 
-            // dataGridViewCheckBoxColumn2
-            // 
-            this.dataGridViewCheckBoxColumn2.HeaderText = "Eliminar";
-            this.dataGridViewCheckBoxColumn2.Name = "dataGridViewCheckBoxColumn2";
-            this.dataGridViewCheckBoxColumn2.ReadOnly = true;
-            // 
             // txtBuscarCliente
             // 
-            this.txtBuscarCliente.Location = new System.Drawing.Point(146, 498);
+            this.txtBuscarCliente.Location = new System.Drawing.Point(212, 551);
             this.txtBuscarCliente.Name = "txtBuscarCliente";
-            this.txtBuscarCliente.Size = new System.Drawing.Size(143, 32);
+            this.txtBuscarCliente.Size = new System.Drawing.Size(300, 32);
             this.txtBuscarCliente.TabIndex = 16;
             // 
             // dataListadoArticulos
@@ -765,7 +765,7 @@
             this.dataListadoArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataListadoArticulos.BackgroundColor = System.Drawing.Color.White;
             this.dataListadoArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoArticulos.Location = new System.Drawing.Point(1, 294);
+            this.dataListadoArticulos.Location = new System.Drawing.Point(4, 351);
             this.dataListadoArticulos.MultiSelect = false;
             this.dataListadoArticulos.Name = "dataListadoArticulos";
             this.dataListadoArticulos.ReadOnly = true;
@@ -777,20 +777,47 @@
             // 
             // txtBuscarNombreArticulo
             // 
-            this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(146, 265);
+            this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(212, 295);
             this.txtBuscarNombreArticulo.Name = "txtBuscarNombreArticulo";
-            this.txtBuscarNombreArticulo.Size = new System.Drawing.Size(143, 32);
+            this.txtBuscarNombreArticulo.Size = new System.Drawing.Size(300, 32);
             this.txtBuscarNombreArticulo.TabIndex = 9;
             this.txtBuscarNombreArticulo.TextChanged += new System.EventHandler(this.txtBuscarNombreArticulo_TextChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 273);
+            this.label10.Location = new System.Drawing.Point(14, 303);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 24);
             this.label10.TabIndex = 8;
             this.label10.Text = "Nombre:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(641, 13);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(212, 24);
+            this.label17.TabIndex = 30;
+            this.label17.Text = "Artículos sin código";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(707, 513);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(93, 24);
+            this.label18.TabIndex = 31;
+            this.label18.Text = "Clientes";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(641, 256);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(220, 24);
+            this.label20.TabIndex = 32;
+            this.label20.Text = "Artículos con código";
             // 
             // FrmVenta
             // 
@@ -798,10 +825,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1654, 861);
+            this.Controls.Add(this.dataListadoDisminucion);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataDisminuirStock);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.dataArticulo);
             this.Controls.Add(this.txtIdCliente);
+            this.Controls.Add(this.dataPrueba);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FrmVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -824,7 +854,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoNoCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).EndInit();
             this.ResumeLayout(false);
@@ -865,7 +895,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbBuscar;
         private System.Windows.Forms.DataGridView dataListadoClientes;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn2;
         private System.Windows.Forms.TextBox txtBuscarCliente;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblArticulo;
@@ -888,10 +917,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnMultiplicar;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnBuscarSinCodigo;
+        private System.Windows.Forms.DataGridView dataListadoNoCodigo;
+        private System.Windows.Forms.TextBox txtBuscarArticuloSinCodigo;
         private System.Windows.Forms.DataGridView dataPrueba;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtDebito;
@@ -899,5 +927,8 @@
         private System.Windows.Forms.ComboBox cmbMetodoPago;
         private System.Windows.Forms.DataGridView dataDisminuirStock;
         private System.Windows.Forms.DataGridView dataListadoDisminucion;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
     }
 }

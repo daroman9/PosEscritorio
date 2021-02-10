@@ -101,11 +101,13 @@ namespace CapaPresentacion
             this.dataListadoArticulos.Columns[0].Visible = false;
             this.dataListadoArticulos.Columns[1].Visible = false;
 
+            //ocultar las columnas del listado de articulos sin codigo
+            this.dataListadoNoCodigo.Columns[0].Visible = false;
+            this.dataListadoNoCodigo.Columns[1].Visible = false;
+
             //ocultar las columnas del listado de clientes
             this.dataListadoClientes.Columns[0].Visible = false;
-            this.dataListadoClientes.Columns[1].Visible = false;
-
-        
+           
         }
         //Método para alternar los colores de las filas del datagrid
         public void alternarColores(DataGridView dgv)
@@ -117,7 +119,8 @@ namespace CapaPresentacion
         private void Mostrar()
         {
             this.dataListado.DataSource = NVenta.MostrarTrabajadorFecha(Idtrabajador, DateTime.Today);
-            this.dataListadoArticulos.DataSource = NVenta.MostrarArticulo_Venta_Nombre(this.txtBuscarNombreArticulo.Text);
+            this.dataListadoArticulos.DataSource = NVenta.MostrarArticulo_Venta_Nombre(this.txtBuscarArticuloSinCodigo.Text);
+            this.dataListadoNoCodigo.DataSource = NVenta.MostrarArticulo_Sin_Codigo(this.txtBuscarNombreArticulo.Text);
             this.dataListadoClientes.DataSource = NCliente.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
@@ -149,6 +152,12 @@ namespace CapaPresentacion
             lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
+        private void MostrarArticulo_Sin_Codigo()
+        {
+            this.dataListadoNoCodigo.DataSource = NVenta.MostrarArticulo_Sin_Codigo(this.txtBuscarArticuloSinCodigo.Text);
+            this.OcultarColumnas();
+            lblTotal.Text = "Total de Registros: " + Convert.ToString(dataListado.Rows.Count);
+        }
         private void CrearTabla()
         {
             this.dtDetalle = new DataTable("Detalle");
@@ -267,8 +276,6 @@ namespace CapaPresentacion
                 return true;
             }
         }
-
-
         private void ejecutarGuardado()
         {
             try
@@ -290,8 +297,40 @@ namespace CapaPresentacion
 
                         if (dtDetalle.Rows.Count > 0)
                         {
-                            rpta = NVenta.Insertar(Convert.ToInt32(this.txtIdCliente.Text), Idtrabajador, this.dtFecha.Value, this.txtSerie.Text, 
-                                                   this.cmbMetodoPago.Text , Convert.ToDecimal(this.txtEfectivo.Text), Convert.ToDecimal(this.txtDebito.Text), Convert.ToDecimal(this.txtDevuelta.Text),
+                            //Validación que permite hacer el guardado sin seleccionar un cliente
+                            string idlciente;
+                            decimal efectivo;
+                            decimal debito;
+                            if(this.txtIdCliente.Text == string.Empty)
+                            {
+                                idlciente = null;
+                            }
+                            else
+                            {
+                                idlciente = this.txtIdCliente.Text;
+                            }
+                            //Validación para permitir enviar valores en cero en los campos de efectivo y debito
+
+                            if(this.txtEfectivo.Text == string.Empty)
+                            {
+                                efectivo = 0;
+                            }
+                            else
+                            {
+                                efectivo = Convert.ToDecimal(this.txtEfectivo.Text);
+                            }
+
+                            if(this.txtDebito.Text == string.Empty)
+                            {
+                                debito = 0;
+                            }
+                            else
+                            {
+                                debito = Convert.ToDecimal(this.txtDebito.Text);
+                            }
+
+                            rpta = NVenta.Insertar(Convert.ToInt32(idlciente), Idtrabajador, this.dtFecha.Value, this.txtSerie.Text, 
+                                                   this.cmbMetodoPago.Text, efectivo, debito, Convert.ToDecimal(this.txtDevuelta.Text),
                                                    Convert.ToDecimal(this.lblTotalPagado.Text), dtDetalle);
 
                             if (rpta.Equals("OK"))
@@ -307,12 +346,7 @@ namespace CapaPresentacion
 
                     if (rpta.Equals("OK"))
                     {
-                       // if (this.IsNuevo)
-                        //{
-                          //  updateStock = NIngreso.EditarPrecios(dtPrecioReal);
-                          this.MensajeOk("Se inserto correctamente en registro");
-                       // }
-
+                       this.MensajeOk("Se inserto correctamente en registro");
                     }
                     else
                     {
@@ -451,7 +485,6 @@ namespace CapaPresentacion
 
             }
         }
-
         private void asignarDisminuirStock(string codigo, int cantidad, string idingreso)
         {
            
@@ -473,7 +506,7 @@ namespace CapaPresentacion
         private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
         {
             int  par1, par7 ;
-            string par2, par3, par4, par5, par6;
+            string par2, par3, par4, par5, par6, par8;
             double  par9,par10, descuento, descuentoarticulo, preciodescuento;
             par1 = Convert.ToInt32(this.dataListadoArticulos.CurrentRow.Cells["IdArticulo"].Value);
             par2 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Codigo"].Value);
@@ -482,6 +515,7 @@ namespace CapaPresentacion
             par5 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Categoria"].Value);
             par6 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Presentacion"].Value);
             par7 = Convert.ToInt32(this.dataListadoArticulos.CurrentRow.Cells["Stock"].Value);
+            par8 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Contenido"].Value);
             par9 = Convert.ToDouble(this.dataListadoArticulos.CurrentRow.Cells["Precio_Venta"].Value);
             par10 = Convert.ToDouble(this.dataListadoArticulos.CurrentRow.Cells["Descuento"].Value);
 
@@ -501,6 +535,7 @@ namespace CapaPresentacion
             row["Marca"] = par4;
             row["Categoria"] = par5;
             row["Presentacion"] = par6;
+            row["Contenido"] = par8;
             row["Precio_Venta"] = preciodescuento;
             row["Descuento"] = par10;
             row["Cantidad"] = 1;
@@ -523,6 +558,7 @@ namespace CapaPresentacion
             par5 = string.Empty;
             par6 = string.Empty;
             par7 = 0;
+            par8 = string.Empty;
             par9 = 0;
             par10 = 0;
 
@@ -530,6 +566,70 @@ namespace CapaPresentacion
             this.txtCodigoBarras.Text = string.Empty;
             this.txtCodigoBarras.Focus();
 
+        }
+
+        private void dataListadoNoCodigo_DoubleClick(object sender, EventArgs e)
+        {
+            int par1, par7;
+            string par2, par3, par4, par5, par6, par8;
+            double par9, par10, descuento, descuentoarticulo, preciodescuento;
+            par1 = Convert.ToInt32(this.dataListadoNoCodigo.CurrentRow.Cells["IdArticulo"].Value);
+            par2 = Convert.ToString(this.dataListadoNoCodigo.CurrentRow.Cells["Codigo"].Value);
+            par3 = Convert.ToString(this.dataListadoNoCodigo.CurrentRow.Cells["Descripción"].Value);
+            par4 = Convert.ToString(this.dataListadoNoCodigo.CurrentRow.Cells["Marca"].Value);
+            par5 = Convert.ToString(this.dataListadoNoCodigo.CurrentRow.Cells["Categoria"].Value);
+            par6 = Convert.ToString(this.dataListadoNoCodigo.CurrentRow.Cells["Presentacion"].Value);
+            par7 = Convert.ToInt32(this.dataListadoNoCodigo.CurrentRow.Cells["Stock"].Value);
+            par8 = Convert.ToString(this.dataListadoNoCodigo.CurrentRow.Cells["Contenido"].Value);
+            par9 = Convert.ToDouble(this.dataListadoNoCodigo.CurrentRow.Cells["Precio_Venta"].Value);
+            par10 = Convert.ToDouble(this.dataListadoNoCodigo.CurrentRow.Cells["Descuento"].Value);
+
+            //Calculamos el descuento de cada articulo
+
+            descuento = par10 / 100.0;
+
+            descuentoarticulo = Convert.ToDouble(par9) * descuento;
+
+            preciodescuento = par9 - Convert.ToDouble(descuentoarticulo);
+
+            //Agregar al listado de articulos para la factura
+            DataRow row = this.dtDetalle.NewRow();
+            row["IdArticulo"] = par1;
+            row["Codigo"] = par2;
+            row["Descripción"] = par3;
+            row["Marca"] = par4;
+            row["Categoria"] = par5;
+            row["Presentacion"] = par6;
+            row["Contenido"] = par8;
+            row["Precio_Venta"] = preciodescuento;
+            row["Descuento"] = par10;
+            row["Cantidad"] = 1;
+
+            this.dtDetalle.Rows.Add(row);
+
+            lblArticulo.Text = par3 + " " + par4 + " " + par6;
+
+            //Calcular el total de la cuenta
+            totalcuenta = totalcuenta + preciodescuento;
+
+            lblTotalPagado.Text = Convert.ToString(totalcuenta);
+
+            //Calcular el total de items de cada compra
+            cacularItems();
+            //Limpar las variables
+            par2 = string.Empty;
+            par3 = string.Empty;
+            par4 = string.Empty;
+            par5 = string.Empty;
+            par6 = string.Empty;
+            par7 = 0;
+            par8 = string.Empty;
+            par9 = 0;
+            par10 = 0;
+
+            this.tabControl1.SelectedIndex = 0;
+            this.txtCodigoBarras.Text = string.Empty;
+            this.txtCodigoBarras.Focus();
         }
 
         private void dataListadoClientes_DoubleClick(object sender, EventArgs e)
@@ -563,15 +663,17 @@ namespace CapaPresentacion
                     int par1, par7;
                     string par2, par3, par4, par5, par6, par8;
                     double par9, par10, descuento, descuentoarticulo, preciodescuento;
-      
+                    par1 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["IdArticulo"].Value);
                     par2 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Codigo"].Value);
                     par3 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Descripción"].Value);
                     par4 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Marca"].Value);
                     par5 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Categoria"].Value);
                     par6 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Presentacion"].Value);
+                    par7 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Stock"].Value);
                     par8 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Contenido"].Value);
                     par9 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Precio_Venta"].Value);
-                    par10 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Descuento"].Value);
+                    par10 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Descuento"].Value);
+
                     //Calculamos el descuento de cada articulo
 
                     descuento = par10 / 100.0;
@@ -580,9 +682,9 @@ namespace CapaPresentacion
 
                     preciodescuento = par9 - Convert.ToDouble(descuentoarticulo);
 
-
                     //Agregar al listado de articulos para la factura
                     DataRow row = this.dtDetalle.NewRow();
+                    row["IdArticulo"] = par1;
                     row["Codigo"] = par2;
                     row["Descripción"] = par3;
                     row["Marca"] = par4;
@@ -641,6 +743,14 @@ namespace CapaPresentacion
             this.MostrarArticulo_Venta_Nombre();
         }
 
+        private void txtBuscarArticuloSinCodigo_TextChanged(object sender, EventArgs e)
+        {
+            this.MostrarArticulo_Sin_Codigo();
+        }
+        private void btnBuscarSinCodigo_Click(object sender, EventArgs e)
+        {
+            this.MostrarArticulo_Sin_Codigo();
+        }
         private void btnMultiplicar_Click(object sender, EventArgs e)
         {
             int ultimafila=0;
