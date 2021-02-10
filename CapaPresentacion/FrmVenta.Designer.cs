@@ -96,6 +96,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.btnVolverDataListado = new System.Windows.Forms.Button();
+            this.lblTotalVendido = new System.Windows.Forms.Label();
+            this.lblEfectivo = new System.Windows.Forms.Label();
+            this.lblDebito = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -206,7 +210,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(295, 22);
+            this.label12.Location = new System.Drawing.Point(399, 21);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(116, 24);
             this.label12.TabIndex = 10;
@@ -215,13 +219,17 @@
             // dtFecha2
             // 
             this.dtFecha2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha2.Location = new System.Drawing.Point(402, 20);
+            this.dtFecha2.Location = new System.Drawing.Point(559, 15);
             this.dtFecha2.Name = "dtFecha2";
             this.dtFecha2.Size = new System.Drawing.Size(200, 32);
             this.dtFecha2.TabIndex = 9;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblDebito);
+            this.tabPage1.Controls.Add(this.lblEfectivo);
+            this.tabPage1.Controls.Add(this.lblTotalVendido);
+            this.tabPage1.Controls.Add(this.btnVolverDataListado);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.dtFecha2);
             this.tabPage1.Controls.Add(this.dtFecha1);
@@ -240,7 +248,7 @@
             // dtFecha1
             // 
             this.dtFecha1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha1.Location = new System.Drawing.Point(73, 15);
+            this.dtFecha1.Location = new System.Drawing.Point(164, 15);
             this.dtFecha1.Name = "dtFecha1";
             this.dtFecha1.Size = new System.Drawing.Size(200, 32);
             this.dtFecha1.TabIndex = 8;
@@ -259,13 +267,14 @@
             this.dataListado.ReadOnly = true;
             this.dataListado.RowHeadersVisible = false;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(1575, 535);
+            this.dataListado.Size = new System.Drawing.Size(1575, 638);
             this.dataListado.TabIndex = 7;
+            this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(222, 69);
+            this.lblTotal.Location = new System.Drawing.Point(160, 69);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(71, 24);
             this.lblTotal.TabIndex = 6;
@@ -273,11 +282,14 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(671, 23);
+            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(812, 8);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(50, 50);
             this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "&Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
@@ -819,6 +831,46 @@
             this.label20.TabIndex = 32;
             this.label20.Text = "Artículos con código";
             // 
+            // btnVolverDataListado
+            // 
+            this.btnVolverDataListado.BackgroundImage = global::CapaPresentacion.Properties.Resources.back;
+            this.btnVolverDataListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVolverDataListado.FlatAppearance.BorderSize = 0;
+            this.btnVolverDataListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolverDataListado.Location = new System.Drawing.Point(34, 61);
+            this.btnVolverDataListado.Name = "btnVolverDataListado";
+            this.btnVolverDataListado.Size = new System.Drawing.Size(40, 40);
+            this.btnVolverDataListado.TabIndex = 12;
+            this.btnVolverDataListado.UseVisualStyleBackColor = true;
+            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
+            // 
+            // lblTotalVendido
+            // 
+            this.lblTotalVendido.AutoSize = true;
+            this.lblTotalVendido.Location = new System.Drawing.Point(399, 69);
+            this.lblTotalVendido.Name = "lblTotalVendido";
+            this.lblTotalVendido.Size = new System.Drawing.Size(71, 24);
+            this.lblTotalVendido.TabIndex = 13;
+            this.lblTotalVendido.Text = "label3";
+            // 
+            // lblEfectivo
+            // 
+            this.lblEfectivo.AutoSize = true;
+            this.lblEfectivo.Location = new System.Drawing.Point(759, 69);
+            this.lblEfectivo.Name = "lblEfectivo";
+            this.lblEfectivo.Size = new System.Drawing.Size(71, 24);
+            this.lblEfectivo.TabIndex = 14;
+            this.lblEfectivo.Text = "label3";
+            // 
+            // lblDebito
+            // 
+            this.lblDebito.AutoSize = true;
+            this.lblDebito.Location = new System.Drawing.Point(1048, 69);
+            this.lblDebito.Name = "lblDebito";
+            this.lblDebito.Size = new System.Drawing.Size(71, 24);
+            this.lblDebito.TabIndex = 15;
+            this.lblDebito.Text = "label3";
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -930,5 +982,9 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button btnVolverDataListado;
+        private System.Windows.Forms.Label lblDebito;
+        private System.Windows.Forms.Label lblEfectivo;
+        private System.Windows.Forms.Label lblTotalVendido;
     }
 }

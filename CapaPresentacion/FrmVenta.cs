@@ -39,6 +39,7 @@ namespace CapaPresentacion
             this.Habilitar(false);
             this.Botones();
             this.CrearTabla();
+            this.calcularVentasDiarias();
             this.alternarColores(this.dataListadoDetalle);
         }
 
@@ -124,6 +125,46 @@ namespace CapaPresentacion
             this.dataListadoClientes.DataSource = NCliente.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
+        }
+
+
+        //Método para calcular el valor de las ventas diarias
+
+        private void calcularVentasDiarias()
+        {
+            decimal totalVendido = 0;
+            decimal efectivo = 0;
+            decimal debito = 0;
+
+            //Sumar el total de la venta diaria
+  
+            foreach (DataGridViewRow row in dataListado.Rows)
+            {
+                if (row.Cells["Total"].Value != null)
+                    totalVendido += (Decimal)row.Cells["Total"].Value;
+            }
+
+            //Sumar el total de efectivo recibido en el dia
+
+            foreach (DataGridViewRow row in dataListado.Rows)
+            {
+                if (row.Cells["Efectivo"].Value != null)
+                    efectivo += (Decimal)row.Cells["Efectivo"].Value;
+            }
+
+            //Sumar el total en debito/credito y transferencias
+
+            foreach (DataGridViewRow row in dataListado.Rows)
+            {
+                if (row.Cells["Debito_Credito"].Value != null)
+                    debito += (Decimal)row.Cells["Debito_Credito"].Value;
+            }
+
+            this.lblTotalVendido.Text = "Total vendido " + totalVendido;
+
+            this.lblEfectivo.Text = "Efectivo " + efectivo;
+
+            this.lblDebito.Text = "Debito " + debito;
         }
 
         //Método para buscar por fechas
@@ -882,6 +923,21 @@ namespace CapaPresentacion
             {
                 e.Handled = true;
             }
+        }
+
+        private void dataListado_DoubleClick(object sender, EventArgs e)
+        {
+            string iddetalleventa;
+
+            iddetalleventa = Convert.ToString(this.dataListado.CurrentRow.Cells["idventa"].Value);
+
+            this.dataListado.DataSource = NVenta.MostrarDetalle(iddetalleventa);
+
+        }
+
+        private void btnVolverDataListado_Click(object sender, EventArgs e)
+        {
+            this.dataListado.DataSource = NVenta.MostrarTrabajadorFecha(Idtrabajador, DateTime.Today);
         }
     }
 }
