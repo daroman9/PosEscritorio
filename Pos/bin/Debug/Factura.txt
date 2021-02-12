@@ -7,20 +7,24 @@ Tel:xxxx
 
             Factura de Venta
 
-No Fac:VN-15
-Fecha:12/02/2021 Hora:11:37
-Cajero: 2
+No Fac:VN-24
+Fecha:12/02/2021 Hora:16:19
+Cajero: DEIBY ROMAN
 
-----------------------------------------
-Articulo       Cant   P.Unit    Valor
-----------------------------------------
-ARROZ ROA 2500 G  1     33000          0
-ARROZ ROA 2500 G  1     33000          0
-----------------------------------------
-Sub-Total                         66000$
+Total de artículos 3
+--------------------------------------------------------------------
+Articulo                     Cant       P.Unit       Descuento
+--------------------------------------------------------------------
+ARROZ ORQUIDEA 2500 GRAMOS           1         0          0
+ARROZ CARIBE 2500 G                  1         0          0
+ARROZ ROA 2500 G                     1     33000          0
+--------------------------------------------------------------------
+Total                             33000$
 
  
  
+Efectivo Entregado:               40000$
+
  
    **********************************
 

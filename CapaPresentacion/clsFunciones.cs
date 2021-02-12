@@ -33,7 +33,7 @@ namespace ClassFunciones
 
             public static void EncabezadoVenta()
             {
-                string LineEncavesado = "Articulo                 Cant          P.Unit         Descuento";   // 40 caracteres agrega lineas de  encabezados
+                string LineEncavesado = "Articulo                     Cant       P.Unit       Descuento";   // 40 caracteres agrega lineas de  encabezados
                 line.AppendLine(LineEncavesado);
             }
             public void TextoIzquierda(string par1)                          // agrega texto a la izquierda
@@ -247,7 +247,7 @@ namespace ClassFunciones
                        ("Factura.txt");
                     try
                     {
-                        printFont = new System.Drawing.Font("Arial", 8);
+                        printFont = new System.Drawing.Font("Arial", 7);
                         PrintDocument pd = new PrintDocument();
                         pd.PrintPage += new PrintPageEventHandler
                            (this.pd_PrintPage);
@@ -306,7 +306,23 @@ namespace ClassFunciones
                     ev.HasMorePages = false;
             }
 
+            //Métodos para enviar secuencias de escape a la impresora
+            //Para cortar el papel
 
+            public void cortaTicket()
+            {
+                line.AppendLine("\x1B" + "m"); //Caracteres de corte, estos comando varian segun el tipo de impresora
+                line.AppendLine("\x1B" + "d" + "x09"); // Avanza 9 renglones, tambien varia
+            }
+
+            //Método para abrir el cajón del dinero
+
+            public void abreCajon()
+            {
+                //Estos caracteres varian depende de la impresora
+                line.AppendLine("\x1B" + "p" + "\x00" + "\x0F" + "\x96"); //Caracteres de apertura cajon  0
+                //linea.AppendLine("\x1B" + "p" + "\x01" + "\x0F" + "\x96"); //Caracteres de apertura cajon  1
+            }
         }
     }
 }

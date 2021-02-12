@@ -17,6 +17,7 @@ namespace CapaPresentacion
     {
         private bool IsNuevo = false;
         public int Idtrabajador;
+        public string nombreTrabajador;
         private DataTable dtDetalle;
         private DataTable ultimaSerie;
         public int codLength;
@@ -33,11 +34,6 @@ namespace CapaPresentacion
             this.txtEfectivo.Enabled = false;
             this.txtDebito.Enabled = false;
             this.txtDevuelta.Enabled = false;
-
-
-
-          
-
         }
         private void FrmVenta_Load(object sender, EventArgs e)
         {
@@ -106,8 +102,8 @@ namespace CapaPresentacion
             this.dataListado.Columns[1].Visible = false;
 
             //ocultar las columnas del listado de articulos
-            //this.dataListadoArticulos.Columns[0].Visible = false;
-            //this.dataListadoArticulos.Columns[1].Visible = false;
+            this.dataListadoArticulos.Columns[0].Visible = false;
+            this.dataListadoArticulos.Columns[1].Visible = false;
 
             //ocultar las columnas del listado de articulos sin codigo
             this.dataListadoNoCodigo.Columns[0].Visible = false;
@@ -263,19 +259,16 @@ namespace CapaPresentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            //Método que calcula cuantos items de cada articulo se encuentran en cada venta
+            calcularTotalItems();
+            //Método que crea una tabla con los valores a actualizar en el stock de artículos
+            disminuirArticulosStock();
+            //Método para calcular la devuelta de la venta
+            if (calcularVenta())
+            {
+                ejecutarGuardado();
+            }
 
-          
-
-            ////Método que calcula cuantos items de cada articulo se encuentran en cada venta
-            //calcularTotalItems();
-            ////Método que crea una tabla con los valores a actualizar en el stock de artículos
-            //disminuirArticulosStock();
-            ////Método para calcular la devuelta de la venta
-            //if (calcularVenta())
-            //{
-            //    ejecutarGuardado();
-            //}
-       
         }
 
         //Método para calcular el precio y la devuelta de cada venta
@@ -395,6 +388,10 @@ namespace CapaPresentacion
                     if (rpta.Equals("OK"))
                     {
                        this.MensajeOk("Se inserto correctamente en registro");
+
+                        //Llamado al método que realiza la impresión de la tirilla
+
+                        this.imprimir();
                     }
                     else
                     {
@@ -948,74 +945,36 @@ namespace CapaPresentacion
         }
 
 
-
-
         //Sección para la impresion de las tirillas
 
+
+        //Función para identificar las impresoras disponibles, la primera opción es la impresora por defecto
         private void InstalledPrintersCombo()
         {
-            // Add list of installed printers found to the combo box.
-            // The pkInstalledPrinters string will be used to provide the display string.
-            String pkInstalledPrinters;
-            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
-            {
-                pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
-                cmbInstalledPrinters.Items.Add(pkInstalledPrinters);
-            }
+       
+            //String pkInstalledPrinters;
+            //for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            //{
+            //    pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
+            //    cmbInstalledPrinters.Items.Add(pkInstalledPrinters);
+            //}
            
             PrintDocument printDocument = new PrintDocument();
 
             var defaultPrinter = printDocument.PrinterSettings.PrinterName;
+            this.lblImpresora.Text = defaultPrinter;
 
-
-            cmbInstalledPrinters.Text = Convert.ToString(defaultPrinter);
-
+            //cmbInstalledPrinters.Text = Convert.ToString(defaultPrinter);
         }
 
-
+        //Variable que controla valida la cantidad de articulos en el listado de la venta
         int Conteo;
-      
-        private void button1_Click(object sender, EventArgs e)
+
+        private void imprimir()
         {
-            agregarData();
-
-
-            Conteo = dataGridView1.RowCount; // se cuenta los productos y se utilisa el conteo como limite del for
+            Conteo = dataListadoDetalle.RowCount; // se cuenta los productos y se utiliza el conteo como limite del for
             if (Conteo != 0)
             {
-
-                //RegistrarCompra
-
-                //try
-                //{
-                //    ClassBT.clsVenta.Fecha = lblFecha.Text;
-
-                //    ClassBT.clsVenta.Costo = float.Parse(lblCostoApagar.Text);
-
-                //    ClassFunciones.clsFunciones.EjecutaQuery("RV");
-
-                //    DataTable d = new DataTable();
-                //    d = ClassFunciones.clsFunciones.EjecutaQueryConsulta("", "IDV");
-
-                //    ClassBT.clsDetallesVenta.IdVentafk = ClassBT.clsVenta.IdVenta = int.Parse(d.Rows[0][0].ToString());
-
-
-                //    for (int i = 0; i < Conteo; i++)
-                //    {
-                //        ClassBT.clsDetallesVenta.idProdcutofk = int.Parse(dataGridView1.Rows[i].Cells[0].Value.ToString()); ;
-                //        ClassBT.clsDetallesVenta.Cantidad = float.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
-                //        ClassBT.clsDetallesVenta.CostoDetalle = float.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString());
-
-                //        ClassFunciones.clsFunciones.EjecutaQuery("RDV");//registra el detalle de la venta 
-
-                //    }
-                //}
-                //catch (Exception a)
-                //{
-
-                //    MessageBox.Show(a.Message);
-                //}
-
 
                 ClassFunciones.clsFunciones.CreaTicket Ticket1 = new ClassFunciones.clsFunciones.CreaTicket();
 
@@ -1029,29 +988,47 @@ namespace CapaPresentacion
                 Ticket1.TextoCentro("Factura de Venta"); //imprime una linea de descripcion
                 Ticket1.TextoIzquierda("No Fac:" + this.txtSerie.Text);
                 Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-                Ticket1.TextoIzquierda("Cajero: " + this.Idtrabajador.ToString());
+                Ticket1.TextoIzquierda("Cajero: " + this.nombreTrabajador.ToString());
                 Ticket1.TextoIzquierda("");
+                Ticket1.TextoIzquierda("Total de artículos " + this.lblTotalArticulos.Text);
                 ClassFunciones.clsFunciones.CreaTicket.LineasGuion();//-------------------------
                 ClassFunciones.clsFunciones.CreaTicket.EncabezadoVenta();
                 ClassFunciones.clsFunciones.CreaTicket.LineasGuion();
                 //Detalle de la factura
                 foreach (DataGridViewRow r in dataListadoDetalle.Rows)
                 {
+                    string articulo;
+                    int articuloLength;
+                    //string contenido;
+                    //int contenidoLength;
+                    articulo = r.Cells[2].Value.ToString()+ " " + r.Cells[3].Value.ToString() + " " + r.Cells[6].Value.ToString();
+
+                    articuloLength = articulo.Length;
+
+                    if (articuloLength < 35)
+                    {
+                        int faltantes = 35;
+                      
+                        char pad = ' ';
+
+                        articulo = articulo.PadRight(faltantes, pad);
+
+                    }
+                
                     // Articulo                     //Precio                                    cantidad                            Subtotal
-                    Ticket1.AgregaArticulo(r.Cells[2].Value.ToString()
-                        +" "+ r.Cells[3].Value.ToString() +  " " + r.Cells[6].Value.ToString(), double.Parse(r.Cells[7].Value.ToString()), int.Parse(r.Cells[9].Value.ToString()), double.Parse(r.Cells[8].Value.ToString())); //imprime una linea de descripcion
+                    Ticket1.AgregaArticulo(articulo, double.Parse(r.Cells[7].Value.ToString()), int.Parse(r.Cells[9].Value.ToString()), double.Parse(r.Cells[8].Value.ToString())); //imprime una linea de descripcion
                 }
 
 
                 ClassFunciones.clsFunciones.CreaTicket.LineasGuion();
-                Ticket1.AgregaTotales("Sub-Total", double.Parse(this.lblTotalPagado.Text)); // imprime linea con Subtotal
+                Ticket1.AgregaTotales("Total", double.Parse(this.lblTotalPagado.Text)); // imprime linea con Subtotal
                 //Ticket1.AgregaTotales("Menos Descuento", double.Parse("000")); // imprime linea con decuento total
-                //Ticket1.AgregaTotales("Mas ITBIS", double.Parse("000")); // imprime linea con ITBis total
                 Ticket1.TextoIzquierda(" ");
                 //Ticket1.AgregaTotales("Total", double.Parse(lblCostoApagar.Text)); // imprime linea con total
                 Ticket1.TextoIzquierda(" ");
-                //Ticket1.AgregaTotales("Efectivo Entregado:", double.Parse(textBox3.Text));
-                //Ticket1.AgregaTotales("Efectivo Devuelto:", double.Parse(lbldevolucion.Text));
+                Ticket1.AgregaTotales("Efectivo Entregado:", double.Parse(this.txtEfectivo.Text));
+               // Ticket1.AgregaTotales("Debito-Credito:", double.Parse(this.txtDebito.Text));
+               // Ticket1.AgregaTotales("Efectivo Devuelto:", double.Parse(this.txtDevuelta.Text));
 
 
                 // Ticket1.LineasTotales(); // imprime linea 
@@ -1062,37 +1039,18 @@ namespace CapaPresentacion
                 Ticket1.TextoCentro("**********************************");
                 Ticket1.TextoIzquierda(" ");
 
-                Ticket1.ImprimirTiket(cmbInstalledPrinters.Text); //Imprimir
+                Ticket1.ImprimirTiket(this.lblImpresora.Text); //Imprimir
 
 
-
-
-                //Fila = 0;
                 //while (dataGridView1.RowCount > 0)//limpia el dgv
                 //{ dataGridView1.Rows.Remove(dataGridView1.CurrentRow); }
                 //LBLIDnuevaFACTURA.Text = ClaseFunciones.ClsFunciones.IDNUEVAFACTURA().ToString();
 
-               // txtIdProducto.Text = lblNombre.Text = txtCantidad.Text = textBox3.Text = "";
+                // txtIdProducto.Text = lblNombre.Text = txtCantidad.Text = textBox3.Text = "";
                 //lblCostoApagar.Text = lbldevolucion.Text = lblPrecio.Text = "0";
                 //txtIdProducto.Focus();
                 MessageBox.Show("Gracias por preferirnos");
-
             }
         }
-
-
-        public void agregarData()
-        {
-            int rowEscribir = 0; //        dataGridView1.Rows.Count - 1;
-
-            dataGridView1.Rows.Add(1);
-
-            dataGridView1.Rows[rowEscribir].Cells[0].Value = 1;
-            dataGridView1.Rows[rowEscribir].Cells[1].Value = "Prueba";
-            dataGridView1.Rows[rowEscribir].Cells[2].Value = 1;
-            dataGridView1.Rows[rowEscribir].Cells[3].Value = 2300;
-            dataGridView1.Rows[rowEscribir].Cells[4].Value = 2500;
-        }
-
     }
 }

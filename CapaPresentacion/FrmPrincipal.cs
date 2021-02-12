@@ -289,6 +289,7 @@ namespace CapaPresentacion
                 Venta.MdiParent = this;
                 Venta.FormClosed += new FormClosedEventHandler(CerrarVenta);
                 Venta.Idtrabajador = Convert.ToInt32(this.Idtrabajador);
+                Venta.nombreTrabajador = Convert.ToString(this.Nombre + " " + this.Apellidos);
                 Venta.Show();
                
             }

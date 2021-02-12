@@ -176,6 +176,7 @@
     <Folder Include="Consultas\Imagen\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Logo_la_39.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\guardar.png" />
     <None Include="Resources\Banned User.png" />

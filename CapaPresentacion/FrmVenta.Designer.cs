@@ -100,14 +100,7 @@
             this.dataListadoArticulos = new System.Windows.Forms.DataGridView();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.cmbInstalledPrinters = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblImpresora = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -124,7 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoNoCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCantidad
@@ -390,8 +382,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtDebito);
             this.groupBox1.Controls.Add(this.label14);
@@ -882,68 +872,14 @@
             this.label10.TabIndex = 8;
             this.label10.Text = "Nombre:";
             // 
-            // cmbInstalledPrinters
+            // lblImpresora
             // 
-            this.cmbInstalledPrinters.FormattingEnabled = true;
-            this.cmbInstalledPrinters.Location = new System.Drawing.Point(1072, 43);
-            this.cmbInstalledPrinters.Name = "cmbInstalledPrinters";
-            this.cmbInstalledPrinters.Size = new System.Drawing.Size(121, 21);
-            this.cmbInstalledPrinters.TabIndex = 92;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dataGridView1.Location = new System.Drawing.Point(1062, 524);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(429, 171);
-            this.dataGridView1.TabIndex = 90;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "IdProducto";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Nombre";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Precio";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Cantidad";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "SubTotal";
-            this.Column5.Name = "Column5";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1062, 487);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 91;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lblImpresora.AutoSize = true;
+            this.lblImpresora.Location = new System.Drawing.Point(123, 12);
+            this.lblImpresora.Name = "lblImpresora";
+            this.lblImpresora.Size = new System.Drawing.Size(41, 13);
+            this.lblImpresora.TabIndex = 93;
+            this.lblImpresora.Text = "label21";
             // 
             // FrmVenta
             // 
@@ -951,7 +887,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1654, 861);
-            this.Controls.Add(this.cmbInstalledPrinters);
+            this.Controls.Add(this.lblImpresora);
             this.Controls.Add(this.dataListadoDisminucion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataDisminuirStock);
@@ -984,7 +920,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoNoCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1062,13 +997,6 @@
         private System.Windows.Forms.Label lblDebito;
         private System.Windows.Forms.Label lblEfectivo;
         private System.Windows.Forms.Label lblTotalVendido;
-        private System.Windows.Forms.ComboBox cmbInstalledPrinters;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblImpresora;
     }
 }

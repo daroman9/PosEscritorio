@@ -13,6 +13,7 @@ namespace CapaPresentacion
     public partial class FrmLogin : Form
     {
         public string Idtrabajador;
+        public string nombreTrabajador;
         public FrmLogin()
         {
             InitializeComponent();
