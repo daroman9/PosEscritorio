@@ -101,6 +101,7 @@
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lblImpresora = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -881,12 +882,23 @@
             this.lblImpresora.TabIndex = 93;
             this.lblImpresora.Text = "label21";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1046, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 94;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1654, 861);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblImpresora);
             this.Controls.Add(this.dataListadoDisminucion);
             this.Controls.Add(this.label1);
@@ -998,5 +1010,6 @@
         private System.Windows.Forms.Label lblEfectivo;
         private System.Windows.Forms.Label lblTotalVendido;
         private System.Windows.Forms.Label lblImpresora;
+        private System.Windows.Forms.Button button1;
     }
 }

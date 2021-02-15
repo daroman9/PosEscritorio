@@ -52,13 +52,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsFunciones.cs" />
     <Compile Include="Consultas\FrmConsulta_Stock_Articulos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Consultas\FrmConsulta_Stock_Articulos.Designer.cs">
       <DependentUpon>FrmConsulta_Stock_Articulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrearTicket.cs" />
     <Compile Include="FrmArticulo.cs">
       <SubType>Form</SubType>
     </Compile>

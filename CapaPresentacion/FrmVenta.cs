@@ -264,6 +264,7 @@ namespace CapaPresentacion
             //Método que crea una tabla con los valores a actualizar en el stock de artículos
             disminuirArticulosStock();
             //Método para calcular la devuelta de la venta
+            calcularVenta();
             if (calcularVenta())
             {
                 ejecutarGuardado();
@@ -391,7 +392,7 @@ namespace CapaPresentacion
 
                         //Llamado al método que realiza la impresión de la tirilla
 
-                        this.imprimir();
+                        this.impresion();
                     }
                     else
                     {
@@ -825,19 +826,27 @@ namespace CapaPresentacion
             int indicefilaPrecio = 0;
             try
             {
-                int indiceFila = this.dataListadoDetalle.CurrentCell.RowIndex;
-                indicefilaPrecio = indiceFila;
+                if(this.dataListadoDetalle.Rows.Count > 0)
+                {
+                    int indiceFila = this.dataListadoDetalle.CurrentCell.RowIndex;
+                    indicefilaPrecio = indiceFila;
 
-                //Disminuir el totalPAgado
-                DataGridViewRow rowPrecio = dataListadoDetalle.Rows[indicefilaPrecio];
+                    //Disminuir el totalPAgado
+                    DataGridViewRow rowPrecio = dataListadoDetalle.Rows[indicefilaPrecio];
 
-                totalcuenta = totalcuenta - Convert.ToDouble(rowPrecio.Cells["Precio_Venta"].Value);
-                this.lblTotalPagado.Text = Convert.ToString(totalcuenta);
-                //Quitar el articulo del grid
-                DataRow row = this.dtDetalle.Rows[indiceFila];
-                this.dtDetalle.Rows.Remove(row);
-                //Disminuir los items del total
-                cacularItems();
+                    totalcuenta = totalcuenta - Convert.ToDouble(rowPrecio.Cells["Precio_Venta"].Value);
+                    this.lblTotalPagado.Text = Convert.ToString(totalcuenta);
+                    //Quitar el articulo del grid
+                    DataRow row = this.dtDetalle.Rows[indiceFila];
+                    this.dtDetalle.Rows.Remove(row);
+                    //Disminuir los items del total
+                    cacularItems();
+                }
+                else
+                {
+                    MensajeError("No hay fila para remover");
+                }
+                
             }
             
             catch (Exception ex)
@@ -945,7 +954,9 @@ namespace CapaPresentacion
         }
 
 
-        //Sección para la impresion de las tirillas
+        /// <summary>
+        /// Sección para la impresión de las tirillas
+        /// </summary>
 
 
         //Función para identificar las impresoras disponibles, la primera opción es la impresora por defecto
@@ -967,90 +978,204 @@ namespace CapaPresentacion
             //cmbInstalledPrinters.Text = Convert.ToString(defaultPrinter);
         }
 
-        //Variable que controla valida la cantidad de articulos en el listado de la venta
-        int Conteo;
+        /// <summary>
+        /// Impresión de tirilla
+        /// </summary>
 
-        private void imprimir()
+
+        private void impresion()
         {
-            Conteo = dataListadoDetalle.RowCount; // se cuenta los productos y se utiliza el conteo como limite del for
-            if (Conteo != 0)
+            //Creamos una instancia de la clase CrearTicket
+            CrearTicket ticket = new CrearTicket();
+     
+            //Datos de la cabecera del Ticket.
+            ticket.textoCentro("AUTOSERVICIO LA 39");
+            ticket.textoIzquierda("DIRECION: CRA 79 # 71A 70");
+            ticket.textoIzquierda("TELEFONO: 5274547 - 2112374");
+            ticket.textoIzquierda("NIT: 71642982-0");
+            ticket.textoIzquierda("EMAIL: AUTOSERVICIOLA39@GMAIL.COM");
+            ticket.textoIzquierda("DOMICILIOS: 3113701825");
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("No FAC " + this.txtSerie.Text);
+            ticket.lineasAsterico();
+
+            //Sub cabecera.
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("CAJERO: " + this.nombreTrabajador.ToString());
+            ticket.textoIzquierda("CLIENTE: " + this.txtCliente.Text);
+            ticket.textoIzquierda("");
+            ticket.textoExtremos("FECHA: " + DateTime.Now.ToShortDateString(), "HORA: " + DateTime.Now.ToShortTimeString());
+            ticket.textoIzquierda("ARTICULOS VENDIDOS: " + this.lblTotalArticulos.Text);
+            ticket.lineasAsterico();
+
+            //Articulos a vender.
+            ticket.encabezadoVenta();//NOMBRE DEL ARTICULO, CANT, PRECIO, IMPORTE
+            ticket.lineasAsterico();
+            //Si tiene una DataGridView donde estan sus articulos a vender pueden usar esta manera para agregarlos al ticket.
+            foreach (DataGridViewRow fila in dataListadoDetalle.Rows)//dgvLista es el nombre del datagridview
             {
+                string articulo = fila.Cells[2].Value.ToString() + " " + fila.Cells[3].Value.ToString() + " " + fila.Cells[6].Value.ToString();
 
-                ClassFunciones.clsFunciones.CreaTicket Ticket1 = new ClassFunciones.clsFunciones.CreaTicket();
-
-                Ticket1.TextoCentro("AUTOSERVICIO LA 39 "); //imprime una linea de descripcion
-                Ticket1.TextoCentro("**********************************");
-
-                Ticket1.TextoIzquierda("Dirc: xxxx");
-                Ticket1.TextoIzquierda("Tel:xxxx ");
-                //Ticket1.TextoIzquierda("Rnc: xxxx");
-                Ticket1.TextoIzquierda("");
-                Ticket1.TextoCentro("Factura de Venta"); //imprime una linea de descripcion
-                Ticket1.TextoIzquierda("No Fac:" + this.txtSerie.Text);
-                Ticket1.TextoIzquierda("Fecha:" + DateTime.Now.ToShortDateString() + " Hora:" + DateTime.Now.ToShortTimeString());
-                Ticket1.TextoIzquierda("Cajero: " + this.nombreTrabajador.ToString());
-                Ticket1.TextoIzquierda("");
-                Ticket1.TextoIzquierda("Total de artículos " + this.lblTotalArticulos.Text);
-                ClassFunciones.clsFunciones.CreaTicket.LineasGuion();//-------------------------
-                ClassFunciones.clsFunciones.CreaTicket.EncabezadoVenta();
-                ClassFunciones.clsFunciones.CreaTicket.LineasGuion();
-                //Detalle de la factura
-                foreach (DataGridViewRow r in dataListadoDetalle.Rows)
+                if(articulo.Length > 22)
                 {
-                    string articulo;
-                    int articuloLength;
-                    //string contenido;
-                    //int contenidoLength;
-                    articulo = r.Cells[2].Value.ToString()+ " " + r.Cells[3].Value.ToString() + " " + r.Cells[6].Value.ToString();
+                    string value = articulo;
+                    int startIndex = 0;
+                    int length = 20;
+                    string substring = value.Substring(startIndex, length);
 
-                    articuloLength = articulo.Length;
+                    ticket.agregarArticulo(substring,
+                    int.Parse(fila.Cells[9].Value.ToString()),
+                    decimal.Parse(fila.Cells[7].Value.ToString()), decimal.Parse(fila.Cells[8].Value.ToString()));
 
-                    if (articuloLength < 35)
-                    {
-                        int faltantes = 35;
-                      
-                        char pad = ' ';
-
-                        articulo = articulo.PadRight(faltantes, pad);
-
-                    }
-                
-                    // Articulo                     //Precio                                    cantidad                            Subtotal
-                    Ticket1.AgregaArticulo(articulo, double.Parse(r.Cells[7].Value.ToString()), int.Parse(r.Cells[9].Value.ToString()), double.Parse(r.Cells[8].Value.ToString())); //imprime una linea de descripcion
                 }
-
-
-                ClassFunciones.clsFunciones.CreaTicket.LineasGuion();
-                Ticket1.AgregaTotales("Total", double.Parse(this.lblTotalPagado.Text)); // imprime linea con Subtotal
-                //Ticket1.AgregaTotales("Menos Descuento", double.Parse("000")); // imprime linea con decuento total
-                Ticket1.TextoIzquierda(" ");
-                //Ticket1.AgregaTotales("Total", double.Parse(lblCostoApagar.Text)); // imprime linea con total
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.AgregaTotales("Efectivo Entregado:", double.Parse(this.txtEfectivo.Text));
-               // Ticket1.AgregaTotales("Debito-Credito:", double.Parse(this.txtDebito.Text));
-               // Ticket1.AgregaTotales("Efectivo Devuelto:", double.Parse(this.txtDevuelta.Text));
-
-
-                // Ticket1.LineasTotales(); // imprime linea 
-
-                Ticket1.TextoIzquierda(" ");
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoCentro("*     Gracias por preferirnos    *");
-                Ticket1.TextoCentro("**********************************");
-                Ticket1.TextoIzquierda(" ");
-
-                Ticket1.ImprimirTiket(this.lblImpresora.Text); //Imprimir
-
-
-                //while (dataGridView1.RowCount > 0)//limpia el dgv
-                //{ dataGridView1.Rows.Remove(dataGridView1.CurrentRow); }
-                //LBLIDnuevaFACTURA.Text = ClaseFunciones.ClsFunciones.IDNUEVAFACTURA().ToString();
-
-                // txtIdProducto.Text = lblNombre.Text = txtCantidad.Text = textBox3.Text = "";
-                //lblCostoApagar.Text = lbldevolucion.Text = lblPrecio.Text = "0";
-                //txtIdProducto.Focus();
-                MessageBox.Show("Gracias por preferirnos");
+                else
+                {
+                    ticket.agregarArticulo(articulo,
+                     int.Parse(fila.Cells[9].Value.ToString()),
+                     decimal.Parse(fila.Cells[7].Value.ToString()), decimal.Parse(fila.Cells[8].Value.ToString()));
+                }
             }
+            ticket.lineasIgual();
+
+            //Resumen de la venta. Sólo son ejemplos
+            ticket.agregarTotales("         SUBTOTAL......$", Convert.ToDecimal(this.lblTotalPagado.Text));
+            //ticket.agregarTotales("         IVA...........$", 10.04M);//La M indica que es un decimal en C#
+            //ticket.agregarTotales("         TOTAL.........$", 200);
+            ticket.textoIzquierda("");
+            if(this.txtEfectivo.Text == string.Empty)
+            {
+                ticket.agregarTotales("         EFECTIVO......$", 0);
+            }
+            else
+            {
+                ticket.agregarTotales("         EFECTIVO......$", Convert.ToDecimal(this.txtEfectivo.Text));
+            }
+
+            if(this.txtDebito.Text == string.Empty)
+            {
+                ticket.agregarTotales("         DEBITO........$", 0);
+            }
+            else
+            {
+                ticket.agregarTotales("         DEBITO........$", Convert.ToDecimal(this.txtDebito.Text));
+            }
+           
+            if(this.txtDevuelta.Text == string.Empty)
+            {
+                ticket.agregarTotales("         CAMBIO........$", 0);
+            }
+            else
+            {
+                ticket.agregarTotales("         CAMBIO........$", Convert.ToDecimal(this.txtDevuelta.Text));
+            }
+            //Texto final del Ticket.
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+            ticket.textoCentro("¡GRACIAS POR SU COMPRA!");
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+           
+            ticket.cortaTicket();
+            ticket.abreCajon();
+            ticket.imprimirTicket(this.lblImpresora.Text);//Nombre de la impresora ticketera
+           
+        }
+
+        /// <summary>
+        /// Impresión del ticket de cuadre de caja
+        /// </summary>
+        /// 
+
+        private void impresionCuadre()
+        {
+            //Creamos una instancia de la clase CrearTicket
+            CrearTicket ticket = new CrearTicket();
+
+            //Datos de la cabecera del Ticket.
+            ticket.textoCentro("AUTOSERVICIO LA 39");
+            ticket.textoCentro("CUADRE DE CAJA");
+            ticket.textoIzquierda("");
+            ticket.lineasAsterico();
+
+            //Sub cabecera.
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("CAJERO: " + this.nombreTrabajador.ToString());
+            ticket.textoIzquierda("");
+            ticket.textoExtremos("FECHA: " + DateTime.Now.ToShortDateString(), "HORA: " + DateTime.Now.ToShortTimeString());
+
+
+            ticket.textoIzquierda("");
+
+
+            if (this.dataListado.Rows.Count == 0)
+            {
+                ticket.textoIzquierda("VENTAS DIA: " + 0);
+            }
+            else
+            {
+                ticket.textoIzquierda(this.lblTotal.Text);
+            }
+            
+            ticket.lineasAsterico();
+
+            //Articulos a vender.
+            ticket.encabezadoCuadre();
+            ticket.lineasAsterico();
+            //Si tiene una DataGridView donde estan sus articulos a vender pueden usar esta manera para agregarlos al ticket.
+            foreach (DataGridViewRow fila in dataListado.Rows)//dgvLista es el nombre del datagridview
+            {
+               
+                    ticket.agregarVenta(fila.Cells[3].Value.ToString(), int.Parse(fila.Cells[4].Value.ToString()),
+                     decimal.Parse(fila.Cells[5].Value.ToString()), decimal.Parse(fila.Cells[6].Value.ToString()));
+                
+            }
+            ticket.lineasIgual();
+
+            ticket.textoIzquierda("");
+
+            if(this.lblEfectivo.Text == string.Empty)
+            {
+                ticket.textoIzquierda("TOTAL EFECTIVO: " + 0);
+            }
+            {
+                ticket.textoIzquierda("TOTAL EFECTIVO: " + this.lblEfectivo.Text);
+            }
+
+            if (this.lblDebito.Text == string.Empty)
+            {
+                ticket.textoIzquierda("TOTAL DEBITO: " + 0);
+            }
+            {
+                ticket.textoIzquierda("TOTAL DEBITO: " + this.lblDebito.Text);
+            }
+
+            if (this.lblTotalVendido.Text == string.Empty)
+            {
+                ticket.textoIzquierda("TOTAL VENDIDO: " + 0);
+            }
+            else
+            {
+                ticket.textoIzquierda("TOTAL VENDIDO: " + this.lblTotalVendido.Text);
+            }
+
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+            ticket.textoIzquierda("");
+
+            ticket.cortaTicket();
+            ticket.abreCajon();
+            ticket.imprimirTicket(this.lblImpresora.Text);//Nombre de la impresora ticketera
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.impresionCuadre();
         }
     }
 }
