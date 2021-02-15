@@ -78,10 +78,7 @@ namespace CapaPresentacion
         {
         }
 
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
-        }
+      
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -243,8 +240,6 @@ namespace CapaPresentacion
                 this.MnuMantenimiento.Enabled = true;
                 this.MnuConsultas.Enabled = true;
                 this.MnuHerramientas.Enabled = true;
-                this.TsCompras.Enabled = true;
-                this.TsVentas.Enabled = true;
             }
            else if (Acceso == "VENDEDOR")
             {
@@ -254,8 +249,7 @@ namespace CapaPresentacion
                 this.MnuMantenimiento.Enabled = false;
                 this.MnuConsultas.Enabled = true;
                 this.MnuHerramientas.Enabled = true;
-                this.TsCompras.Enabled = false;
-                this.TsVentas.Enabled = true;
+        
             }
             else if (Acceso == "ALMACENERO")
             {
@@ -265,8 +259,7 @@ namespace CapaPresentacion
                 this.MnuMantenimiento.Enabled = false;
                 this.MnuConsultas.Enabled = true;
                 this.MnuHerramientas.Enabled = true;
-                this.TsCompras.Enabled = true;
-                this.TsVentas.Enabled = false;
+              
             }
             else
             {
@@ -276,8 +269,6 @@ namespace CapaPresentacion
                 this.MnuMantenimiento.Enabled = false;
                 this.MnuConsultas.Enabled = false;
                 this.MnuHerramientas.Enabled = false;
-                this.TsCompras.Enabled = false;
-                this.TsVentas.Enabled = false;
             }
         }
 
@@ -311,11 +302,6 @@ namespace CapaPresentacion
         private void CerrarStock(object sender, EventArgs e)
         {
             Stock = null;
-        }
-
-        private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
     }
 }
