@@ -228,7 +228,7 @@ namespace CapaPresentacion
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.SlateBlue;
+           Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
             this.GestionUsuario();
         }
 
