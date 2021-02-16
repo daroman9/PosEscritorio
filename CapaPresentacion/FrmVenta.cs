@@ -26,6 +26,8 @@ namespace CapaPresentacion
         public double totalcuenta = 0;
         public double subtotal = 0;
         public double impuesto = 0;
+        public double impuesto5=0;
+        public double impuesto19=0;
         public int totalArticulos = 0;
         private DataTable listadoDisminucion;
         public FrmVenta()
@@ -65,8 +67,19 @@ namespace CapaPresentacion
             this.txtIdCliente.Text = string.Empty;
             this.txtIdCliente.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
+            this.txtDebito.Text = string.Empty;
+            this.txtCliente.Text = string.Empty;
+            this.lblTotalArticulos.Text = string.Empty;
+            this.lblArticulo.Text = string.Empty;
+            this.cmbMetodoPago.SelectedIndex = -1;
+            this.txtDevuelta.Text = string.Empty;
+            this.lbliva.Text = string.Empty;
+            this.lbliva5.Text = string.Empty;
+            this.lbliva19.Text = string.Empty;
+            this.lblsubtotal.Text = string.Empty;
+
             this.lblTotalPagado.Text = "0.0";
-            //this.CrearTabla();
+            this.CrearTabla();
 
         }
       
@@ -415,6 +428,13 @@ namespace CapaPresentacion
 
         }
 
+        //Método para limpiar los campos de las ventas
+
+        public void LimpiarDetalle()
+        {
+
+        }
+
         //Método para obtener la serie del último registro
         public void UltimaSerie()
         {
@@ -606,6 +626,19 @@ namespace CapaPresentacion
             this.lblsubtotal.Text = Convert.ToString(subtotal);
 
             //Calcular el iva de la cuenta
+            //Calcular el iva de la cuenta
+            if (par11 == 5)
+            {
+                impuesto5 = impuesto5 + imp;
+                this.lbliva5.Text = Convert.ToString(impuesto5);
+
+            }
+            else if (par11 == 19)
+            {
+                impuesto19 = impuesto19 + imp;
+                this.lbliva19.Text = Convert.ToString(impuesto19);
+
+            }
             impuesto = impuesto + imp;
             this.lbliva.Text = Convert.ToString(impuesto);
 
@@ -626,6 +659,9 @@ namespace CapaPresentacion
             this.tabControl1.SelectedIndex = 0;
             this.txtCodigoBarras.Text = string.Empty;
             this.txtCodigoBarras.Focus();
+
+            this.txtCantidad.ReadOnly = false;
+            this.btnMultiplicar.Enabled = true;
 
         }
 
@@ -683,6 +719,19 @@ namespace CapaPresentacion
             this.lblsubtotal.Text = Convert.ToString(subtotal);
 
             //Calcular el iva de la cuenta
+            //Calcular el iva de la cuenta
+            if (par11 == 5)
+            {
+                impuesto5 = impuesto5 + imp;
+                this.lbliva5.Text = Convert.ToString(impuesto5);
+
+            }
+            else if (par11 == 19)
+            {
+                impuesto19 = impuesto19 + imp;
+                this.lbliva19.Text = Convert.ToString(impuesto19);
+
+            }
             impuesto = impuesto + imp;
             this.lbliva.Text = Convert.ToString(impuesto);
 
@@ -703,6 +752,9 @@ namespace CapaPresentacion
             this.tabControl1.SelectedIndex = 0;
             this.txtCodigoBarras.Text = string.Empty;
             this.txtCodigoBarras.Focus();
+
+            this.txtCantidad.ReadOnly = false;
+            this.btnMultiplicar.Enabled = true;
         }
 
         private void dataListadoClientes_DoubleClick(object sender, EventArgs e)
@@ -786,6 +838,18 @@ namespace CapaPresentacion
                     this.lblsubtotal.Text = Convert.ToString(subtotal);
 
                     //Calcular el iva de la cuenta
+                    if(par11 == 5)
+                    {
+                        impuesto5 = impuesto5 + imp;
+                        this.lbliva5.Text = Convert.ToString(impuesto5);
+
+                    }
+                    else if(par11==19)
+                    {
+                        impuesto19 = impuesto19 + imp;
+                        this.lbliva19.Text = Convert.ToString(impuesto19);
+
+                    }
                     impuesto = impuesto + imp;
                     this.lbliva.Text = Convert.ToString(impuesto);
                     //Calcular el total de items de cada compra
@@ -807,6 +871,9 @@ namespace CapaPresentacion
                     //this.tabControl1.SelectedIndex = 1;
                     this.txtCodigoBarras.Text = string.Empty;
                     this.txtCodigoBarras.Focus();
+
+                    this.txtCantidad.ReadOnly = false;
+                    this.btnMultiplicar.Enabled = true;
                 }
                 else
                 {
@@ -841,22 +908,25 @@ namespace CapaPresentacion
             int ultimafila=0;
             decimal preciostandar;
             ultimafila = dtDetalle.Rows.Count;
-
-            DataGridViewRow row = dataListadoDetalle.Rows[ultimafila -1];    
-            if(Convert.ToInt32(this.txtCantidad.Text) > 1)
+            if (this.txtCantidad.Text != string.Empty)
             {
-                double valor = Convert.ToDouble(row.Cells["Precio_Venta"].Value) * Convert.ToDouble(this.txtCantidad.Text);
-                row.Cells["Cantidad"].Value = this.txtCantidad.Text;
-                preciostandar = Convert.ToDecimal(row.Cells["Precio_Venta"].Value);
-                row.Cells["Precio_Venta"].Value = Convert.ToDecimal(valor);
-                totalcuenta = totalcuenta +  Convert.ToDouble(valor) - Convert.ToDouble(preciostandar);
-                lblTotalPagado.Text = Convert.ToString(totalcuenta);
-                //Sumar los articulos multiplicados
-                cacularItems();
+                DataGridViewRow row = dataListadoDetalle.Rows[ultimafila -1];    
+            
+                if (Convert.ToInt32(this.txtCantidad.Text) > 1)
+                {
+                    double valor = Convert.ToDouble(row.Cells["Precio_Venta"].Value) * Convert.ToDouble(this.txtCantidad.Text);
+                    row.Cells["Cantidad"].Value = this.txtCantidad.Text;
+                    preciostandar = Convert.ToDecimal(row.Cells["Precio_Venta"].Value);
+                    row.Cells["Precio_Venta"].Value = Convert.ToDecimal(valor);
+                    totalcuenta = totalcuenta + Convert.ToDouble(valor) - Convert.ToDouble(preciostandar);
+                    lblTotalPagado.Text = Convert.ToString(totalcuenta);
+                    //Sumar los articulos multiplicados
+                    cacularItems();
 
-                this.txtCantidad.Text = string.Empty;
-                this.txtCantidad.ReadOnly = true;
-                this.btnMultiplicar.Enabled = false;
+                    this.txtCantidad.Text = string.Empty;
+                    this.txtCantidad.ReadOnly = true;
+                    this.btnMultiplicar.Enabled = false;
+                }
             }
         }
 
@@ -984,12 +1054,14 @@ namespace CapaPresentacion
             iddetalleventa = Convert.ToString(this.dataListado.CurrentRow.Cells["idventa"].Value);
 
             this.dataListado.DataSource = NVenta.MostrarDetalle(iddetalleventa);
+            this.OcultarColumnas();
 
         }
 
         private void btnVolverDataListado_Click(object sender, EventArgs e)
         {
             this.dataListado.DataSource = NVenta.MostrarTrabajadorFecha(Idtrabajador, DateTime.Today);
+            this.OcultarColumnas();
         }
 
 
@@ -1071,11 +1143,16 @@ namespace CapaPresentacion
                      int.Parse(fila.Cells[9].Value.ToString()),
                      decimal.Parse(fila.Cells[7].Value.ToString()), decimal.Parse(fila.Cells[8].Value.ToString()));
                 }
+
+
+
             }
             ticket.lineasIgual();
 
             ticket.agregarTotales("         SUBTOTAL......$", Convert.ToDecimal(this.lblsubtotal.Text));
-            ticket.agregarTotales("         IVA...........$", Convert.ToDecimal(this.lbliva.Text));
+            ticket.agregarTotales("         IVA 5%.....$", Convert.ToDecimal(this.lbliva5.Text));
+            ticket.agregarTotales("         IVA 19%.....$", Convert.ToDecimal(this.lbliva19.Text));
+            ticket.agregarTotales("         IVA TOTAL.....$", Convert.ToDecimal(this.lbliva.Text));
             ticket.agregarTotales("         TOTAL.........$", Convert.ToDecimal(this.lblTotalPagado.Text));
             ticket.textoIzquierda("");
             if(this.txtEfectivo.Text == string.Empty)

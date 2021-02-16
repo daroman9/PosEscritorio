@@ -41,6 +41,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dtFecha2 = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblDebito = new System.Windows.Forms.Label();
             this.lblEfectivo = new System.Windows.Forms.Label();
             this.lblTotalVendido = new System.Windows.Forms.Label();
@@ -58,9 +59,9 @@
             this.lblTotalPagado = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbliva = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.lbliva19 = new System.Windows.Forms.Label();
             this.lblsubtotal = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lbliva5 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtDebito = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -105,7 +106,6 @@
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lblImpresora = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -232,6 +232,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.lblDebito);
             this.tabPage1.Controls.Add(this.lblEfectivo);
             this.tabPage1.Controls.Add(this.lblTotalVendido);
@@ -250,6 +251,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de Ventas";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1424, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(151, 32);
+            this.button1.TabIndex = 94;
+            this.button1.Text = "Cuadre Caja";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblDebito
             // 
@@ -388,9 +399,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lbliva);
-            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.lbliva19);
             this.groupBox1.Controls.Add(this.lblsubtotal);
-            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.lbliva5);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtDebito);
             this.groupBox1.Controls.Add(this.label14);
@@ -436,14 +447,14 @@
             this.lbliva.TabIndex = 93;
             this.lbliva.Text = "0";
             // 
-            // label24
+            // lbliva19
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(718, 90);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(47, 24);
-            this.label24.TabIndex = 92;
-            this.label24.Text = "Iva:";
+            this.lbliva19.AutoSize = true;
+            this.lbliva19.Location = new System.Drawing.Point(718, 90);
+            this.lbliva19.Name = "lbliva19";
+            this.lbliva19.Size = new System.Drawing.Size(22, 24);
+            this.lbliva19.TabIndex = 92;
+            this.lbliva19.Text = "0";
             // 
             // lblsubtotal
             // 
@@ -454,14 +465,14 @@
             this.lblsubtotal.TabIndex = 91;
             this.lblsubtotal.Text = "0";
             // 
-            // label22
+            // lbliva5
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(439, 90);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(102, 24);
-            this.label22.TabIndex = 90;
-            this.label22.Text = "Subtotal:";
+            this.lbliva5.AutoSize = true;
+            this.lbliva5.Location = new System.Drawing.Point(439, 90);
+            this.lbliva5.Name = "lbliva5";
+            this.lbliva5.Size = new System.Drawing.Size(22, 24);
+            this.lbliva5.TabIndex = 90;
+            this.lbliva5.Text = "0";
             // 
             // label16
             // 
@@ -926,23 +937,12 @@
             this.lblImpresora.TabIndex = 93;
             this.lblImpresora.Text = "label21";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1046, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 94;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1654, 861);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblImpresora);
             this.Controls.Add(this.dataListadoDisminucion);
             this.Controls.Add(this.label1);
@@ -1056,8 +1056,8 @@
         private System.Windows.Forms.Label lblImpresora;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lbliva;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lbliva19;
         private System.Windows.Forms.Label lblsubtotal;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lbliva5;
     }
 }

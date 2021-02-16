@@ -15,3 +15,7 @@ C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.csproj.CopyComplete
 C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.exe
 C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.pdb
 C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\CapaDatos.dll.config
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\Pos.exe.manifest
+C:\Users\Deiby\source\repos\Pos\Pos\bin\Debug\Pos.application
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.exe.manifest
+C:\Users\Deiby\source\repos\Pos\Pos\obj\Debug\Pos.application
