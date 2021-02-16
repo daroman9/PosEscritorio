@@ -153,8 +153,8 @@ namespace CapaPresentacion
 
             foreach (DataGridViewRow row in dataListado.Rows)
             {
-                if (row.Cells["Efectivo"].Value != null)
-                    efectivo += (Decimal)row.Cells["Efectivo"].Value;
+                if (row.Cells["Efectivo"].Value != null && row.Cells["Devuelta"].Value !=null)
+                    efectivo +=((Decimal)row.Cells["Efectivo"].Value - (Decimal)row.Cells["Devuelta"].Value);
             }
 
             //Sumar el total en debito/credito y transferencias
@@ -997,7 +997,6 @@ namespace CapaPresentacion
         /// Sección para la impresión de las tirillas
         /// </summary>
 
-
         //Función para identificar las impresoras disponibles, la primera opción es la impresora por defecto
         private void InstalledPrintersCombo()
         {
@@ -1020,7 +1019,6 @@ namespace CapaPresentacion
         /// <summary>
         /// Impresión de tirilla
         /// </summary>
-
 
         private void impresion()
         {
@@ -1050,8 +1048,8 @@ namespace CapaPresentacion
             //Articulos a vender.
             ticket.encabezadoVenta();//NOMBRE DEL ARTICULO, CANT, PRECIO, IMPORTE
             ticket.lineasAsterico();
-            //Si tiene una DataGridView donde estan sus articulos a vender pueden usar esta manera para agregarlos al ticket.
-            foreach (DataGridViewRow fila in dataListadoDetalle.Rows)//dgvLista es el nombre del datagridview
+            
+            foreach (DataGridViewRow fila in dataListadoDetalle.Rows)
             {
                 string articulo = fila.Cells[2].Value.ToString() + " " + fila.Cells[3].Value.ToString() + " " + fila.Cells[6].Value.ToString();
 
@@ -1076,7 +1074,6 @@ namespace CapaPresentacion
             }
             ticket.lineasIgual();
 
-            //Resumen de la venta. Sólo son ejemplos
             ticket.agregarTotales("         SUBTOTAL......$", Convert.ToDecimal(this.lblsubtotal.Text));
             ticket.agregarTotales("         IVA...........$", Convert.ToDecimal(this.lbliva.Text));
             ticket.agregarTotales("         TOTAL.........$", Convert.ToDecimal(this.lblTotalPagado.Text));
@@ -1101,11 +1098,11 @@ namespace CapaPresentacion
            
             if(this.txtDevuelta.Text == string.Empty)
             {
-                ticket.agregarTotales("         CAMBIO........$", 0);
+                ticket.agregarTotales("         DEVUELTA......$", 0);
             }
             else
             {
-                ticket.agregarTotales("         CAMBIO........$", Convert.ToDecimal(this.txtDevuelta.Text));
+                ticket.agregarTotales("         DEVUELTA......$", Convert.ToDecimal(this.txtDevuelta.Text));
             }
             //Texto final del Ticket.
             ticket.textoIzquierda("");
@@ -1167,7 +1164,7 @@ namespace CapaPresentacion
             {
                
                     ticket.agregarVenta(fila.Cells[3].Value.ToString(), int.Parse(fila.Cells[4].Value.ToString()),
-                     decimal.Parse(fila.Cells[5].Value.ToString()), decimal.Parse(fila.Cells[6].Value.ToString()));
+                     decimal.Parse(fila.Cells[5].Value.ToString()), decimal.Parse(fila.Cells[7].Value.ToString()));
                 
             }
             ticket.lineasIgual();
@@ -1214,8 +1211,8 @@ namespace CapaPresentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //this.impresionCuadre();
-            this.impresion();
+            this.impresionCuadre();
+            //this.impresion();
         }
     }
 }

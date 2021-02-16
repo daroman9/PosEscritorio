@@ -70,7 +70,7 @@ namespace CapaPresentacion
 
         public void encabezadoCuadre()
         {
-            linea.AppendLine("NO FAC        |EFECTIVO |DEBITO |TOTAL");
+            linea.AppendLine("NO FAC        |EFECTIVO |DEVUELTA |TOTAL");
         }
 
         //Método para poner el texto a la izquierda
@@ -462,7 +462,6 @@ namespace CapaPresentacion
                 }
 
         }
-      
         //Métodos para enviar secuencias de escape a la impresora
         //Para cortar el papel
 
