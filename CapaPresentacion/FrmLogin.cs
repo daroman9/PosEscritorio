@@ -57,9 +57,30 @@ namespace CapaPresentacion
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (13))
+            {
+                DataTable Datos = CapaNegocio.NTrabajador.Login(this.txtUsuario.Text, this.txtPassword.Text);
+                //Evaluar si existe el usuario
+                if (Datos.Rows.Count == 0)
+                {
+                    MessageBox.Show("No tiene acceso al sistema", "Sistema de ventas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    FrmPrincipal frm = new FrmPrincipal();
+                    frm.Idtrabajador = Datos.Rows[0][0].ToString();
+                    frm.Apellidos = Datos.Rows[0][1].ToString();
+                    frm.Nombre = Datos.Rows[0][2].ToString();
+                    frm.Acceso = Datos.Rows[0][3].ToString();
 
+                    frm.Show();
+                    this.Hide();
+
+                }
+            }
         }
+
     }
 }

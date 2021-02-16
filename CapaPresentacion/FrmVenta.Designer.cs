@@ -57,6 +57,10 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblTotalPagado = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbliva = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.lblsubtotal = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtDebito = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -383,6 +387,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbliva);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.lblsubtotal);
+            this.groupBox1.Controls.Add(this.label22);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.txtDebito);
             this.groupBox1.Controls.Add(this.label14);
@@ -418,6 +426,42 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ventas";
+            // 
+            // lbliva
+            // 
+            this.lbliva.AutoSize = true;
+            this.lbliva.Location = new System.Drawing.Point(798, 90);
+            this.lbliva.Name = "lbliva";
+            this.lbliva.Size = new System.Drawing.Size(22, 24);
+            this.lbliva.TabIndex = 93;
+            this.lbliva.Text = "0";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(718, 90);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(47, 24);
+            this.label24.TabIndex = 92;
+            this.label24.Text = "Iva:";
+            // 
+            // lblsubtotal
+            // 
+            this.lblsubtotal.AutoSize = true;
+            this.lblsubtotal.Location = new System.Drawing.Point(598, 90);
+            this.lblsubtotal.Name = "lblsubtotal";
+            this.lblsubtotal.Size = new System.Drawing.Size(22, 24);
+            this.lblsubtotal.TabIndex = 91;
+            this.lblsubtotal.Text = "0";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(439, 90);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(102, 24);
+            this.label22.TabIndex = 90;
+            this.label22.Text = "Subtotal:";
             // 
             // label16
             // 
@@ -1011,5 +1055,9 @@
         private System.Windows.Forms.Label lblTotalVendido;
         private System.Windows.Forms.Label lblImpresora;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbliva;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lblsubtotal;
+        private System.Windows.Forms.Label label22;
     }
 }

@@ -24,6 +24,8 @@ namespace CapaPresentacion
         public string codigoBarras;
         public string serie;
         public double totalcuenta = 0;
+        public double subtotal = 0;
+        public double impuesto = 0;
         public int totalArticulos = 0;
         private DataTable listadoDisminucion;
         public FrmVenta()
@@ -215,6 +217,7 @@ namespace CapaPresentacion
             this.dtDetalle.Columns.Add("Precio_Venta", System.Type.GetType("System.Double"));
             this.dtDetalle.Columns.Add("Descuento", System.Type.GetType("System.Int32"));
             this.dtDetalle.Columns.Add("Cantidad", System.Type.GetType("System.Int32"));
+            this.dtDetalle.Columns.Add("Impuesto", System.Type.GetType("System.Int32"));
             
             //Relacionar nuestro DataGRidView con nuestro DataTable
             this.dataListadoDetalle.DataSource = this.dtDetalle;
@@ -551,7 +554,7 @@ namespace CapaPresentacion
 
         private void dataListadoArticulos_DoubleClick(object sender, EventArgs e)
         {
-            int  par1, par7 ;
+            int  par1, par7, par11;
             string par2, par3, par4, par5, par6, par8;
             double  par9,par10, descuento, descuentoarticulo, preciodescuento;
             par1 = Convert.ToInt32(this.dataListadoArticulos.CurrentRow.Cells["IdArticulo"].Value);
@@ -564,6 +567,7 @@ namespace CapaPresentacion
             par8 = Convert.ToString(this.dataListadoArticulos.CurrentRow.Cells["Contenido"].Value);
             par9 = Convert.ToDouble(this.dataListadoArticulos.CurrentRow.Cells["Precio_Venta"].Value);
             par10 = Convert.ToDouble(this.dataListadoArticulos.CurrentRow.Cells["Descuento"].Value);
+            par11 = Convert.ToInt32(this.dataListadoArticulos.CurrentRow.Cells["Impuesto"].Value);
 
             //Calculamos el descuento de cada articulo
 
@@ -585,6 +589,7 @@ namespace CapaPresentacion
             row["Precio_Venta"] = preciodescuento;
             row["Descuento"] = par10;
             row["Cantidad"] = 1;
+            row["Impuesto"] = par11;
 
             this.dtDetalle.Rows.Add(row);
 
@@ -592,8 +597,17 @@ namespace CapaPresentacion
 
             //Calcular el total de la cuenta
             totalcuenta = totalcuenta + preciodescuento;
-
             lblTotalPagado.Text = Convert.ToString(totalcuenta);
+            //Calcular el subtotal de la cuenta
+            double imp;
+
+            imp = (preciodescuento * par11) / 100;
+            subtotal = subtotal + (preciodescuento - imp);
+            this.lblsubtotal.Text = Convert.ToString(subtotal);
+
+            //Calcular el iva de la cuenta
+            impuesto = impuesto + imp;
+            this.lbliva.Text = Convert.ToString(impuesto);
 
             //Calcular el total de items de cada compra
             cacularItems();
@@ -607,6 +621,7 @@ namespace CapaPresentacion
             par8 = string.Empty;
             par9 = 0;
             par10 = 0;
+            par11 = 0;
 
             this.tabControl1.SelectedIndex = 0;
             this.txtCodigoBarras.Text = string.Empty;
@@ -616,7 +631,7 @@ namespace CapaPresentacion
 
         private void dataListadoNoCodigo_DoubleClick(object sender, EventArgs e)
         {
-            int par1, par7;
+            int par1, par7, par11;
             string par2, par3, par4, par5, par6, par8;
             double par9, par10, descuento, descuentoarticulo, preciodescuento;
             par1 = Convert.ToInt32(this.dataListadoNoCodigo.CurrentRow.Cells["IdArticulo"].Value);
@@ -629,6 +644,7 @@ namespace CapaPresentacion
             par8 = Convert.ToString(this.dataListadoNoCodigo.CurrentRow.Cells["Contenido"].Value);
             par9 = Convert.ToDouble(this.dataListadoNoCodigo.CurrentRow.Cells["Precio_Venta"].Value);
             par10 = Convert.ToDouble(this.dataListadoNoCodigo.CurrentRow.Cells["Descuento"].Value);
+            par11 = Convert.ToInt32(this.dataListadoNoCodigo.CurrentRow.Cells["Impuesto"].Value);
 
             //Calculamos el descuento de cada articulo
 
@@ -650,6 +666,7 @@ namespace CapaPresentacion
             row["Precio_Venta"] = preciodescuento;
             row["Descuento"] = par10;
             row["Cantidad"] = 1;
+            row["Impuesto"] = par11;
 
             this.dtDetalle.Rows.Add(row);
 
@@ -657,8 +674,17 @@ namespace CapaPresentacion
 
             //Calcular el total de la cuenta
             totalcuenta = totalcuenta + preciodescuento;
-
             lblTotalPagado.Text = Convert.ToString(totalcuenta);
+            //Calcular el subtotal de la cuenta
+            double imp;
+
+            imp = (preciodescuento * par11) / 100;
+            subtotal = subtotal + (preciodescuento - imp);
+            this.lblsubtotal.Text = Convert.ToString(subtotal);
+
+            //Calcular el iva de la cuenta
+            impuesto = impuesto + imp;
+            this.lbliva.Text = Convert.ToString(impuesto);
 
             //Calcular el total de items de cada compra
             cacularItems();
@@ -672,6 +698,7 @@ namespace CapaPresentacion
             par8 = string.Empty;
             par9 = 0;
             par10 = 0;
+            par11 = 0;
 
             this.tabControl1.SelectedIndex = 0;
             this.txtCodigoBarras.Text = string.Empty;
@@ -706,7 +733,7 @@ namespace CapaPresentacion
 
                 if (articulo.Rows.Count != 0)
                 {
-                    int par1, par7;
+                    int par1, par7, par11;
                     string par2, par3, par4, par5, par6, par8;
                     double par9, par10, descuento, descuentoarticulo, preciodescuento;
                     par1 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["IdArticulo"].Value);
@@ -719,6 +746,7 @@ namespace CapaPresentacion
                     par8 = Convert.ToString(this.dataArticulo.CurrentRow.Cells["Contenido"].Value);
                     par9 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Precio_Venta"].Value);
                     par10 = Convert.ToDouble(this.dataArticulo.CurrentRow.Cells["Descuento"].Value);
+                    par11 = Convert.ToInt32(this.dataArticulo.CurrentRow.Cells["Impuesto"].Value);
 
                     //Calculamos el descuento de cada articulo
 
@@ -740,6 +768,7 @@ namespace CapaPresentacion
                     row["Precio_Venta"] = preciodescuento;
                     row["Descuento"] = par10;
                     row["Cantidad"] = 1;
+                    row["Impuesto"] = par11;
 
                     this.dtDetalle.Rows.Add(row);
 
@@ -747,9 +776,18 @@ namespace CapaPresentacion
 
                     //Calcular el total de la cuenta
                     totalcuenta = totalcuenta + preciodescuento;
-
                     lblTotalPagado.Text = Convert.ToString(totalcuenta);
 
+                    //Calcular el subtotal de la cuenta
+                    double imp;
+
+                    imp = (preciodescuento * par11)/100;
+                    subtotal = subtotal + (preciodescuento - imp);
+                    this.lblsubtotal.Text = Convert.ToString(subtotal);
+
+                    //Calcular el iva de la cuenta
+                    impuesto = impuesto + imp;
+                    this.lbliva.Text = Convert.ToString(impuesto);
                     //Calcular el total de items de cada compra
                     cacularItems();
 
@@ -764,6 +802,7 @@ namespace CapaPresentacion
                     par7 = 0;
                     par9 = 0;
                     par10 = 0;
+                    par11 = 0;
 
                     //this.tabControl1.SelectedIndex = 1;
                     this.txtCodigoBarras.Text = string.Empty;
@@ -1038,9 +1077,9 @@ namespace CapaPresentacion
             ticket.lineasIgual();
 
             //Resumen de la venta. Sólo son ejemplos
-            ticket.agregarTotales("         SUBTOTAL......$", Convert.ToDecimal(this.lblTotalPagado.Text));
-            //ticket.agregarTotales("         IVA...........$", 10.04M);//La M indica que es un decimal en C#
-            //ticket.agregarTotales("         TOTAL.........$", 200);
+            ticket.agregarTotales("         SUBTOTAL......$", Convert.ToDecimal(this.lblsubtotal.Text));
+            ticket.agregarTotales("         IVA...........$", Convert.ToDecimal(this.lbliva.Text));
+            ticket.agregarTotales("         TOTAL.........$", Convert.ToDecimal(this.lblTotalPagado.Text));
             ticket.textoIzquierda("");
             if(this.txtEfectivo.Text == string.Empty)
             {
@@ -1175,7 +1214,8 @@ namespace CapaPresentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.impresionCuadre();
+            //this.impresionCuadre();
+            this.impresion();
         }
     }
 }
