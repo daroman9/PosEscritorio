@@ -914,18 +914,48 @@ namespace CapaPresentacion
             
                 if (Convert.ToInt32(this.txtCantidad.Text) > 1)
                 {
+                    double preciodescuento;
+                    int par11 = Convert.ToInt32(row.Cells["Impuesto"].Value);
                     double valor = Convert.ToDouble(row.Cells["Precio_Venta"].Value) * Convert.ToDouble(this.txtCantidad.Text);
                     row.Cells["Cantidad"].Value = this.txtCantidad.Text;
                     preciostandar = Convert.ToDecimal(row.Cells["Precio_Venta"].Value);
                     row.Cells["Precio_Venta"].Value = Convert.ToDecimal(valor);
                     totalcuenta = totalcuenta + Convert.ToDouble(valor) - Convert.ToDouble(preciostandar);
                     lblTotalPagado.Text = Convert.ToString(totalcuenta);
+
+
+                    //Calcular el subtotal de la cuenta
+                    double imp;
+                    preciodescuento = Convert.ToDouble(preciostandar);
+
+                    imp = (preciodescuento * par11) / 100;
+                    subtotal = subtotal + (preciodescuento - imp);
+                    this.lblsubtotal.Text = Convert.ToString(subtotal);
+
+                    //Calcular el iva de la cuenta
+                    if (par11 == 5)
+                    {
+                        impuesto5 = impuesto5 + imp;
+                        this.lbliva5.Text = Convert.ToString(impuesto5);
+
+                    }
+                    else if (par11 == 19)
+                    {
+                        impuesto19 = impuesto19 + imp;
+                        this.lbliva19.Text = Convert.ToString(impuesto19);
+
+                    }
+                    impuesto = impuesto + imp;
+                    this.lbliva.Text = Convert.ToString(impuesto);
+
+
                     //Sumar los articulos multiplicados
                     cacularItems();
 
                     this.txtCantidad.Text = string.Empty;
                     this.txtCantidad.ReadOnly = true;
                     this.btnMultiplicar.Enabled = false;
+                    par11 = 0;
                 }
             }
         }

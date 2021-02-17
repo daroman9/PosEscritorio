@@ -446,6 +446,7 @@
             this.lbliva.Size = new System.Drawing.Size(22, 24);
             this.lbliva.TabIndex = 93;
             this.lbliva.Text = "0";
+            this.lbliva.Visible = false;
             // 
             // lbliva19
             // 
@@ -455,6 +456,7 @@
             this.lbliva19.Size = new System.Drawing.Size(22, 24);
             this.lbliva19.TabIndex = 92;
             this.lbliva19.Text = "0";
+            this.lbliva19.Visible = false;
             // 
             // lblsubtotal
             // 
@@ -464,6 +466,7 @@
             this.lblsubtotal.Size = new System.Drawing.Size(22, 24);
             this.lblsubtotal.TabIndex = 91;
             this.lblsubtotal.Text = "0";
+            this.lblsubtotal.Visible = false;
             // 
             // lbliva5
             // 
@@ -473,6 +476,7 @@
             this.lbliva5.Size = new System.Drawing.Size(22, 24);
             this.lbliva5.TabIndex = 90;
             this.lbliva5.Text = "0";
+            this.lbliva5.Visible = false;
             // 
             // label16
             // 

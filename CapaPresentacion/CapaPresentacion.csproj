@@ -176,6 +176,11 @@
     <Folder Include="Consultas\Imagen\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\opciones.png" />
+    <None Include="Resources\web.png" />
+    <None Include="Resources\reporte.png" />
+    <None Include="Resources\productos-lacteos.png" />
+    <None Include="Resources\ventas.png" />
     <None Include="Resources\Logo_la_39.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\guardar.png" />
@@ -189,6 +194,10 @@
     <None Include="Resources\addPicture.png" />
     <None Include="Resources\deletePicture.png" />
     <None Include="Resources\back.png" />
+    <None Include="Resources\empleados.png" />
+    <None Include="Resources\cesta-de-la-compra.png" />
+    <None Include="Resources\configuraciones.png" />
+    <None Include="Resources\apoyo-tecnico.png" />
     <Content Include="Resources\file.png" />
     <None Include="Resources\file1.png" />
   </ItemGroup>
