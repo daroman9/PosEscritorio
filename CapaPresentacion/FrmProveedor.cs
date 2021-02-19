@@ -112,6 +112,7 @@ namespace CapaPresentacion
 
         private void FrmProveedor_Load(object sender, EventArgs e)
         {
+ 
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();

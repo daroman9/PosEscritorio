@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label33 = new System.Windows.Forms.Label();
             this.btnVolverDataListado = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dtFecha2 = new System.Windows.Forms.DateTimePicker();
@@ -98,9 +99,12 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.tabArticulos = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtUtilidadActual = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtPrecioVentaActual = new System.Windows.Forms.TextBox();
             this.btnCalcularArticulo = new System.Windows.Forms.Button();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.btnEditarIngreso = new System.Windows.Forms.Button();
@@ -131,10 +135,6 @@
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.txtIdIngreso = new System.Windows.Forms.TextBox();
             this.txtIddetalleIngreso = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.txtPrecioVentaActual = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.txtUtilidadActual = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -168,11 +168,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(598, 9);
+            this.label1.Location = new System.Drawing.Point(456, -4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(447, 55);
+            this.label1.Size = new System.Drawing.Size(296, 37);
             this.label1.TabIndex = 6;
             this.label1.Text = "Ingresos Almacén";
             // 
@@ -182,6 +182,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label33);
             this.tabPage1.Controls.Add(this.btnVolverDataListado);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.dtFecha2);
@@ -192,13 +193,22 @@
             this.tabPage1.Controls.Add(this.btnEliminar);
             this.tabPage1.Controls.Add(this.btnBuscar);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Location = new System.Drawing.Point(4, 27);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1582, 759);
+            this.tabPage1.Size = new System.Drawing.Size(1155, 604);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de ingresos";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(20, 34);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(55, 15);
+            this.label33.TabIndex = 12;
+            this.label33.Text = "label33";
             // 
             // btnVolverDataListado
             // 
@@ -217,18 +227,18 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(443, 32);
+            this.label12.Location = new System.Drawing.Point(359, 32);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 18);
+            this.label12.Size = new System.Drawing.Size(74, 15);
             this.label12.TabIndex = 10;
             this.label12.Text = "Fecha Fin:";
             // 
             // dtFecha2
             // 
             this.dtFecha2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha2.Location = new System.Drawing.Point(551, 24);
+            this.dtFecha2.Location = new System.Drawing.Point(456, 26);
             this.dtFecha2.Name = "dtFecha2";
-            this.dtFecha2.Size = new System.Drawing.Size(300, 26);
+            this.dtFecha2.Size = new System.Drawing.Size(200, 23);
             this.dtFecha2.TabIndex = 9;
             // 
             // dtFecha1
@@ -236,7 +246,7 @@
             this.dtFecha1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFecha1.Location = new System.Drawing.Point(119, 26);
             this.dtFecha1.Name = "dtFecha1";
-            this.dtFecha1.Size = new System.Drawing.Size(300, 26);
+            this.dtFecha1.Size = new System.Drawing.Size(200, 23);
             this.dtFecha1.TabIndex = 8;
             // 
             // dataListado
@@ -249,13 +259,13 @@
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Eliminar});
-            this.dataListado.Location = new System.Drawing.Point(0, 108);
+            this.dataListado.Location = new System.Drawing.Point(9, 108);
             this.dataListado.MultiSelect = false;
             this.dataListado.Name = "dataListado";
             this.dataListado.ReadOnly = true;
             this.dataListado.RowHeadersVisible = false;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(1575, 647);
+            this.dataListado.Size = new System.Drawing.Size(1140, 493);
             this.dataListado.TabIndex = 7;
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
             this.dataListado.DoubleClick += new System.EventHandler(this.dataListado_DoubleClick);
@@ -270,7 +280,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(1134, 52);
+            this.lblTotal.Location = new System.Drawing.Point(358, 69);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(71, 24);
             this.lblTotal.TabIndex = 6;
@@ -281,7 +291,7 @@
             this.chkEliminar.AutoSize = true;
             this.chkEliminar.Location = new System.Drawing.Point(9, 69);
             this.chkEliminar.Name = "chkEliminar";
-            this.chkEliminar.Size = new System.Drawing.Size(80, 22);
+            this.chkEliminar.Size = new System.Drawing.Size(69, 19);
             this.chkEliminar.TabIndex = 5;
             this.chkEliminar.Text = "Anular";
             this.chkEliminar.UseVisualStyleBackColor = true;
@@ -293,9 +303,9 @@
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(998, 6);
+            this.btnEliminar.Location = new System.Drawing.Point(751, 24);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(70, 70);
+            this.btnEliminar.Size = new System.Drawing.Size(30, 30);
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -306,9 +316,9 @@
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(876, 6);
+            this.btnBuscar.Location = new System.Drawing.Point(681, 24);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(70, 70);
+            this.btnBuscar.Size = new System.Drawing.Size(30, 30);
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
@@ -318,7 +328,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(3, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 18);
+            this.label2.Size = new System.Drawing.Size(90, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Fecha Inicio:";
             // 
@@ -327,21 +337,20 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabArticulos);
-            this.tabControl1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(17, 70);
+            this.tabControl1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(12, 26);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1590, 790);
+            this.tabControl1.Size = new System.Drawing.Size(1163, 632);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Location = new System.Drawing.Point(4, 27);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1582, 759);
+            this.tabPage2.Size = new System.Drawing.Size(1155, 604);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Crear ingreso";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -387,16 +396,16 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1576, 757);
+            this.groupBox1.Size = new System.Drawing.Size(1159, 602);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresos Almacen";
             // 
             // btnCalcularIngreso
             // 
-            this.btnCalcularIngreso.Location = new System.Drawing.Point(1276, 310);
+            this.btnCalcularIngreso.Location = new System.Drawing.Point(967, 240);
             this.btnCalcularIngreso.Name = "btnCalcularIngreso";
-            this.btnCalcularIngreso.Size = new System.Drawing.Size(118, 32);
+            this.btnCalcularIngreso.Size = new System.Drawing.Size(73, 32);
             this.btnCalcularIngreso.TabIndex = 62;
             this.btnCalcularIngreso.Text = "Calcular";
             this.btnCalcularIngreso.UseVisualStyleBackColor = true;
@@ -405,42 +414,42 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(935, 430);
+            this.label16.Location = new System.Drawing.Point(641, 392);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(77, 18);
+            this.label16.Size = new System.Drawing.Size(65, 15);
             this.label16.TabIndex = 61;
             this.label16.Text = "Utilidad: ";
             // 
             // txtUtilidad
             // 
-            this.txtUtilidad.Location = new System.Drawing.Point(1094, 422);
+            this.txtUtilidad.Location = new System.Drawing.Point(800, 384);
             this.txtUtilidad.Name = "txtUtilidad";
-            this.txtUtilidad.Size = new System.Drawing.Size(300, 26);
+            this.txtUtilidad.Size = new System.Drawing.Size(150, 23);
             this.txtUtilidad.TabIndex = 60;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(935, 360);
+            this.label14.Location = new System.Drawing.Point(641, 322);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(105, 18);
+            this.label14.Size = new System.Drawing.Size(86, 15);
             this.label14.TabIndex = 59;
             this.label14.Text = "Porcentaje: ";
             // 
             // txtPorcentaje
             // 
-            this.txtPorcentaje.Location = new System.Drawing.Point(1094, 348);
+            this.txtPorcentaje.Location = new System.Drawing.Point(800, 310);
             this.txtPorcentaje.Name = "txtPorcentaje";
-            this.txtPorcentaje.Size = new System.Drawing.Size(300, 26);
+            this.txtPorcentaje.Size = new System.Drawing.Size(150, 23);
             this.txtPorcentaje.TabIndex = 58;
             this.txtPorcentaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje_KeyPress);
             // 
             // rdbPrecio
             // 
             this.rdbPrecio.AutoSize = true;
-            this.rdbPrecio.Location = new System.Drawing.Point(1094, 317);
+            this.rdbPrecio.Location = new System.Drawing.Point(800, 279);
             this.rdbPrecio.Name = "rdbPrecio";
-            this.rdbPrecio.Size = new System.Drawing.Size(139, 22);
+            this.rdbPrecio.Size = new System.Drawing.Size(118, 19);
             this.rdbPrecio.TabIndex = 57;
             this.rdbPrecio.TabStop = true;
             this.rdbPrecio.Text = "Precio Manual";
@@ -450,9 +459,9 @@
             // rdbPorcentaje
             // 
             this.rdbPorcentaje.AutoSize = true;
-            this.rdbPorcentaje.Location = new System.Drawing.Point(938, 317);
+            this.rdbPorcentaje.Location = new System.Drawing.Point(644, 279);
             this.rdbPorcentaje.Name = "rdbPorcentaje";
-            this.rdbPorcentaje.Size = new System.Drawing.Size(114, 22);
+            this.rdbPorcentaje.Size = new System.Drawing.Size(97, 19);
             this.rdbPorcentaje.TabIndex = 56;
             this.rdbPorcentaje.TabStop = true;
             this.rdbPorcentaje.Text = "Porcentaje";
@@ -462,52 +471,52 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1429, 436);
+            this.label11.Location = new System.Drawing.Point(1043, 391);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(123, 18);
+            this.label11.Size = new System.Drawing.Size(102, 15);
             this.label11.TabIndex = 55;
             this.label11.Text = "Quitar artículo";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1429, 346);
+            this.label9.Location = new System.Drawing.Point(1043, 301);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(126, 18);
+            this.label9.Size = new System.Drawing.Size(104, 15);
             this.label9.TabIndex = 54;
             this.label9.Text = "Añadir artículo";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(935, 398);
+            this.label6.Location = new System.Drawing.Point(641, 360);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(120, 18);
+            this.label6.Size = new System.Drawing.Size(98, 15);
             this.label6.TabIndex = 53;
             this.label6.Text = "Precio Venta: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(604, 425);
+            this.label3.Location = new System.Drawing.Point(292, 365);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 18);
+            this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 52;
             this.label3.Text = "Subtotal:";
             // 
             // txtPrecioVenta
             // 
-            this.txtPrecioVenta.Location = new System.Drawing.Point(1094, 390);
+            this.txtPrecioVenta.Location = new System.Drawing.Point(800, 352);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioVenta.Size = new System.Drawing.Size(150, 23);
             this.txtPrecioVenta.TabIndex = 51;
             this.txtPrecioVenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioVenta_KeyPress);
             // 
             // txtPrecioCompra
             // 
-            this.txtPrecioCompra.Location = new System.Drawing.Point(1094, 278);
+            this.txtPrecioCompra.Location = new System.Drawing.Point(800, 240);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
-            this.txtPrecioCompra.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioCompra.Size = new System.Drawing.Size(150, 23);
             this.txtPrecioCompra.TabIndex = 50;
             this.txtPrecioCompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioCompra_KeyPress);
             // 
@@ -518,20 +527,20 @@
             this.dataListadoDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataListadoDetalle.BackgroundColor = System.Drawing.Color.White;
             this.dataListadoDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListadoDetalle.Location = new System.Drawing.Point(0, 457);
+            this.dataListadoDetalle.Location = new System.Drawing.Point(0, 413);
             this.dataListadoDetalle.Name = "dataListadoDetalle";
             this.dataListadoDetalle.RowHeadersVisible = false;
-            this.dataListadoDetalle.Size = new System.Drawing.Size(1575, 220);
+            this.dataListadoDetalle.Size = new System.Drawing.Size(1150, 121);
             this.dataListadoDetalle.TabIndex = 35;
             this.dataListadoDetalle.Click += new System.EventHandler(this.dataListadoDetalle_Click);
             // 
             // tabControl3
             // 
             this.tabControl3.Controls.Add(this.tabPage4);
-            this.tabControl3.Location = new System.Drawing.Point(796, 30);
+            this.tabControl3.Location = new System.Drawing.Point(589, 30);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(780, 242);
+            this.tabControl3.Size = new System.Drawing.Size(561, 203);
             this.tabControl3.TabIndex = 41;
             // 
             // tabPage4
@@ -540,10 +549,10 @@
             this.tabPage4.Controls.Add(this.btnBuscarProveedores);
             this.tabPage4.Controls.Add(this.txtBuscarNombreProveedores);
             this.tabPage4.Controls.Add(this.label20);
-            this.tabPage4.Location = new System.Drawing.Point(4, 27);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(772, 211);
+            this.tabPage4.Size = new System.Drawing.Size(553, 175);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "Listado Proveedores";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -564,7 +573,7 @@
             this.dataListadoProveedores.ReadOnly = true;
             this.dataListadoProveedores.RowHeadersVisible = false;
             this.dataListadoProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoProveedores.Size = new System.Drawing.Size(770, 155);
+            this.dataListadoProveedores.Size = new System.Drawing.Size(550, 120);
             this.dataListadoProveedores.TabIndex = 7;
             this.dataListadoProveedores.DoubleClick += new System.EventHandler(this.dataListadoProveedores_DoubleClick);
             // 
@@ -574,18 +583,18 @@
             this.btnBuscarProveedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarProveedores.FlatAppearance.BorderSize = 0;
             this.btnBuscarProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarProveedores.Location = new System.Drawing.Point(372, 3);
+            this.btnBuscarProveedores.Location = new System.Drawing.Point(285, 13);
             this.btnBuscarProveedores.Name = "btnBuscarProveedores";
-            this.btnBuscarProveedores.Size = new System.Drawing.Size(50, 50);
+            this.btnBuscarProveedores.Size = new System.Drawing.Size(30, 30);
             this.btnBuscarProveedores.TabIndex = 2;
             this.btnBuscarProveedores.UseVisualStyleBackColor = true;
             this.btnBuscarProveedores.Click += new System.EventHandler(this.btnBuscarProveedores_Click);
             // 
             // txtBuscarNombreProveedores
             // 
-            this.txtBuscarNombreProveedores.Location = new System.Drawing.Point(118, 14);
+            this.txtBuscarNombreProveedores.Location = new System.Drawing.Point(83, 18);
             this.txtBuscarNombreProveedores.Name = "txtBuscarNombreProveedores";
-            this.txtBuscarNombreProveedores.Size = new System.Drawing.Size(230, 26);
+            this.txtBuscarNombreProveedores.Size = new System.Drawing.Size(150, 23);
             this.txtBuscarNombreProveedores.TabIndex = 1;
             this.txtBuscarNombreProveedores.TextChanged += new System.EventHandler(this.txtBuscarNombreProveedores_TextChanged);
             // 
@@ -594,16 +603,16 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(6, 21);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(76, 18);
+            this.label20.Size = new System.Drawing.Size(63, 15);
             this.label20.TabIndex = 0;
             this.label20.Text = "Nombre:";
             // 
             // lblTotalPagado
             // 
             this.lblTotalPagado.AutoSize = true;
-            this.lblTotalPagado.Location = new System.Drawing.Point(806, 425);
+            this.lblTotalPagado.Location = new System.Drawing.Point(420, 365);
             this.lblTotalPagado.Name = "lblTotalPagado";
-            this.lblTotalPagado.Size = new System.Drawing.Size(33, 18);
+            this.lblTotalPagado.Size = new System.Drawing.Size(27, 15);
             this.lblTotalPagado.TabIndex = 40;
             this.lblTotalPagado.Text = "0.0";
             // 
@@ -614,9 +623,9 @@
             this.btnQuitar.Enabled = false;
             this.btnQuitar.FlatAppearance.BorderSize = 0;
             this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitar.Location = new System.Drawing.Point(1466, 381);
+            this.btnQuitar.Location = new System.Drawing.Point(1080, 336);
             this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(50, 50);
+            this.btnQuitar.Size = new System.Drawing.Size(30, 30);
             this.btnQuitar.TabIndex = 49;
             this.btnQuitar.UseVisualStyleBackColor = true;
             this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
@@ -627,9 +636,9 @@
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(1466, 292);
+            this.btnAgregar.Location = new System.Drawing.Point(1080, 247);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(50, 50);
+            this.btnAgregar.Size = new System.Drawing.Size(30, 30);
             this.btnAgregar.TabIndex = 48;
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -637,116 +646,116 @@
             // dtFechaVencimiento
             // 
             this.dtFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaVencimiento.Location = new System.Drawing.Point(607, 375);
+            this.dtFechaVencimiento.Location = new System.Drawing.Point(466, 320);
             this.dtFechaVencimiento.Name = "dtFechaVencimiento";
-            this.dtFechaVencimiento.Size = new System.Drawing.Size(300, 26);
+            this.dtFechaVencimiento.Size = new System.Drawing.Size(150, 23);
             this.dtFechaVencimiento.TabIndex = 46;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(433, 382);
+            this.label18.Location = new System.Drawing.Point(292, 327);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(174, 18);
+            this.label18.Size = new System.Drawing.Size(142, 15);
             this.label18.TabIndex = 47;
             this.label18.Text = "Fecha Vencimiento:  ";
             // 
             // dtFechaProduccion
             // 
             this.dtFechaProduccion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFechaProduccion.Location = new System.Drawing.Point(607, 338);
+            this.dtFechaProduccion.Location = new System.Drawing.Point(466, 283);
             this.dtFechaProduccion.Name = "dtFechaProduccion";
-            this.dtFechaProduccion.Size = new System.Drawing.Size(300, 26);
+            this.dtFechaProduccion.Size = new System.Drawing.Size(150, 23);
             this.dtFechaProduccion.TabIndex = 44;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(935, 283);
+            this.label15.Location = new System.Drawing.Point(641, 245);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(136, 18);
+            this.label15.Size = new System.Drawing.Size(112, 15);
             this.label15.TabIndex = 40;
             this.label15.Text = "Precio Compra: ";
             // 
             // txtStockInicial
             // 
-            this.txtStockInicial.Location = new System.Drawing.Point(112, 408);
+            this.txtStockInicial.Location = new System.Drawing.Point(117, 357);
             this.txtStockInicial.Name = "txtStockInicial";
-            this.txtStockInicial.Size = new System.Drawing.Size(300, 26);
+            this.txtStockInicial.Size = new System.Drawing.Size(150, 23);
             this.txtStockInicial.TabIndex = 39;
             this.txtStockInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockInicial_KeyPress);
             // 
             // txtSerie
             // 
-            this.txtSerie.Location = new System.Drawing.Point(112, 371);
+            this.txtSerie.Location = new System.Drawing.Point(117, 320);
             this.txtSerie.Name = "txtSerie";
-            this.txtSerie.Size = new System.Drawing.Size(300, 26);
+            this.txtSerie.Size = new System.Drawing.Size(150, 23);
             this.txtSerie.TabIndex = 29;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 416);
+            this.label5.Location = new System.Drawing.Point(6, 365);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(114, 18);
+            this.label5.Size = new System.Drawing.Size(94, 15);
             this.label5.TabIndex = 38;
             this.label5.Text = "Stock Inicial: ";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(433, 339);
+            this.label17.Location = new System.Drawing.Point(292, 284);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(168, 18);
+            this.label17.Size = new System.Drawing.Size(136, 15);
             this.label17.TabIndex = 45;
             this.label17.Text = "Fecha: Producción: ";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 381);
+            this.label8.Location = new System.Drawing.Point(9, 330);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 18);
+            this.label8.Size = new System.Drawing.Size(63, 15);
             this.label8.TabIndex = 28;
             this.label8.Text = "Número:";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(433, 306);
+            this.label13.Location = new System.Drawing.Point(292, 251);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 18);
+            this.label13.Size = new System.Drawing.Size(103, 15);
             this.label13.TabIndex = 26;
             this.label13.Text = "Fecha Ingreso:";
             // 
             // txtArticulo
             // 
-            this.txtArticulo.Location = new System.Drawing.Point(112, 296);
+            this.txtArticulo.Location = new System.Drawing.Point(117, 245);
             this.txtArticulo.Name = "txtArticulo";
-            this.txtArticulo.Size = new System.Drawing.Size(300, 26);
+            this.txtArticulo.Size = new System.Drawing.Size(150, 23);
             this.txtArticulo.TabIndex = 36;
             // 
             // dtFecha
             // 
             this.dtFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha.Location = new System.Drawing.Point(607, 302);
+            this.dtFecha.Location = new System.Drawing.Point(466, 247);
             this.dtFecha.Name = "dtFecha";
-            this.dtFecha.Size = new System.Drawing.Size(300, 26);
+            this.dtFecha.Size = new System.Drawing.Size(150, 23);
             this.dtFecha.TabIndex = 25;
             // 
             // txtProveedor
             // 
-            this.txtProveedor.Location = new System.Drawing.Point(112, 331);
+            this.txtProveedor.Location = new System.Drawing.Point(117, 280);
             this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.Size = new System.Drawing.Size(300, 26);
+            this.txtProveedor.Size = new System.Drawing.Size(150, 23);
             this.txtProveedor.TabIndex = 19;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(2, 338);
+            this.label7.Location = new System.Drawing.Point(7, 287);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 18);
+            this.label7.Size = new System.Drawing.Size(75, 15);
             this.label7.TabIndex = 17;
             this.label7.Text = "Proveedor";
             // 
@@ -756,9 +765,9 @@
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(251, 681);
+            this.btnCancelar.Location = new System.Drawing.Point(228, 540);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(70, 70);
+            this.btnCancelar.Size = new System.Drawing.Size(50, 50);
             this.btnCancelar.TabIndex = 9;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -769,7 +778,7 @@
             this.tabControl2.Location = new System.Drawing.Point(6, 30);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(780, 242);
+            this.tabControl2.Size = new System.Drawing.Size(563, 203);
             this.tabControl2.TabIndex = 24;
             // 
             // tabPage3
@@ -780,10 +789,10 @@
             this.tabPage3.Controls.Add(this.btnBuscarNombreArticulos);
             this.tabPage3.Controls.Add(this.txtBuscarNombreArticulo);
             this.tabPage3.Controls.Add(this.label10);
-            this.tabPage3.Location = new System.Drawing.Point(4, 27);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(772, 211);
+            this.tabPage3.Size = new System.Drawing.Size(555, 175);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Listado Artículos";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -793,15 +802,15 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(8, 22);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(69, 18);
+            this.label21.Size = new System.Drawing.Size(57, 15);
             this.label21.TabIndex = 9;
             this.label21.Text = "Codigo:";
             // 
             // txtCodigoBarras
             // 
-            this.txtCodigoBarras.Location = new System.Drawing.Point(106, 16);
+            this.txtCodigoBarras.Location = new System.Drawing.Point(82, 19);
             this.txtCodigoBarras.Name = "txtCodigoBarras";
-            this.txtCodigoBarras.Size = new System.Drawing.Size(230, 26);
+            this.txtCodigoBarras.Size = new System.Drawing.Size(150, 23);
             this.txtCodigoBarras.TabIndex = 8;
             this.txtCodigoBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoBarras_KeyPress);
             // 
@@ -821,7 +830,7 @@
             this.dataListadoArticulos.ReadOnly = true;
             this.dataListadoArticulos.RowHeadersVisible = false;
             this.dataListadoArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListadoArticulos.Size = new System.Drawing.Size(772, 155);
+            this.dataListadoArticulos.Size = new System.Drawing.Size(550, 120);
             this.dataListadoArticulos.TabIndex = 7;
             this.dataListadoArticulos.DoubleClick += new System.EventHandler(this.dataListadoArticulos_DoubleClick);
             // 
@@ -831,27 +840,27 @@
             this.btnBuscarNombreArticulos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscarNombreArticulos.FlatAppearance.BorderSize = 0;
             this.btnBuscarNombreArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarNombreArticulos.Location = new System.Drawing.Point(675, 0);
+            this.btnBuscarNombreArticulos.Location = new System.Drawing.Point(496, 17);
             this.btnBuscarNombreArticulos.Name = "btnBuscarNombreArticulos";
-            this.btnBuscarNombreArticulos.Size = new System.Drawing.Size(50, 50);
+            this.btnBuscarNombreArticulos.Size = new System.Drawing.Size(30, 30);
             this.btnBuscarNombreArticulos.TabIndex = 2;
             this.btnBuscarNombreArticulos.UseVisualStyleBackColor = true;
             this.btnBuscarNombreArticulos.Click += new System.EventHandler(this.btnBuscarNombreArticulos_Click);
             // 
             // txtBuscarNombreArticulo
             // 
-            this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(424, 16);
+            this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(319, 19);
             this.txtBuscarNombreArticulo.Name = "txtBuscarNombreArticulo";
-            this.txtBuscarNombreArticulo.Size = new System.Drawing.Size(230, 26);
+            this.txtBuscarNombreArticulo.Size = new System.Drawing.Size(150, 23);
             this.txtBuscarNombreArticulo.TabIndex = 1;
             this.txtBuscarNombreArticulo.TextChanged += new System.EventHandler(this.txtBuscarNombreArticulo_TextChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(342, 19);
+            this.label10.Location = new System.Drawing.Point(250, 22);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 18);
+            this.label10.Size = new System.Drawing.Size(63, 15);
             this.label10.TabIndex = 0;
             this.label10.Text = "Nombre:";
             // 
@@ -861,9 +870,9 @@
             this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(139, 678);
+            this.btnGuardar.Location = new System.Drawing.Point(124, 540);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(70, 70);
+            this.btnGuardar.Size = new System.Drawing.Size(50, 50);
             this.btnGuardar.TabIndex = 7;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -874,9 +883,9 @@
             this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnNuevo.FlatAppearance.BorderSize = 0;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Location = new System.Drawing.Point(18, 682);
+            this.btnNuevo.Location = new System.Drawing.Point(3, 540);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(70, 70);
+            this.btnNuevo.Size = new System.Drawing.Size(50, 50);
             this.btnNuevo.TabIndex = 6;
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -884,27 +893,18 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 302);
+            this.label4.Location = new System.Drawing.Point(7, 251);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 18);
+            this.label4.Size = new System.Drawing.Size(66, 15);
             this.label4.TabIndex = 34;
             this.label4.Text = "Artículo: ";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(12, 645);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(113, 18);
-            this.label19.TabIndex = 39;
-            this.label19.Text = "Total Pagado";
             // 
             // tabArticulos
             // 
             this.tabArticulos.Controls.Add(this.groupBox2);
-            this.tabArticulos.Location = new System.Drawing.Point(4, 27);
+            this.tabArticulos.Location = new System.Drawing.Point(4, 24);
             this.tabArticulos.Name = "tabArticulos";
-            this.tabArticulos.Size = new System.Drawing.Size(1582, 759);
+            this.tabArticulos.Size = new System.Drawing.Size(1155, 604);
             this.tabArticulos.TabIndex = 2;
             this.tabArticulos.Text = "Modificar Artículos";
             this.tabArticulos.UseVisualStyleBackColor = true;
@@ -941,12 +941,46 @@
             this.groupBox2.Controls.Add(this.txtPrecioVentaIngreso);
             this.groupBox2.Controls.Add(this.txtPrecioCompraIngreso);
             this.groupBox2.Controls.Add(this.txtPorcentajeIngreso);
-            this.groupBox2.Location = new System.Drawing.Point(266, 106);
+            this.groupBox2.Location = new System.Drawing.Point(57, 39);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1030, 544);
             this.groupBox2.TabIndex = 67;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Modificar";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(28, 325);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(107, 15);
+            this.label32.TabIndex = 71;
+            this.label32.Text = "Utilidad Actual:";
+            // 
+            // txtUtilidadActual
+            // 
+            this.txtUtilidadActual.Enabled = false;
+            this.txtUtilidadActual.Location = new System.Drawing.Point(164, 322);
+            this.txtUtilidadActual.Name = "txtUtilidadActual";
+            this.txtUtilidadActual.Size = new System.Drawing.Size(300, 23);
+            this.txtUtilidadActual.TabIndex = 70;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(506, 278);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(140, 15);
+            this.label29.TabIndex = 69;
+            this.label29.Text = "Precio Venta Actual:";
+            // 
+            // txtPrecioVentaActual
+            // 
+            this.txtPrecioVentaActual.Enabled = false;
+            this.txtPrecioVentaActual.Location = new System.Drawing.Point(683, 275);
+            this.txtPrecioVentaActual.Name = "txtPrecioVentaActual";
+            this.txtPrecioVentaActual.Size = new System.Drawing.Size(300, 23);
+            this.txtPrecioVentaActual.TabIndex = 68;
             // 
             // btnCalcularArticulo
             // 
@@ -964,7 +998,7 @@
             this.txtMarca.Enabled = false;
             this.txtMarca.Location = new System.Drawing.Point(164, 30);
             this.txtMarca.Name = "txtMarca";
-            this.txtMarca.Size = new System.Drawing.Size(300, 26);
+            this.txtMarca.Size = new System.Drawing.Size(300, 23);
             this.txtMarca.TabIndex = 1;
             // 
             // btnEditarIngreso
@@ -977,7 +1011,7 @@
             this.btnEditarIngreso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnEditarIngreso.Location = new System.Drawing.Point(196, 434);
             this.btnEditarIngreso.Name = "btnEditarIngreso";
-            this.btnEditarIngreso.Size = new System.Drawing.Size(70, 70);
+            this.btnEditarIngreso.Size = new System.Drawing.Size(50, 50);
             this.btnEditarIngreso.TabIndex = 66;
             this.btnEditarIngreso.UseVisualStyleBackColor = true;
             this.btnEditarIngreso.Click += new System.EventHandler(this.btnEditarIngreso_Click);
@@ -987,7 +1021,7 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(28, 33);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(63, 18);
+            this.label24.Size = new System.Drawing.Size(52, 15);
             this.label24.TabIndex = 52;
             this.label24.Text = "Marca:";
             // 
@@ -1000,7 +1034,7 @@
             this.btnCancelarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarIngreso.Location = new System.Drawing.Point(333, 434);
             this.btnCancelarIngreso.Name = "btnCancelarIngreso";
-            this.btnCancelarIngreso.Size = new System.Drawing.Size(70, 70);
+            this.btnCancelarIngreso.Size = new System.Drawing.Size(50, 50);
             this.btnCancelarIngreso.TabIndex = 65;
             this.btnCancelarIngreso.UseVisualStyleBackColor = true;
             this.btnCancelarIngreso.Click += new System.EventHandler(this.btnCancelarIngreso_Click);
@@ -1010,7 +1044,7 @@
             this.txtDescripcion.Enabled = false;
             this.txtDescripcion.Location = new System.Drawing.Point(683, 30);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(300, 26);
+            this.txtDescripcion.Size = new System.Drawing.Size(300, 23);
             this.txtDescripcion.TabIndex = 6;
             // 
             // btnGuardarIngreso
@@ -1022,7 +1056,7 @@
             this.btnGuardarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarIngreso.Location = new System.Drawing.Point(49, 434);
             this.btnGuardarIngreso.Name = "btnGuardarIngreso";
-            this.btnGuardarIngreso.Size = new System.Drawing.Size(70, 70);
+            this.btnGuardarIngreso.Size = new System.Drawing.Size(50, 50);
             this.btnGuardarIngreso.TabIndex = 64;
             this.btnGuardarIngreso.UseVisualStyleBackColor = true;
             this.btnGuardarIngreso.Click += new System.EventHandler(this.btnGuardarIngreso_Click);
@@ -1032,7 +1066,7 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(503, 33);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(113, 18);
+            this.label25.Size = new System.Drawing.Size(93, 15);
             this.label25.TabIndex = 53;
             this.label25.Text = "Descripción: ";
             // 
@@ -1042,7 +1076,7 @@
             this.dtFechaVencimientoIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFechaVencimientoIngreso.Location = new System.Drawing.Point(683, 376);
             this.dtFechaVencimientoIngreso.Name = "dtFechaVencimientoIngreso";
-            this.dtFechaVencimientoIngreso.Size = new System.Drawing.Size(300, 26);
+            this.dtFechaVencimientoIngreso.Size = new System.Drawing.Size(300, 23);
             this.dtFechaVencimientoIngreso.TabIndex = 50;
             // 
             // label28
@@ -1050,7 +1084,7 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(28, 273);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(124, 18);
+            this.label28.Size = new System.Drawing.Size(105, 15);
             this.label28.TabIndex = 56;
             this.label28.Text = "Utilidad Inicial:";
             // 
@@ -1059,7 +1093,7 @@
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(503, 382);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(174, 18);
+            this.label22.Size = new System.Drawing.Size(142, 15);
             this.label22.TabIndex = 51;
             this.label22.Text = "Fecha Vencimiento:  ";
             // 
@@ -1068,7 +1102,7 @@
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(506, 96);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(110, 18);
+            this.label30.Size = new System.Drawing.Size(91, 15);
             this.label30.TabIndex = 58;
             this.label30.Text = "Stock Inicial:";
             // 
@@ -1078,7 +1112,7 @@
             this.dtFechaProduccionIngreso.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtFechaProduccionIngreso.Location = new System.Drawing.Point(202, 376);
             this.dtFechaProduccionIngreso.Name = "dtFechaProduccionIngreso";
-            this.dtFechaProduccionIngreso.Size = new System.Drawing.Size(262, 26);
+            this.dtFechaProduccionIngreso.Size = new System.Drawing.Size(262, 23);
             this.dtFechaProduccionIngreso.TabIndex = 48;
             // 
             // v
@@ -1086,7 +1120,7 @@
             this.v.AutoSize = true;
             this.v.Location = new System.Drawing.Point(28, 209);
             this.v.Name = "v";
-            this.v.Size = new System.Drawing.Size(101, 18);
+            this.v.Size = new System.Drawing.Size(83, 15);
             this.v.TabIndex = 60;
             this.v.Text = "Porcentaje:";
             // 
@@ -1095,7 +1129,7 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(28, 382);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(168, 18);
+            this.label23.Size = new System.Drawing.Size(136, 15);
             this.label23.TabIndex = 49;
             this.label23.Text = "Fecha: Producción: ";
             // 
@@ -1104,7 +1138,7 @@
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(506, 209);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(167, 18);
+            this.label27.Size = new System.Drawing.Size(138, 15);
             this.label27.TabIndex = 55;
             this.label27.Text = "Precio Venta Inicial:";
             // 
@@ -1114,7 +1148,7 @@
             this.rdbPrecioIngreso.Enabled = false;
             this.rdbPrecioIngreso.Location = new System.Drawing.Point(164, 154);
             this.rdbPrecioIngreso.Name = "rdbPrecioIngreso";
-            this.rdbPrecioIngreso.Size = new System.Drawing.Size(139, 22);
+            this.rdbPrecioIngreso.Size = new System.Drawing.Size(118, 19);
             this.rdbPrecioIngreso.TabIndex = 62;
             this.rdbPrecioIngreso.TabStop = true;
             this.rdbPrecioIngreso.Text = "Precio Manual";
@@ -1126,7 +1160,7 @@
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(506, 154);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(132, 18);
+            this.label31.Size = new System.Drawing.Size(109, 15);
             this.label31.TabIndex = 59;
             this.label31.Text = "Precio Compra:";
             // 
@@ -1135,7 +1169,7 @@
             this.txtUtilidadIngreso.Enabled = false;
             this.txtUtilidadIngreso.Location = new System.Drawing.Point(164, 270);
             this.txtUtilidadIngreso.Name = "txtUtilidadIngreso";
-            this.txtUtilidadIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtUtilidadIngreso.Size = new System.Drawing.Size(300, 23);
             this.txtUtilidadIngreso.TabIndex = 4;
             // 
             // rdbPorcentajeIngreso
@@ -1144,7 +1178,7 @@
             this.rdbPorcentajeIngreso.Enabled = false;
             this.rdbPorcentajeIngreso.Location = new System.Drawing.Point(31, 154);
             this.rdbPorcentajeIngreso.Name = "rdbPorcentajeIngreso";
-            this.rdbPorcentajeIngreso.Size = new System.Drawing.Size(114, 22);
+            this.rdbPorcentajeIngreso.Size = new System.Drawing.Size(97, 19);
             this.rdbPorcentajeIngreso.TabIndex = 61;
             this.rdbPorcentajeIngreso.TabStop = true;
             this.rdbPorcentajeIngreso.Text = "Porcentaje";
@@ -1156,7 +1190,7 @@
             this.txtContenido.Enabled = false;
             this.txtContenido.Location = new System.Drawing.Point(164, 93);
             this.txtContenido.Name = "txtContenido";
-            this.txtContenido.Size = new System.Drawing.Size(300, 26);
+            this.txtContenido.Size = new System.Drawing.Size(300, 23);
             this.txtContenido.TabIndex = 7;
             // 
             // txtStockInicialIngreso
@@ -1164,7 +1198,7 @@
             this.txtStockInicialIngreso.Enabled = false;
             this.txtStockInicialIngreso.Location = new System.Drawing.Point(683, 93);
             this.txtStockInicialIngreso.Name = "txtStockInicialIngreso";
-            this.txtStockInicialIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtStockInicialIngreso.Size = new System.Drawing.Size(300, 23);
             this.txtStockInicialIngreso.TabIndex = 3;
             // 
             // label26
@@ -1172,7 +1206,7 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(28, 96);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(99, 18);
+            this.label26.Size = new System.Drawing.Size(81, 15);
             this.label26.TabIndex = 54;
             this.label26.Text = "Contenido: ";
             // 
@@ -1181,7 +1215,7 @@
             this.txtPrecioVentaIngreso.Enabled = false;
             this.txtPrecioVentaIngreso.Location = new System.Drawing.Point(683, 206);
             this.txtPrecioVentaIngreso.Name = "txtPrecioVentaIngreso";
-            this.txtPrecioVentaIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioVentaIngreso.Size = new System.Drawing.Size(300, 23);
             this.txtPrecioVentaIngreso.TabIndex = 5;
             // 
             // txtPrecioCompraIngreso
@@ -1189,7 +1223,7 @@
             this.txtPrecioCompraIngreso.Enabled = false;
             this.txtPrecioCompraIngreso.Location = new System.Drawing.Point(683, 153);
             this.txtPrecioCompraIngreso.Name = "txtPrecioCompraIngreso";
-            this.txtPrecioCompraIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPrecioCompraIngreso.Size = new System.Drawing.Size(300, 23);
             this.txtPrecioCompraIngreso.TabIndex = 8;
             // 
             // txtPorcentajeIngreso
@@ -1197,26 +1231,26 @@
             this.txtPorcentajeIngreso.Enabled = false;
             this.txtPorcentajeIngreso.Location = new System.Drawing.Point(164, 206);
             this.txtPorcentajeIngreso.Name = "txtPorcentajeIngreso";
-            this.txtPorcentajeIngreso.Size = new System.Drawing.Size(300, 26);
+            this.txtPorcentajeIngreso.Size = new System.Drawing.Size(300, 23);
             this.txtPorcentajeIngreso.TabIndex = 2;
             // 
             // txtIdArticulo
             // 
-            this.txtIdArticulo.Location = new System.Drawing.Point(43, 12);
+            this.txtIdArticulo.Location = new System.Drawing.Point(1093, 0);
             this.txtIdArticulo.Name = "txtIdArticulo";
             this.txtIdArticulo.Size = new System.Drawing.Size(10, 20);
             this.txtIdArticulo.TabIndex = 35;
             // 
             // txtIdProveedor
             // 
-            this.txtIdProveedor.Location = new System.Drawing.Point(30, 12);
+            this.txtIdProveedor.Location = new System.Drawing.Point(1080, 0);
             this.txtIdProveedor.Name = "txtIdProveedor";
             this.txtIdProveedor.Size = new System.Drawing.Size(10, 20);
             this.txtIdProveedor.TabIndex = 18;
             // 
             // txtIdIngreso
             // 
-            this.txtIdIngreso.Location = new System.Drawing.Point(17, 12);
+            this.txtIdIngreso.Location = new System.Drawing.Point(1067, 0);
             this.txtIdIngreso.Name = "txtIdIngreso";
             this.txtIdIngreso.Size = new System.Drawing.Size(10, 20);
             this.txtIdIngreso.TabIndex = 3;
@@ -1224,52 +1258,18 @@
             // 
             // txtIddetalleIngreso
             // 
-            this.txtIddetalleIngreso.Location = new System.Drawing.Point(59, 12);
+            this.txtIddetalleIngreso.Location = new System.Drawing.Point(1109, 0);
             this.txtIddetalleIngreso.Name = "txtIddetalleIngreso";
             this.txtIddetalleIngreso.Size = new System.Drawing.Size(10, 20);
             this.txtIddetalleIngreso.TabIndex = 0;
             this.txtIddetalleIngreso.Visible = false;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(506, 278);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(172, 18);
-            this.label29.TabIndex = 69;
-            this.label29.Text = "Precio Venta Actual:";
-            // 
-            // txtPrecioVentaActual
-            // 
-            this.txtPrecioVentaActual.Enabled = false;
-            this.txtPrecioVentaActual.Location = new System.Drawing.Point(683, 275);
-            this.txtPrecioVentaActual.Name = "txtPrecioVentaActual";
-            this.txtPrecioVentaActual.Size = new System.Drawing.Size(300, 26);
-            this.txtPrecioVentaActual.TabIndex = 68;
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(28, 325);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(129, 18);
-            this.label32.TabIndex = 71;
-            this.label32.Text = "Utilidad Actual:";
-            // 
-            // txtUtilidadActual
-            // 
-            this.txtUtilidadActual.Enabled = false;
-            this.txtUtilidadActual.Location = new System.Drawing.Point(164, 322);
-            this.txtUtilidadActual.Name = "txtUtilidadActual";
-            this.txtUtilidadActual.Size = new System.Drawing.Size(300, 26);
-            this.txtUtilidadActual.TabIndex = 70;
             // 
             // FrmIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1654, 861);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtIdIngreso);
@@ -1288,7 +1288,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoDetalle)).EndInit();
@@ -1336,7 +1335,6 @@
         private System.Windows.Forms.DateTimePicker dtFecha2;
         private System.Windows.Forms.DateTimePicker dtFecha1;
         private System.Windows.Forms.Label lblTotalPagado;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtSerie;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label13;
@@ -1416,5 +1414,6 @@
         private System.Windows.Forms.TextBox txtUtilidadActual;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox txtPrecioVentaActual;
+        private System.Windows.Forms.Label label33;
     }
 }

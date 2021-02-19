@@ -41,6 +41,8 @@ namespace CapaPresentacion
         }
         private void FrmVenta_Load(object sender, EventArgs e)
         {
+            Top = 0;
+            Left = 0;
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();

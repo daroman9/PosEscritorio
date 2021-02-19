@@ -43,6 +43,7 @@ namespace CapaPresentacion
 
         private void FrmIngreso_Load(object sender, EventArgs e)
         {
+    
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();

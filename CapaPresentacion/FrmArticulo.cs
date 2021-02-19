@@ -33,7 +33,6 @@ namespace CapaPresentacion
         }
         private void FrmArticulo_Load(object sender, EventArgs e)
         {
-
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
@@ -395,6 +394,5 @@ namespace CapaPresentacion
         {
             BuscarNombreCategorias();
         }
-
     }
 }

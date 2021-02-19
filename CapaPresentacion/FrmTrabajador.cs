@@ -64,7 +64,7 @@ namespace CapaPresentacion
             this.cbAcceso.Enabled = valor;
             this.txtUsuario.ReadOnly = !valor;
             this.txtPassword.ReadOnly = !valor;
-            this.txtIdTrabajador.ReadOnly = !valor;
+           
 
         }
         //Método para habilitar los botones
@@ -118,9 +118,11 @@ namespace CapaPresentacion
 
         private void FrmTrabajador_Load(object sender, EventArgs e)
         {
+
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
+            this.txtIdTrabajador.Enabled = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

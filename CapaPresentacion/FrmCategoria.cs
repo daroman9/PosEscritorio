@@ -93,6 +93,7 @@ namespace CapaPresentacion
         }
         private void FrmCategoria_Load(object sender, EventArgs e)
         {
+         
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
