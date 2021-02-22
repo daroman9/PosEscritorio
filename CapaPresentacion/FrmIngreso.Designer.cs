@@ -35,7 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label33 = new System.Windows.Forms.Label();
             this.btnVolverDataListado = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dtFecha2 = new System.Windows.Forms.DateTimePicker();
@@ -182,7 +181,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label33);
             this.tabPage1.Controls.Add(this.btnVolverDataListado);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.dtFecha2);
@@ -200,15 +198,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de ingresos";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(20, 34);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(55, 15);
-            this.label33.TabIndex = 12;
-            this.label33.Text = "label33";
             // 
             // btnVolverDataListado
             // 
@@ -1414,6 +1403,5 @@
         private System.Windows.Forms.TextBox txtUtilidadActual;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.TextBox txtPrecioVentaActual;
-        private System.Windows.Forms.Label label33;
     }
 }

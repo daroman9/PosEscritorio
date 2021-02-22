@@ -213,7 +213,7 @@ namespace CapaPresentacion
                             }
                             else
                             {
-                                this.MensajeError(Rpta);
+                                this.MensajeError("No se puede eliminar la presentación, esta ya tiene artículos asociados");
                             }
                         }
                     }

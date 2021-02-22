@@ -155,7 +155,7 @@ namespace CapaPresentacion
                             }
                             else
                             {
-                                this.MensajeError(Rpta);
+                                this.MensajeError("No se puede eliminar el proveedor, este tiene ingresos asociados");
                             }
                         }
                     }

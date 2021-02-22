@@ -327,7 +327,7 @@ namespace CapaDatos
         }
 
         //Método Buscarfechas
-        public DataTable BuscarFechas(String TextoBuscar, String TextoBuscar2)
+        public DataTable BuscarFechas(int trabajador, String TextoBuscar, String TextoBuscar2)
         {
             DataTable DtResultado = new DataTable("venta");
             SqlConnection SqlCon = new SqlConnection();
@@ -338,6 +338,13 @@ namespace CapaDatos
                 SqlCmd.Connection = SqlCon;
                 SqlCmd.CommandText = "spbuscar_venta_fecha";
                 SqlCmd.CommandType = CommandType.StoredProcedure;
+
+
+                SqlParameter ParTrabajador = new SqlParameter();
+                ParTrabajador.ParameterName = "@idtrabajador";
+                ParTrabajador.SqlDbType = SqlDbType.Int;
+                ParTrabajador.Value = trabajador;
+                SqlCmd.Parameters.Add(ParTrabajador);
 
                 SqlParameter ParTextoBuscar = new SqlParameter();
                 ParTextoBuscar.ParameterName = "@textobuscar";

@@ -218,8 +218,8 @@
             // 
             this.cbTipoDocumento.FormattingEnabled = true;
             this.cbTipoDocumento.Items.AddRange(new object[] {
-            "CEDULA",
-            "CIUDADANIA"});
+            "CEDULA CIUDADANIA",
+            "CEDULA EXTRANJERIA"});
             this.cbTipoDocumento.Location = new System.Drawing.Point(187, 105);
             this.cbTipoDocumento.Name = "cbTipoDocumento";
             this.cbTipoDocumento.Size = new System.Drawing.Size(300, 26);

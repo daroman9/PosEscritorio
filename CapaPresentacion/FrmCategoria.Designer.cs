@@ -77,10 +77,10 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(12, 26);
+            this.tabControl1.Location = new System.Drawing.Point(12, 36);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1163, 632);
+            this.tabControl1.Size = new System.Drawing.Size(1163, 622);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -97,7 +97,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1155, 601);
+            this.tabPage1.Size = new System.Drawing.Size(1155, 591);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado y creación de categorías";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -271,7 +271,7 @@
             // 
             this.chkEliminar.AutoSize = true;
             this.chkEliminar.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkEliminar.Location = new System.Drawing.Point(18, 275);
+            this.chkEliminar.Location = new System.Drawing.Point(3, 273);
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Size = new System.Drawing.Size(91, 22);
             this.chkEliminar.TabIndex = 9;

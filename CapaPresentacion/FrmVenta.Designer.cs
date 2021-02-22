@@ -41,6 +41,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.dtFecha2 = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnCuadre = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.lblDebito = new System.Windows.Forms.Label();
             this.lblEfectivo = new System.Windows.Forms.Label();
@@ -126,7 +127,7 @@
             // 
             // txtCantidad
             // 
-            this.txtCantidad.Location = new System.Drawing.Point(695, 26);
+            this.txtCantidad.Location = new System.Drawing.Point(619, 27);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(150, 23);
             this.txtCantidad.TabIndex = 39;
@@ -135,7 +136,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(598, 34);
+            this.label5.Location = new System.Drawing.Point(543, 34);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 15);
             this.label5.TabIndex = 38;
@@ -171,7 +172,7 @@
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(249, 543);
+            this.btnCancelar.Location = new System.Drawing.Point(249, 539);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(50, 50);
             this.btnCancelar.TabIndex = 9;
@@ -232,6 +233,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnCuadre);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.lblDebito);
             this.tabPage1.Controls.Add(this.lblEfectivo);
@@ -252,6 +254,16 @@
             this.tabPage1.Text = "Listado de Ventas";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnCuadre
+            // 
+            this.btnCuadre.Location = new System.Drawing.Point(889, 21);
+            this.btnCuadre.Name = "btnCuadre";
+            this.btnCuadre.Size = new System.Drawing.Size(75, 23);
+            this.btnCuadre.TabIndex = 95;
+            this.btnCuadre.Text = "Cuadre";
+            this.btnCuadre.UseVisualStyleBackColor = true;
+            this.btnCuadre.Click += new System.EventHandler(this.btnCuadre_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(1424, 21);
@@ -260,7 +272,6 @@
             this.button1.TabIndex = 94;
             this.button1.Text = "Cuadre Caja";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblDebito
             // 
@@ -433,7 +444,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(3, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1153, 606);
+            this.groupBox1.Size = new System.Drawing.Size(1167, 606);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ventas";
@@ -519,9 +530,9 @@
             // 
             // btnMultiplicar
             // 
-            this.btnMultiplicar.Location = new System.Drawing.Point(443, 27);
+            this.btnMultiplicar.Location = new System.Drawing.Point(442, 26);
             this.btnMultiplicar.Name = "btnMultiplicar";
-            this.btnMultiplicar.Size = new System.Drawing.Size(132, 31);
+            this.btnMultiplicar.Size = new System.Drawing.Size(87, 23);
             this.btnMultiplicar.TabIndex = 84;
             this.btnMultiplicar.Text = "Multiplicar";
             this.btnMultiplicar.UseVisualStyleBackColor = true;
@@ -530,7 +541,7 @@
             // lblTotalArticulos
             // 
             this.lblTotalArticulos.AutoSize = true;
-            this.lblTotalArticulos.Location = new System.Drawing.Point(1005, 70);
+            this.lblTotalArticulos.Location = new System.Drawing.Point(929, 61);
             this.lblTotalArticulos.Name = "lblTotalArticulos";
             this.lblTotalArticulos.Size = new System.Drawing.Size(15, 15);
             this.lblTotalArticulos.TabIndex = 83;
@@ -539,7 +550,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(837, 70);
+            this.label11.Location = new System.Drawing.Point(798, 61);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(125, 15);
             this.label11.TabIndex = 82;
@@ -607,7 +618,7 @@
             // lblArticulo
             // 
             this.lblArticulo.AutoSize = true;
-            this.lblArticulo.Location = new System.Drawing.Point(23, 90);
+            this.lblArticulo.Location = new System.Drawing.Point(3, 90);
             this.lblArticulo.Name = "lblArticulo";
             this.lblArticulo.Size = new System.Drawing.Size(111, 15);
             this.lblArticulo.TabIndex = 72;
@@ -624,7 +635,7 @@
             this.dataListadoDetalle.Location = new System.Drawing.Point(6, 108);
             this.dataListadoDetalle.Name = "dataListadoDetalle";
             this.dataListadoDetalle.RowHeadersVisible = false;
-            this.dataListadoDetalle.Size = new System.Drawing.Size(1147, 312);
+            this.dataListadoDetalle.Size = new System.Drawing.Size(1161, 312);
             this.dataListadoDetalle.TabIndex = 59;
             // 
             // btnQuitar
@@ -633,7 +644,7 @@
             this.btnQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnQuitar.FlatAppearance.BorderSize = 0;
             this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitar.Location = new System.Drawing.Point(1097, 436);
+            this.btnQuitar.Location = new System.Drawing.Point(1111, 433);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(50, 50);
             this.btnQuitar.TabIndex = 69;
@@ -719,7 +730,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1162, 762);
+            this.tabPage2.Size = new System.Drawing.Size(1170, 602);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Crear Venta";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -730,10 +741,10 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(12, 26);
+            this.tabControl1.Location = new System.Drawing.Point(2, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1170, 790);
+            this.tabControl1.Size = new System.Drawing.Size(1178, 630);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage3
@@ -847,6 +858,7 @@
             this.btnBuscarCliente.Size = new System.Drawing.Size(30, 30);
             this.btnBuscarCliente.TabIndex = 25;
             this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
             // 
             // btnBuscarArticulo
             // 
@@ -936,11 +948,12 @@
             // lblImpresora
             // 
             this.lblImpresora.AutoSize = true;
-            this.lblImpresora.Location = new System.Drawing.Point(1198, 15);
+            this.lblImpresora.Location = new System.Drawing.Point(627, 19);
             this.lblImpresora.Name = "lblImpresora";
             this.lblImpresora.Size = new System.Drawing.Size(41, 13);
             this.lblImpresora.TabIndex = 93;
             this.lblImpresora.Text = "label21";
+            this.lblImpresora.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.lblImpresora.Visible = false;
             // 
             // FrmVenta
@@ -1065,5 +1078,6 @@
         private System.Windows.Forms.Label lbliva19;
         private System.Windows.Forms.Label lblsubtotal;
         private System.Windows.Forms.Label lbliva5;
+        private System.Windows.Forms.Button btnCuadre;
     }
 }

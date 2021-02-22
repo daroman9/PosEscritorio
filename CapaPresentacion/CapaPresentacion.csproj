@@ -176,6 +176,7 @@
     <Folder Include="Consultas\Imagen\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Logo_la_39_sin_fondo.png" />
     <None Include="Resources\opciones.png" />
     <None Include="Resources\web.png" />
     <None Include="Resources\reporte.png" />

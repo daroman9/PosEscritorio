@@ -95,11 +95,11 @@ namespace CapaNegocio
             return new DVenta().Mostrar();
         }
         //Método que llama al método Buscar por fechas de la clase DVenta de la capa de datos
-        public static DataTable BuscarFechas(string textoBuscar, string textobuscar2)
+        public static DataTable BuscarFechas(int trabajador, string textoBuscar, string textobuscar2)
         {
             DVenta Obj = new DVenta();
 
-            return Obj.BuscarFechas(textoBuscar, textobuscar2);
+            return Obj.BuscarFechas( trabajador, textoBuscar, textobuscar2);
         }
 
         //Método que llama al método Buscar por trabajador y  fecha de la clase DVenta de la capa de datos

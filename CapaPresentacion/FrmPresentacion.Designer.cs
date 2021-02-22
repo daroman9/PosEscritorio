@@ -223,7 +223,7 @@
             // chkEliminar
             // 
             this.chkEliminar.AutoSize = true;
-            this.chkEliminar.Location = new System.Drawing.Point(6, 227);
+            this.chkEliminar.Location = new System.Drawing.Point(2, 234);
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Size = new System.Drawing.Size(81, 19);
             this.chkEliminar.TabIndex = 5;

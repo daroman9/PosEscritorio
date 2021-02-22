@@ -777,9 +777,8 @@ namespace CapaPresentacion
 
         private void btnCancelarIngreso_Click(object sender, EventArgs e)
         {
-            LimpiarArticulos();
+            this.LimpiarArticulos();
             this.MostrarDetalle();
-            this.MostrarArticulos();
             this.tabControl1.SelectedIndex = 1;
         }
 
@@ -800,6 +799,8 @@ namespace CapaPresentacion
             this.rdbPorcentajeIngreso.Checked = false;
             this.rdbPrecioIngreso.Checked = false;
             this.txtPrecioCompraIngreso.Text = string.Empty;
+            this.txtPrecioVentaActual.Text = string.Empty;
+            this.txtUtilidadActual.Text = string.Empty;
             this.txtPorcentajeIngreso.Text = string.Empty;
             this.txtPrecioVentaIngreso.Text = string.Empty;
             this.txtUtilidadIngreso.Text = string.Empty;

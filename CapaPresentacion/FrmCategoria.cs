@@ -248,7 +248,7 @@ namespace CapaPresentacion
                             }
                             else
                             {
-                                this.MensajeError(Rpta);
+                                this.MensajeError("No se puede eliminar la categoría, esta ya contiene artículos asociados");
                             }
                         }
                     }

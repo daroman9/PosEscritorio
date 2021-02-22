@@ -26,8 +26,8 @@ namespace CapaPresentacion
         public double totalcuenta = 0;
         public double subtotal = 0;
         public double impuesto = 0;
-        public double impuesto5=0;
-        public double impuesto19=0;
+        public double impuesto5= 0;
+        public double impuesto19= 0;
         public int totalArticulos = 0;
         private DataTable listadoDisminucion;
         public FrmVenta()
@@ -41,8 +41,6 @@ namespace CapaPresentacion
         }
         private void FrmVenta_Load(object sender, EventArgs e)
         {
-            Top = 0;
-            Left = 0;
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
@@ -69,16 +67,17 @@ namespace CapaPresentacion
             this.txtIdCliente.Text = string.Empty;
             this.txtIdCliente.Text = string.Empty;
             this.txtSerie.Text = string.Empty;
+            this.txtEfectivo.Text = string.Empty;
             this.txtDebito.Text = string.Empty;
             this.txtCliente.Text = string.Empty;
             this.lblTotalArticulos.Text = string.Empty;
             this.lblArticulo.Text = string.Empty;
             this.cmbMetodoPago.SelectedIndex = -1;
             this.txtDevuelta.Text = string.Empty;
-            this.lbliva.Text = string.Empty;
-            this.lbliva5.Text = string.Empty;
-            this.lbliva19.Text = string.Empty;
-            this.lblsubtotal.Text = string.Empty;
+            this.lbliva.Text = "0";
+            this.lbliva5.Text = "0";
+            this.lbliva19.Text = "0";
+            this.lblsubtotal.Text = "0";
 
             this.lblTotalPagado.Text = "0.0";
             this.CrearTabla();
@@ -190,7 +189,7 @@ namespace CapaPresentacion
         //Método para buscar por fechas
         private void BuscarFechas()
         {
-            this.dataListado.DataSource = NVenta.BuscarFechas(this.dtFecha1.Value.ToString("dd/MM/yyyy"), this.dtFecha2.Value.ToString("dd/MM/yyyy"));
+            this.dataListado.DataSource = NVenta.BuscarFechas(Convert.ToInt32(this.Idtrabajador), this.dtFecha1.Value.ToString("dd/MM/yyyy"), this.dtFecha2.Value.ToString("dd/MM/yyyy"));
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -255,6 +254,7 @@ namespace CapaPresentacion
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
             this.BuscarFechas();
+            this.calcularVentasDiarias();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -264,7 +264,7 @@ namespace CapaPresentacion
             this.Limpiar();
             this.UltimaSerie();
             this.Habilitar(true);
-            //this.txtSerie.Focus();
+            this.txtCodigoBarras.Focus();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -1131,7 +1131,7 @@ namespace CapaPresentacion
      
             //Datos de la cabecera del Ticket.
             ticket.textoCentro("AUTOSERVICIO LA 39");
-            ticket.textoIzquierda("DIRECION: CRA 79 # 71A 70");
+            ticket.textoIzquierda("DIRECION: CRA 39 # 71A 70");
             ticket.textoIzquierda("TELEFONO: 5274547 - 2112374");
             ticket.textoIzquierda("NIT: 71642982-0");
             ticket.textoIzquierda("EMAIL: AUTOSERVICIOLA39@GMAIL.COM");
@@ -1317,11 +1317,37 @@ namespace CapaPresentacion
             ticket.imprimirTicket(this.lblImpresora.Text);//Nombre de la impresora ticketera
 
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCuadre_Click(object sender, EventArgs e)
         {
             this.impresionCuadre();
             //this.impresion();
         }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            if (cbBuscar.Text.Equals("APELLIDO"))
+            {
+                this.BuscarApellidos();
+            }
+            else if (cbBuscar.Text.Equals("DOCUMENTO"))
+            {
+                this.BuscarNumDocumento();
+            }
+        }
+        //Método para buscar los clientes por los apellidos
+        private void BuscarApellidos()
+        {
+            this.dataListadoClientes.DataSource = NCliente.BuscarApellidos(this.txtBuscarCliente.Text);
+            this.OcultarColumnas();
+           
+        }
+        //Método para buscar  los clientes por el numero de documento
+        private void BuscarNumDocumento()
+        {
+            this.dataListadoClientes.DataSource = NCliente.BuscarNumDocumento(this.txtBuscarCliente.Text);
+            this.OcultarColumnas();
+           
+        }
+
     }
 }

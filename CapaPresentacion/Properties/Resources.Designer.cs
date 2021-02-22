@@ -233,6 +233,16 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logo_la_39_sin_fondo {
+            get {
+                object obj = ResourceManager.GetObject("Logo_la_39_sin_fondo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap opciones {
             get {
                 object obj = ResourceManager.GetObject("opciones", resourceCulture);

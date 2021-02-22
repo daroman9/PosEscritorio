@@ -59,6 +59,7 @@ namespace CapaPresentacion
             this.txtIdArticulo.Text = string.Empty;
             this.txtContenido.Text = string.Empty;
             this.txtDescuento.Text = string.Empty;
+            this.cbIdPresentacion.SelectedItem = 1;
             this.pxImagen.Image = global::CapaPresentacion.Properties.Resources.file;
 
         }
@@ -237,11 +238,21 @@ namespace CapaPresentacion
                     }
                     else
                     {
+                        string codigo;
                         if (this.txtDescuento.Text == null || this.txtDescuento.Text == string.Empty)
                         {
                             this.txtDescuento.Text = "0";
                         }
-                        rpta = NArticulo.Editar(Convert.ToInt32(this.txtIdArticulo.Text), this.txtCodigo.Text, this.txtMarca.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(),
+                        if (this.txtCodigo.Text == string.Empty)
+                        {
+                            codigo = "0";
+                        }
+                        else
+                        {
+                            codigo = this.txtCodigo.Text;
+                        }
+                       
+                        rpta = NArticulo.Editar(Convert.ToInt32(this.txtIdArticulo.Text), codigo, this.txtMarca.Text.Trim().ToUpper(), this.txtDescripcion.Text.Trim().ToUpper(),
                                                 imagen, Convert.ToInt32(this.txtIdCategoria.Text), Convert.ToInt32(this.cbIdPresentacion.SelectedValue), this.txtContenido.Text.Trim().ToUpper(), Convert.ToInt32(this.txtDescuento.Text));
                     }
                     if (rpta.Equals("OK"))
@@ -321,9 +332,6 @@ namespace CapaPresentacion
             this.txtCategoria.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["categoria"].Value);
             this.cbIdPresentacion.SelectedValue = Convert.ToString(this.dataListado.CurrentRow.Cells["idpresentacion"].Value);
 
-
-
-
             this.tabControl1.SelectedIndex = 0;
         }
 
@@ -338,7 +346,6 @@ namespace CapaPresentacion
                 this.dataListado.Columns[0].Visible = false;
             }
         }
-
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -364,7 +371,7 @@ namespace CapaPresentacion
                             }
                             else
                             {
-                                this.MensajeError(Rpta);
+                                this.MensajeError("No se puede eliminar el artículo, este cuenta con ventas asociadas");
                             }
                         }
                     }
@@ -393,6 +400,28 @@ namespace CapaPresentacion
         private void btnBuscarNombreCategorias_Click(object sender, EventArgs e)
         {
             BuscarNombreCategorias();
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (13))
+            {
+                DataTable busquedaproducto;
+               
+                busquedaproducto = NArticulo.BuscarCodigo(this.txtCodigo.Text);
+
+                if (busquedaproducto.Rows.Count > 0)
+                {
+                    MensajeError("Este artículo ya se encuentra registrado");
+                    this.Limpiar();
+                    this.txtCodigo.Focus();
+
+                }
+                else
+                {
+                   this.txtMarca.Focus();
+                }
+            }
         }
     }
 }

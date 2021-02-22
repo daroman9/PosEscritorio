@@ -157,7 +157,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::CapaPresentacion.Properties.Resources.Logo_la_39;
+            this.pictureBox3.Image = global::CapaPresentacion.Properties.Resources.Logo_la_39_sin_fondo;
             this.pictureBox3.Location = new System.Drawing.Point(64, 164);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(408, 275);

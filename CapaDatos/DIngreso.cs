@@ -88,14 +88,14 @@ namespace CapaDatos
                 SqlParameter ParSerie = new SqlParameter();
                 ParSerie.ParameterName = "@serie";
                 ParSerie.SqlDbType = SqlDbType.VarChar;
-                ParSerie.Size = 4;
+                ParSerie.Size = 10;
                 ParSerie.Value = Ingreso.Serie;
                 SqlCmd.Parameters.Add(ParSerie);
 
                 SqlParameter ParEstado = new SqlParameter();
                 ParEstado.ParameterName = "@estado";
                 ParEstado.SqlDbType = SqlDbType.VarChar;
-                ParEstado.Size = 7;
+                ParEstado.Size = 10;
                 ParEstado.Value = Ingreso.Estado;
                 SqlCmd.Parameters.Add(ParEstado);
 

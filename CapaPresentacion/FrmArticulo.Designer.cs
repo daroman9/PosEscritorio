@@ -288,6 +288,7 @@
             // 
             resources.ApplyResources(this.txtCodigo, "txtCodigo");
             this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
             // label6
             // 

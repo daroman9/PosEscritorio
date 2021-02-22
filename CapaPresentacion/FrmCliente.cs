@@ -41,6 +41,8 @@ namespace CapaPresentacion
         {
             this.txtNombre.Text = string.Empty;
             this.txtApellidos.Text = string.Empty;
+            this.cbTipoDocumento.SelectedIndex = 0;
+            this.cbSexo.SelectedIndex = 0;
             this.txtNumDocumento.Text = string.Empty;
             this.txtDireccion.Text = string.Empty;
             this.txtTelefono.Text = string.Empty;
@@ -57,6 +59,7 @@ namespace CapaPresentacion
             this.txtNumDocumento.ReadOnly = !valor;
             this.txtDireccion.ReadOnly = !valor;
             this.cbTipoDocumento.Enabled = valor;
+            this.cbSexo.Enabled = valor;
             this.txtTelefono.ReadOnly = !valor;
             this.txtEmail.ReadOnly = !valor;
             this.txtIdCliente.ReadOnly = !valor;
@@ -155,7 +158,7 @@ namespace CapaPresentacion
                             }
                             else
                             {
-                                this.MensajeError(Rpta);
+                                this.MensajeError("No se puede eliminar el cliente, este tiene compras asociadas");
                             }
                         }
                     }
@@ -281,15 +284,15 @@ namespace CapaPresentacion
         private void dataListado_DoubleClick(object sender, EventArgs e)
         {
             this.txtIdCliente.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["idcliente"].Value);
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["nombre"].Value);
-            this.txtApellidos.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["apellidos"].Value);
-            this.txtNumDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["num_documento"].Value);
-            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["sexo"].Value);
-            this.dtFechaNacimiento.Value =Convert.ToDateTime(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
-            this.cbTipoDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["tipo_documento"].Value);
-            this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["direccion"].Value);
-            this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["telefono"].Value);
-            this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["email"].Value);
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
+            this.txtApellidos.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Apellidos"].Value);
+            this.txtNumDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Num_Documento"].Value);
+            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Sexo"].Value);
+            this.dtFechaNacimiento.Value =Convert.ToDateTime(this.dataListado.CurrentRow.Cells["Fecha_Nacimiento"].Value);
+            this.cbTipoDocumento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Tipo_Documento"].Value);
+            this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Dirección"].Value);
+            this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Teléfono"].Value);
+            this.txtEmail.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Email"].Value);
          
             this.tabControl1.SelectedIndex = 0;
         }
