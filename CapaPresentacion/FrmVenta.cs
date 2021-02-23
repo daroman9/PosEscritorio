@@ -38,11 +38,13 @@ namespace CapaPresentacion
             this.txtEfectivo.Enabled = false;
             this.txtDebito.Enabled = false;
             this.txtDevuelta.Enabled = false;
+            this.txtSerie.Enabled = false;
         }
         private void FrmVenta_Load(object sender, EventArgs e)
         {
             this.Mostrar();
             this.Habilitar(false);
+           
             this.Botones();
             this.CrearTabla();
             this.calcularVentasDiarias();
@@ -83,7 +85,7 @@ namespace CapaPresentacion
             this.CrearTabla();
 
         }
-      
+
         //Método para habilitar los controles del formulario
 
         private void Habilitar(bool valor)
@@ -98,14 +100,14 @@ namespace CapaPresentacion
         {
             if (this.IsNuevo)
             {
-                this.Habilitar(true);
+               // this.Habilitar(true);
                 this.btnNuevo.Enabled = false;
                 this.btnGuardar.Enabled = true;
                 this.btnCancelar.Enabled = true;
             }
             else
             {
-                this.Habilitar(false);
+               // this.Habilitar(false);
                 this.btnNuevo.Enabled = true;
                 this.btnGuardar.Enabled = false;
                 this.btnCancelar.Enabled = false;
@@ -184,6 +186,8 @@ namespace CapaPresentacion
             this.lblEfectivo.Text = "Efectivo " + efectivo;
 
             this.lblDebito.Text = "Debito " + debito;
+
+            this.lblTotal.Text = "Total registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
         //Método para buscar por fechas
@@ -273,6 +277,7 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(false);
+            this.txtCodigoBarras.Focus();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -285,7 +290,8 @@ namespace CapaPresentacion
             calcularVenta();
             if (calcularVenta())
             {
-                ejecutarGuardado();
+                this.ejecutarGuardado();
+              
             }
 
         }
@@ -419,7 +425,7 @@ namespace CapaPresentacion
                     this.IsNuevo = false;
                     this.Botones();
                     this.Limpiar();
-                    //this.LimpiarDetalle();
+                    this.LimpiarDetalle();
                     this.Mostrar();
                 }
             }
@@ -434,7 +440,13 @@ namespace CapaPresentacion
 
         public void LimpiarDetalle()
         {
-
+            this.txtCodigoBarras.ReadOnly = true;
+            this.txtCodigoBarras.Text = string.Empty;
+            this.btnMultiplicar.Enabled = false;
+            this.txtCantidad.Text = string.Empty;
+            this.cmbMetodoPago.Enabled = false;
+            this.txtEfectivo.Enabled = false;
+            this.txtDebito.Enabled = false;
         }
 
         //Método para obtener la serie del último registro
@@ -1057,6 +1069,20 @@ namespace CapaPresentacion
             {
                 e.Handled = true;
             }
+
+            if (e.KeyChar == (13))
+            {
+                //Método que calcula cuantos items de cada articulo se encuentran en cada venta
+                calcularTotalItems();
+                //Método que crea una tabla con los valores a actualizar en el stock de artículos
+                disminuirArticulosStock();
+                //Método para calcular la devuelta de la venta
+                calcularVenta();
+                if (calcularVenta())
+                {
+                    ejecutarGuardado();
+                }
+            }
         }
 
         private void txtDebito_KeyPress(object sender, KeyPressEventArgs e)
@@ -1077,6 +1103,20 @@ namespace CapaPresentacion
             {
                 e.Handled = true;
             }
+
+            if (e.KeyChar == (13))
+            {
+                //Método que calcula cuantos items de cada articulo se encuentran en cada venta
+                calcularTotalItems();
+                //Método que crea una tabla con los valores a actualizar en el stock de artículos
+                disminuirArticulosStock();
+                //Método para calcular la devuelta de la venta
+                calcularVenta();
+                if (calcularVenta())
+                {
+                    ejecutarGuardado();
+                }
+            }
         }
 
         private void dataListado_DoubleClick(object sender, EventArgs e)
@@ -1094,6 +1134,7 @@ namespace CapaPresentacion
         {
             this.dataListado.DataSource = NVenta.MostrarTrabajadorFecha(Idtrabajador, DateTime.Today);
             this.OcultarColumnas();
+            this.calcularVentasDiarias();
         }
 
 

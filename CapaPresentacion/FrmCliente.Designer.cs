@@ -121,11 +121,12 @@
             this.dtFechaNacimiento.Location = new System.Drawing.Point(734, 165);
             this.dtFechaNacimiento.Name = "dtFechaNacimiento";
             this.dtFechaNacimiento.Size = new System.Drawing.Size(300, 26);
-            this.dtFechaNacimiento.TabIndex = 27;
+            this.dtFechaNacimiento.TabIndex = 6;
             // 
             // cbSexo
             // 
             this.cbSexo.FormattingEnabled = true;
+            this.cbSexo.ItemHeight = 18;
             this.cbSexo.Items.AddRange(new object[] {
             "MASCULINO",
             "FEMENINO"});
@@ -148,7 +149,7 @@
             this.txtApellidos.Location = new System.Drawing.Point(734, 45);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(300, 26);
-            this.txtApellidos.TabIndex = 24;
+            this.txtApellidos.TabIndex = 2;
             // 
             // label2
             // 
@@ -164,7 +165,7 @@
             this.txtEmail.Location = new System.Drawing.Point(187, 285);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(300, 26);
-            this.txtEmail.TabIndex = 20;
+            this.txtEmail.TabIndex = 9;
             // 
             // label10
             // 
@@ -180,7 +181,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(734, 225);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(300, 26);
-            this.txtTelefono.TabIndex = 18;
+            this.txtTelefono.TabIndex = 8;
             // 
             // label9
             // 
@@ -196,14 +197,14 @@
             this.txtDireccion.Location = new System.Drawing.Point(187, 225);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(300, 26);
-            this.txtDireccion.TabIndex = 16;
+            this.txtDireccion.TabIndex = 7;
             // 
             // txtNumDocumento
             // 
             this.txtNumDocumento.Location = new System.Drawing.Point(734, 105);
             this.txtNumDocumento.Name = "txtNumDocumento";
             this.txtNumDocumento.Size = new System.Drawing.Size(300, 26);
-            this.txtNumDocumento.TabIndex = 15;
+            this.txtNumDocumento.TabIndex = 4;
             // 
             // label8
             // 
@@ -217,6 +218,7 @@
             // cbTipoDocumento
             // 
             this.cbTipoDocumento.FormattingEnabled = true;
+            this.cbTipoDocumento.ItemHeight = 18;
             this.cbTipoDocumento.Items.AddRange(new object[] {
             "CEDULA CIUDADANIA",
             "CEDULA EXTRANJERIA"});
@@ -243,7 +245,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(454, 399);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(50, 50);
-            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.TabIndex = 13;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -256,7 +258,7 @@
             this.btnEditar.Location = new System.Drawing.Point(311, 399);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(50, 50);
-            this.btnEditar.TabIndex = 8;
+            this.btnEditar.TabIndex = 12;
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
@@ -269,7 +271,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(163, 399);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(50, 50);
-            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.TabIndex = 11;
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -282,7 +284,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(11, 399);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(50, 50);
-            this.btnNuevo.TabIndex = 6;
+            this.btnNuevo.TabIndex = 10;
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
@@ -291,7 +293,7 @@
             this.txtNombre.Location = new System.Drawing.Point(187, 45);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(300, 26);
-            this.txtNombre.TabIndex = 4;
+            this.txtNombre.TabIndex = 1;
             // 
             // label5
             // 
@@ -375,7 +377,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(713, 21);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(30, 30);
-            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.TabIndex = 4;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -388,7 +390,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(647, 22);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.TabIndex = 3;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -397,7 +399,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(215, 24);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(400, 26);
-            this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.TabIndex = 2;
             // 
             // Eliminar
             // 
@@ -414,7 +416,7 @@
             this.cbBuscar.Location = new System.Drawing.Point(9, 25);
             this.cbBuscar.Name = "cbBuscar";
             this.cbBuscar.Size = new System.Drawing.Size(150, 26);
-            this.cbBuscar.TabIndex = 8;
+            this.cbBuscar.TabIndex = 1;
             this.cbBuscar.Text = "DOCUMENTO";
             // 
             // dataListado

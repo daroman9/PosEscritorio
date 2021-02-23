@@ -288,7 +288,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(696, 217);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(30, 30);
-            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.TabIndex = 11;
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -301,7 +301,7 @@
             this.btnBuscar.Location = new System.Drawing.Point(623, 217);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscar.TabIndex = 9;
+            this.btnBuscar.TabIndex = 10;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 

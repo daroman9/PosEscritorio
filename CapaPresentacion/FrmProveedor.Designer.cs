@@ -103,7 +103,7 @@
             this.cbBuscar.Location = new System.Drawing.Point(9, 25);
             this.cbBuscar.Name = "cbBuscar";
             this.cbBuscar.Size = new System.Drawing.Size(150, 26);
-            this.cbBuscar.TabIndex = 8;
+            this.cbBuscar.TabIndex = 1;
             this.cbBuscar.Text = "DOCUMENTO";
             // 
             // dataListado

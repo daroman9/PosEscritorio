@@ -38,6 +38,7 @@ namespace CapaPresentacion
             this.txtUtilidad.ReadOnly = true;
             this.rdbPorcentaje.Checked = false;
             this.rdbPrecio.Checked = false;
+            this.btnCalcularIngreso.Enabled = false;
 
         }
 
@@ -269,6 +270,7 @@ namespace CapaPresentacion
             this.Limpiar();
             this.Habilitar(false);
             this.LimpiarDetalle();
+            this.btnCalcularIngreso.Enabled = false;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -586,6 +588,7 @@ namespace CapaPresentacion
 
         private void rdbPorcentaje_CheckedChanged(object sender, EventArgs e)
         {
+            this.btnCalcularIngreso.Enabled = true;
             if (this.txtPorcentaje.Enabled == false)
             {
                 this.txtPorcentaje.Enabled = true;
@@ -605,6 +608,7 @@ namespace CapaPresentacion
 
         private void rdbPrecio_CheckedChanged(object sender, EventArgs e)
         {
+            this.btnCalcularIngreso.Enabled = true;
             if (this.txtPorcentaje.Enabled == false)
             {
                 this.txtPorcentaje.Enabled = false;
@@ -903,15 +907,23 @@ namespace CapaPresentacion
         }
         private void btnCalcularIngreso_Click(object sender, EventArgs e)
         {
-            if (rdbPorcentaje.Checked == true & rdbPrecio.Checked == false)
+            if (this.txtPorcentaje.Text != string.Empty || this.txtPrecioVenta.Text != string.Empty)
             {
-                calcularPrecioVenta();
+                if (rdbPorcentaje.Checked == true & rdbPrecio.Checked == false)
+                {
+                    calcularPrecioVenta();
+                }
+                else if (rdbPorcentaje.Checked == false & rdbPrecio.Checked == true)
+                {
+                    calcularPorcentaje();
+                }
+                compararPrecios();
             }
-            else if (rdbPorcentaje.Checked == false & rdbPrecio.Checked == true)
+            else
             {
-                calcularPorcentaje();
+                MensajeError("Debe indicar el valor de venta");
             }
-            compararPrecios();
+           
         }
         private void compararPrecios()
         {
