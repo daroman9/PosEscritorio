@@ -54,8 +54,8 @@ namespace CapaPresentacion
             this.txtCodigo.Text = string.Empty;
             this.txtMarca.Text = string.Empty;
             this.txtDescripcion.Text = string.Empty;
-            this.txtIdCategoria.Text = string.Empty;
-            this.txtCategoria.Text = string.Empty;
+           // this.txtIdCategoria.Text = string.Empty;
+           // this.txtCategoria.Text = string.Empty;
             this.txtIdArticulo.Text = string.Empty;
             this.txtContenido.Text = string.Empty;
             this.txtDescuento.Text = string.Empty;
@@ -421,6 +421,26 @@ namespace CapaPresentacion
                 {
                    this.txtMarca.Focus();
                 }
+            }
+        }
+
+        private void txtDescuento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

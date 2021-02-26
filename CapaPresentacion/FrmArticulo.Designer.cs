@@ -153,6 +153,7 @@
             // 
             resources.ApplyResources(this.txtDescuento, "txtDescuento");
             this.txtDescuento.Name = "txtDescuento";
+            this.txtDescuento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescuento_KeyPress);
             // 
             // label3
             // 
