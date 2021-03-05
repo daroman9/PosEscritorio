@@ -224,12 +224,14 @@
             this.ventasPorFechasToolStripMenuItem.Name = "ventasPorFechasToolStripMenuItem";
             this.ventasPorFechasToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.ventasPorFechasToolStripMenuItem.Text = "Ventas por fechas";
+            this.ventasPorFechasToolStripMenuItem.Click += new System.EventHandler(this.ventasPorFechasToolStripMenuItem_Click);
             // 
             // comprasPorFechasToolStripMenuItem
             // 
             this.comprasPorFechasToolStripMenuItem.Name = "comprasPorFechasToolStripMenuItem";
             this.comprasPorFechasToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.comprasPorFechasToolStripMenuItem.Text = "Compras por fechas";
+            this.comprasPorFechasToolStripMenuItem.Click += new System.EventHandler(this.comprasPorFechasToolStripMenuItem_Click);
             // 
             // stockDeArticulosToolStripMenuItem
             // 

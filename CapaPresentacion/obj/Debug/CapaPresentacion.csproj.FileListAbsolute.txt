@@ -26,3 +26,6 @@ C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.Prop
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\libreria.dll
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\wd220net4.dll
 C:\Users\Deiby\source\repos\Pos\CapaPresentacion\bin\Debug\libreria.xml
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.Consultas.FrmConsulta_Ventas.resources
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.Consultas.FrmConsulta_Compras.resources
+C:\Users\Deiby\source\repos\Pos\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.ResolveComReference.cache

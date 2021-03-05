@@ -23,6 +23,8 @@ namespace CapaDatos
         private decimal _Debito_Credito;
         private decimal _Devuelta;
         private decimal _Total_Pagado;
+        private decimal _Iva5;
+        private decimal _Iva19;
 
         public int Idventa { get => _Idventa; set => _Idventa = value; }
         public int Idcliente { get => _Idcliente; set => _Idcliente = value; }
@@ -35,7 +37,9 @@ namespace CapaDatos
         public decimal Devuelta { get => _Devuelta; set => _Devuelta = value; }
 
         public decimal Total_Pagado { get => _Total_Pagado; set => _Total_Pagado = value; }
-       
+        public decimal Iva5 { get => _Iva5; set => _Iva5 = value; }
+        public decimal Iva19 { get => _Iva19; set => _Iva19 = value; }
+
         //Constructor vacio
 
         public DVenta()
@@ -44,7 +48,7 @@ namespace CapaDatos
         }
 
         //Constructor con parametros
-        public DVenta(int idventa, int idcliente, int idtrabajador, DateTime fecha, string serie, string metodopago, decimal efectivo, decimal debito_credito, decimal devuelta, decimal total_pagado)
+        public DVenta(int idventa, int idcliente, int idtrabajador, DateTime fecha, string serie, string metodopago, decimal efectivo, decimal debito_credito, decimal devuelta, decimal total_pagado, decimal iva5, decimal iva19)
         {
             this.Idventa = idventa;
             this.Idcliente = idcliente;
@@ -56,6 +60,8 @@ namespace CapaDatos
             this.Debito_Credito = debito_credito;
             this.Devuelta = devuelta;
             this.Total_Pagado = total_pagado;
+            this.Iva5 = iva5;
+            this.Iva19 = iva19;
         }
         //Métodos
         public string DisminuirStock(int iddetalle_ingreso, int cantidad)
@@ -182,6 +188,18 @@ namespace CapaDatos
                 ParTotal_Pagado.SqlDbType = SqlDbType.Decimal;
                 ParTotal_Pagado.Value = Venta.Total_Pagado;
                 SqlCmd.Parameters.Add(ParTotal_Pagado);
+
+                SqlParameter ParIva5 = new SqlParameter();
+                ParIva5.ParameterName = "@iva5";
+                ParIva5.SqlDbType = SqlDbType.Decimal;
+                ParIva5.Value = Venta.Iva5;
+                SqlCmd.Parameters.Add(ParIva5);
+
+                SqlParameter ParIva19 = new SqlParameter();
+                ParIva19.ParameterName = "@iva19";
+                ParIva19.SqlDbType = SqlDbType.Decimal;
+                ParIva19.Value = Venta.Iva19;
+                SqlCmd.Parameters.Add(ParIva19);
 
                 //Ejecutamos nuestro comando
 

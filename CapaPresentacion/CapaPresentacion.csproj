@@ -52,11 +52,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\FrmConsulta_Compras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmConsulta_Compras.Designer.cs">
+      <DependentUpon>FrmConsulta_Compras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\FrmConsulta_Stock_Articulos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Consultas\FrmConsulta_Stock_Articulos.Designer.cs">
       <DependentUpon>FrmConsulta_Stock_Articulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Consultas\FrmConsulta_Ventas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\FrmConsulta_Ventas.Designer.cs">
+      <DependentUpon>FrmConsulta_Ventas.cs</DependentUpon>
     </Compile>
     <Compile Include="CrearTicket.cs" />
     <Compile Include="FrmArticulo.cs">
@@ -133,8 +145,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Consultas\FrmConsulta_Compras.resx">
+      <DependentUpon>FrmConsulta_Compras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\FrmConsulta_Stock_Articulos.resx">
       <DependentUpon>FrmConsulta_Stock_Articulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\FrmConsulta_Ventas.resx">
+      <DependentUpon>FrmConsulta_Ventas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmArticulo.resx">
       <DependentUpon>FrmArticulo.cs</DependentUpon>
@@ -204,6 +222,35 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

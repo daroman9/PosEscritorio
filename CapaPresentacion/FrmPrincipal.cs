@@ -21,6 +21,8 @@ namespace CapaPresentacion
         FrmTrabajador Trabajador;
         FrmVenta Venta;
         Consultas.FrmConsulta_Stock_Articulos Stock;
+        Consultas.FrmConsulta_Ventas Ventas;
+        Consultas.FrmConsulta_Compras Compras;
         private int childFormNumber = 0;
         public string Idtrabajador = "";
         public string Apellidos = "";
@@ -302,5 +304,36 @@ namespace CapaPresentacion
         {
 
         }
+
+        private void ventasPorFechasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Ventas == null)
+            {
+                Ventas = new Consultas.FrmConsulta_Ventas();
+                Ventas.MdiParent = this;
+                Ventas.FormClosed += new FormClosedEventHandler(CerrarVentas);
+                Ventas.Show();
+            }
+        }
+        private void CerrarVentas(object sender, EventArgs e)
+        {
+            Ventas = null;
+        }
+
+        private void comprasPorFechasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Compras == null)
+            {
+                Compras = new Consultas.FrmConsulta_Compras();
+                Compras.MdiParent = this;
+                Compras.FormClosed += new FormClosedEventHandler(CerrarCompras);
+                Compras.Show();
+            }
+        }
+        private void CerrarCompras(object sender, EventArgs e)
+        {
+            Compras = null;
+        }
+ 
     }
 }

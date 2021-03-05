@@ -15,13 +15,11 @@ namespace CapaNegocio
         //Método que llama al método insertar de la clase DVenta de la capa datos
 
         public static string Insertar(int idcliente, int idtrabajador, DateTime fecha,
-            string serie, string metodopago, decimal efectivo, decimal debito_credito, decimal devuelta, decimal totalpagado, DataTable dtDetalles)
+            string serie, string metodopago, decimal efectivo, decimal debito_credito, decimal devuelta, decimal totalpagado, decimal iva5, decimal iva19, DataTable dtDetalles)
         {
             DVenta Obj = new DVenta();
             if (idcliente ==0)
             {
-               
-                //Obj.Idcliente = idcliente;
                 Obj.Idtrabajador = idtrabajador;
                 Obj.Fecha = fecha;
                 Obj.Serie = serie;
@@ -30,6 +28,8 @@ namespace CapaNegocio
                 Obj.Debito_Credito = debito_credito;
                 Obj.Devuelta = devuelta;
                 Obj.Total_Pagado = totalpagado;
+                Obj.Iva5 = iva5;
+                Obj.Iva19 = iva19;
             }
             else
             {
@@ -75,11 +75,6 @@ namespace CapaNegocio
             }
             return Obj.updateStock(detalles);
         }
-
-
-
-
-
 
         //Método que llama al método eliminar de la clase DVenta de la capa de datos
         public static string Eliminar(int idventa)

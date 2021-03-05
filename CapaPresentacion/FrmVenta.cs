@@ -397,7 +397,7 @@ namespace CapaPresentacion
 
                             rpta = NVenta.Insertar(Convert.ToInt32(idlciente), Idtrabajador, this.dtFecha.Value, this.txtSerie.Text, 
                                                    this.cmbMetodoPago.Text, efectivo, debito, Convert.ToDecimal(this.txtDevuelta.Text),
-                                                   Convert.ToDecimal(this.lblTotalPagado.Text), dtDetalle);
+                                                   Convert.ToDecimal(this.lblTotalPagado.Text), Convert.ToDecimal(this.lbliva5.Text), Convert.ToDecimal(this.lbliva19.Text) ,dtDetalle);
 
                             if (rpta.Equals("OK"))
                             {
@@ -406,7 +406,7 @@ namespace CapaPresentacion
                         }
                         else
                         {
-                            MensajeError("No ha adjuntado articulos en el ingreso ");
+                            MensajeError("No ha adjuntado articulos en la venta ");
                         }
                     }
 

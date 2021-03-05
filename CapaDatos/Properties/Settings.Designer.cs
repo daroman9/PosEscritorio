@@ -26,8 +26,7 @@ namespace CapaDatos.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ZAMORAK\\SQLEXPRESS;Initial Catalog=dbventas;Integrated Securi" +
-            "ty=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ZAMORAK\\SQLEXPRESS;Initial Catalog=dbventas;Integrated Security=True")]
         public string Cn {
             get {
                 return ((string)(this["Cn"]));
