@@ -70,9 +70,21 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
             this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label16 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCancelarFruver = new System.Windows.Forms.Button();
+            this.btnEditarFruver = new System.Windows.Forms.Button();
+            this.btnGuardarFruver = new System.Windows.Forms.Button();
+            this.btnNuevoFruver = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtNombreFruver = new System.Windows.Forms.TextBox();
+            this.txtPrecioFruver = new System.Windows.Forms.TextBox();
+            this.txtBuscarFruver = new System.Windows.Forms.TextBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,6 +92,8 @@
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnBuscarFruver = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -89,6 +103,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pxImagen)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +114,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage4);
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -412,15 +430,6 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            resources.ApplyResources(this.btnBuscar, "btnBuscar");
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // txtBuscar
             // 
             resources.ApplyResources(this.txtBuscar, "txtBuscar");
@@ -431,6 +440,100 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.btnBuscarFruver);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.groupBox2);
+            this.tabPage4.Controls.Add(this.txtBuscarFruver);
+            this.tabPage4.Controls.Add(this.dataGridView1);
+            resources.ApplyResources(this.tabPage4, "tabPage4");
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnCancelarFruver);
+            this.groupBox2.Controls.Add(this.btnEditarFruver);
+            this.groupBox2.Controls.Add(this.btnGuardarFruver);
+            this.groupBox2.Controls.Add(this.btnNuevoFruver);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.txtNombreFruver);
+            this.groupBox2.Controls.Add(this.txtPrecioFruver);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // btnCancelarFruver
+            // 
+            this.btnCancelarFruver.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
+            resources.ApplyResources(this.btnCancelarFruver, "btnCancelarFruver");
+            this.btnCancelarFruver.FlatAppearance.BorderSize = 0;
+            this.btnCancelarFruver.Name = "btnCancelarFruver";
+            this.btnCancelarFruver.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarFruver
+            // 
+            this.btnEditarFruver.BackgroundImage = global::CapaPresentacion.Properties.Resources.edit;
+            resources.ApplyResources(this.btnEditarFruver, "btnEditarFruver");
+            this.btnEditarFruver.FlatAppearance.BorderSize = 0;
+            this.btnEditarFruver.Name = "btnEditarFruver";
+            this.btnEditarFruver.UseVisualStyleBackColor = true;
+            // 
+            // btnGuardarFruver
+            // 
+            this.btnGuardarFruver.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
+            resources.ApplyResources(this.btnGuardarFruver, "btnGuardarFruver");
+            this.btnGuardarFruver.FlatAppearance.BorderSize = 0;
+            this.btnGuardarFruver.Name = "btnGuardarFruver";
+            this.btnGuardarFruver.UseVisualStyleBackColor = true;
+            // 
+            // btnNuevoFruver
+            // 
+            this.btnNuevoFruver.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
+            resources.ApplyResources(this.btnNuevoFruver, "btnNuevoFruver");
+            this.btnNuevoFruver.FlatAppearance.BorderSize = 0;
+            this.btnNuevoFruver.Name = "btnNuevoFruver";
+            this.btnNuevoFruver.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // label9
+            // 
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            // 
+            // txtNombreFruver
+            // 
+            resources.ApplyResources(this.txtNombreFruver, "txtNombreFruver");
+            this.txtNombreFruver.Name = "txtNombreFruver";
+            // 
+            // txtPrecioFruver
+            // 
+            resources.ApplyResources(this.txtPrecioFruver, "txtPrecioFruver");
+            this.txtPrecioFruver.Name = "txtPrecioFruver";
+            // 
+            // txtBuscarFruver
+            // 
+            resources.ApplyResources(this.txtBuscarFruver, "txtBuscarFruver");
+            this.txtBuscarFruver.Name = "txtBuscarFruver";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataGridView1, "dataGridView1");
+            this.dataGridView1.Name = "dataGridView1";
             // 
             // txtIdCategoria
             // 
@@ -464,6 +567,23 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            resources.ApplyResources(this.btnBuscar, "btnBuscar");
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnBuscarFruver
+            // 
+            this.btnBuscarFruver.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            resources.ApplyResources(this.btnBuscarFruver, "btnBuscarFruver");
+            this.btnBuscarFruver.FlatAppearance.BorderSize = 0;
+            this.btnBuscarFruver.Name = "btnBuscarFruver";
+            this.btnBuscarFruver.UseVisualStyleBackColor = true;
+            // 
             // FrmArticulo
             // 
             resources.ApplyResources(this, "$this");
@@ -488,6 +608,11 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -504,7 +629,6 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.CheckBox chkEliminar;
         private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage2;
@@ -547,5 +671,20 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnCancelarFruver;
+        private System.Windows.Forms.Button btnEditarFruver;
+        private System.Windows.Forms.Button btnGuardarFruver;
+        private System.Windows.Forms.Button btnNuevoFruver;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtNombreFruver;
+        private System.Windows.Forms.TextBox txtPrecioFruver;
+        private System.Windows.Forms.TextBox txtBuscarFruver;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnBuscarFruver;
     }
 }

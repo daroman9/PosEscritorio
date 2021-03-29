@@ -34,9 +34,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.txtSerie = new System.Windows.Forms.TextBox();
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dtFecha2 = new System.Windows.Forms.DateTimePicker();
@@ -46,11 +43,9 @@
             this.lblDebito = new System.Windows.Forms.Label();
             this.lblEfectivo = new System.Windows.Forms.Label();
             this.lblTotalVendido = new System.Windows.Forms.Label();
-            this.btnVolverDataListado = new System.Windows.Forms.Button();
             this.dtFecha1 = new System.Windows.Forms.DateTimePicker();
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -79,7 +74,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblArticulo = new System.Windows.Forms.Label();
             this.dataListadoDetalle = new System.Windows.Forms.DataGridView();
-            this.btnQuitar = new System.Windows.Forms.Button();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -95,18 +89,32 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.btnBuscarSinCodigo = new System.Windows.Forms.Button();
             this.dataListadoNoCodigo = new System.Windows.Forms.DataGridView();
             this.txtBuscarArticuloSinCodigo = new System.Windows.Forms.TextBox();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
-            this.btnBuscarArticulo = new System.Windows.Forms.Button();
             this.cbBuscar = new System.Windows.Forms.ComboBox();
             this.dataListadoClientes = new System.Windows.Forms.DataGridView();
             this.txtBuscarCliente = new System.Windows.Forms.TextBox();
             this.dataListadoArticulos = new System.Windows.Forms.DataGridView();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.lblImpresora = new System.Windows.Forms.Label();
+            this.btnQuitar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnBuscarSinCodigo = new System.Windows.Forms.Button();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.btnBuscarArticulo = new System.Windows.Forms.Button();
+            this.btnVolverDataListado = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -123,6 +131,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoNoCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCantidad
@@ -166,45 +176,6 @@
             this.dtFecha.Size = new System.Drawing.Size(200, 23);
             this.dtFecha.TabIndex = 4;
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(249, 539);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(50, 50);
-            this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(140, 539);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(50, 50);
-            this.btnGuardar.TabIndex = 10;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
-            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNuevo.FlatAppearance.BorderSize = 0;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Location = new System.Drawing.Point(16, 539);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(50, 50);
-            this.btnNuevo.TabIndex = 9;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -238,14 +209,14 @@
             this.tabPage1.Controls.Add(this.lblDebito);
             this.tabPage1.Controls.Add(this.lblEfectivo);
             this.tabPage1.Controls.Add(this.lblTotalVendido);
-            this.tabPage1.Controls.Add(this.btnVolverDataListado);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.dtFecha2);
             this.tabPage1.Controls.Add(this.dtFecha1);
             this.tabPage1.Controls.Add(this.dataListado);
             this.tabPage1.Controls.Add(this.lblTotal);
-            this.tabPage1.Controls.Add(this.btnBuscar);
             this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.btnVolverDataListado);
+            this.tabPage1.Controls.Add(this.btnBuscar);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -300,19 +271,6 @@
             this.lblTotalVendido.TabIndex = 13;
             this.lblTotalVendido.Text = "label3";
             // 
-            // btnVolverDataListado
-            // 
-            this.btnVolverDataListado.BackgroundImage = global::CapaPresentacion.Properties.Resources.back;
-            this.btnVolverDataListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnVolverDataListado.FlatAppearance.BorderSize = 0;
-            this.btnVolverDataListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverDataListado.Location = new System.Drawing.Point(34, 61);
-            this.btnVolverDataListado.Name = "btnVolverDataListado";
-            this.btnVolverDataListado.Size = new System.Drawing.Size(40, 40);
-            this.btnVolverDataListado.TabIndex = 5;
-            this.btnVolverDataListado.UseVisualStyleBackColor = true;
-            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
-            // 
             // dtFecha1
             // 
             this.dtFecha1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -347,19 +305,6 @@
             this.lblTotal.Size = new System.Drawing.Size(47, 15);
             this.lblTotal.TabIndex = 6;
             this.lblTotal.Text = "label3";
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(802, 13);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscar.TabIndex = 3;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
             // label2
             // 
@@ -638,19 +583,6 @@
             this.dataListadoDetalle.Size = new System.Drawing.Size(1161, 312);
             this.dataListadoDetalle.TabIndex = 59;
             // 
-            // btnQuitar
-            // 
-            this.btnQuitar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
-            this.btnQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuitar.FlatAppearance.BorderSize = 0;
-            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitar.Location = new System.Drawing.Point(1111, 433);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(50, 50);
-            this.btnQuitar.TabIndex = 8;
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click_1);
-            // 
             // txtCliente
             // 
             this.txtCliente.Location = new System.Drawing.Point(99, 465);
@@ -740,6 +672,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(2, 28);
             this.tabControl1.Name = "tabControl1";
@@ -753,17 +686,17 @@
             this.tabPage3.Controls.Add(this.label18);
             this.tabPage3.Controls.Add(this.label17);
             this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.btnBuscarSinCodigo);
             this.tabPage3.Controls.Add(this.dataListadoNoCodigo);
             this.tabPage3.Controls.Add(this.txtBuscarArticuloSinCodigo);
-            this.tabPage3.Controls.Add(this.btnBuscarCliente);
-            this.tabPage3.Controls.Add(this.btnBuscarArticulo);
             this.tabPage3.Controls.Add(this.cbBuscar);
             this.tabPage3.Controls.Add(this.dataListadoClientes);
             this.tabPage3.Controls.Add(this.txtBuscarCliente);
             this.tabPage3.Controls.Add(this.dataListadoArticulos);
             this.tabPage3.Controls.Add(this.txtBuscarNombreArticulo);
             this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.btnBuscarSinCodigo);
+            this.tabPage3.Controls.Add(this.btnBuscarCliente);
+            this.tabPage3.Controls.Add(this.btnBuscarArticulo);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -808,19 +741,6 @@
             this.label15.TabIndex = 29;
             this.label15.Text = "Nombre:";
             // 
-            // btnBuscarSinCodigo
-            // 
-            this.btnBuscarSinCodigo.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.btnBuscarSinCodigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscarSinCodigo.FlatAppearance.BorderSize = 0;
-            this.btnBuscarSinCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarSinCodigo.Location = new System.Drawing.Point(395, 8);
-            this.btnBuscarSinCodigo.Name = "btnBuscarSinCodigo";
-            this.btnBuscarSinCodigo.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscarSinCodigo.TabIndex = 2;
-            this.btnBuscarSinCodigo.UseVisualStyleBackColor = true;
-            this.btnBuscarSinCodigo.Click += new System.EventHandler(this.btnBuscarSinCodigo_Click);
-            // 
             // dataListadoNoCodigo
             // 
             this.dataListadoNoCodigo.AllowUserToAddRows = false;
@@ -846,32 +766,6 @@
             this.txtBuscarArticuloSinCodigo.Size = new System.Drawing.Size(300, 23);
             this.txtBuscarArticuloSinCodigo.TabIndex = 1;
             this.txtBuscarArticuloSinCodigo.TextChanged += new System.EventHandler(this.txtBuscarArticuloSinCodigo_TextChanged);
-            // 
-            // btnBuscarCliente
-            // 
-            this.btnBuscarCliente.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.btnBuscarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscarCliente.FlatAppearance.BorderSize = 0;
-            this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarCliente.Location = new System.Drawing.Point(497, 417);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscarCliente.TabIndex = 7;
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
-            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
-            // 
-            // btnBuscarArticulo
-            // 
-            this.btnBuscarArticulo.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.btnBuscarArticulo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscarArticulo.FlatAppearance.BorderSize = 0;
-            this.btnBuscarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarArticulo.Location = new System.Drawing.Point(395, 203);
-            this.btnBuscarArticulo.Name = "btnBuscarArticulo";
-            this.btnBuscarArticulo.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscarArticulo.TabIndex = 4;
-            this.btnBuscarArticulo.UseVisualStyleBackColor = true;
-            this.btnBuscarArticulo.Click += new System.EventHandler(this.btnBuscarArticulo_Click);
             // 
             // cbBuscar
             // 
@@ -945,6 +839,67 @@
             this.label10.TabIndex = 8;
             this.label10.Text = "Nombre:";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.button3);
+            this.tabPage4.Controls.Add(this.dataGridView1);
+            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.label21);
+            this.tabPage4.Controls.Add(this.btnEliminar);
+            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.label22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1170, 602);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Frutas y Verduras";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(13, 522);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 76);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1164, 362);
+            this.dataGridView1.TabIndex = 16;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(88, 25);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(400, 23);
+            this.textBox1.TabIndex = 15;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F);
+            this.label21.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label21.Location = new System.Drawing.Point(653, 28);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 24);
+            this.label21.TabIndex = 13;
+            this.label21.Text = "label3";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label22.Location = new System.Drawing.Point(10, 28);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(63, 15);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "Nombre:";
+            // 
             // lblImpresora
             // 
             this.lblImpresora.AutoSize = true;
@@ -955,6 +910,149 @@
             this.lblImpresora.Text = "label21";
             this.lblImpresora.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.lblImpresora.Visible = false;
+            // 
+            // btnQuitar
+            // 
+            this.btnQuitar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
+            this.btnQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuitar.FlatAppearance.BorderSize = 0;
+            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitar.Location = new System.Drawing.Point(1111, 433);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(50, 50);
+            this.btnQuitar.TabIndex = 8;
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click_1);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Location = new System.Drawing.Point(249, 539);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(50, 50);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(140, 539);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(50, 50);
+            this.btnGuardar.TabIndex = 10;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
+            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Location = new System.Drawing.Point(16, 539);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(50, 50);
+            this.btnNuevo.TabIndex = 9;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnBuscarSinCodigo
+            // 
+            this.btnBuscarSinCodigo.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarSinCodigo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarSinCodigo.FlatAppearance.BorderSize = 0;
+            this.btnBuscarSinCodigo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarSinCodigo.Location = new System.Drawing.Point(395, 8);
+            this.btnBuscarSinCodigo.Name = "btnBuscarSinCodigo";
+            this.btnBuscarSinCodigo.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscarSinCodigo.TabIndex = 2;
+            this.btnBuscarSinCodigo.UseVisualStyleBackColor = true;
+            this.btnBuscarSinCodigo.Click += new System.EventHandler(this.btnBuscarSinCodigo_Click);
+            // 
+            // btnBuscarCliente
+            // 
+            this.btnBuscarCliente.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarCliente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarCliente.FlatAppearance.BorderSize = 0;
+            this.btnBuscarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(497, 417);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscarCliente.TabIndex = 7;
+            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
+            // 
+            // btnBuscarArticulo
+            // 
+            this.btnBuscarArticulo.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarArticulo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarArticulo.FlatAppearance.BorderSize = 0;
+            this.btnBuscarArticulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarArticulo.Location = new System.Drawing.Point(395, 203);
+            this.btnBuscarArticulo.Name = "btnBuscarArticulo";
+            this.btnBuscarArticulo.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscarArticulo.TabIndex = 4;
+            this.btnBuscarArticulo.UseVisualStyleBackColor = true;
+            this.btnBuscarArticulo.Click += new System.EventHandler(this.btnBuscarArticulo_Click);
+            // 
+            // btnVolverDataListado
+            // 
+            this.btnVolverDataListado.BackgroundImage = global::CapaPresentacion.Properties.Resources.back;
+            this.btnVolverDataListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVolverDataListado.FlatAppearance.BorderSize = 0;
+            this.btnVolverDataListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolverDataListado.Location = new System.Drawing.Point(34, 61);
+            this.btnVolverDataListado.Name = "btnVolverDataListado";
+            this.btnVolverDataListado.Size = new System.Drawing.Size(40, 40);
+            this.btnVolverDataListado.TabIndex = 5;
+            this.btnVolverDataListado.UseVisualStyleBackColor = true;
+            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(802, 13);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnEliminar.Location = new System.Drawing.Point(575, 20);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(30, 30);
+            this.btnEliminar.TabIndex = 11;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.button2.Location = new System.Drawing.Point(517, 20);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.TabIndex = 10;
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // FrmVenta
             // 
@@ -995,6 +1093,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoNoCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1079,5 +1180,13 @@
         private System.Windows.Forms.Label lblsubtotal;
         private System.Windows.Forms.Label lbliva5;
         private System.Windows.Forms.Button btnCuadre;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

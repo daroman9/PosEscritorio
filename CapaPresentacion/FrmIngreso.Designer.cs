@@ -35,7 +35,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnVolverDataListado = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.dtFecha2 = new System.Windows.Forms.DateTimePicker();
             this.dtFecha1 = new System.Windows.Forms.DateTimePicker();
@@ -43,8 +42,6 @@
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTotal = new System.Windows.Forms.Label();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -66,12 +63,9 @@
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataListadoProveedores = new System.Windows.Forms.DataGridView();
-            this.btnBuscarProveedores = new System.Windows.Forms.Button();
             this.txtBuscarNombreProveedores = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.lblTotalPagado = new System.Windows.Forms.Label();
-            this.btnQuitar = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.dtFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.dtFechaProduccion = new System.Windows.Forms.DateTimePicker();
@@ -86,17 +80,13 @@
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.txtProveedor = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label21 = new System.Windows.Forms.Label();
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.dataListadoArticulos = new System.Windows.Forms.DataGridView();
-            this.btnBuscarNombreArticulos = new System.Windows.Forms.Button();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tabArticulos = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -106,11 +96,8 @@
             this.txtPrecioVentaActual = new System.Windows.Forms.TextBox();
             this.btnCalcularArticulo = new System.Windows.Forms.Button();
             this.txtMarca = new System.Windows.Forms.TextBox();
-            this.btnEditarIngreso = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
-            this.btnCancelarIngreso = new System.Windows.Forms.Button();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.btnGuardarIngreso = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.dtFechaVencimientoIngreso = new System.Windows.Forms.DateTimePicker();
             this.label28 = new System.Windows.Forms.Label();
@@ -134,6 +121,19 @@
             this.txtIdProveedor = new System.Windows.Forms.TextBox();
             this.txtIdIngreso = new System.Windows.Forms.TextBox();
             this.txtIddetalleIngreso = new System.Windows.Forms.TextBox();
+            this.btnBuscarProveedores = new System.Windows.Forms.Button();
+            this.btnQuitar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnBuscarNombreArticulos = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnVolverDataListado = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnEditarIngreso = new System.Windows.Forms.Button();
+            this.btnCancelarIngreso = new System.Windows.Forms.Button();
+            this.btnGuardarIngreso = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -188,9 +188,9 @@
             this.tabPage1.Controls.Add(this.dataListado);
             this.tabPage1.Controls.Add(this.lblTotal);
             this.tabPage1.Controls.Add(this.chkEliminar);
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.btnEliminar);
             this.tabPage1.Controls.Add(this.btnBuscar);
-            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -198,20 +198,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado de ingresos";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnVolverDataListado
-            // 
-            this.btnVolverDataListado.BackgroundImage = global::CapaPresentacion.Properties.Resources.back;
-            this.btnVolverDataListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnVolverDataListado.FlatAppearance.BorderSize = 0;
-            this.btnVolverDataListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverDataListado.Location = new System.Drawing.Point(119, 62);
-            this.btnVolverDataListado.Name = "btnVolverDataListado";
-            this.btnVolverDataListado.Size = new System.Drawing.Size(40, 40);
-            this.btnVolverDataListado.TabIndex = 11;
-            this.btnVolverDataListado.UseVisualStyleBackColor = true;
-            this.btnVolverDataListado.Visible = false;
-            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
             // 
             // label12
             // 
@@ -285,32 +271,6 @@
             this.chkEliminar.Text = "Anular";
             this.chkEliminar.UseVisualStyleBackColor = true;
             this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
-            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(751, 24);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(30, 30);
-            this.btnEliminar.TabIndex = 3;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(681, 24);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label2
             // 
@@ -566,19 +526,6 @@
             this.dataListadoProveedores.TabIndex = 7;
             this.dataListadoProveedores.DoubleClick += new System.EventHandler(this.dataListadoProveedores_DoubleClick);
             // 
-            // btnBuscarProveedores
-            // 
-            this.btnBuscarProveedores.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.btnBuscarProveedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscarProveedores.FlatAppearance.BorderSize = 0;
-            this.btnBuscarProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarProveedores.Location = new System.Drawing.Point(285, 13);
-            this.btnBuscarProveedores.Name = "btnBuscarProveedores";
-            this.btnBuscarProveedores.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscarProveedores.TabIndex = 2;
-            this.btnBuscarProveedores.UseVisualStyleBackColor = true;
-            this.btnBuscarProveedores.Click += new System.EventHandler(this.btnBuscarProveedores_Click);
-            // 
             // txtBuscarNombreProveedores
             // 
             this.txtBuscarNombreProveedores.Location = new System.Drawing.Point(83, 18);
@@ -604,33 +551,6 @@
             this.lblTotalPagado.Size = new System.Drawing.Size(27, 15);
             this.lblTotalPagado.TabIndex = 40;
             this.lblTotalPagado.Text = "0.0";
-            // 
-            // btnQuitar
-            // 
-            this.btnQuitar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
-            this.btnQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuitar.Enabled = false;
-            this.btnQuitar.FlatAppearance.BorderSize = 0;
-            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitar.Location = new System.Drawing.Point(1080, 336);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(30, 30);
-            this.btnQuitar.TabIndex = 49;
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(1080, 247);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(30, 30);
-            this.btnAgregar.TabIndex = 48;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // dtFechaVencimiento
             // 
@@ -748,19 +668,6 @@
             this.label7.TabIndex = 17;
             this.label7.Text = "Proveedor";
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(228, 540);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(50, 50);
-            this.btnCancelar.TabIndex = 9;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage3);
@@ -823,19 +730,6 @@
             this.dataListadoArticulos.TabIndex = 7;
             this.dataListadoArticulos.DoubleClick += new System.EventHandler(this.dataListadoArticulos_DoubleClick);
             // 
-            // btnBuscarNombreArticulos
-            // 
-            this.btnBuscarNombreArticulos.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.btnBuscarNombreArticulos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscarNombreArticulos.FlatAppearance.BorderSize = 0;
-            this.btnBuscarNombreArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscarNombreArticulos.Location = new System.Drawing.Point(496, 17);
-            this.btnBuscarNombreArticulos.Name = "btnBuscarNombreArticulos";
-            this.btnBuscarNombreArticulos.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscarNombreArticulos.TabIndex = 2;
-            this.btnBuscarNombreArticulos.UseVisualStyleBackColor = true;
-            this.btnBuscarNombreArticulos.Click += new System.EventHandler(this.btnBuscarNombreArticulos_Click);
-            // 
             // txtBuscarNombreArticulo
             // 
             this.txtBuscarNombreArticulo.Location = new System.Drawing.Point(319, 19);
@@ -852,32 +746,6 @@
             this.label10.Size = new System.Drawing.Size(63, 15);
             this.label10.TabIndex = 0;
             this.label10.Text = "Nombre:";
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(124, 540);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(50, 50);
-            this.btnGuardar.TabIndex = 7;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
-            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNuevo.FlatAppearance.BorderSize = 0;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Location = new System.Drawing.Point(3, 540);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(50, 50);
-            this.btnNuevo.TabIndex = 6;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // label4
             // 
@@ -990,21 +858,6 @@
             this.txtMarca.Size = new System.Drawing.Size(300, 23);
             this.txtMarca.TabIndex = 1;
             // 
-            // btnEditarIngreso
-            // 
-            this.btnEditarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.edit;
-            this.btnEditarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEditarIngreso.Enabled = false;
-            this.btnEditarIngreso.FlatAppearance.BorderSize = 0;
-            this.btnEditarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarIngreso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEditarIngreso.Location = new System.Drawing.Point(196, 434);
-            this.btnEditarIngreso.Name = "btnEditarIngreso";
-            this.btnEditarIngreso.Size = new System.Drawing.Size(50, 50);
-            this.btnEditarIngreso.TabIndex = 66;
-            this.btnEditarIngreso.UseVisualStyleBackColor = true;
-            this.btnEditarIngreso.Click += new System.EventHandler(this.btnEditarIngreso_Click);
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -1014,20 +867,6 @@
             this.label24.TabIndex = 52;
             this.label24.Text = "Marca:";
             // 
-            // btnCancelarIngreso
-            // 
-            this.btnCancelarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
-            this.btnCancelarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancelarIngreso.Enabled = false;
-            this.btnCancelarIngreso.FlatAppearance.BorderSize = 0;
-            this.btnCancelarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelarIngreso.Location = new System.Drawing.Point(333, 434);
-            this.btnCancelarIngreso.Name = "btnCancelarIngreso";
-            this.btnCancelarIngreso.Size = new System.Drawing.Size(50, 50);
-            this.btnCancelarIngreso.TabIndex = 65;
-            this.btnCancelarIngreso.UseVisualStyleBackColor = true;
-            this.btnCancelarIngreso.Click += new System.EventHandler(this.btnCancelarIngreso_Click);
-            // 
             // txtDescripcion
             // 
             this.txtDescripcion.Enabled = false;
@@ -1035,20 +874,6 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(300, 23);
             this.txtDescripcion.TabIndex = 6;
-            // 
-            // btnGuardarIngreso
-            // 
-            this.btnGuardarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
-            this.btnGuardarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGuardarIngreso.Enabled = false;
-            this.btnGuardarIngreso.FlatAppearance.BorderSize = 0;
-            this.btnGuardarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarIngreso.Location = new System.Drawing.Point(49, 434);
-            this.btnGuardarIngreso.Name = "btnGuardarIngreso";
-            this.btnGuardarIngreso.Size = new System.Drawing.Size(50, 50);
-            this.btnGuardarIngreso.TabIndex = 64;
-            this.btnGuardarIngreso.UseVisualStyleBackColor = true;
-            this.btnGuardarIngreso.Click += new System.EventHandler(this.btnGuardarIngreso_Click);
             // 
             // label25
             // 
@@ -1252,6 +1077,181 @@
             this.txtIddetalleIngreso.Size = new System.Drawing.Size(10, 20);
             this.txtIddetalleIngreso.TabIndex = 0;
             this.txtIddetalleIngreso.Visible = false;
+            // 
+            // btnBuscarProveedores
+            // 
+            this.btnBuscarProveedores.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarProveedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarProveedores.FlatAppearance.BorderSize = 0;
+            this.btnBuscarProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarProveedores.Location = new System.Drawing.Point(285, 13);
+            this.btnBuscarProveedores.Name = "btnBuscarProveedores";
+            this.btnBuscarProveedores.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscarProveedores.TabIndex = 2;
+            this.btnBuscarProveedores.UseVisualStyleBackColor = true;
+            this.btnBuscarProveedores.Click += new System.EventHandler(this.btnBuscarProveedores_Click);
+            // 
+            // btnQuitar
+            // 
+            this.btnQuitar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
+            this.btnQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuitar.Enabled = false;
+            this.btnQuitar.FlatAppearance.BorderSize = 0;
+            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitar.Location = new System.Drawing.Point(1080, 336);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(30, 30);
+            this.btnQuitar.TabIndex = 49;
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Location = new System.Drawing.Point(1080, 247);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(30, 30);
+            this.btnAgregar.TabIndex = 48;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Location = new System.Drawing.Point(228, 540);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(50, 50);
+            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnBuscarNombreArticulos
+            // 
+            this.btnBuscarNombreArticulos.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarNombreArticulos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarNombreArticulos.FlatAppearance.BorderSize = 0;
+            this.btnBuscarNombreArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarNombreArticulos.Location = new System.Drawing.Point(496, 17);
+            this.btnBuscarNombreArticulos.Name = "btnBuscarNombreArticulos";
+            this.btnBuscarNombreArticulos.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscarNombreArticulos.TabIndex = 2;
+            this.btnBuscarNombreArticulos.UseVisualStyleBackColor = true;
+            this.btnBuscarNombreArticulos.Click += new System.EventHandler(this.btnBuscarNombreArticulos_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(124, 540);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(50, 50);
+            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
+            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Location = new System.Drawing.Point(3, 540);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(50, 50);
+            this.btnNuevo.TabIndex = 6;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnVolverDataListado
+            // 
+            this.btnVolverDataListado.BackgroundImage = global::CapaPresentacion.Properties.Resources.back;
+            this.btnVolverDataListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVolverDataListado.FlatAppearance.BorderSize = 0;
+            this.btnVolverDataListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolverDataListado.Location = new System.Drawing.Point(119, 62);
+            this.btnVolverDataListado.Name = "btnVolverDataListado";
+            this.btnVolverDataListado.Size = new System.Drawing.Size(40, 40);
+            this.btnVolverDataListado.TabIndex = 11;
+            this.btnVolverDataListado.UseVisualStyleBackColor = true;
+            this.btnVolverDataListado.Visible = false;
+            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Location = new System.Drawing.Point(751, 24);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(30, 30);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(681, 24);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnEditarIngreso
+            // 
+            this.btnEditarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.edit;
+            this.btnEditarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditarIngreso.Enabled = false;
+            this.btnEditarIngreso.FlatAppearance.BorderSize = 0;
+            this.btnEditarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarIngreso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnEditarIngreso.Location = new System.Drawing.Point(196, 434);
+            this.btnEditarIngreso.Name = "btnEditarIngreso";
+            this.btnEditarIngreso.Size = new System.Drawing.Size(50, 50);
+            this.btnEditarIngreso.TabIndex = 66;
+            this.btnEditarIngreso.UseVisualStyleBackColor = true;
+            this.btnEditarIngreso.Click += new System.EventHandler(this.btnEditarIngreso_Click);
+            // 
+            // btnCancelarIngreso
+            // 
+            this.btnCancelarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
+            this.btnCancelarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelarIngreso.Enabled = false;
+            this.btnCancelarIngreso.FlatAppearance.BorderSize = 0;
+            this.btnCancelarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarIngreso.Location = new System.Drawing.Point(333, 434);
+            this.btnCancelarIngreso.Name = "btnCancelarIngreso";
+            this.btnCancelarIngreso.Size = new System.Drawing.Size(50, 50);
+            this.btnCancelarIngreso.TabIndex = 65;
+            this.btnCancelarIngreso.UseVisualStyleBackColor = true;
+            this.btnCancelarIngreso.Click += new System.EventHandler(this.btnCancelarIngreso_Click);
+            // 
+            // btnGuardarIngreso
+            // 
+            this.btnGuardarIngreso.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
+            this.btnGuardarIngreso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGuardarIngreso.Enabled = false;
+            this.btnGuardarIngreso.FlatAppearance.BorderSize = 0;
+            this.btnGuardarIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarIngreso.Location = new System.Drawing.Point(49, 434);
+            this.btnGuardarIngreso.Name = "btnGuardarIngreso";
+            this.btnGuardarIngreso.Size = new System.Drawing.Size(50, 50);
+            this.btnGuardarIngreso.TabIndex = 64;
+            this.btnGuardarIngreso.UseVisualStyleBackColor = true;
+            this.btnGuardarIngreso.Click += new System.EventHandler(this.btnGuardarIngreso_Click);
             // 
             // FrmIngreso
             // 
