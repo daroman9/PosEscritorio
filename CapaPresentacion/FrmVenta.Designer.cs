@@ -47,6 +47,8 @@
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnVolverDataListado = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
@@ -74,9 +76,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.lblArticulo = new System.Windows.Forms.Label();
             this.dataListadoDetalle = new System.Windows.Forms.DataGridView();
+            this.btnQuitar = new System.Windows.Forms.Button();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.dataListadoDisminucion = new System.Windows.Forms.DataGridView();
             this.dataDisminuirStock = new System.Windows.Forms.DataGridView();
             this.dataPrueba = new System.Windows.Forms.DataGridView();
@@ -84,6 +90,21 @@
             this.dataArticulo = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtTotalFruver = new System.Windows.Forms.TextBox();
+            this.btnAceptarFruver = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtGramos = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtPrecioFruver = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtNombreFruver = new System.Windows.Forms.TextBox();
+            this.btnCalcularFruver = new System.Windows.Forms.Button();
+            this.dataListadoFruver = new System.Windows.Forms.DataGridView();
+            this.txtBuscarFruver = new System.Windows.Forms.TextBox();
+            this.btnBuscarFruver = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -97,24 +118,10 @@
             this.dataListadoArticulos = new System.Windows.Forms.DataGridView();
             this.txtBuscarNombreArticulo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.lblImpresora = new System.Windows.Forms.Label();
-            this.btnQuitar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.btnBuscarSinCodigo = new System.Windows.Forms.Button();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.btnBuscarArticulo = new System.Windows.Forms.Button();
-            this.btnVolverDataListado = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lblImpresora = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -127,12 +134,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataArticulo)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoFruver)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoNoCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCantidad
@@ -314,6 +321,32 @@
             this.label2.Size = new System.Drawing.Size(90, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Fecha Inicio:";
+            // 
+            // btnVolverDataListado
+            // 
+            this.btnVolverDataListado.BackgroundImage = global::CapaPresentacion.Properties.Resources.back;
+            this.btnVolverDataListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVolverDataListado.FlatAppearance.BorderSize = 0;
+            this.btnVolverDataListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolverDataListado.Location = new System.Drawing.Point(34, 61);
+            this.btnVolverDataListado.Name = "btnVolverDataListado";
+            this.btnVolverDataListado.Size = new System.Drawing.Size(40, 40);
+            this.btnVolverDataListado.TabIndex = 5;
+            this.btnVolverDataListado.UseVisualStyleBackColor = true;
+            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(802, 13);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
             // 
             // toolTip1
             // 
@@ -583,6 +616,19 @@
             this.dataListadoDetalle.Size = new System.Drawing.Size(1161, 312);
             this.dataListadoDetalle.TabIndex = 59;
             // 
+            // btnQuitar
+            // 
+            this.btnQuitar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
+            this.btnQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnQuitar.FlatAppearance.BorderSize = 0;
+            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuitar.Location = new System.Drawing.Point(1111, 433);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(50, 50);
+            this.btnQuitar.TabIndex = 8;
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click_1);
+            // 
             // txtCliente
             // 
             this.txtCliente.Location = new System.Drawing.Point(99, 465);
@@ -608,6 +654,45 @@
             this.label13.Size = new System.Drawing.Size(54, 15);
             this.label13.TabIndex = 26;
             this.label13.Text = "Fecha: ";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
+            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCancelar.FlatAppearance.BorderSize = 0;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Location = new System.Drawing.Point(249, 539);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(50, 50);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(140, 539);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(50, 50);
+            this.btnGuardar.TabIndex = 10;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
+            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnNuevo.FlatAppearance.BorderSize = 0;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Location = new System.Drawing.Point(16, 539);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(50, 50);
+            this.btnNuevo.TabIndex = 9;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // dataListadoDisminucion
             // 
@@ -670,15 +755,170 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(2, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1178, 630);
             this.tabControl1.TabIndex = 9;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label25);
+            this.tabPage4.Controls.Add(this.txtTotalFruver);
+            this.tabPage4.Controls.Add(this.btnAceptarFruver);
+            this.tabPage4.Controls.Add(this.label24);
+            this.tabPage4.Controls.Add(this.txtGramos);
+            this.tabPage4.Controls.Add(this.label23);
+            this.tabPage4.Controls.Add(this.txtPrecioFruver);
+            this.tabPage4.Controls.Add(this.label21);
+            this.tabPage4.Controls.Add(this.txtNombreFruver);
+            this.tabPage4.Controls.Add(this.btnCalcularFruver);
+            this.tabPage4.Controls.Add(this.dataListadoFruver);
+            this.tabPage4.Controls.Add(this.txtBuscarFruver);
+            this.tabPage4.Controls.Add(this.btnBuscarFruver);
+            this.tabPage4.Controls.Add(this.label22);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1170, 602);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Fruver";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(307, 538);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(44, 15);
+            this.label25.TabIndex = 26;
+            this.label25.Text = "Total:";
+            // 
+            // txtTotalFruver
+            // 
+            this.txtTotalFruver.Enabled = false;
+            this.txtTotalFruver.Location = new System.Drawing.Point(397, 530);
+            this.txtTotalFruver.Name = "txtTotalFruver";
+            this.txtTotalFruver.Size = new System.Drawing.Size(150, 23);
+            this.txtTotalFruver.TabIndex = 25;
+            // 
+            // btnAceptarFruver
+            // 
+            this.btnAceptarFruver.Location = new System.Drawing.Point(587, 529);
+            this.btnAceptarFruver.Name = "btnAceptarFruver";
+            this.btnAceptarFruver.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptarFruver.TabIndex = 24;
+            this.btnAceptarFruver.Text = "Aceptar";
+            this.btnAceptarFruver.UseVisualStyleBackColor = true;
+            this.btnAceptarFruver.Click += new System.EventHandler(this.btnAceptarFruver_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(307, 489);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(62, 15);
+            this.label24.TabIndex = 23;
+            this.label24.Text = "Gramos:";
+            // 
+            // txtGramos
+            // 
+            this.txtGramos.Location = new System.Drawing.Point(397, 481);
+            this.txtGramos.Name = "txtGramos";
+            this.txtGramos.Size = new System.Drawing.Size(150, 23);
+            this.txtGramos.TabIndex = 22;
+            this.txtGramos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGramos_KeyPress);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(10, 543);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(83, 15);
+            this.label23.TabIndex = 21;
+            this.label23.Text = "Precio Kilo:";
+            // 
+            // txtPrecioFruver
+            // 
+            this.txtPrecioFruver.Enabled = false;
+            this.txtPrecioFruver.Location = new System.Drawing.Point(100, 535);
+            this.txtPrecioFruver.Name = "txtPrecioFruver";
+            this.txtPrecioFruver.Size = new System.Drawing.Size(150, 23);
+            this.txtPrecioFruver.TabIndex = 20;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(10, 489);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(63, 15);
+            this.label21.TabIndex = 19;
+            this.label21.Text = "Nombre:";
+            // 
+            // txtNombreFruver
+            // 
+            this.txtNombreFruver.Enabled = false;
+            this.txtNombreFruver.Location = new System.Drawing.Point(100, 481);
+            this.txtNombreFruver.Name = "txtNombreFruver";
+            this.txtNombreFruver.Size = new System.Drawing.Size(150, 23);
+            this.txtNombreFruver.TabIndex = 18;
+            // 
+            // btnCalcularFruver
+            // 
+            this.btnCalcularFruver.Location = new System.Drawing.Point(587, 480);
+            this.btnCalcularFruver.Name = "btnCalcularFruver";
+            this.btnCalcularFruver.Size = new System.Drawing.Size(75, 23);
+            this.btnCalcularFruver.TabIndex = 17;
+            this.btnCalcularFruver.Text = "Calcular";
+            this.btnCalcularFruver.UseVisualStyleBackColor = true;
+            this.btnCalcularFruver.Click += new System.EventHandler(this.btnCalcularFruver_Click);
+            // 
+            // dataListadoFruver
+            // 
+            this.dataListadoFruver.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataListadoFruver.BackgroundColor = System.Drawing.Color.White;
+            this.dataListadoFruver.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListadoFruver.Location = new System.Drawing.Point(3, 76);
+            this.dataListadoFruver.Name = "dataListadoFruver";
+            this.dataListadoFruver.RowHeadersVisible = false;
+            this.dataListadoFruver.Size = new System.Drawing.Size(1164, 362);
+            this.dataListadoFruver.TabIndex = 16;
+            this.dataListadoFruver.DoubleClick += new System.EventHandler(this.dataListadoFruver_DoubleClick);
+            // 
+            // txtBuscarFruver
+            // 
+            this.txtBuscarFruver.Location = new System.Drawing.Point(88, 25);
+            this.txtBuscarFruver.Name = "txtBuscarFruver";
+            this.txtBuscarFruver.Size = new System.Drawing.Size(400, 23);
+            this.txtBuscarFruver.TabIndex = 15;
+            this.txtBuscarFruver.TextChanged += new System.EventHandler(this.txtNombreFruver_TextChanged);
+            // 
+            // btnBuscarFruver
+            // 
+            this.btnBuscarFruver.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            this.btnBuscarFruver.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscarFruver.FlatAppearance.BorderSize = 0;
+            this.btnBuscarFruver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarFruver.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnBuscarFruver.Location = new System.Drawing.Point(517, 20);
+            this.btnBuscarFruver.Name = "btnBuscarFruver";
+            this.btnBuscarFruver.Size = new System.Drawing.Size(30, 30);
+            this.btnBuscarFruver.TabIndex = 10;
+            this.btnBuscarFruver.UseVisualStyleBackColor = true;
+            this.btnBuscarFruver.Click += new System.EventHandler(this.btnBuscarFruver_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label22.Location = new System.Drawing.Point(10, 28);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(63, 15);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "Nombre:";
             // 
             // tabPage3
             // 
@@ -839,130 +1079,6 @@
             this.label10.TabIndex = 8;
             this.label10.Text = "Nombre:";
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.button3);
-            this.tabPage4.Controls.Add(this.dataGridView1);
-            this.tabPage4.Controls.Add(this.textBox1);
-            this.tabPage4.Controls.Add(this.label21);
-            this.tabPage4.Controls.Add(this.btnEliminar);
-            this.tabPage4.Controls.Add(this.button2);
-            this.tabPage4.Controls.Add(this.label22);
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1170, 602);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Frutas y Verduras";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(13, 522);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 76);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1164, 362);
-            this.dataGridView1.TabIndex = 16;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(88, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 23);
-            this.textBox1.TabIndex = 15;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F);
-            this.label21.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label21.Location = new System.Drawing.Point(653, 28);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 24);
-            this.label21.TabIndex = 13;
-            this.label21.Text = "label3";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label22.Location = new System.Drawing.Point(10, 28);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(63, 15);
-            this.label22.TabIndex = 8;
-            this.label22.Text = "Nombre:";
-            // 
-            // lblImpresora
-            // 
-            this.lblImpresora.AutoSize = true;
-            this.lblImpresora.Location = new System.Drawing.Point(627, 19);
-            this.lblImpresora.Name = "lblImpresora";
-            this.lblImpresora.Size = new System.Drawing.Size(41, 13);
-            this.lblImpresora.TabIndex = 93;
-            this.lblImpresora.Text = "label21";
-            this.lblImpresora.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.lblImpresora.Visible = false;
-            // 
-            // btnQuitar
-            // 
-            this.btnQuitar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
-            this.btnQuitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnQuitar.FlatAppearance.BorderSize = 0;
-            this.btnQuitar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnQuitar.Location = new System.Drawing.Point(1111, 433);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(50, 50);
-            this.btnQuitar.TabIndex = 8;
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click_1);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackgroundImage = global::CapaPresentacion.Properties.Resources.cancel;
-            this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Location = new System.Drawing.Point(249, 539);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(50, 50);
-            this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackgroundImage = global::CapaPresentacion.Properties.Resources.guardar;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(140, 539);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(50, 50);
-            this.btnGuardar.TabIndex = 10;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.BackgroundImage = global::CapaPresentacion.Properties.Resources.add;
-            this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnNuevo.FlatAppearance.BorderSize = 0;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Location = new System.Drawing.Point(16, 539);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(50, 50);
-            this.btnNuevo.TabIndex = 9;
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
             // btnBuscarSinCodigo
             // 
             this.btnBuscarSinCodigo.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
@@ -1002,57 +1118,16 @@
             this.btnBuscarArticulo.UseVisualStyleBackColor = true;
             this.btnBuscarArticulo.Click += new System.EventHandler(this.btnBuscarArticulo_Click);
             // 
-            // btnVolverDataListado
+            // lblImpresora
             // 
-            this.btnVolverDataListado.BackgroundImage = global::CapaPresentacion.Properties.Resources.back;
-            this.btnVolverDataListado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnVolverDataListado.FlatAppearance.BorderSize = 0;
-            this.btnVolverDataListado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVolverDataListado.Location = new System.Drawing.Point(34, 61);
-            this.btnVolverDataListado.Name = "btnVolverDataListado";
-            this.btnVolverDataListado.Size = new System.Drawing.Size(40, 40);
-            this.btnVolverDataListado.TabIndex = 5;
-            this.btnVolverDataListado.UseVisualStyleBackColor = true;
-            this.btnVolverDataListado.Click += new System.EventHandler(this.btnVolverDataListado_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(802, 13);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(30, 30);
-            this.btnBuscar.TabIndex = 3;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click_1);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackgroundImage = global::CapaPresentacion.Properties.Resources.delete;
-            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEliminar.Location = new System.Drawing.Point(575, 20);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(30, 30);
-            this.btnEliminar.TabIndex = 11;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button2.Location = new System.Drawing.Point(517, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 10;
-            this.button2.UseVisualStyleBackColor = true;
+            this.lblImpresora.AutoSize = true;
+            this.lblImpresora.Location = new System.Drawing.Point(627, 19);
+            this.lblImpresora.Name = "lblImpresora";
+            this.lblImpresora.Size = new System.Drawing.Size(41, 13);
+            this.lblImpresora.TabIndex = 93;
+            this.lblImpresora.Text = "label21";
+            this.lblImpresora.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblImpresora.Visible = false;
             // 
             // FrmVenta
             // 
@@ -1088,14 +1163,14 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoFruver)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoNoCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListadoArticulos)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1181,12 +1256,19 @@
         private System.Windows.Forms.Label lbliva5;
         private System.Windows.Forms.Button btnCuadre;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBuscarFruver;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnCalcularFruver;
+        private System.Windows.Forms.DataGridView dataListadoFruver;
+        private System.Windows.Forms.TextBox txtBuscarFruver;
+        private System.Windows.Forms.Button btnAceptarFruver;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtGramos;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox txtPrecioFruver;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtNombreFruver;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtTotalFruver;
     }
 }

@@ -45,6 +45,7 @@
     <Compile Include="NCategoria.cs" />
     <Compile Include="NCliente.cs" />
     <Compile Include="NConsultaVentas.cs" />
+    <Compile Include="NFruver.cs" />
     <Compile Include="NIngreso.cs" />
     <Compile Include="NPresentacion.cs" />
     <Compile Include="NProveedor.cs" />

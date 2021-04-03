@@ -29,6 +29,11 @@ namespace CapaPresentacion
         public double impuesto5= 0;
         public double impuesto19= 0;
         public int totalArticulos = 0;
+        public double precio_kilo = 0;
+        public double gramos_fruver = 0;
+        public double precio_gramo = 0;
+        public double precio_fruver = 0;
+        public double totalFruver = 0;
         private DataTable listadoDisminucion;
         public FrmVenta()
         {
@@ -129,6 +134,9 @@ namespace CapaPresentacion
 
             //ocultar las columnas del listado de clientes
             this.dataListadoClientes.Columns[0].Visible = false;
+
+            //ocultar las columnas del listado de fruver
+            this.dataListadoFruver.Columns[0].Visible = false;
            
         }
         //Método para alternar los colores de las filas del datagrid
@@ -144,6 +152,7 @@ namespace CapaPresentacion
             this.dataListadoArticulos.DataSource = NVenta.MostrarArticulo_Venta_Nombre(this.txtBuscarArticuloSinCodigo.Text);
             this.dataListadoNoCodigo.DataSource = NVenta.MostrarArticulo_Sin_Codigo(this.txtBuscarNombreArticulo.Text);
             this.dataListadoClientes.DataSource = NCliente.Mostrar();
+            this.dataListadoFruver.DataSource = NFruver.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -1390,5 +1399,170 @@ namespace CapaPresentacion
            
         }
 
+        //Metodo para buscar los articulos de fruver por su nombre
+
+        private void Mostrar_Fruver()
+        {
+            this.dataListadoFruver.DataSource = NFruver.BuscarNombre(this.txtBuscarFruver.Text);
+            this.OcultarColumnas();
+           
+        }
+
+        private void txtNombreFruver_TextChanged(object sender, EventArgs e)
+        {
+            this.Mostrar_Fruver();
+        }
+
+        private void btnBuscarFruver_Click(object sender, EventArgs e)
+        {
+            this.Mostrar_Fruver();
+        }
+
+        private void dataListadoFruver_DoubleClick(object sender, EventArgs e)
+        {
+            this.txtNombreFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["Nombre"].Value);
+            this.txtPrecioFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["Precio_Kilo"].Value);
+
+            precio_kilo = Convert.ToDouble(this.dataListadoFruver.CurrentRow.Cells["Precio_Kilo"].Value);
+
+            precio_gramo = precio_kilo / 1000;
+        }
+
+        private void txtGramos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnCalcularFruver_Click(object sender, EventArgs e)
+        {
+            totalFruver = precio_gramo * Convert.ToDouble(this.txtGramos.Text);
+
+            this.txtTotalFruver.Text = Convert.ToString(totalFruver);
+        }
+
+        private void btnAceptarFruver_Click(object sender, EventArgs e)
+        {
+            int par1, par7, par11;
+            string par2, par3, par4, par5, par6, par8;
+            double par9, par10, descuento, descuentoarticulo, preciodescuento;
+            par1 = 0;
+            par2 = "0";
+            par3 = Convert.ToString(this.txtNombreFruver.Text);
+            par4 = " ";
+            par5 = "Fruver";
+            par6 = " ";
+            par7 = 0;
+            par8 = Convert.ToString(this.txtGramos.Text);
+            par9 = totalFruver;
+            par10 = 0;
+            par11 = 0;
+
+            //Calculamos el descuento de cada articulo
+
+            descuento = par10 / 100.0;
+
+            descuentoarticulo = Convert.ToDouble(par9) * descuento;
+
+            preciodescuento = par9 - Convert.ToDouble(descuentoarticulo);
+
+            //Agregar al listado de articulos para la factura
+            DataRow row = this.dtDetalle.NewRow();
+            row["IdArticulo"] = par1;
+            row["Codigo"] = par2;
+            row["Descripción"] = par3;
+            row["Marca"] = par4;
+            row["Categoria"] = par5;
+            row["Presentacion"] = par6;
+            row["Contenido"] = par8;
+            row["Precio_Venta"] = preciodescuento;
+            row["Descuento"] = par10;
+            row["Cantidad"] = 1;
+            row["Impuesto"] = par11;
+
+            this.dtDetalle.Rows.Add(row);
+
+            lblArticulo.Text = par3 + " " + par4 + " " + par6;
+
+            //Calcular el total de la cuenta
+            totalcuenta = totalcuenta + preciodescuento;
+            lblTotalPagado.Text = Convert.ToString(totalcuenta);
+            //Calcular el subtotal de la cuenta
+            double imp;
+
+            imp = (preciodescuento * par11) / 100;
+            subtotal = subtotal + (preciodescuento - imp);
+            this.lblsubtotal.Text = Convert.ToString(subtotal);
+
+            //Calcular el iva de la cuenta
+            //Calcular el iva de la cuenta
+            if (par11 == 5)
+            {
+                impuesto5 = impuesto5 + imp;
+                this.lbliva5.Text = Convert.ToString(impuesto5);
+
+            }
+            else if (par11 == 19)
+            {
+                impuesto19 = impuesto19 + imp;
+                this.lbliva19.Text = Convert.ToString(impuesto19);
+
+            }
+            impuesto = impuesto + imp;
+            this.lbliva.Text = Convert.ToString(impuesto);
+
+            //Calcular el total de items de cada compra
+            cacularItems();
+            //Limpar las variables
+            par2 = string.Empty;
+            par3 = string.Empty;
+            par4 = string.Empty;
+            par5 = string.Empty;
+            par6 = string.Empty;
+            par7 = 0;
+            par8 = string.Empty;
+            par9 = 0;
+            par10 = 0;
+            par11 = 0;
+
+            this.tabControl1.SelectedIndex = 0;
+            this.txtCodigoBarras.Text = string.Empty;
+            this.txtCodigoBarras.Focus();
+
+            this.txtCantidad.ReadOnly = false;
+            this.btnMultiplicar.Enabled = true;
+
+            this.LimpiarFruver();
+
+        }
+
+        public void LimpiarFruver()
+        {
+            this.txtBuscarFruver.Text = string.Empty;
+            this.txtNombreFruver.Text = string.Empty;
+            this.txtPrecioFruver.Text = string.Empty;
+            this.txtGramos.Text = string.Empty;
+            this.txtTotalFruver.Text = string.Empty;
+            this.precio_kilo = 0;
+            this.gramos_fruver = 0;
+            this.precio_gramo = 0;
+            this.precio_fruver = 0;
+            this.totalFruver = 0;
+
+         }
     }
 }

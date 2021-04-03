@@ -18,6 +18,8 @@ namespace CapaPresentacion
     {
         private bool IsNuevo = false;
         private bool IsEditar = false;
+        private bool IsNuevoFruver = false;
+        private bool IsEditarFruver = false;
 
         public FrmArticulo()
         {
@@ -37,6 +39,7 @@ namespace CapaPresentacion
             this.Habilitar(false);
             this.Botones();
             this.alternarColores(this.dataListado);
+            this.alternarColores(this.dataListadoFruver);
         }
         //Mostrar mensaje de confirmación
         private void MensajeOk(string mensaje)
@@ -108,6 +111,9 @@ namespace CapaPresentacion
             //Ocultar columnas del grid de categorias
             this.dataListadoCategorias.Columns[0].Visible = false;
             this.dataListadoCategorias.Columns[1].Visible = false;
+
+            //Ocultar columnas del grid de fruver
+            this.dataListadoFruver.Columns[0].Visible = false;
         }
         //Método para alternas los colores en del datagrid
         public void alternarColores(DataGridView dgv)
@@ -121,6 +127,7 @@ namespace CapaPresentacion
         {
             this.dataListado.DataSource = NArticulo.Mostrar();
             this.dataListadoCategorias.DataSource = NCategoria.Mostrar();
+            this.dataListadoFruver.DataSource = NFruver.Mostrar();
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
@@ -259,11 +266,11 @@ namespace CapaPresentacion
                     {
                         if (this.IsNuevo)
                         {
-                            this.MensajeOk("Se inserto correctamente en registro");
+                            this.MensajeOk("Se inserto correctamente el registro");
                         }
                         else
                         {
-                            this.MensajeOk("Se actualizó correctamente en registro");
+                            this.MensajeOk("Se actualizó correctamente el registro");
                         }
                     }
                     else
@@ -442,6 +449,158 @@ namespace CapaPresentacion
             {
                 e.Handled = true;
             }
+        }
+
+        private void dataListadoFruver_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.txtIdFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["idfruver"].Value);
+            this.txtNombreFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["nombre"].Value);
+            this.txtPrecioFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["precio_kilo"].Value);
+            this.btnEditarFruver.Enabled = true;
+            this.IsNuevoFruver = false;
+            this.btnNuevoFruver.Enabled = false;
+            this.btnCancelarFruver.Enabled = true;
+          
+        }
+
+        private void btnNuevoFruver_Click(object sender, EventArgs e)
+        {
+            this.IsNuevoFruver = true;
+            this.IsEditarFruver = false;
+            this.txtNombreFruver.Enabled = true;
+            this.txtPrecioFruver.Enabled = true;
+            this.btnGuardarFruver.Enabled = true;
+            this.btnEditarFruver.Enabled = true;
+            this.btnCancelarFruver.Enabled = true;
+            this.dataListadoFruver.Enabled = false;
+        }
+
+        private void btnGuardarFruver_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rpta = "";
+                
+                if (this.txtNombreFruver.Text == string.Empty || this.txtPrecioFruver.Text == string.Empty)
+                {
+                    MensajeError("Falta ingresar algun dato");
+                    errorIcono.SetError(txtNombreFruver, "Ingrese un valor");
+                    errorIcono.SetError(txtPrecioFruver, "Ingrese un valor");
+                }
+                else
+                {
+                    
+                    if (this.IsNuevoFruver)
+                    {
+                      
+                       rpta = NFruver.Insertar(this.txtNombreFruver.Text.Trim().ToUpper(), Convert.ToDecimal(this.txtPrecioFruver.Text));
+               
+                    }
+                    else
+                    {
+                        rpta = NFruver.Editar(Convert.ToInt32(this.txtIdFruver.Text), this.txtNombreFruver.Text.Trim().ToUpper(), Convert.ToDecimal(this.txtPrecioFruver.Text));
+                    }
+                    if (rpta.Equals("OK"))
+                    {
+                        if (this.IsNuevoFruver)
+                        {
+                            this.MensajeOk("Se inserto correctamente el registro");
+                        }
+                        else
+                        {
+                            this.MensajeOk("Se actualizó correctamente el registro");
+                        }
+                    }
+                    else
+                    {
+                        this.MensajeError(rpta);
+                    }
+                    this.IsNuevoFruver = false;
+                    this.IsEditarFruver = false;
+                    this.LimpiarFruver();
+                    this.MostrarFruver();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+        public void BotonesFruver()
+        {
+            this.btnGuardarFruver.Enabled = false;
+            this.btnEditarFruver.Enabled = false;
+            this.btnCancelarFruver.Enabled = false;
+        }
+        public void LimpiarFruver()
+        {
+            this.txtIdFruver.Text = string.Empty;
+            this.txtNombreFruver.Text = string.Empty;
+            this.txtNombreFruver.Enabled = false;
+            this.txtPrecioFruver.Text = string.Empty;
+            this.txtPrecioFruver.Enabled = false;
+            this.IsEditarFruver = false;
+            this.IsNuevoFruver = false;
+            this.btnNuevoFruver.Enabled = true;
+            this.btnEditarFruver.Enabled = false;
+            this.btnCancelarFruver.Enabled = false;
+        }
+
+        public void MostrarFruver()
+        {
+            this.dataListadoFruver.DataSource = NFruver.Mostrar();
+        }
+
+        private void txtPrecioFruver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnEditarFruver_Click(object sender, EventArgs e)
+        {
+            if (!this.txtIdFruver.Text.Equals(""))
+            {
+                this.IsEditarFruver = true;
+                this.txtNombreFruver.Enabled = true;
+                this.txtPrecioFruver.Enabled = true;
+                this.btnGuardarFruver.Enabled = true;
+                this.btnCancelarFruver.Enabled = true;
+            }
+            else
+            {
+                this.MensajeError("Debe seleccionar el registro a modificar");
+            }
+        }
+
+        private void btnCancelarFruver_Click(object sender, EventArgs e)
+        {
+            this.txtNombreFruver.Text = string.Empty;
+            this.txtPrecioFruver.Text = string.Empty;
+            this.txtNombreFruver.Enabled = false;
+            this.txtPrecioFruver.Enabled = false;
+            this.txtIdFruver.Text = string.Empty;
+            this.btnGuardarFruver.Enabled = false;
+            this.btnEditarFruver.Enabled = false;
+            this.btnCancelarFruver.Enabled = false;
+            this.btnNuevoFruver.Enabled = true;
+            this.dataListadoFruver.Enabled = true;
+            this.IsNuevoFruver = false;
+            this.IsEditarFruver = false;
         }
     }
 }

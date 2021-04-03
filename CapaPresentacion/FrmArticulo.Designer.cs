@@ -70,9 +70,12 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataListadoFruver = new System.Windows.Forms.DataGridView();
+            this.btnBuscarFruver = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancelarFruver = new System.Windows.Forms.Button();
@@ -84,7 +87,6 @@
             this.txtNombreFruver = new System.Windows.Forms.TextBox();
             this.txtPrecioFruver = new System.Windows.Forms.TextBox();
             this.txtBuscarFruver = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtIdCategoria = new System.Windows.Forms.TextBox();
             this.txtIdArticulo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -92,8 +94,7 @@
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnBuscarFruver = new System.Windows.Forms.Button();
+            this.txtIdFruver = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -104,8 +105,8 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoFruver)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -430,6 +431,15 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            resources.ApplyResources(this.btnBuscar, "btnBuscar");
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // txtBuscar
             // 
             resources.ApplyResources(this.txtBuscar, "txtBuscar");
@@ -443,14 +453,38 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.dataListadoFruver);
             this.tabPage4.Controls.Add(this.btnBuscarFruver);
             this.tabPage4.Controls.Add(this.label16);
             this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.txtBuscarFruver);
-            this.tabPage4.Controls.Add(this.dataGridView1);
             resources.ApplyResources(this.tabPage4, "tabPage4");
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataListadoFruver
+            // 
+            this.dataListadoFruver.AllowUserToAddRows = false;
+            this.dataListadoFruver.AllowUserToDeleteRows = false;
+            this.dataListadoFruver.AllowUserToOrderColumns = true;
+            this.dataListadoFruver.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataListadoFruver.BackgroundColor = System.Drawing.Color.White;
+            this.dataListadoFruver.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataListadoFruver, "dataListadoFruver");
+            this.dataListadoFruver.MultiSelect = false;
+            this.dataListadoFruver.Name = "dataListadoFruver";
+            this.dataListadoFruver.ReadOnly = true;
+            this.dataListadoFruver.RowHeadersVisible = false;
+            this.dataListadoFruver.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataListadoFruver.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListadoFruver_CellDoubleClick);
+            // 
+            // btnBuscarFruver
+            // 
+            this.btnBuscarFruver.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
+            resources.ApplyResources(this.btnBuscarFruver, "btnBuscarFruver");
+            this.btnBuscarFruver.FlatAppearance.BorderSize = 0;
+            this.btnBuscarFruver.Name = "btnBuscarFruver";
+            this.btnBuscarFruver.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -478,6 +512,7 @@
             this.btnCancelarFruver.FlatAppearance.BorderSize = 0;
             this.btnCancelarFruver.Name = "btnCancelarFruver";
             this.btnCancelarFruver.UseVisualStyleBackColor = true;
+            this.btnCancelarFruver.Click += new System.EventHandler(this.btnCancelarFruver_Click);
             // 
             // btnEditarFruver
             // 
@@ -486,6 +521,7 @@
             this.btnEditarFruver.FlatAppearance.BorderSize = 0;
             this.btnEditarFruver.Name = "btnEditarFruver";
             this.btnEditarFruver.UseVisualStyleBackColor = true;
+            this.btnEditarFruver.Click += new System.EventHandler(this.btnEditarFruver_Click);
             // 
             // btnGuardarFruver
             // 
@@ -494,6 +530,7 @@
             this.btnGuardarFruver.FlatAppearance.BorderSize = 0;
             this.btnGuardarFruver.Name = "btnGuardarFruver";
             this.btnGuardarFruver.UseVisualStyleBackColor = true;
+            this.btnGuardarFruver.Click += new System.EventHandler(this.btnGuardarFruver_Click);
             // 
             // btnNuevoFruver
             // 
@@ -502,6 +539,7 @@
             this.btnNuevoFruver.FlatAppearance.BorderSize = 0;
             this.btnNuevoFruver.Name = "btnNuevoFruver";
             this.btnNuevoFruver.UseVisualStyleBackColor = true;
+            this.btnNuevoFruver.Click += new System.EventHandler(this.btnNuevoFruver_Click);
             // 
             // label15
             // 
@@ -522,18 +560,12 @@
             // 
             resources.ApplyResources(this.txtPrecioFruver, "txtPrecioFruver");
             this.txtPrecioFruver.Name = "txtPrecioFruver";
+            this.txtPrecioFruver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioFruver_KeyPress);
             // 
             // txtBuscarFruver
             // 
             resources.ApplyResources(this.txtBuscarFruver, "txtBuscarFruver");
             this.txtBuscarFruver.Name = "txtBuscarFruver";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Name = "dataGridView1";
             // 
             // txtIdCategoria
             // 
@@ -567,28 +599,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // btnBuscar
+            // txtIdFruver
             // 
-            this.btnBuscar.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            resources.ApplyResources(this.btnBuscar, "btnBuscar");
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // btnBuscarFruver
-            // 
-            this.btnBuscarFruver.BackgroundImage = global::CapaPresentacion.Properties.Resources.search;
-            resources.ApplyResources(this.btnBuscarFruver, "btnBuscarFruver");
-            this.btnBuscarFruver.FlatAppearance.BorderSize = 0;
-            this.btnBuscarFruver.Name = "btnBuscarFruver";
-            this.btnBuscarFruver.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.txtIdFruver, "txtIdFruver");
+            this.txtIdFruver.Name = "txtIdFruver";
             // 
             // FrmArticulo
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.txtIdFruver);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtIdArticulo);
@@ -610,9 +631,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListadoFruver)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -683,8 +704,9 @@
         private System.Windows.Forms.TextBox txtNombreFruver;
         private System.Windows.Forms.TextBox txtPrecioFruver;
         private System.Windows.Forms.TextBox txtBuscarFruver;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnBuscarFruver;
+        private System.Windows.Forms.DataGridView dataListadoFruver;
+        private System.Windows.Forms.TextBox txtIdFruver;
     }
 }
