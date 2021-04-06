@@ -95,6 +95,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtIdFruver = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtPrecioCompraFruver = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -493,6 +495,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label17);
+            this.groupBox2.Controls.Add(this.txtPrecioCompraFruver);
             this.groupBox2.Controls.Add(this.btnCancelarFruver);
             this.groupBox2.Controls.Add(this.btnEditarFruver);
             this.groupBox2.Controls.Add(this.btnGuardarFruver);
@@ -604,6 +608,17 @@
             resources.ApplyResources(this.txtIdFruver, "txtIdFruver");
             this.txtIdFruver.Name = "txtIdFruver";
             // 
+            // label17
+            // 
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            // 
+            // txtPrecioCompraFruver
+            // 
+            resources.ApplyResources(this.txtPrecioCompraFruver, "txtPrecioCompraFruver");
+            this.txtPrecioCompraFruver.Name = "txtPrecioCompraFruver";
+            this.txtPrecioCompraFruver.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioCompraFruver_KeyPress);
+            // 
             // FrmArticulo
             // 
             resources.ApplyResources(this, "$this");
@@ -708,5 +723,7 @@
         private System.Windows.Forms.Button btnBuscarFruver;
         private System.Windows.Forms.DataGridView dataListadoFruver;
         private System.Windows.Forms.TextBox txtIdFruver;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtPrecioCompraFruver;
     }
 }

@@ -1509,7 +1509,6 @@ namespace CapaPresentacion
             this.lblsubtotal.Text = Convert.ToString(subtotal);
 
             //Calcular el iva de la cuenta
-            //Calcular el iva de la cuenta
             if (par11 == 5)
             {
                 impuesto5 = impuesto5 + imp;

@@ -14,13 +14,16 @@ namespace CapaDatos
     {
         private int _Idfruver;
         private string _Nombre;
+        private decimal _Precio_Compra;
         private decimal _Precio_Kilo;
         private string _TextoBuscar;
 
         public int Idfruver { get => _Idfruver; set => _Idfruver = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
+        public decimal Precio_Compra { get => _Precio_Compra; set => _Precio_Compra = value; }
         public decimal Precio_Kilo { get => _Precio_Kilo; set => _Precio_Kilo = value; }
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
+        
 
         //Constructor vacio
 
@@ -31,10 +34,11 @@ namespace CapaDatos
          
         //Constructor con parámetros
 
-        public DFruver(int idfruver, string nombre, decimal precio_kilo, string textobuscar)
+        public DFruver(int idfruver, string nombre,decimal precio_compra, decimal precio_kilo, string textobuscar)
         {
             this.Idfruver = idfruver;
             this.Nombre = nombre;
+            this.Precio_Compra = precio_compra;
             this.Precio_Kilo = precio_kilo;
             this.TextoBuscar = textobuscar;
         }
@@ -68,6 +72,12 @@ namespace CapaDatos
                 ParNombre.Size = 50;
                 ParNombre.Value = Fruver.Nombre;
                 SqlCmd.Parameters.Add(ParNombre);
+
+                SqlParameter ParPrecio_Compra = new SqlParameter();
+                ParPrecio_Compra.ParameterName = "@precio_compra";
+                ParPrecio_Compra.SqlDbType = SqlDbType.Decimal;
+                ParPrecio_Compra.Value = Fruver.Precio_Compra;
+                SqlCmd.Parameters.Add(ParPrecio_Compra);
 
                 SqlParameter ParPrecio_Kilo = new SqlParameter();
                 ParPrecio_Kilo.ParameterName = "@precio_kilo";
@@ -119,6 +129,12 @@ namespace CapaDatos
                 ParNombre.Size = 50;
                 ParNombre.Value = Fruver.Nombre;
                 SqlCmd.Parameters.Add(ParNombre);
+
+                SqlParameter ParPrecio_Compra = new SqlParameter();
+                ParPrecio_Compra.ParameterName = "@precio_compra";
+                ParPrecio_Compra.SqlDbType = SqlDbType.Decimal;
+                ParPrecio_Compra.Value = Fruver.Precio_Compra;
+                SqlCmd.Parameters.Add(ParPrecio_Compra);
 
                 SqlParameter ParPrecio_Kilo = new SqlParameter();
                 ParPrecio_Kilo.ParameterName = "@precio_kilo";

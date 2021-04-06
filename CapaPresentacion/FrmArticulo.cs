@@ -455,11 +455,13 @@ namespace CapaPresentacion
         {
             this.txtIdFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["idfruver"].Value);
             this.txtNombreFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["nombre"].Value);
+            this.txtPrecioCompraFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["precio_compra"].Value);
             this.txtPrecioFruver.Text = Convert.ToString(this.dataListadoFruver.CurrentRow.Cells["precio_kilo"].Value);
             this.btnEditarFruver.Enabled = true;
             this.IsNuevoFruver = false;
             this.btnNuevoFruver.Enabled = false;
             this.btnCancelarFruver.Enabled = true;
+            
           
         }
 
@@ -468,11 +470,13 @@ namespace CapaPresentacion
             this.IsNuevoFruver = true;
             this.IsEditarFruver = false;
             this.txtNombreFruver.Enabled = true;
+            this.txtPrecioCompraFruver.Enabled = true;
             this.txtPrecioFruver.Enabled = true;
             this.btnGuardarFruver.Enabled = true;
             this.btnEditarFruver.Enabled = true;
             this.btnCancelarFruver.Enabled = true;
             this.dataListadoFruver.Enabled = false;
+            this.txtNombreFruver.Focus();
         }
 
         private void btnGuardarFruver_Click(object sender, EventArgs e)
@@ -485,6 +489,7 @@ namespace CapaPresentacion
                 {
                     MensajeError("Falta ingresar algun dato");
                     errorIcono.SetError(txtNombreFruver, "Ingrese un valor");
+                    errorIcono.SetError(txtPrecioCompraFruver, "Ingrese un valor");
                     errorIcono.SetError(txtPrecioFruver, "Ingrese un valor");
                 }
                 else
@@ -493,12 +498,12 @@ namespace CapaPresentacion
                     if (this.IsNuevoFruver)
                     {
                       
-                       rpta = NFruver.Insertar(this.txtNombreFruver.Text.Trim().ToUpper(), Convert.ToDecimal(this.txtPrecioFruver.Text));
+                       rpta = NFruver.Insertar(this.txtNombreFruver.Text.Trim().ToUpper(),Convert.ToDecimal(this.txtPrecioCompraFruver.Text), Convert.ToDecimal(this.txtPrecioFruver.Text));
                
                     }
                     else
                     {
-                        rpta = NFruver.Editar(Convert.ToInt32(this.txtIdFruver.Text), this.txtNombreFruver.Text.Trim().ToUpper(), Convert.ToDecimal(this.txtPrecioFruver.Text));
+                        rpta = NFruver.Editar(Convert.ToInt32(this.txtIdFruver.Text), this.txtNombreFruver.Text.Trim().ToUpper(), Convert.ToDecimal(this.txtPrecioCompraFruver.Text), Convert.ToDecimal(this.txtPrecioFruver.Text));
                     }
                     if (rpta.Equals("OK"))
                     {
@@ -537,6 +542,8 @@ namespace CapaPresentacion
             this.txtIdFruver.Text = string.Empty;
             this.txtNombreFruver.Text = string.Empty;
             this.txtNombreFruver.Enabled = false;
+            this.txtPrecioCompraFruver.Enabled = false;
+            this.txtPrecioCompraFruver.Text = string.Empty;
             this.txtPrecioFruver.Text = string.Empty;
             this.txtPrecioFruver.Enabled = false;
             this.IsEditarFruver = false;
@@ -571,12 +578,33 @@ namespace CapaPresentacion
             }
         }
 
+        private void txtPrecioCompraFruver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
         private void btnEditarFruver_Click(object sender, EventArgs e)
         {
             if (!this.txtIdFruver.Text.Equals(""))
             {
                 this.IsEditarFruver = true;
                 this.txtNombreFruver.Enabled = true;
+                this.txtPrecioCompraFruver.Enabled = true;
                 this.txtPrecioFruver.Enabled = true;
                 this.btnGuardarFruver.Enabled = true;
                 this.btnCancelarFruver.Enabled = true;
@@ -592,6 +620,8 @@ namespace CapaPresentacion
             this.txtNombreFruver.Text = string.Empty;
             this.txtPrecioFruver.Text = string.Empty;
             this.txtNombreFruver.Enabled = false;
+            this.txtPrecioCompraFruver.Enabled = false;
+            this.txtPrecioCompraFruver.Text = string.Empty;
             this.txtPrecioFruver.Enabled = false;
             this.txtIdFruver.Text = string.Empty;
             this.btnGuardarFruver.Enabled = false;

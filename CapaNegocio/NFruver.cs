@@ -12,20 +12,22 @@ namespace CapaNegocio
     public class NFruver
     {
         //Método que llama al método insertar de la clase DFruver de la capa datos
-        public static string Insertar(string nombre, decimal precio_kilo)
+        public static string Insertar(string nombre, decimal precio_compra, decimal precio_kilo)
         {
             DFruver Obj = new DFruver();
             Obj.Nombre = nombre;
+            Obj.Precio_Compra = precio_compra;
             Obj.Precio_Kilo = precio_kilo;
             
             return Obj.Insertar(Obj);
         }
         //Método que llama al método editar de la clase DFruver de la capa de datos
-        public static string Editar(int idfruver, string nombre, decimal precio_kilo)
+        public static string Editar(int idfruver, string nombre, decimal precio_compra, decimal precio_kilo)
         {
             DFruver Obj = new DFruver();
             Obj.Idfruver = idfruver;
             Obj.Nombre = nombre;
+            Obj.Precio_Compra = precio_compra;
             Obj.Precio_Kilo = precio_kilo;
          
             return Obj.Editar(Obj);
